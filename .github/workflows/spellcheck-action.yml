@@ -1,8 +1,7 @@
 name: Check Spelling
 on:
-  push:
-    paths:
-    - '**.md'
+  pull_request:
+
 jobs:
   spelling:
     runs-on: ubuntu-latest
