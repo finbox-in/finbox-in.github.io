@@ -1,14 +1,14 @@
-name: spellcheck
-
+name: Check Spelling
 on:
-  push:
-
+  pull_request:
+    paths:
+    - '**.md'
 jobs:
-  spellcheck:
-    name: runner / spellcheck
+  spelling:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code.
-      uses: actions/checkout@v2
-    - name: Run PySpelling as a GitHub action
-      uses: sbates130272/spellcheck-github-actions@v0.6.0
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Check Spelling
+      uses: UnicornGlobal/spellcheck-github-actions@master
