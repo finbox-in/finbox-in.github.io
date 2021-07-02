@@ -76,8 +76,8 @@ Here, the `progress` field can be `completed` or `failed`. In case the value is 
 
 In case of failure in Net Banking Mode, an actual upload might not have happened, as in case of wrong credentials entered by the user, hence `statement_id` will be unavailable, and will be a blank string `""`. Similarly in the case of manual upload if `link_id` doesn't exist, its value will be `null`.
 
-## Handling cases when the webhook endpoint is down
-In case the webhook endpoint is down or a webhook call was failed, you can have the polling mechanism as a backup. However, the polling mechanism requires you to have the `entity_id`. 
+## Handling cases when your webhook endpoint is down
+In case your webhook endpoint is down or a webhook call was failed, you can have the polling mechanism as a backup. However, the polling mechanism requires you to have the `entity_id`. 
 
 In case you just have the `link_id` you can also request for all the webhook payloads for a given `link_id` using the following API:
 
