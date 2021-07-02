@@ -53,6 +53,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | mizoram | Mizoram Rural Bank |
 | ncb | National Commercial Bank (AlAhli Bank) |
 | newindia | New India Co-Operative Bank |
+| nkgsbbnk | NKGSB Co-operative Bank |
 | nutan_sahakari | Nutan Nagarik Sahakari Bank Limited |
 | obc | Oriental Bank of Commerce |
 | paytm | Paytm Payments Bank |
