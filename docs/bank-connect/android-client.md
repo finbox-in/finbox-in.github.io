@@ -13,15 +13,92 @@ The video below shows a user submit bank statement by uploading the PDF file:
 </div>
 
 ## Adding Dependency
-First, add the maven dependency to your project-level Gradle file:
-```groovy  
-maven { url  "https://dl.bintray.com/finbox/BankConnect" }  
+In the project level `build.gradle` file, add the repository URLs to all `allprojects` block.
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+maven {
+    setUrl("s3://risk-manager-android-sdk/artifacts")
+    credentials(AwsCredentials::class) {
+        accessKey = <ACCESS_KEY>
+        secretKey = <SECRET_KEY>
+    }
+    content {
+        includeGroup("in.finbox")
+    }
+}
 ```
 
-Then add the following dependency to your Gradle file:  
-```groovy  
-implementation 'in.finbox.bankconnect:bankconnect:1.3.52'  
+</template>
+<template v-slot:groovy>
+
+```groovy
+maven {
+    url "s3://risk-manager-android-sdk/artifacts"
+    credentials(AwsCredentials) {
+        accessKey = <ACCESS_KEY>
+        secretKey = <SECRET_KEY>
+    }
+    content {
+        includeGroup("in.finbox")
+    }
+}
 ```
+
+</template>
+</CodeSwitcher>
+
+Now add the dependency to module level `build.gradle.kts` or `build.gradle` file:
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+implementation("in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar") {
+    isTransitive = true
+    exclude("in.finbox", "common")
+    exclude("in.finbox", "logger")
+}
+implementation("in.finbox:common:<COMMON_SDK_VERSION>:<COMMON_FLAVOR>-release@aar") {
+    isTransitive = true
+}
+implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar") {
+    isTransitive = true
+}
+```
+
+</template>
+<template v-slot:groovy>
+
+```groovy
+implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
+    transitive = true
+    exclude group: "in.finbox", module: "common"
+    exclude group: "in.finbox", module: "logger"
+}
+implementation ('in.finbox:common:<COMMON_SDK_VERSION>:<COMMON_FLAVOR>-release@aar') {
+    transitive = true
+}
+implementation ('in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar') {
+    transitive = true
+}
+```
+
+</template>
+</CodeSwitcher>
+
+
+::: warning NOTE
+Following will be shared by FinBox team at the time of integration:
+- `ACCESS_KEY`
+- `SECRET_KEY`
+- `BC_SDK_VERSION`
+- `COMMON_SDK_VERSION`
+- `LOGGER_SDK_VERSION`
+- `CLIENT_API_KEY`
+:::
 
 ## Integration Workflow
 The diagram below illustrates the integration workflow in a nutshell:
@@ -33,36 +110,18 @@ We have hosted a sample project on GitHub, you can check it out here:
 <a class="download_button" target="_blank" href="https://github.com/finbox-in/bankconnect-android">Open GitHub Repository</a>
 </div>
 
-## Authentication
-The unique [API Key](/bank-connect/#getting-api-keys) provided needs to be added to the `AndroidManifest.xml` using a `meta-data` tag:
-```xml
-<meta-data
-    android:name="in.finbox.KEY_BANK_CONNECT"
-    android:value="<YOUR API KEY>" />
-```
-
-## Showing SDK Screen 
-
-In order to show SDK Screen, all you have to do is add the `FinboxBankConnectView` to your layout file.  
-  
-```xml  
-<in.finbox.bankconnect.baseui.FinboxBankConnectView  
-    android:id="@+id/bankConnect"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
- ```  
- 
-In order to initialize the view, following statement is mandatory:
+## Build Bank Connect
+Build the `FinBoxBankConnect` object by passing `apiKey`, `linkId`, `fromDate`, `toDate` and `bank`.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
 
 ```kotlin
-bankConnect = findViewById(R.id.bankConnect)
-FinBoxBankConnect.Builder(applicationContext, bankConnect)  
-    .linkId("link_id")
-    .fromDate("01/01/2020") // Optional: Default 6 months old date
-    .toDate("01/04/2020") // Optional: Default value 1 day less than current date
+FinBoxBankConnect.Builder(applicationContext)
+    .apiKey("your_api_key")
+    .linkId("your_link_id")
+    .fromDate("01/01/2021") // Optional: Default 6 months old date
+    .toDate("01/04/2021") // Optional: Default value 1 day less than current date
     .bank("sbi") // Optional
     .build()
 ```
@@ -71,13 +130,13 @@ FinBoxBankConnect.Builder(applicationContext, bankConnect)
 <template v-slot:java>
 
 ```java
-FinboxBankConnectView bankConnect = findViewById(R.id.bankConnect);
-new FinBoxBankConnect.Builder(getApplicationContext(), bankConnect)
-        .linkId("link_id")
-        .fromDate("01/01/2020") // Optional: Default 6 months old date
-        .toDate("01/04/2020") // Optional: Default value 1 day less than current date
-        .bank("sbi") // Optional
-        .build();
+new FinBoxBankConnect.Builder(getApplicationContext())
+    .apiKey("your_api_key")
+    .linkId("your_link_id")
+    .fromDate("01/01/2021") // Optional: Default 6 months old date
+    .toDate("01/04/2021") // Optional: Default value 1 day less than current date
+    .bank("sbi") // Optional
+    .build();
 ```
 
 </template>
@@ -85,8 +144,10 @@ new FinBoxBankConnect.Builder(getApplicationContext(), bankConnect)
 
 | Builder Property | Description | Required |
 | - | - | - |
+| `apiKey` | specifies the `api_key` | Yes |
 | `linkId` | specifies the `link_id` | Yes |
-| `fromDate` and `toDate` | specifies the period for which the statements will be fetched in `dd/MM/yyyy` format | No |
+| `fromDate` | specifies the starting period of the statement in `dd/MM/yyyy` format | No |
+| `toDate` | specifies the end period of the statement in `dd/MM/yyyy` format | No |
 | `bank` | pass the [bank identifier](/bank-connect/appendix.html#bank-identifiers) to skip the bank selection screen and directly open a that bank's screen instead | No |
 
 `fromDate` and `toDate` specify the period for which the statements will be fetched. For example, if you need the last 6 months of statements, `fromDate` will be today's date - 6 months and `toDate` will be today's date - 1 day. If not provided the default date range is 6 months from the current date. It should be in `dd/MM/yyyy` format.
@@ -94,111 +155,144 @@ new FinBoxBankConnect.Builder(getApplicationContext(), bankConnect)
 Once the above statement is added, a series of checks are done to make sure the SDK is implemented correctly. A `RunTimeException` will be thrown while trying to build the project in case any of the checks are not completed.
 
 ::: warning Minimal Requirements for SDK to work:
-1. `linkId` is mandatory, and should be at least 8 characters long
-2. API Key should be present in the manifest
+1. `apiKey` is is mandatory
+2. `linkId` is mandatory, and should be at least 8 characters long
 3. In case `fromDate` / `toDate` is provided, make sure they are of correct date format: `dd/MM/yyyy`.
 4. Make sure `fromDate` is always less than `toDate`
 5. Make sure `toDate` is never today's date, the maximum possible value for it is today's date - 1 day
-Once all these conditions are met, the BankConnect view will be visible to the user.
+Once all these conditions are met, the BankConnect object will build.
 :::
 
-## Live Data and Callbacks
-As the user interacts, callbacks can be received in real-time using `getPayloadLiveData()`.  
-
-FinBox BankConnect uses life cycle aware live data to provide real time callbacks. You need to do the following steps to listen for events: 
+## Show SDK Screen
+Start BankActivity and listten for the result
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
 
 ```kotlin
-bankConnect.getPayloadLiveData().observe(this, Observer {
-    when (it) {
-        is FinboxResult.OnExit -> {
-            Log.i("BankConnect", "On Exit -> ${it.exitPayload}")
-        }
-        is FinboxResult.OnSuccess -> {
-            Log.i("BankConnect", "On Success -> ${it.onSuccess}")
-        }
-        is FinboxResult.OnError -> {
-            Log.i("BankConnect", "On Error -> ${it.onError}")
-        }
-    }
-}) 
+/**
+ * Activity Result
+ */
+private val result = registerForActivityResult(
+    ActivityResultContracts.StartActivityForResult()
+) {
+    // Parse the result
+    parseActivityResult(it)
+}
+
+// Start Bank Activity
+result.launch(Intent(this, BankActivity::class.java))
 ```
 
 </template>
 <template v-slot:java>
 
 ```java
-bankConnect.getPayloadLiveData().observe(this, new Observer < FinboxResult > () {
-    @Override public void onChanged(@Nullable FinboxResult finboxResult) {
-        if (finboxResult != null) {
-            if (finboxResult instanceof FinboxResult.OnExit) {
-                FinboxOnExitPayload payload = ((FinboxResult.OnExit) finboxResult).getExitPayload();
-                Log.i(TAG, "Exit payload " + payload);
-            } else if (finboxResult instanceof FinboxResult.OnSuccess) {
-                FinboxSuccessPayload payload = ((FinboxResult.OnSuccess) finboxResult).getSuccessPayload();
-                Log.i(TAG, "Success payload " + payload);
-            } else if (finboxResult instanceof FinboxResult.OnError) {
-                FinboxOnErrorPayload payload = ((FinboxResult.OnError) finboxResult).getErrorPayload();
-                Log.i(TAG, "Error payload " + payload);
-            }
-        }
-    }
-});
+/**
+ * Activity Result
+ */
+@NonNull
+private final ActivityResultLauncher<Intent> result =
+        registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                this::parseActivityResult);
+
+// Start Bank Activity
+result.launch(new Intent(this, BankActivity.class));
 ```
 
 </template>
 </CodeSwitcher>
 
-## Events
-This section list the events in detail:
+## Parse Results
+Once the user navigates through the banks and uploads the bank statement, the sdk automatically closes `BankActivity` and returns `FinboxOnSuccessPayload`.
 
-### Success
-`FinboxResult.OnSuccess` will be called when the user completes the upload process. It will have a payload structure is as follows:  
+`FinboxOnSuccessPayload` contains `linkId` and `entityId`. A successful upload contains a unique `entityId`.
+* linkId - Unique id passed when building the Bank Connect object
+* entityId - Unique id of a successful statement upload
 
-```json  
-{
-    "entityId": "uuid4_for_entity",
-    "linkId": "your_link_id"
-}  
+<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
+<template v-slot:kotlin>
+
+```kotlin
+if (result?.resultCode == Activity.RESULT_OK) {
+    // Result is success
+    // Read extras
+    val extras = result.data?.extras
+    // Read success payload
+    val payload = extras?.getParcelable<FinboxOnSuccessPayload>(
+        FinboxBankConstants.BUNDLE_EXTRA_SUCCESS_PAYLOAD
+    )
+    when {
+        payload == null -> {
+            // Failed to Receive Payload
+        }
+        payload.entityId.isNullOrBlank() -> {
+            // Failed to Upload Document
+        }
+        else -> {
+            // Upload Success
+        }
+    }
+} else {
+    // Result Failed or User Cancelled
+}
 ```
 
-### Exit
-`FinboxResult.OnExit` will be called when the user exits the flow by selecting the cross icon and accepting to close the flow. It will have a payload structure is as follows:  
+</template>
+<template v-slot:java>
 
-Its payload structure is as follows:
-```json  
-{
-    "linkId" : "your_link_id",
-    "message": "exit message"
-}  
+```java
+if (result != null && result.getResultCode() == Activity.RESULT_OK) {
+    // Result is success
+    // Read extras
+    @Nullable final Bundle extras = result.getData() != null ? result.getData().getExtras() : null;
+    if (extras != null) {
+        // Read success payload
+        @Nullable final FinboxOnSuccessPayload payload =
+                extras.getParcelable(FinboxBankConstants.BUNDLE_EXTRA_SUCCESS_PAYLOAD);
+        if (payload == null) {
+            // Failed to Receive Payload
+        } else if (payload.getEntityId() == null || payload.getEntityId().length() > 0) {
+            // Failed to Upload Document
+        } else {
+            // Upload Success
+        }
+    } else {
+        // Failed to Receive data
+    }
+} else {
+    // Result Failed or User Cancelled
+}
 ```
 
-### Error
-`FinboxResult.OnError` will be called whenever any error occurs in the user flow. It will have a payload structure is as follows:  
-```json  
-{
-    "linkId" : "your_link_id",
-    "message" : "Error message."
-}  
-```
+</template>
+</CodeSwitcher>
 
-:::warning Two Events
-In case an error occurs, you'll receive `OnError` event payload, and then if the user exits the SDK, you'll receive another event payload, this time for `OnExit`.
+
 :::
 
 :::warning Webhook
-To track additional errors, and transaction process completion at the server-side, it is recommended to also integrate [Webhook](/bank-connect/webhook.html).
+To track detailed errors, and transaction process completion at the server-side, it is recommended to also integrate [Webhook](/bank-connect/webhook.html).
 :::
 
 ## Customization
-Since FinBox BankConnect is a view embedded in your application, in order to make it look compatible there are certain view level customization that can be done in the `styles.xml` file.
+`BankActivity` inherits the themes and color from Material Dark Action Bar Theme. Most of the case, there would be less customization requried but if there is a mismatch in colors, you can customize it through your `styles.xml` file.
 
-1. Button color. View uses `accentColor` for all button colors
+1. The sdk Toolbar color uses `colorPrimary`. If your app toolbar color is different from `colorPrimary` then change the color by updating the background color
 	```xml
-	<style name="FinBoxButton"  parent="Button.FinBox">
-	  <item name="backgroundColor">@color/colorAccent</item>
-	</style>
+    <style name="BankConnectTheme.Toolbar">
+        <item name="android:background">@color/colorWhite</item>
+    </style>
 	```
-	Button style can be modified here as per application.
+
+2. `BankConnectTheme` is the base theme of the sdk and it inherits `Theme.MaterialComponents.Light.DarkActionBar`. If your app doesn't inherit Dark Action Bar theme then you can change the sdk theme to inherit your app base theme.
+
+	```xml
+    <style name="BankConnectTheme" parent="AppTheme">
+
+    </style>
+
+    <style name="BankConnectTheme.AppBarOverlay" parent="AppTheme.AppBarOverlay" />
+
+    <style name="BankConnectTheme.PopupOverLay" parent="AppTheme.PopupOverlay" />
+	```
