@@ -118,7 +118,7 @@ Build the `FinBoxBankConnect` object by passing `apiKey`, `linkId`, `fromDate`, 
 
 ```kotlin
 FinBoxBankConnect.Builder(applicationContext)
-    .apiKey("your_api_key")
+    .apiKey("CLIENT_API_KEY")
     .linkId("your_link_id")
     .fromDate("01/01/2021") // Optional: Default 6 months old date
     .toDate("01/04/2021") // Optional: Default value 1 day less than current date
@@ -141,6 +141,7 @@ new FinBoxBankConnect.Builder(getApplicationContext())
 
 </template>
 </CodeSwitcher>
+
 
 | Builder Property | Description | Required |
 | - | - | - |
@@ -268,8 +269,6 @@ if (result != null && result.getResultCode() == Activity.RESULT_OK) {
 </template>
 </CodeSwitcher>
 
-
-:::
 
 :::warning Webhook
 To track detailed errors, and transaction process completion at the server-side, it is recommended to also integrate [Webhook](/bank-connect/webhook.html).
