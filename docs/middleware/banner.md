@@ -39,5 +39,6 @@ The table below indicates the possible values of `banner` key, and **sample bann
 | `DUE` | When EMI is due you can notify the user with the following banner | <img src="/emi_due.svg" alt="EMI due" /><br /><br /><a href="/emi_due.svg" download>Download SVG</a> |
 | `OVERDUE` | When EMI is overdue then we need to show the User an overdue state so that he can avoid late fee charge | <img src="/emi_overdue.svg" alt="EMI overdue" /><br /><br /><a href="/emi_overdue.svg" download>Download SVG</a> |
 | `CLOSED` | This implies that the loan / credit line is closed | - |
+| `CANCELLED` | This implies that the loan / credit line application is cancelled | - |
 | `HIDE` | This implies the banner is not be shown to the user at the moment. This is a temporary state and doesn't indicate the eligibility of the user. | - |
 | `INACTIVE` | This is specific to **Credit Line** Journey. It indicates the credit line has been made inactive by the lender. Among `OVERDUE` and `INACTIVE`, `INACTIVE` will take precendence | - |
