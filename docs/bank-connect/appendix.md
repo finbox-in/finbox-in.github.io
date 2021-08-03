@@ -5,6 +5,7 @@ The table below lists the supported banks with their corresponding identifier. T
 
 | Identifier | Bank Name |
 | - | - |
+| abhyudaya | Abhyudaya Co-operative Bank Ltd |
 | ahmedabad_mercantile | The Ahmedabad Mercantile Co-operative Bank Limited |
 | airtel | Airtel Payments Bank |
 | allahabad | Allahabad Bank |
