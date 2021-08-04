@@ -42,6 +42,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | indbnk | Indian Bank |
 | indusind | IndusInd Bank |
 | iob | Indian Overseas Bank |
+| jana_sahakari | Janakalyan Sahakari Bank Ltd |
 | jantasahakari | Janata Sahakari Bank Ltd |
 | jnkbnk | Jammu and Kashmir Bank |
 | karnataka | Karnataka Bank |
