@@ -453,7 +453,8 @@ GET **`base_url`/v1/loan/repayments?loanApplicationID=`someLongLoanApplicationUU
                 "status": "UNPAID",
                 "dueDate": "2020-11-10",
                 "paidDate": "",
-                "totalPayable": 15375
+                "totalPayable": 15375,
+                "amountReceived": 0
             }
         ]
     },
@@ -472,7 +473,8 @@ Response fields are explained below:
 | status | String | Can be `PAID`, `UNPAID` or `PENDING` |
 | dueDate | String | Due date for the installment in `YYYY-MM-DD` format |
 | paidDate | String | Date of payment in `YYYY-MM-DD` format, if not paid the value is blank string `""` |
-| totalPayable | Float | Total amount (to be) paid by user |
+| totalPayable | Float | Total amount to be paid by user, excluding partial payments made |
+| amountReceived | Float | Denotes the amount paid by customer against the EMI |
 
 ## Repay Loan
 Marks the repayment of a given loan EMI
