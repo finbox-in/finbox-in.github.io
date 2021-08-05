@@ -108,6 +108,7 @@ The list below indicates the possible value for `transaction_channel` field:
 | auto_debit_payment_bounce | Debit bank charge because of auto-debit payment bounce |
 | auto_debit_payment | Debits like NACH or ECS |
 | self_transfer | Fund transfers within own accounts  |
+| demand_draft | transfer payment from one bank account to another and it is a negotiable instrument unlike cheque |
 | Others | Others |
 
 ## Description
