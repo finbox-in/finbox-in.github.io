@@ -4,7 +4,71 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
 
 ## Setting up the SDK
 
-1. FinBox Lending SDK requires a `minSdkVersion` of **21**
+1. FinBox Lending SDK requires a `minSdkVersion` of **21**, Java 8+ and AndroidX. In addition to the changes, enable desugaring to support older versions.
+    <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+    <template v-slot:kotlin>
+
+    ```kotlin
+    android {
+        ...
+        defaultConfig {
+            ...
+            // Minimum 5.0+ devices
+            minSdkVersion(21)
+            ...
+        }
+        ...
+        compileOptions {
+            // Flag to enable support for the new language APIs
+            coreLibraryDesugaringEnabled = true
+            // Sets Java compatibility to Java 8
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
+        // For Kotlin projects
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
+
+    dependencies {
+        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+    }
+    ```
+
+    </template>
+    <template v-slot:groovy>
+
+    ```groovy
+    android {
+        ...
+        defaultConfig {
+            ...
+            // Minimum 5.0+ devices
+            minSdkVersion 21
+            ...
+        }
+        ...
+        compileOptions {
+            // Flag to enable support for the new language APIs
+            coreLibraryDesugaringEnabled true
+            // Sets Java compatibility to Java 8
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+        // For Kotlin projects
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
+
+    dependencies {
+        coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+    }
+    ```
+
+    </template>
+    </CodeSwitcher>
 2. Add the repository url in the project `build.gradle` file
    ```groovy
    maven {
