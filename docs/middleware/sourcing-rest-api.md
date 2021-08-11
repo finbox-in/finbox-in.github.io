@@ -207,7 +207,6 @@ GET **`base_url`/v1/user/profile?customerID=`someCustomerID`**
 ```
 - Different values of `status` (customer status) can be found in [Appendix](/middleware/appendix.html)
 - `createdAt` indicates the date time of user creation in `YYYY-MM-DD HH:MM:SS` format (UTC)
-- Different values of `bureauStatus` can be found in [Appendix](/middleware/appendix.html#list-of-bureau-status)
 
 ## List Loans
 Lists all the loan applications created from a given sourcing entity's account. It's a paginated API.
