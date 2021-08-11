@@ -12,6 +12,75 @@ The video below shows a user submit bank statement by uploading the PDF file:
 <iframe src="https://www.youtube.com/embed/FLWRiW25ELw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+## Requirements
+
+Bank Connect Android SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring to support older versions.
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+android {
+    ...
+    defaultConfig {
+        ...
+        // Minimum 5.0+ devices
+        minSdkVersion(21)
+        ...
+    }
+    ...
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled = true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+}
+```
+
+</template>
+<template v-slot:groovy>
+
+```groovy
+android {
+    ...
+    defaultConfig {
+        ...
+        // Minimum 5.0+ devices
+        minSdkVersion 21
+        ...
+    }
+    ...
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+}
+```
+
+</template>
+</CodeSwitcher>
+
 ## Adding Dependency
 In the project level `build.gradle` file, add the repository URLs to all `allprojects` block.
 
