@@ -73,7 +73,7 @@ dependencies {
 
 ## Adding Dependency
 
-Add the repository url to all `allprojects` block in the project `build.gradle` file.
+Add the repository url to `allprojects` in the project `build.gradle` file.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
 <template v-slot:kotlin>
@@ -292,7 +292,6 @@ Manifest **should not** have any of the following
     android:name="android.permission.ACCESS_FINE_LOCATION"
     tools:node="remove" />
 ```
-:::
 
 :::warning ProGuard
 While generating a signed application, make sure **ProGuard** file uses `proguard-android.txt` **not** `proguard-android-optimize.txt`, i.e. make sure it is:
