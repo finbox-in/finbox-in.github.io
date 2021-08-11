@@ -474,8 +474,6 @@ All the constants stated below are available as constants in SDK.
 | AUTHENTICATE_FAILED  | 7671              | Authentication of the API Key and the User failed               |
 | AUTHENTICATE_API_FAILED | 7672              | Authentication of the API Key failed               |
 | AUTHORIZATION_API_FAILED | 7673              | Authorization of the API Key failed               |
-| AUTHENTICATE_API_EMPTY | 7676              | API key is empty               |
-| AUTHENTICATE_USER_EMPTY | 7677              | User name is empty               |
 | NO_ACTIVE_NETWORK | 7678              | Device is not connected to an active network                              |
 | NETWORK_TIME_OUT | 7679              | Request timed out               |
 | NETWORK_RESPONSE_NULL | 7681              | Network response is null               |
