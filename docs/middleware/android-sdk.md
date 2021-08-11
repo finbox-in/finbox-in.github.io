@@ -90,7 +90,8 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
             includeGroup("in.finbox")
             includeGroup("in.finbox.lending")
         }
-    }```
+    }
+    ```
 
     </template>
     <template v-slot:groovy>
@@ -106,7 +107,8 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
             includeGroup("in.finbox")
             includeGroup("in.finbox.lending")
         }
-    }```
+    }
+    ```
 
     </template>
     </CodeSwitcher>
@@ -185,7 +187,8 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
     }
     implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
         isTransitive = true
-    }```
+    }
+    ```
 
     </template>
     <template v-slot:groovy>
@@ -256,7 +259,8 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
     }
     implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
         transitive = true
-    }```
+    }
+    ```
 
     </template>
     </CodeSwitcher>
