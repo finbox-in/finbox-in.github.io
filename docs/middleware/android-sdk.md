@@ -73,8 +73,8 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
 
 2. Add the repository url in the project `build.gradle` file
 
-::: tip Note
-`ACCESS_KEY` & `SECRET_KEY` will be shared to you over mail
+    ::: tip Note
+    `ACCESS_KEY` & `SECRET_KEY` will be shared to you over mail
 
     <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
     <template v-slot:kotlin>
@@ -90,8 +90,7 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
             includeGroup("in.finbox")
             includeGroup("in.finbox.lending")
         }
-    }
-    ```
+    }```
 
     </template>
     <template v-slot:groovy>
@@ -107,16 +106,15 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
             includeGroup("in.finbox")
             includeGroup("in.finbox.lending")
         }
-    }
-    ```
+    }```
 
     </template>
     </CodeSwitcher>
 
 3. Add the Lending SDK dependency in the app `build.gradle` file
 
-::: tip Note
-`LENDING_SDK_VERSION`, `DC_SDK_VERSION`, `COMMON_SDK_VERSION`, `LOGGER_SDK_VERSION`, `BC_SDK_VERSION` & `PLATFORM_NAME` will be shared to you over mail
+    ::: tip Note
+    `LENDING_SDK_VERSION`, `DC_SDK_VERSION`, `COMMON_SDK_VERSION`, `LOGGER_SDK_VERSION`, `BC_SDK_VERSION` & `PLATFORM_NAME` will be shared to you over mail
 
     <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
     <template v-slot:kotlin>
@@ -187,8 +185,7 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
     }
     implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
         isTransitive = true
-    }
-    ```
+    }```
 
     </template>
     <template v-slot:groovy>
@@ -259,23 +256,12 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
     }
     implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
         transitive = true
-    }
-    ```
+    }```
 
     </template>
     </CodeSwitcher>
 
-4. SDK requires java 8 version for project, add next lines to your module's build.gradle file
 
-```groovy
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-```
 ::: tip Note
 Lending SDK needs `SMS` and `Location` permission as mandatory. Make sure you **dont** have any node markers that remove these permissions in your manifest file
 
