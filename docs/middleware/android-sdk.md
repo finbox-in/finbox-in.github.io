@@ -2,110 +2,280 @@
 
 FinBox Lending SDK is a drop-in module that can add a digital lending journey to any mobile application.
 
-## Setting up the SDK
+## Requirements
 
-1. FinBox Lending SDK requires a `minSdkVersion` of **21**
-2. Add the repository url in the project `build.gradle` file
-   ```groovy
-   maven {
-     url "s3://risk-manager-android-sdk/artifacts"
-     credentials(AwsCredentials) {
-            accessKey = 'ACCESS_KEY'
-            secretKey = 'SECRET_KEY'
-       }
-      content {
-            includeGroup("in.finbox")
-            includeGroup("in.finbox.lending")
-      }
-   }
-   ```
-3. Add the Lending SDK dependency in the app `build.gradle` file
+FinBox Lending SDK works on Android 5.0+ (API level 21+), Java 8+ and AndroidX. In addition to the changes, enable desugaring to support older versions.
 
-::: tip Note
-`LENDING_SDK_VERSION` & `PLATFORM_NAME` will be shared to you over mail
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
 
-   ```groovy
-    implementation ("in.finbox.lending:onboarding:<LENDING_SDK_VERSION>:release@aar") {
-        exclude group: 'in.finbox', module: 'mobileriskmanager'
-        exclude group: 'in.finbox', module: 'common'
-        exclude group: 'in.finbox', module: 'logger'
-        transitive = true
+```kotlin
+android {
+    ...
+    defaultConfig {
+        ...
+        // Minimum 5.0+ devices
+        minSdkVersion(21)
+        ...
     }
-    implementation ("in.finbox.lending:preloan:<LENDING_SDK_VERSION>:release@aar") {
-        exclude group: 'in.finbox.lending', module: 'core'
-        transitive = true
-    }
-    implementation ("in.finbox.lending:dashboard:<LENDING_SDK_VERSION>:release@aar") {
-        exclude group: 'in.finbox.lending', module: 'core'
-        transitive = true
-    }
-    implementation ("in.finbox.lending:kyc:<LENDING_SDK_VERSION>:release@aar") {
-        exclude group: 'in.finbox.lending', module: 'core'
-        transitive = true
-    }
-    implementation ("in.finbox.lending:loan:<LENDING_SDK_VERSION>:release@aar") {
-        exclude group: 'in.finbox.lending', module: 'core'
-        transitive = true
-    }
-    implementation ("in.finbox.lending:esign:<LENDING_SDK_VERSION>:release@aar") {
-        exclude group: 'in.finbox.lending', module: 'core'
-        transitive = true
-    }
-    implementation ("in.finbox.lending:enach:<LENDING_SDK_VERSION>:release@aar") {
-        exclude group: 'in.finbox.lending', module: 'core'
-        transitive = true
-    }
-    implementation ("in.finbox.lending:payment:<LENDING_SDK_VERSION>:release@aar") {
-        exclude group: 'in.finbox.lending', module: 'core'
-        transitive = true
-    }
-    implementation ("in.finbox.lending:bankconnect:<LENDING_SDK_VERSION>:release@aar") {
-        exclude group: 'in.finbox.lending', module: 'core'
-        exclude group: 'in.finbox', module: 'bankconnect'
-        transitive = true
-    }
-    implementation ("in.finbox.lending:pennydrop:<LENDING_SDK_VERSION>:release@aar") {
-        exclude group: 'in.finbox.lending', module: 'core'
-        transitive = true
-    }
-    implementation ("in.finbox.lending:gst:<LENDING_SDK_VERSION>:release@aar") {
-        exclude group: 'in.finbox.lending', module: 'core'
-        transitive = true
-    }
-    implementation ("in.finbox.lending:videokyc:<LENDING_SDK_VERSION>:release@aar") {
-        exclude group: 'in.finbox.lending', module: 'core'
-        transitive = true
-    }
-    implementation ("in.finbox.lending:core:<LENDING_SDK_VERSION>:release@aar") {
-        transitive = true
-    }
-    implementation('in.finbox:mobileriskmanager:3.0:parent-release@aar') {
-        transitive = true
-    }
-    implementation('in.finbox:common:0.5.0:<PLATFORM_NAME>-release@aar') {
-        transitive = true
-    }
-    implementation("in.finbox:logger:0.5.0:parent-release@aar") {
-        transitive = true
-    }
-    implementation('in.finbox:bankconnect:1.5.43:release@aar') {
-        transitive = true
-    }
-   ```
-
-4. SDK requires java 8 version for project, add next lines to your module's build.gradle file
-
-```groovy
+    ...
     compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled = true
+        // Sets Java compatibility to Java 8
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    // For Kotlin projects
     kotlinOptions {
         jvmTarget = "1.8"
     }
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+}
 ```
+
+</template>
+<template v-slot:groovy>
+
+```groovy
+android {
+    ...
+    defaultConfig {
+        ...
+        // Minimum 5.0+ devices
+        minSdkVersion 21
+        ...
+    }
+    ...
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+}
+```
+
+</template>
+</CodeSwitcher>
+
+## Adding Dependency
+
+Add the repository url to `allprojects` in the project `build.gradle` file.
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+maven {
+    setUrl("s3://risk-manager-android-sdk/artifacts")
+    credentials(AwsCredentials::class) {
+        accessKey = <ACCESS_KEY>
+        secretKey = <SECRET_KEY>
+    }
+    content {
+        includeGroup("in.finbox")
+        includeGroup("in.finbox.lending")
+    }
+}
+```
+
+</template>
+<template v-slot:groovy>
+
+```groovy
+maven {
+    url "s3://risk-manager-android-sdk/artifacts"
+    credentials(AwsCredentials) {
+        accessKey = <ACCESS_KEY>
+        secretKey = <SECRET_KEY>
+    }
+    content {
+        includeGroup("in.finbox")
+        includeGroup("in.finbox.lending")
+    }
+}
+```
+
+</template>
+</CodeSwitcher>
+
+Add the Lending SDK dependency to the module `build.gradle` file
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+implementation ("in.finbox.lending:onboarding:<LENDING_SDK_VERSION>:release@aar") {
+    exclude("in.finbox", "mobileriskmanager")
+    exclude("in.finbox", "common")
+    exclude("in.finbox", "logger")
+    isTransitive = true
+}
+implementation ("in.finbox.lending:preloan:<LENDING_SDK_VERSION>:release@aar") {
+    exclude("in.finbox.lending", "core")
+    isTransitive = true
+}
+implementation ("in.finbox.lending:dashboard:<LENDING_SDK_VERSION>:release@aar") {
+    exclude("in.finbox.lending", "core")
+    isTransitive = true
+}
+implementation ("in.finbox.lending:kyc:<LENDING_SDK_VERSION>:release@aar") {
+    exclude("in.finbox.lending", "core")
+    isTransitive = true
+}
+implementation ("in.finbox.lending:loan:<LENDING_SDK_VERSION>:release@aar") {
+    exclude("in.finbox.lending", "core")
+    isTransitive = true
+}
+implementation ("in.finbox.lending:esign:<LENDING_SDK_VERSION>:release@aar") {
+    exclude("in.finbox.lending", "core")
+    isTransitive = true
+}
+implementation ("in.finbox.lending:enach:<LENDING_SDK_VERSION>:release@aar") {
+    exclude("in.finbox.lending", "core")
+    isTransitive = true
+}
+implementation ("in.finbox.lending:payment:<LENDING_SDK_VERSION>:release@aar") {
+    exclude("in.finbox.lending", "core")
+    isTransitive = true
+}
+implementation ("in.finbox.lending:bankconnect:<LENDING_SDK_VERSION>:release@aar") {
+    exclude("in.finbox.lending", "core")
+    exclude("in.finbox", "bankconnect")
+    isTransitive = true
+}
+implementation ("in.finbox.lending:pennydrop:<LENDING_SDK_VERSION>:release@aar") {
+    exclude("in.finbox.lending", "core")
+    isTransitive = true
+}
+implementation ("in.finbox.lending:gst:<LENDING_SDK_VERSION>:release@aar") {
+    exclude("in.finbox.lending", "core")
+    isTransitive = true
+}
+implementation ("in.finbox.lending:videokyc:<LENDING_SDK_VERSION>:release@aar") {
+    exclude("in.finbox.lending", "core")
+    isTransitive = true
+}
+implementation ("in.finbox.lending:core:<LENDING_SDK_VERSION>:release@aar") {
+    isTransitive = true
+}
+implementation('in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar') {
+    isTransitive = true
+}
+implementation('in.finbox:common:<COMMON_SDK_VERSION>:<PLATFORM_NAME>-release@aar') {
+    isTransitive = true
+}
+implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar") {
+    isTransitive = true
+}
+implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
+    isTransitive = true
+}
+```
+
+</template>
+<template v-slot:groovy>
+
+```groovy
+implementation ("in.finbox.lending:onboarding:<LENDING_SDK_VERSION>:release@aar") {
+    exclude group: 'in.finbox', module: 'mobileriskmanager'
+    exclude group: 'in.finbox', module: 'common'
+    exclude group: 'in.finbox', module: 'logger'
+    transitive = true
+}
+implementation ("in.finbox.lending:preloan:<LENDING_SDK_VERSION>:release@aar") {
+    exclude group: 'in.finbox.lending', module: 'core'
+    transitive = true
+}
+implementation ("in.finbox.lending:dashboard:<LENDING_SDK_VERSION>:release@aar") {
+    exclude group: 'in.finbox.lending', module: 'core'
+    transitive = true
+}
+implementation ("in.finbox.lending:kyc:<LENDING_SDK_VERSION>:release@aar") {
+    exclude group: 'in.finbox.lending', module: 'core'
+    transitive = true
+}
+implementation ("in.finbox.lending:loan:<LENDING_SDK_VERSION>:release@aar") {
+    exclude group: 'in.finbox.lending', module: 'core'
+    transitive = true
+}
+implementation ("in.finbox.lending:esign:<LENDING_SDK_VERSION>:release@aar") {
+    exclude group: 'in.finbox.lending', module: 'core'
+    transitive = true
+}
+implementation ("in.finbox.lending:enach:<LENDING_SDK_VERSION>:release@aar") {
+    exclude group: 'in.finbox.lending', module: 'core'
+    transitive = true
+}
+implementation ("in.finbox.lending:payment:<LENDING_SDK_VERSION>:release@aar") {
+    exclude group: 'in.finbox.lending', module: 'core'
+    transitive = true
+}
+implementation ("in.finbox.lending:bankconnect:<LENDING_SDK_VERSION>:release@aar") {
+    exclude group: 'in.finbox.lending', module: 'core'
+    exclude group: 'in.finbox', module: 'bankconnect'
+    transitive = true
+}
+implementation ("in.finbox.lending:pennydrop:<LENDING_SDK_VERSION>:release@aar") {
+    exclude group: 'in.finbox.lending', module: 'core'
+    transitive = true
+}
+implementation ("in.finbox.lending:gst:<LENDING_SDK_VERSION>:release@aar") {
+    exclude group: 'in.finbox.lending', module: 'core'
+    transitive = true
+}
+implementation ("in.finbox.lending:videokyc:<LENDING_SDK_VERSION>:release@aar") {
+    exclude group: 'in.finbox.lending', module: 'core'
+    transitive = true
+}
+implementation ("in.finbox.lending:core:<LENDING_SDK_VERSION>:release@aar") {
+    transitive = true
+}
+implementation('in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar') {
+    transitive = true
+}
+implementation('in.finbox:common:<COMMON_SDK_VERSION>:<PLATFORM_NAME>-release@aar') {
+    transitive = true
+}
+implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar") {
+    transitive = true
+}
+implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
+    transitive = true
+}
+```
+
+</template>
+</CodeSwitcher>
+
 ::: tip Note
-Lending SDK needs `SMS` and `Location` permission as mandatory. Make sure you **dont** have any node markers that remove these permissions in your manifest file
+The following keys will be shared over an email
+- `ACCESS_KEY`
+- `SECRET_KEY`
+- `LENDING_SDK_VERSION`
+- `DC_SDK_VERSION`
+- `COMMON_SDK_VERSION`
+- `LOGGER_SDK_VERSION`
+- `BC_SDK_VERSION`
+- `PLATFORM_NAME`
+:::
+
+## Permissions
+
+Lending SDK requires `SMS` and `Location` permission as mandatory. Make sure you **dont** have any node markers that remove these permissions in your manifest file
 
 Manifest **should not** have any of the following
 ```xml
@@ -122,13 +292,27 @@ Manifest **should not** have any of the following
     android:name="android.permission.ACCESS_FINE_LOCATION"
     tools:node="remove" />
 ```
-:::
 
 :::warning ProGuard
 While generating a signed application, make sure **ProGuard** file uses `proguard-android.txt` **not** `proguard-android-optimize.txt`, i.e. make sure it is:
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+```
+
+</template>
+<template v-slot:groovy>
+
 ```groovy
 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 ```
+
+</template>
+</CodeSwitcher>
+
 :::
 
 ## Start SDK flow
@@ -203,13 +387,30 @@ startActivityForResult(
 
 ## Credit Line
 
-For credit line journey, include the following dependency in the app `build.gradle` file:
+For credit line journey, include the following dependency in the module `build.gradle` file:
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+implementation("in.finbox.lending:creditline:<LENDING_SDK_VERSION>:uat@aar") {
+    exclude("in.finbox.lending", "core")
+    isTransitive = true
+}
+```
+
+</template>
+<template v-slot:groovy>
+
 ```groovy
 implementation("in.finbox.lending:creditline:<LENDING_SDK_VERSION>:uat@aar") {
     exclude group: 'in.finbox.lending', module: 'core'
     transitive = true
 }
 ```
+
+</template>
+</CodeSwitcher>
 
 In case of credit line product, once the lending journey is completed, user can opt-in for a credit while doing a transaction. For such a case use following method to start the credit line withdrawl journey:
 

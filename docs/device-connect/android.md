@@ -3,7 +3,72 @@ Device Connect Android SDK is used to collect anonymised non-PII data from the d
 
 ## Requirements
 
-Device Connect Android SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX.
+Device Connect Android SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring to support older versions.
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+android {
+    ...
+    defaultConfig {
+        ...
+        // Minimum 5.0+ devices
+        minSdkVersion(21)
+        ...
+    }
+    ...
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled = true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+}
+```
+
+</template>
+<template v-slot:groovy>
+
+```groovy
+android {
+    ...
+    defaultConfig {
+        ...
+        // Minimum 5.0+ devices
+        minSdkVersion 21
+        ...
+    }
+    ...
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+}
+```
+
+</template>
+</CodeSwitcher>
 
 ## Adding Dependency
 In the project level `build.gradle` file, add the repository URLs to all `allprojects` block.
@@ -410,8 +475,6 @@ All the constants stated below are available as constants in SDK.
 | AUTHENTICATE_FAILED  | 7671              | Authentication of the API Key and the User failed               |
 | AUTHENTICATE_API_FAILED | 7672              | Authentication of the API Key failed               |
 | AUTHORIZATION_API_FAILED | 7673              | Authorization of the API Key failed               |
-| AUTHENTICATE_API_EMPTY | 7676              | API key is empty               |
-| AUTHENTICATE_USER_EMPTY | 7677              | User name is empty               |
 | NO_ACTIVE_NETWORK | 7678              | Device is not connected to an active network                              |
 | NETWORK_TIME_OUT | 7679              | Request timed out               |
 | NETWORK_RESPONSE_NULL | 7681              | Network response is null               |
