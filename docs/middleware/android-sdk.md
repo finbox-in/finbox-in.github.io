@@ -5,6 +5,7 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
 ## Setting up the SDK
 
 1. FinBox Lending SDK requires a `minSdkVersion` of **21**, Java 8+ and AndroidX. In addition to the changes, enable desugaring to support older versions.
+
     <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
     <template v-slot:kotlin>
 
@@ -69,6 +70,7 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
 
     </template>
     </CodeSwitcher>
+
 2. Add the repository url in the project `build.gradle` file
    ```groovy
    maven {
