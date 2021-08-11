@@ -119,54 +119,54 @@ Add the Lending SDK dependency to the module `build.gradle` file
 
 ```kotlin
 implementation ("in.finbox.lending:onboarding:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox', module: 'mobileriskmanager'
-    exclude group: 'in.finbox', module: 'common'
-    exclude group: 'in.finbox', module: 'logger'
+    exclude("in.finbox", "mobileriskmanager")
+    exclude("in.finbox", "common")
+    exclude("in.finbox", "logger")
     isTransitive = true
 }
 implementation ("in.finbox.lending:preloan:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
+    exclude("in.finbox.lending", "core")
     isTransitive = true
 }
 implementation ("in.finbox.lending:dashboard:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
+    exclude("in.finbox.lending", "core")
     isTransitive = true
 }
 implementation ("in.finbox.lending:kyc:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
+    exclude("in.finbox.lending", "core")
     isTransitive = true
 }
 implementation ("in.finbox.lending:loan:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
+    exclude("in.finbox.lending", "core")
     isTransitive = true
 }
 implementation ("in.finbox.lending:esign:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
+    exclude("in.finbox.lending", "core")
     isTransitive = true
 }
 implementation ("in.finbox.lending:enach:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
+    exclude("in.finbox.lending", "core")
     isTransitive = true
 }
 implementation ("in.finbox.lending:payment:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
+    exclude("in.finbox.lending", "core")
     isTransitive = true
 }
 implementation ("in.finbox.lending:bankconnect:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    exclude group: 'in.finbox', module: 'bankconnect'
+    exclude("in.finbox.lending", "core")
+    exclude("in.finbox", "bankconnect")
     isTransitive = true
 }
 implementation ("in.finbox.lending:pennydrop:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
+    exclude("in.finbox.lending", "core")
     isTransitive = true
 }
 implementation ("in.finbox.lending:gst:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
+    exclude("in.finbox.lending", "core")
     isTransitive = true
 }
 implementation ("in.finbox.lending:videokyc:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
+    exclude("in.finbox.lending", "core")
     isTransitive = true
 }
 implementation ("in.finbox.lending:core:<LENDING_SDK_VERSION>:release@aar") {
