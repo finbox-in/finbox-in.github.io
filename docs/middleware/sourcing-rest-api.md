@@ -198,9 +198,6 @@ GET **`base_url`/v1/user/profile?customerID=`someCustomerID`**
             "dob": "1992-11-09",
             "gender": "Male",
             "pan": "ABCDN0000P",
-            "fisScore": 640,
-            "bureauScore": 830,
-            "bureauStatus": "completed",
             "loanApplicationIDs": ["someLongUUID1"]
         }
     },
@@ -283,9 +280,6 @@ GET **`base_url`/v1/loan/details?loanApplicationID=`someLongLoanApplicationUUID`
             "gender": "Male",
             "dob": "1992-12-09",
             "pan": "ABCDP0000N",
-            "fisScore": 640,
-            "bureauScore": 830,
-            "bureauStatus": "completed",
             "currentAddress": {
                 "line1": "22, 80 Feet Rd", 
                 "line2": "Koramangala",
@@ -325,9 +319,6 @@ Most of the parameters of the response are self-explainatory. Some key fields ar
 | loanApplicationNum | A readable loan number format is FBxxx |
 | appliedLoanAmount | The amount of loan applied by the user. Note that it might be different from the final loan offer |
 | residenceType | Type of residence - Rented or Owned |
-| fisScore | User's FinBox Inclusion Score |
-| bureauScore | User's bureau score from one of the credit bureaus |
-| bureauStatus | Indicates the bureau data fetch status. Possible values can be found in [Appendix](/middleware/appendix.html#list-of-bureau-status) |
 | accountHolderName | Verified name as per user's bank account |
 | dob | Date of Birth in `YYYY-MM-DD` format |
 | createdAt | Date time of loan creation in `YYYY-MM-DD HH:MM:SS` format (UTC) |
