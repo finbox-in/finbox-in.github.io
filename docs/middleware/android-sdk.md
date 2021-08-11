@@ -387,13 +387,31 @@ startActivityForResult(
 
 ## Credit Line
 
-For credit line journey, include the following dependency in the app `build.gradle` file:
+For credit line journey, include the following dependency in the module `build.gradle` file:
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+implementation("in.finbox.lending:creditline:<LENDING_SDK_VERSION>:uat@aar") {
+    exclude("in.finbox.lending", "core")
+    exclude("in.finbox", "common")
+    isTransitive = true
+}
+```
+
+</template>
+<template v-slot:groovy>
+
 ```groovy
 implementation("in.finbox.lending:creditline:<LENDING_SDK_VERSION>:uat@aar") {
     exclude group: 'in.finbox.lending', module: 'core'
     transitive = true
 }
 ```
+
+</template>
+</CodeSwitcher>
 
 In case of credit line product, once the lending journey is completed, user can opt-in for a credit while doing a transaction. For such a case use following method to start the credit line withdrawl journey:
 
