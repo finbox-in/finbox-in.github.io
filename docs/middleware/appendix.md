@@ -125,7 +125,7 @@ In case of credit line, event description formats will be as follows:
 | lender_agent | An authorized agent of the lender |
 | system | Automated system |
 
-## List of bureau status
+<!-- ## List of bureau status
 | Identifier | Description |
 | - | - |
 | not_fetched | Bureau data not fetched yet |
@@ -133,7 +133,7 @@ In case of credit line, event description formats will be as follows:
 | completed_no_score | Bureau data successfully fetch but user had no score |
 | completed | Bureau data with score successfully fetched |
 | waiting | Bureau data is being fetched (in progress) |
-| failed | Bureau data fetching failed |
+| failed | Bureau data fetching failed | -->
 
 <!-- ## Servicing Hooks and Actions
 | Activity | Action | Examples |
