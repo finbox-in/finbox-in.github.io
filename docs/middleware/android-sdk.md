@@ -295,9 +295,24 @@ Manifest **should not** have any of the following
 
 :::warning ProGuard
 While generating a signed application, make sure **ProGuard** file uses `proguard-android.txt` **not** `proguard-android-optimize.txt`, i.e. make sure it is:
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+```
+
+</template>
+<template v-slot:groovy>
+
 ```groovy
 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 ```
+
+</template>
+</CodeSwitcher>
+
 :::
 
 ## Start SDK flow
