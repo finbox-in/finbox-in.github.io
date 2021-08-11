@@ -72,25 +72,128 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
     </CodeSwitcher>
 
 2. Add the repository url in the project `build.gradle` file
-   ```groovy
-   maven {
-     url "s3://risk-manager-android-sdk/artifacts"
-     credentials(AwsCredentials) {
-            accessKey = 'ACCESS_KEY'
-            secretKey = 'SECRET_KEY'
-       }
-      content {
+
+::: tip Note
+`ACCESS_KEY` & `SECRET_KEY` will be shared to you over mail
+
+    <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+    <template v-slot:kotlin>
+
+    ```kotlin
+    maven {
+        setUrl("s3://risk-manager-android-sdk/artifacts")
+        credentials(AwsCredentials::class) {
+            accessKey = <ACCESS_KEY>
+            secretKey = <SECRET_KEY>
+        }
+        content {
             includeGroup("in.finbox")
             includeGroup("in.finbox.lending")
-      }
-   }
-   ```
+        }
+    }
+    ```
+
+    </template>
+    <template v-slot:groovy>
+
+    ```groovy
+    maven {
+        url "s3://risk-manager-android-sdk/artifacts"
+        credentials(AwsCredentials) {
+            accessKey = <ACCESS_KEY>
+            secretKey = <SECRET_KEY>
+        }
+        content {
+            includeGroup("in.finbox")
+            includeGroup("in.finbox.lending")
+        }
+    }
+    ```
+
+    </template>
+    </CodeSwitcher>
+
 3. Add the Lending SDK dependency in the app `build.gradle` file
 
 ::: tip Note
-`LENDING_SDK_VERSION` & `PLATFORM_NAME` will be shared to you over mail
+`LENDING_SDK_VERSION`, `DC_SDK_VERSION`, `COMMON_SDK_VERSION`, `LOGGER_SDK_VERSION`, `BC_SDK_VERSION` & `PLATFORM_NAME` will be shared to you over mail
 
-   ```groovy
+    <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+    <template v-slot:kotlin>
+
+    ```kotlin
+   implementation ("in.finbox.lending:onboarding:<LENDING_SDK_VERSION>:release@aar") {
+        exclude group: 'in.finbox', module: 'mobileriskmanager'
+        exclude group: 'in.finbox', module: 'common'
+        exclude group: 'in.finbox', module: 'logger'
+        isTransitive = true
+    }
+    implementation ("in.finbox.lending:preloan:<LENDING_SDK_VERSION>:release@aar") {
+        exclude group: 'in.finbox.lending', module: 'core'
+        isTransitive = true
+    }
+    implementation ("in.finbox.lending:dashboard:<LENDING_SDK_VERSION>:release@aar") {
+        exclude group: 'in.finbox.lending', module: 'core'
+        isTransitive = true
+    }
+    implementation ("in.finbox.lending:kyc:<LENDING_SDK_VERSION>:release@aar") {
+        exclude group: 'in.finbox.lending', module: 'core'
+        isTransitive = true
+    }
+    implementation ("in.finbox.lending:loan:<LENDING_SDK_VERSION>:release@aar") {
+        exclude group: 'in.finbox.lending', module: 'core'
+        isTransitive = true
+    }
+    implementation ("in.finbox.lending:esign:<LENDING_SDK_VERSION>:release@aar") {
+        exclude group: 'in.finbox.lending', module: 'core'
+        isTransitive = true
+    }
+    implementation ("in.finbox.lending:enach:<LENDING_SDK_VERSION>:release@aar") {
+        exclude group: 'in.finbox.lending', module: 'core'
+        isTransitive = true
+    }
+    implementation ("in.finbox.lending:payment:<LENDING_SDK_VERSION>:release@aar") {
+        exclude group: 'in.finbox.lending', module: 'core'
+        isTransitive = true
+    }
+    implementation ("in.finbox.lending:bankconnect:<LENDING_SDK_VERSION>:release@aar") {
+        exclude group: 'in.finbox.lending', module: 'core'
+        exclude group: 'in.finbox', module: 'bankconnect'
+        isTransitive = true
+    }
+    implementation ("in.finbox.lending:pennydrop:<LENDING_SDK_VERSION>:release@aar") {
+        exclude group: 'in.finbox.lending', module: 'core'
+        isTransitive = true
+    }
+    implementation ("in.finbox.lending:gst:<LENDING_SDK_VERSION>:release@aar") {
+        exclude group: 'in.finbox.lending', module: 'core'
+        isTransitive = true
+    }
+    implementation ("in.finbox.lending:videokyc:<LENDING_SDK_VERSION>:release@aar") {
+        exclude group: 'in.finbox.lending', module: 'core'
+        isTransitive = true
+    }
+    implementation ("in.finbox.lending:core:<LENDING_SDK_VERSION>:release@aar") {
+        isTransitive = true
+    }
+    implementation('in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar') {
+        isTransitive = true
+    }
+    implementation('in.finbox:common:<COMMON_SDK_VERSION>:<PLATFORM_NAME>-release@aar') {
+        isTransitive = true
+    }
+    implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar") {
+        isTransitive = true
+    }
+    implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
+        isTransitive = true
+    }
+    ```
+
+    </template>
+    <template v-slot:groovy>
+
+    ```groovy
     implementation ("in.finbox.lending:onboarding:<LENDING_SDK_VERSION>:release@aar") {
         exclude group: 'in.finbox', module: 'mobileriskmanager'
         exclude group: 'in.finbox', module: 'common'
@@ -145,19 +248,22 @@ FinBox Lending SDK is a drop-in module that can add a digital lending journey to
     implementation ("in.finbox.lending:core:<LENDING_SDK_VERSION>:release@aar") {
         transitive = true
     }
-    implementation('in.finbox:mobileriskmanager:3.0:parent-release@aar') {
+    implementation('in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar') {
         transitive = true
     }
-    implementation('in.finbox:common:0.5.0:<PLATFORM_NAME>-release@aar') {
+    implementation('in.finbox:common:<COMMON_SDK_VERSION>:<PLATFORM_NAME>-release@aar') {
         transitive = true
     }
-    implementation("in.finbox:logger:0.5.0:parent-release@aar") {
+    implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar") {
         transitive = true
     }
-    implementation('in.finbox:bankconnect:1.5.43:release@aar') {
+    implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
         transitive = true
     }
-   ```
+    ```
+
+    </template>
+    </CodeSwitcher>
 
 4. SDK requires java 8 version for project, add next lines to your module's build.gradle file
 
