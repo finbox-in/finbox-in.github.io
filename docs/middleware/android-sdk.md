@@ -395,7 +395,6 @@ For credit line journey, include the following dependency in the module `build.g
 ```kotlin
 implementation("in.finbox.lending:creditline:<LENDING_SDK_VERSION>:uat@aar") {
     exclude("in.finbox.lending", "core")
-    exclude("in.finbox", "common")
     isTransitive = true
 }
 ```
