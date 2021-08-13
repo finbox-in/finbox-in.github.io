@@ -30,6 +30,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | dena | Dena Bank |
 | deutsche | Deutsche Bank |
 | esafbnk | ESAF Small Finance Bank |
+| equitas | Equitas Small Finance Bank |
 | federal | Federal Bank |
 | fincarebnk | Fincare Small Finance Bank |
 | fingrowth | Fingrowth Co-Operative Bank | 
