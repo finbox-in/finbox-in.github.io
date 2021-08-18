@@ -63,6 +63,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | obc | Oriental Bank of Commerce |
 | paytm | Paytm Payments Bank |
 | pnbbnk | Punjab National Bank |
+| pochampally | Pochampally Co-Operative Urban Bank |
 | primebnk | Prime Co-operative Bank Ltd |
 | punjab_sind | Punjab & Sind Bank |
 | rbl | RBL Bank |
