@@ -21,7 +21,7 @@ Authentication for the APIs are based on **SERVER_API_KEY** provided by the FinB
 
 Once FinBox DeviceConnect SDK is initialized, data from the device is sent to the FinBox processing engine against an anonymous `CUSTOMER_ID` which will be the primary key from retrieving any information from the server.
 
-Clients need to call the **Insights API** with `CUSTOMER_ID` to get the predictors for a given customer. A sample workflow is shown in section [below](/device-connect/rest-api.html#sample-workflow). In case Insights API returns with status `"in_progress"` (meaning data is currently being processed), the client should poll the Insights API with a delay of at least **10 seconds**
+Clients need to call the **Insights API** with `CUSTOMER_ID` to get the predictors for a given customer. An overview of the API calling is shown in the [Workflow](/device-connect/rest-api.html#workflow) section. In case Insights API returns with status `"in_progress"` (meaning data is currently being processed), the client should poll the Insights API with a delay of at least **10 seconds**
 
 ### Workflow
 
@@ -29,7 +29,7 @@ Clients need to call the **Insights API** with `CUSTOMER_ID` to get the predicto
 
 1. Call FinBox Insights API
 2. In case the response status is `"in_progress"`, retry after 10 seconds
-3. In case the response status is `"complete"`, receive data as per format mentioned in [this](/device-connect/rest-api.html#insights-api-response) section.
+3. In case the response status is `"complete"`, receive data as per format mentioned in [Insights API Response](/device-connect/rest-api.html#insights-api-response) section.
 
 ## Insights API Endpoints
 
