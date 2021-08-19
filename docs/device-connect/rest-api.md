@@ -336,7 +336,24 @@ Sample Response Body:
 }
 ```
 
-### Case 4 - Invalid Customer ID
+### Case 4 - Data fetch for request Id before webhook callback or after 24 hours
+
+HTTP Status Code: **200**
+
+Sample Response Body:
+
+```json
+{
+    "customer_id": "A145BC6312B50CA2B58233288F81C02114A6A74E9A62482169F9F",
+    "request_id": "abcd-def-dfdf-000l",
+    "date_requested": "2019-01-03T06:37:44:003",
+    "date_processed": "2018-12-12T01:01:57:221",
+    "status": "webhook_not_found",
+    "message": "The Webhook response for the given request ID was not found. This can happen if the webhook URL was called before receiving the webhook event or after 24 hours of receiving webhook event"
+}
+```
+
+### Case 5 - Invalid Customer ID
 
 HTTP Status Code: **200**
 
@@ -354,7 +371,7 @@ Sample Response Body:
 }
 ```
 
-### Case 5 - Bad Request
+### Case 6 - Bad Request
 
 HTTP Status Code: **400**
 
@@ -370,7 +387,7 @@ Sample Response Body:
 }
 ```
 
-### Case 6 - Unauthorized
+### Case 7 - Unauthorized
 
 HTTP Status Code: **403**
 
@@ -383,7 +400,7 @@ Sample Response Body:
 }
 ```
 
-### Case 7 - Internal Server Error
+### Case 8 - Internal Server Error
 
 HTTP Status Code: **5xx**
 
@@ -396,7 +413,7 @@ Sample Response Body:
 }
 ```
 
-### Case 8 - Rate Limit Exceeded
+### Case 9 - Rate Limit Exceeded
 
 HTTP Status Code: **429**
 
