@@ -75,7 +75,7 @@ Salt is calculated as follows:
 
 Sample code for salt generation in different languages:
 
-<CodeSwitcher :languages="{java:'Java',python:'Python',go:'Go'}">
+<CodeSwitcher :languages="{java:'Java',python:'Python',go:'Go',php:'PHP'}">
 <template v-slot:java>
 
 ```java
@@ -188,6 +188,21 @@ func GetSaltForCustomer(customerId string, serverHash string) string {
 ```
 
 </template>
+
+<template v-slot:php>
+
+```php
+function create_salt($customer_id, $server_hash) {
+    $customer_hash = strtoupper(md5($customer_id));
+    $intermediate_hash = $customer_hash."".$server_hash;
+    $salt_encoded = openssl_digest($intermediate_hash, 'sha256', true);
+    $salt = base64_encode($sha_hash);
+    return $salt;
+}
+```
+
+</template>
+
 </CodeSwitcher>
 
 
@@ -466,7 +481,7 @@ Salt is calculated as follows:
 
 Sample code for salt generation in different languages:
 
-<CodeSwitcher :languages="{java:'Java',python:'Python',go:'Go'}">
+<CodeSwitcher :languages="{java:'Java',python:'Python',go:'Go',php:'PHP'}">
 <template v-slot:java>
 
 ```java
@@ -579,6 +594,21 @@ func GetSaltForCustomer(customerId string, webhookSecret string) string {
 ```
 
 </template>
+
+<template v-slot:php>
+
+```php
+function create_salt($customer_id, $server_hash) {
+    $customer_hash = strtoupper(md5($customer_id));
+    $intermediate_hash = $customer_hash."".$server_hash;
+    $salt_encoded = openssl_digest($intermediate_hash, 'sha256', true);
+    $salt = base64_encode($sha_hash);
+    return $salt;
+}
+```
+
+</template>
+
 </CodeSwitcher>
 
 ## Querying by webhook
