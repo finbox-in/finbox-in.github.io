@@ -146,22 +146,7 @@ Future _loadDeviceConnect() async {
   }
 ```
 
-2. Update AndroidManifest.xml with **tools:replace="android:label"**.
-```xml
- <application
-       android:name="ApplicationClass"
-       android:label="Name Of Your app"
-       android:icon="@mipmap/ic_launcher"
-       tools:replace="android:label">
-
-    ---
-    ---
-    ---
-
-</application>
-```
-
-3. Get invoked MethodChannel in your FlutterActivity
+2. Get invoked MethodChannel in your FlutterActivity
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
