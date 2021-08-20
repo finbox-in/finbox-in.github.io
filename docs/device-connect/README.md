@@ -10,6 +10,7 @@ FinBox DeviceConnect requires two integrations - first on Android app from which
 - [Android SDK](/device-connect/android.html)
 - [React Native](/device-connect/react-native.html)
 - [Cordova](/device-connect/cordova.html)
+- [Flutter](/device-connect/flutter.html)
 
 And then on the backend to **fetch predictors** responsible for making decisions:
 - [REST API](/device-connect/rest-api.html)
