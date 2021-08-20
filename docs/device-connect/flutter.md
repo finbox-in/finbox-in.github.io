@@ -76,10 +76,7 @@ maven {
 </template>
 </CodeSwitcher>
 
-Now add the dependency to module level `build.gradle.kts` or `build.gradle` file:
-
-<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
-<template v-slot:kotlin>
+Now add the dependency to module level `build.gradle` file:
 
 ```kotlin
 implementation("in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar") {
@@ -92,24 +89,6 @@ implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:release@aar") {
     isTransitive = true
 }
 ```
-
-</template>
-<template v-slot:groovy>
-
-```groovy
-implementation('in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar') {
-    transitive = true
-}
-implementation ('in.finbox:common:<COMMON_SDK_VERSION>:release@aar') {
-    transitive = true
-}
-implementation ('in.finbox:logger:<LOGGER_SDK_VERSION>:release@aar') {
-    transitive = true
-}
-```
-
-</template>
-</CodeSwitcher>
 
 ## Handle Permissions
 
@@ -124,7 +103,6 @@ Below are the list of Runtime permissions the sdk adds to the application Manife
 <uses-permission android:name="android.permission.RECEIVE_SMS" />
 <uses-permission android:name="android.permission.READ_CONTACTS" />
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 ```
