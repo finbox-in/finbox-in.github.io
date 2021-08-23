@@ -6,7 +6,9 @@ The plugin can be used to integrate mobile apps with DeviceConnect so that users
 Following will be shared by FinBox team at the time of integration:
 - `ACCESS_KEY`
 - `SECRET_KEY`
-- `DC_SDK_VERSION`
+- `RM_SDK_VERSION`
+- `COMMON_SDK_VERSION`
+- `LOGGER_SDK_VERSION`
 - `CLIENT_API_KEY`
 :::
 
@@ -43,10 +45,10 @@ Below are the list of Runtime permissions the sdk adds to the application Manife
     finbox_dc_plugin: ^0.0.2
     ```
 
-3. Call 'FinBoxDcPlugin.loadDeviceConnect(<customer_id>,<client_api_key>)' to share users data.
+3. Call 'FinBoxDcPlugin.loadDeviceConnect(<CUSTOMER_ID>,<CLIENT_API_KEY>)' to share users data.
     ```flutter
-    static String _deviceConnectValue = "Unknown";
-    static String customerId = <customer_id>;
+    static String _deviceConnectValue = "";
+    static String customerId = <CUSTOMER_ID>;
     static String apiKey = <CLIENT_API_KEY>;
 
       Future _loadDC() async {
@@ -58,7 +60,7 @@ Below are the list of Runtime permissions the sdk adds to the application Manife
         }
       }
     ```
-    As success result you will get an 'accessToken'
+    As success result, you will get an 'accessToken'
 
 ## Error Codes
 
