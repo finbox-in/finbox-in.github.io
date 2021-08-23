@@ -45,11 +45,13 @@ The table below lists the supported banks with their corresponding identifier. T
 | iob | Indian Overseas Bank |
 | jana_sahakari | Janakalyan Sahakari Bank Ltd |
 | jantasahakari | Janata Sahakari Bank Ltd |
+| jivan | Jivan Commercial Co-operative Bank Ltd |
 | jnkbnk | Jammu and Kashmir Bank |
 | karnataka | Karnataka Bank |
 | karnavati | Karnavati Co-op Bank Ltd |
 | karur | Karur Vysya Bank |
 | khattri | Khattri Coop Urban Bank Ltd |
+| knsb | Shree Kadi Nagrik Sahakari Bank Ltd |
 | kotak | Kotak Mahindra Bank |
 | mahabk | Bank of Maharashtra |
 | mahagrambnk | Maharashtra Gramin Bank |
