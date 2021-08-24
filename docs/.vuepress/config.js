@@ -50,6 +50,10 @@ module.exports = {
               path: '/device-connect/react-native.html'
             },
             {
+              title: 'Flutter',
+              path: '/device-connect/flutter.html'
+            },
+            {
               title: 'Cordova',
               path: '/device-connect/cordova.html'
             }
