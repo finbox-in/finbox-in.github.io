@@ -43,6 +43,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | indbnk | Indian Bank |
 | indusind | IndusInd Bank |
 | iob | Indian Overseas Bank |
+| jana | Jana Small Finance Bank |
 | jana_sahakari | Janakalyan Sahakari Bank Ltd |
 | jantasahakari | Janata Sahakari Bank Ltd |
 | jivan | Jivan Commercial Co-operative Bank Ltd |
@@ -83,6 +84,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | ujjivan | Ujjivan Small Finance Bank |
 | united | United Bank of India |
 | vaidyanath | The Vaidyanath Urban Co-Op Bank Ltd |
+| varachha | The Varachha Co-Op Bank Ltd |
 | vijaya | Vijaya Bank |
 | vilas | Lakshmi Vilas Bank |
 | yesbnk | Yes Bank |
