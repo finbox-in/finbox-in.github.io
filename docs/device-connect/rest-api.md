@@ -60,6 +60,13 @@ For all the Insights API request structure is the same, all requests must have `
 | customer_id | String | `CUSTOMER_ID` for which feature vector is required |
 | version | Integer | Version of the feature set shared by FinBox team as `DC_PREDICTORS_VERSION` |
 | salt | String | A salt which is computed basis logic mentioned in the [Salt Generation](/device-connect/rest-api.html#salt-generation) section |
+| metadata (`optional`) | Json | A dictionary which can be used to pass additional information for example loan_type, loan_amount or any tags |
+
+**Sample Metadata value**
+| Key | Type | Description |
+| --- | --- | --- |
+| loan_type | String | Can be a string denoting the type of loan e.g. business_loan, msme_loan, personal_loan |
+| loan_amount | Integer | Can be an integer value denoting the amount of loan in INR e.g. 3000, 25000, 50000 |
 
 :::danger IMPORTANT
 Please note that this `CUSTOMER_ID` is the same used as the unique identifier used in Android SDK while syncing the data.
@@ -79,7 +86,11 @@ x-api-key: XXXX-XXXX-XXXX
 {
     "customer_id": "1234ABCD4567",
     "version": 1,
-    "salt": "5vVMNofMy5kQXx647sBdYBoMolMb1GGBSYLkzwaa9v8="
+    "salt": "5vVMNofMy5kQXx647sBdYBoMolMb1GGBSYLkzwaa9v8=",
+    "metadata": {
+        "loan_type": "business_loan",
+        "loan_amount": 30000
+    }
 }
 ```
 
