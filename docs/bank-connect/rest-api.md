@@ -854,26 +854,50 @@ On fetching information successfully, the response would be of the following for
     "entity_id": "uuid4_for_entity",
     "progress": [
         {
+            "statement_id":"uuid4_for_statement",
             "status": "completed",
             "message": null,
-            "statement_id": "uuid4_for_statement",
             "source": "pdf"
         }
     ],
+    "accounts": [
+        {
+            "months": [
+                "2020-08",
+                "2020-09",
+                "2020-10"
+            ],
+            "statements": [
+                "uuid4_for_statement"
+            ],
+            "account_id": "uuid4_for_account",
+            "ifsc": null,
+            "micr": null,
+            "account_category": "individual",
+            "account_number": "Account Number Extracted",
+            "bank": "axis"
+        }
+     ],
     "monthly_analysis": {
-        "amt_bill_payment_debit": {
-            "Feb-2020": 1107,
-            "Jan-2020": 0,
-            "Dec-2019": 0,
-            "Mar-2020": 574
-        },
-        "avg_credit_transaction_size": {
-            "Feb-2020": 4432,
-            "Jan-2020": 3134,
-            "Dec-2019": 141,
-            "Mar-2020": 3465
-        },
-        ...
+        "account_id": [
+            {
+                "uuid4_for_account": {
+                    "monthly_analysis": {
+                        "opening_balance": {
+                            "Aug-2020": 5771.52,
+                            "Sep-2020": 271.52,
+                            "Oct-2020": 253.82
+                        },
+                        "avg_credit_transaction_size": {
+                                    "Aug-2020": 4432,
+                                    "Sep-2020": 3134,
+                                    "Oct-2020": 3465
+                        },
+                ...
+                    }
+                }
+            }
+        ]
     }
 }
 ```
