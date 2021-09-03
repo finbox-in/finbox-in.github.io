@@ -12,6 +12,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | alrajhi | Al Rajhi Bank |
 | andhra | Andhra Bank |
 | apgvbnk | Andhra Pradesh Grameena Vikas Bank |
+| apna_sahakari | Apna Sahakari Bank Ltd |
 | ausfbnk | AU Small Finance Bank |
 | axis | Axis Bank |
 | bandhan | Bandhan Bank |
@@ -23,6 +24,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | citi | Citibank |
 | city_union | City Union Bank |
 | corporation | Corporation Bank |
+| cosmos | Cosmos Co-operative Bank Ltd |
 | dhanlakshmi | Dhanlaxmi Bank |
 | dbsbnk | DBS Bank |
 | dcbbnk | DCB Bank |
