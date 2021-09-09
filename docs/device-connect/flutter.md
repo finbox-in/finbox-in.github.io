@@ -31,8 +31,7 @@ Following will be shared by FinBox team at the time of integration:
 :::
 
 
-finbox_dc_plugin: ^${}
-# Create User
+## Create User
 
 Call 'FinBoxDcPlugin.loadDeviceConnect(<CUSTOMER_ID>,<CLIENT_API_KEY>)' to share users data.
   ```dart
