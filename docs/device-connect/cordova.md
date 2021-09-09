@@ -9,33 +9,6 @@ Following will be shared by FinBox team at the time of integration:
 - `CLIENT_API_KEY`
 :::
 
-## Integration Flow
-Assuming the bridge has been setup between your project and DeviceConnect as per [this](/device-connect/cordova.html#setting-up-the-bridge) section, the following would be the flow in your app:
-
-<img src="/client_workflow.png" alt="Client Workflow" style="width:80%;height:80%" />
-
-### Step 1: Requesting Runtime Permissions
-It is required to show what all permissions you will be needing from users in your app, and then ask them for the permissions. Please refer [this](/device-connect/cordova.html#handle-permissions) section to get the list of permissions the SDK needs. Also in case you want to exclude certain permissions, you can use a `remove` rule as mentioned in the same article.
-
-### Step 2: Creating the User
-After requesting, the `createUser` method can be called specifying a `CUSTOMER_ID` (Refer to [this](/cordova/cordova
-cordova.html#create-user-method) section for sample code and response), which represents a unique identifier for the user.
-
-::: tip TIP
-- It is recommended that `CUSTOMER_ID` is a masked value not a unique personal identifier like a phone number or email id so that the user remains anonymous to FinBox.
-- SDK will automatically consider syncing based on whether permission was granted by the user or not and what was configured, hence the `createUser` method must be called even though the user denies certain permissions.
-:::
-
-`createUser` in general acts as a check for API credentials. For the first time when the user doesn't exist, it will create a user on the FinBox side. The next step will work only if this function returns a success response.
-
-### Step 3: Start Syncing Data
-If the `createUser` response is successful, you can call `startPeriodicSync` function (Refer [this](/device-connect/cordova
-cordova.html#start-periodic-sync-method) article) which will sync data in period intervals in background.
-
-::: danger IMPORTANT
-The recommended approach is to call `createUser` (and then `startPeriodicSync` on success) method every time user accesses the app, so that the background sync process remains in check.
-:::
-
 ## Setting up the bridge
 
 1. Install the Cordova SDK from the npm package:
