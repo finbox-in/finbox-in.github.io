@@ -149,6 +149,7 @@ Following will be shared by FinBox team at the time of integration:
 - `SECRET_KEY`
 - `DC_SDK_VERSION`
 - `COMMON_SDK_VERSION`
+- `COMMON_FLAVOR`
 - `LOGGER_SDK_VERSION`
 - `CLIENT_API_KEY`
 :::
