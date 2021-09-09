@@ -46,7 +46,7 @@ module.exports = {
               path: '/device-connect/integration-flow.html'
             },
             {
-              title: 'Android SDK',
+              title: 'Android',
               path: '/device-connect/android.html'
             },
             {
