@@ -46,6 +46,10 @@ module.exports = {
               path: '/device-connect/integration-flow.html'
             },
             {
+              title: 'Permissions',
+              path: '/device-connect/permissions.html'
+            },
+            {
               title: 'Android',
               path: '/device-connect/android.html'
             },
@@ -60,10 +64,6 @@ module.exports = {
             {
               title: 'Cordova',
               path: '/device-connect/cordova.html'
-            },
-            {
-              title: 'Permissions',
-              path: '/device-connect/permissions.html'
             },
             {
               title: 'Error Codes',
