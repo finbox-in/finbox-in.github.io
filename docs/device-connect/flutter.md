@@ -6,17 +6,18 @@ Device Connect Flutter SDK is used to collect anonymised non-PII data from the d
 ## Add Plugin
 
 Specify the following in `local.properties` file:
-  ```yml
-  AWS_KEY=<ACCESS_KEY>
-  AWS_SECRET=<SECRET_KEY>
-  FINBOX_RM_SDK_VERSION=<RM_SDK_VERSION>
-  FINBOX_COMMON_SDK_VERSION=<COMMON_SDK_VERSION>
-  FINBOX_LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
+  ```
+  ACCESS_KEY=<ACCESS_KEY>
+  SECRET_KEY=<SECRET_KEY>
+  DC_SDK_VERSION=<RM_SDK_VERSION>
+  COMMON_SDK_VERSION=<COMMON_SDK_VERSION>
+  COMMON_FLAVOR=<COMMON_FLAVOR>
+  LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
   ```
 
 Add plugin dependency in `pubspec.yaml` file:
   ```yml
-  finbox_dc_plugin: ^0.0.2
+  finbox_dc_plugin: any
   ```
 
 ::: warning NOTE
