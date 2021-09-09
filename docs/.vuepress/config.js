@@ -42,6 +42,10 @@ module.exports = {
           collapsable: false,
           children: [
             {
+              title: 'Integration',
+              path: '/device-connect/integration-flow.html'
+            },
+            {
               title: 'Android SDK',
               path: '/device-connect/android.html'
             },
