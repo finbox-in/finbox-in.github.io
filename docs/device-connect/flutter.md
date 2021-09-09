@@ -12,23 +12,6 @@ Following will be shared by FinBox team at the time of integration:
 - `CLIENT_API_KEY`
 :::
 
-## Handle Permissions
-
-The Runtime permissions needs to handled by the developer when calling the helper methods. Based on the permissions available, the SDK intelligently syncs the alternate data.
-
-Below are the list of Runtime permissions the sdk adds to the application Manifest, if Manifest Merger is enabled:
-```xml
-<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.READ_CALENDAR" />
-<uses-permission android:name="android.permission.READ_SMS" />
-<uses-permission android:name="android.permission.RECEIVE_SMS" />
-<uses-permission android:name="android.permission.READ_CONTACTS" />
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-```
-
 ## Integration Flow
 
 1. Specify the following in `local.properties` file:
