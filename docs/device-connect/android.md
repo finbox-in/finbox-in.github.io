@@ -155,7 +155,7 @@ Following will be shared by FinBox team at the time of integration:
 :::
 
 
-## Create User Method
+## Create User
 
 Call `createUser` method to create the user (first time) or check the API credentials for the SDK. It takes `CUSTOMER_ID` as one of its arguments which is a unique identifier for a user.
 
@@ -204,7 +204,7 @@ FinBox.createUser("CLIENT_API_KEY", "CUSTOMER_ID",
 
 You can read about the errors in the [Error Codes](/device-connect/error-codes.html) section.
 
-## Start Periodic Sync Method
+## Start Periodic Sync
 
 This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals:
 
