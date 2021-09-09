@@ -56,6 +56,10 @@ module.exports = {
             {
               title: 'Cordova',
               path: '/device-connect/cordova.html'
+            },
+            {
+              title: 'Error Codes',
+              path: '/device-connect/error-codes.html'
             }
           ]
         },
