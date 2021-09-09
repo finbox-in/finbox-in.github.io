@@ -7,7 +7,7 @@ DeviceConnect lets businesses get access to enriched Android mobile device data 
 
 ## Getting Started
 FinBox DeviceConnect requires two integrations - first on Android app from which **users can share data**:
-- [Android SDK](/device-connect/android.html)
+- [Android](/device-connect/android.html)
 - [React Native](/device-connect/react-native.html)
 - [Cordova](/device-connect/cordova.html)
 - [Flutter](/device-connect/flutter.html)
