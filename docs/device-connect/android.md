@@ -157,7 +157,7 @@ Following will be shared by FinBox team at the time of integration:
 
 ## Create User
 
-Call `createUser` method to create the user (first time) or check the API credentials for the SDK. It takes `CUSTOMER_ID` as one of its arguments which is a unique identifier for a user.
+Call `createUser` method to create the user. It takes Client Api Key and Customer Id as the arguments.
 
 ::: danger IMPORTANT
 Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never `null` or a blank string `""`.
