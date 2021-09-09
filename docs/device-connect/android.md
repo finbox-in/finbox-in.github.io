@@ -1,4 +1,4 @@
-# DeviceConnect: Android SDK
+# DeviceConnect: Android
 Device Connect Android SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
 
 ## Requirements
