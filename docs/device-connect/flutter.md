@@ -6,8 +6,9 @@ The plugin can be used to integrate mobile apps with DeviceConnect so that users
 Following will be shared by FinBox team at the time of integration:
 - `ACCESS_KEY`
 - `SECRET_KEY`
-- `RM_SDK_VERSION`
+- `DC_SDK_VERSION`
 - `COMMON_SDK_VERSION`
+- `COMMON_FLAVOR`
 - `LOGGER_SDK_VERSION`
 - `CLIENT_API_KEY`
 :::
