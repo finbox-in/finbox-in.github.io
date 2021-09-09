@@ -35,7 +35,7 @@ finbox_dc_plugin: ^${}
 # Create User
 
 Call 'FinBoxDcPlugin.loadDeviceConnect(<CUSTOMER_ID>,<CLIENT_API_KEY>)' to share users data.
-  ```flutter
+  ```dart
   static String _deviceConnectValue = "";
   static String customerId = <CUSTOMER_ID>;
   static String apiKey = <CLIENT_API_KEY>;
