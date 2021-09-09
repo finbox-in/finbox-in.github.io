@@ -62,6 +62,10 @@ module.exports = {
               path: '/device-connect/cordova.html'
             },
             {
+              title: 'Permissions',
+              path: '/device-connect/permissions.html'
+            },
+            {
               title: 'Error Codes',
               path: '/device-connect/error-codes.html'
             }
