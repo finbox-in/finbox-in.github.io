@@ -48,40 +48,6 @@ Following will be shared by FinBox team at the time of integration:
     }
     ```
 
-## Handle Permissions
-
-The Runtime permissions needs to handled by the developer when calling the helper methods. Based on the permissions available, the SDK intelligently syncs the alternate data.
-
-Below are the list of Runtime permissions the sdk adds to the application Manifest, if Manifest Merger is enabled:
-```xml
-<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.READ_CALENDAR" />
-<uses-permission android:name="android.permission.READ_SMS" />
-<uses-permission android:name="android.permission.RECEIVE_SMS" />
-<uses-permission android:name="android.permission.READ_CALL_LOG" />
-<uses-permission android:name="android.permission.READ_CONTACTS" />
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-<uses-permission
-    android:name="android.permission.PACKAGE_USAGE_STATS"
-    tools:ignore="ProtectedPermissions" />
-```
-
-<!-- ::: warning WARNING
-For Xiaomi Devices, Service SMS need to be enabled to retrieve SMS from Device. In the Sample App a `NativeModule` is created named as `XiaomiPermissionModule` where a native bridge is created to show user settings page where they can provide permission.
-::: -->
-
-To remove the unused permissions, add a `remove` rule to that permission as shown below:
-```xml
-<uses-permission
-    android:name="android.permission.READ_CALL_LOG"
-    tools:node="remove" />
-```
-
-In case the Manifest merger is not enabled add the above-specified permissions manually.
-
 ## Create User Method
 Call `createUser` method using the `FinBoxRiskSdk` instance to create the user (first time) or check the API credentials for the SDK. It takes `CUSTOMER_ID` as one of its arguments which is a unique identifier for a user.
 
