@@ -34,20 +34,23 @@ Following will be shared by FinBox team at the time of integration:
 
 ## Create User
 
-Call 'FinBoxDcPlugin.loadDeviceConnect(<CUSTOMER_ID>,<CLIENT_API_KEY>)' to share users data.
+Call `FinBoxDcPlugin.createUser` method to create the user. It takes Client Api Key and Customer Id as the arguments.
+
+::: danger IMPORTANT
+Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never `null` or a blank string `""`.
+:::
+
   ```dart
   static String _deviceConnectValue = "";
-  static String customerId = <CUSTOMER_ID>;
-  static String apiKey = <CLIENT_API_KEY>;
 
     Future _loadDC() async {
       try {
-        _deviceConnectValue = await FinBoxDcPlugin.loadDeviceConnect(customerId, apiKey);
+        _deviceConnectValue = await FinBoxDcPlugin.createUser("CLIENT_API_KEY", "CUSTOMER_ID");
       } on PlatformException catch (e) {
         _deviceConnectValue = 'Failed to fetch data';
         print(e.message);
       }
     }
   ```
-  As success result, you will get an 'accessToken'
+As success result, you will get an 'accessToken'
 
