@@ -16,7 +16,9 @@ The table below lists the supported banks with their corresponding identifier. T
 | ausfbnk | AU Small Finance Bank |
 | axis | Axis Bank |
 | bandhan | Bandhan Bank |
+| baramati | The Baramti Sahakari Bank Ltd |
 | baroda | Bank of Baroda |
+| bassein | Bassein Catholic Co-operative Bank Ltd |
 | bharatbnk | Bharat Co-Operative Bank |
 | boi | Bank of India |
 | canara | Canara Bank |
@@ -28,12 +30,14 @@ The table below lists the supported banks with their corresponding identifier. T
 | dhanlakshmi | Dhanlaxmi Bank |
 | dbsbnk | DBS Bank |
 | dcbbnk | DCB Bank |
+| deogiri | Deogiri Nagari Sahakari Bank Ltd. Aurangabad |
 | dnsbnk | Dombivli Nagari Sahakari Bank |
 | dena | Dena Bank |
 | deutsche | Deutsche Bank |
 | esafbnk | ESAF Small Finance Bank |
 | equitas | Equitas Small Finance Bank |
 | federal | Federal Bank |
+| financial | The Financial Co-Operative Bank Ltd |
 | fincarebnk | Fincare Small Finance Bank |
 | fingrowth | Fingrowth Co-Operative Bank | 
 | gsmahanagar | GS Mahanagar Co-Op Bank |
