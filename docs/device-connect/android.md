@@ -1,6 +1,10 @@
 # DeviceConnect: Android
 Device Connect Android SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
 
+<div class="embed-container">
+<iframe src="https://www.youtube.com/embed/SfzGylmUVpY" title="Device Connect Data Sync" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 ## Requirements
 
 Device Connect Android SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring to support older versions.
