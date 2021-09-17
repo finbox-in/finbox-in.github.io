@@ -65,6 +65,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | mahagrambnk | Maharashtra Gramin Bank |
 | mizoram | Mizoram Rural Bank |
 | national_mercantile | National Mercantile Co-operative Bank Limited |
+| nawanagar | The Nawanagar Co-operative Bank Ltd |
 | ncb | National Commercial Bank (AlAhli Bank) |
 | nesfinbnk | North East Small Finance Bank Limited |
 | newindia | New India Co-Operative Bank |
