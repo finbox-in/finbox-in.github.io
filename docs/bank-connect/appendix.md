@@ -5,6 +5,7 @@ The table below lists the supported banks with their corresponding identifier. T
 
 | Identifier | Bank Name |
 | - | - |
+| abhinav_sahakari | The Abhinav Sahakari Bank Ltd |
 | abhyudaya | Abhyudaya Co-operative Bank Ltd |
 | ahmedabad_mercantile | The Ahmedabad Mercantile Co-operative Bank Limited |
 | airtel | Airtel Payments Bank |
@@ -12,6 +13,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | alrajhi | Al Rajhi Bank |
 | andhra | Andhra Bank |
 | apgvbnk | Andhra Pradesh Grameena Vikas Bank |
+| andhra_pragathi | Andhra Pragathi Grameena Bank |
 | apna_sahakari | Apna Sahakari Bank Ltd |
 | ausfbnk | AU Small Finance Bank |
 | axis | Axis Bank |
@@ -86,11 +88,13 @@ The table below lists the supported banks with their corresponding identifier. T
 | svcbnk | SVC Co-Operative Bank |
 | syndicate | Syndicate Bank |
 | tamil_mercantile | Tamilnad Mercantile Bank |
+| thane | Thane District Central Cooperative Bank |
 | tjsb_sahakari | TJSB Sahakari Bank Ltd |
 | ubi | Union Bank of India |
 | uco | UCO Bank |
 | ujjivan | Ujjivan Small Finance Bank |
 | united | United Bank of India |
+| urbancoop | The New Urban Co-operative Bank Ltd |
 | vaidyanath | The Vaidyanath Urban Co-Op Bank Ltd |
 | varachha | The Varachha Co-Op Bank Ltd |
 | vijaya | Vijaya Bank |
