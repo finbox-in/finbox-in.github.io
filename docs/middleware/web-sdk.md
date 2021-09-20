@@ -44,6 +44,16 @@ This API require a **Server API Key** to be passed in `x-api-key` **header**. Th
 In case you are using same API key across different platforms, and want to track the source of the user, also pass a string field `source` in the request body, indicating a unique source from which the user is accessing the SDK from.
 :::
 
+::: warning Hide Close Button
+In case you want to hide the close button from the sdk navbar you can pass a boolean field `hideClose` with value `true`.
+```json
+{
+  “customerID”: “somecustomerid”,
+  “hideClose”: true
+}
+```
+:::
+
 ### Response
 ```json
 {
