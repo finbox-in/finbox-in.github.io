@@ -1,5 +1,9 @@
-# DeviceConnect: Android SDK
+# DeviceConnect: Android
 Device Connect Android SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
+
+<div class="embed-container">
+<iframe src="https://www.youtube.com/embed/SfzGylmUVpY" title="Device Connect Data Sync" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ## Requirements
 
@@ -149,72 +153,15 @@ Following will be shared by FinBox team at the time of integration:
 - `SECRET_KEY`
 - `DC_SDK_VERSION`
 - `COMMON_SDK_VERSION`
+- `COMMON_FLAVOR`
 - `LOGGER_SDK_VERSION`
 - `CLIENT_API_KEY`
 :::
 
-## Integration Flow
 
-Assuming the dependency has been added for your project, the following would be the flow in your app:
+## Create User
 
-<img src="/client_workflow.png" alt="Client Workflow" style="width:80%;height:80%" />
-
-### Step 1: Requesting Runtime Permissions
-It is required to show what all permissions you will be needing from users in your app, and then ask them for the permissions. Please refer [Handle Permissions](/device-connect/android.html#handle-permissions) section to get the list of permissions the SDK needs. Also in case you want to exclude certain permissions, you can use node marker value `remove` as mentioned in the same article.
-
-### Step 2: Creating the User
-After requesting, the `createUser` method can be called specifying a `CUSTOMER_ID` (Refer to [Create User](/device-connect/android.html#create-user-method) section for sample code and response), which represents a unique identifier for the user.
-
-::: tip TIP
-- It is recommended that `CUSTOMER_ID` is a masked value not a unique personal identifier like a phone number or email id so that the user remains anonymous to FinBox.
-- SDK will automatically consider syncing based on whether permission was granted by the user or not and what was configured, hence the `createUser` method must be called even though the user denies certain permissions.
-:::
-
-`createUser` in general acts as a check for API credentials. For the first time when the user doesn't exists, it will create a user on the FinBox side. The next step will work only if this function returns a success response.
-
-### Step 3: Start Syncing Data
-If the `createUser` response is successful, you can call `startPeriodicSync` function (Refer [Start Periodic Sync](/device-connect/android.html#start-periodic-sync-method) section) which will sync data in period intervals in background.
-
-::: danger IMPORTANT
-- The recommended approach is to call `createUser` (and then `startPeriodicSync` on success) method every time user accesses the app, so that the background sync process remains in check.
-- In certain cases, the FinBox server often communicates with SDK directly, to make sure this works it is required to **forward Notifications to SDK**. Refer [Forward Notifications to SDK
-](/device-connect/android.html#forward-notifications-to-sdk) section for it.
-- In the case of a multi-process application, it is required to initialize the SDK manually before calling the `createUser` method. Refer [Multi-Process Support](/device-connect/android.html#multi-process-support) section for such cases.
-:::
-
-## Handle Permissions
-
-The Runtime permissions needs to handled by the developer when calling the helper methods. Based on the permissions available, the SDK intelligently syncs the alternate data.
-
-Below are the list of Runtime permissions the sdk adds to the application Manifest, if Manifest Merger is enabled:
-```xml
-<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.READ_SMS" />
-<uses-permission android:name="android.permission.RECEIVE_SMS" />
-<uses-permission android:name="android.permission.READ_CONTACTS" />
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-```
-
-<!-- ::: warning WARNING
-In the case of Xiaomi we need to ask for a special Service SMS Permission so that SMS Data can be synced. Please look at the sample app in which in order to navigate the user to the settings screen, we are calling the function:
-`CommonUtils.showServiceSmsPermissionSetting(this);` and then listening to the callback in `OnActivityResult` with RequestCode `REQUEST_SMS_PERMISSION_CODE`
-::: -->
-
-To remove the unused permissions, add node marker value as `remove` to that permission as shown below:
-```xml
-<uses-permission
-    android:name="android.permission.READ_CONTACTS"
-    tools:node="remove" />
-```
-
-In case the Manifest merger is not enabled add the above-specified permissions manually.
-
-## Create User Method
-
-Call `createUser` method to create the user (first time) or check the API credentials for the SDK. It takes `CUSTOMER_ID` as one of its arguments which is a unique identifier for a user.
+Call `createUser` method to create the user. It takes Client Api Key and Customer Id as the arguments.
 
 ::: danger IMPORTANT
 Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never `null` or a blank string `""`.
@@ -259,9 +206,9 @@ FinBox.createUser("CLIENT_API_KEY", "CUSTOMER_ID",
 </template>
 </CodeSwitcher>
 
-You can read about the errors in the [Error Codes](/device-connect/android.html#error-codes) section.
+You can read about the errors in the [Error Codes](/device-connect/error-codes.html) section.
 
-## Start Periodic Sync Method
+## Start Periodic Sync
 
 This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals:
 
@@ -461,26 +408,3 @@ finbox.resetData();
 </template>
 </CodeSwitcher>
 
-## Error Codes
-
-Below table contains the constant name, error code value and the description of error code:
-
-::: tip TIP
-All the constants stated below are available as constants in SDK.
-:::
-
-| Constant Name                       | Constant Value| Description |
-| :------------------------- | :------------- | --------------- |
-| QUOTA_LIMIT_EXCEEDED | 7670            | API Key exceeded its quota limit               |
-| AUTHENTICATE_FAILED  | 7671              | Authentication of the API Key and the User failed               |
-| AUTHENTICATE_API_FAILED | 7672              | Authentication of the API Key failed               |
-| AUTHORIZATION_API_FAILED | 7673              | Authorization of the API Key failed               |
-| NO_ACTIVE_NETWORK | 7678              | Device is not connected to an active network                              |
-| NETWORK_TIME_OUT | 7679              | Request timed out               |
-| NETWORK_RESPONSE_NULL | 7681              | Network response is null               |
-| USER_TOKENS_NULL | 7682              | Both access token and refresh token is null               |
-| ACCESS_TOKEN_NULL | 7683              | Access token is null               |
-| REFRESH_TOKEN_NULL | 7684              | Refresh token is null               |
-| AUTHENTICATE_NOT_FOUND | 7685              | End point is not found               |
-
-Some error codes can be resolved by validating the implementation and some by retrying the creation of the user, while other error codes can only be resolved by contacting FinBox.
