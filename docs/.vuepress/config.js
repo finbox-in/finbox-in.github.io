@@ -42,7 +42,15 @@ module.exports = {
           collapsable: false,
           children: [
             {
-              title: 'Android SDK',
+              title: 'Integration',
+              path: '/device-connect/integration-flow.html'
+            },
+            {
+              title: 'Permissions',
+              path: '/device-connect/permissions.html'
+            },
+            {
+              title: 'Android',
               path: '/device-connect/android.html'
             },
             {
@@ -56,6 +64,10 @@ module.exports = {
             {
               title: 'Cordova',
               path: '/device-connect/cordova.html'
+            },
+            {
+              title: 'Error Codes',
+              path: '/device-connect/error-codes.html'
             }
           ]
         },
