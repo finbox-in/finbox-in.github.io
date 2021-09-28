@@ -79,7 +79,7 @@ Please note that the event description is always a **string**
 | physical_mandate_approved | Physical Mandate was approved | System | - |
 | loan_esigned | Customer esigned the loan agreement | Customer | - |
 | loan_disbursed | Loan was disbursed by the lender | Lender | - |
-| emi_paid | EMI Paid by the customer | Customer /  Sourcing Entity / System / Lender | `{"installmentNum": 1}` |
+| emi_paid | EMI Paid by the customer | Customer /  Sourcing Entity / System / Lender | `{"installmentNum": 1, "lastSource": "app", "lastPaidAmount": 1041.0}` |
 | emi_payment_initiated | EMI Payment initiated by the customer | Customer | `{"installmentNum": 1}` |
 | loan_signed_agreement_generated | Signed agreement PDF is generated for the customer | System | - |
 | loan_closed | Loan was closed | System / Lender | - |
@@ -105,7 +105,7 @@ Please note that the event description is always a **string**
 In case of credit line, event description formats will be as follows:
 | Activity | Event Description Example |
 | - | - |
-| emi_paid | `{"installmentNum": 1, "txnID": "your_txn_id"}` |
+| emi_paid | `{"installmentNum": 1, "txnID": "your_txn_id", "invoiceNo": "ABC-123", "lastSource": "app", "lastPaidAmount": 1041.0}` |
 | emi_payment_initiated | `{"installmentNum": 1, "txnID": "your_txn_id"}` |
 | late_fee_added | `{"installmentNum": 1, "lateCharge": 250, "txnID": "your_txn_id"}` |
 | late_fee_updated | `{"installmentNum": 1, "lateCharge": 500, "txnID": "your_txn_id"}` |
