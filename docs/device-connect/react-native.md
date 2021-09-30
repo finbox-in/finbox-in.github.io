@@ -19,6 +19,9 @@ The React Native package can be used to integrate mobile apps with DeviceConnect
             accessKey = "<ACCESS_KEY>"
             secretKey = "<SECRET_KEY>"  
         }
+        content {
+            includeGroup("in.finbox")
+        }
     }
     ```
 4. Specify the following in `local.properties` file:
