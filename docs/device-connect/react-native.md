@@ -55,7 +55,6 @@ Following will be shared by FinBox team at the time of integration:
 - `LOGGER_SDK_VERSION`
 - `CLIENT_API_KEY`
 :::
-```
 
 ## Create User Method
 Call `createUser` method using the `FinBoxRiskSdk` instance to create the user (first time) or check the API credentials for the SDK. It takes `CUSTOMER_ID` as one of its arguments which is a unique identifier for a user.
