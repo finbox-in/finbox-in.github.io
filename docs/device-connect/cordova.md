@@ -1,22 +1,26 @@
 # DeviceConnect: Cordova
 The Cordova plugin can be used to integrate mobile apps with DeviceConnect so that users can share their data.
 
-## Setting up the bridge
+## Installation
 
-1. Install the Cordova SDK from the npm package:
-    ```sh
-    cordova plugin add cordova-plugin-finbox-risk-manager
-    ```
+Install the Cordova SDK from the npm package:
 
-2. Specify the following in `local.properties` file:
-    ```
-    ACCESS_KEY=<ACCESS_KEY>
-    SECRET_KEY=<SECRET_KEY>
-    DC_SDK_VERSION=<DC_SDK_VERSION>
-    COMMON_SDK_VERSION=<COMMON_SDK_VERSION>
-    COMMON_FLAVOR=<COMMON_FLAVOR>
-    LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
-    ```
+```sh
+cordova plugin add cordova-plugin-finbox-risk-manager
+```
+
+## Authentication
+
+Specify the following in `local.properties` file:
+
+```
+ACCESS_KEY=<ACCESS_KEY>
+SECRET_KEY=<SECRET_KEY>
+DC_SDK_VERSION=<DC_SDK_VERSION>
+COMMON_SDK_VERSION=<COMMON_SDK_VERSION>
+COMMON_FLAVOR=<COMMON_FLAVOR>
+LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
+```
 
 ::: warning NOTE
 Following will be shared by FinBox team at the time of integration:
