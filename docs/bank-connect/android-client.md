@@ -322,7 +322,7 @@ if (result != null && result.getResultCode() == Activity.RESULT_OK) {
                 extras.getParcelable(FinboxBankConstants.BUNDLE_EXTRA_SUCCESS_PAYLOAD);
         if (payload == null) {
             // Failed to Receive Payload
-        } else if (payload.getEntityId() == null || payload.getEntityId().length() > 0) {
+        } else if (payload.getEntityId() == null || payload.getEntityId().length() == 0) {
             // Failed to Upload Document
         } else {
             // Upload Success
