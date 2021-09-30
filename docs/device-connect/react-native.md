@@ -19,7 +19,7 @@ Our SDK will auto link automatically with your application
 
 ## Authentication
 
-Once the linking is done you need to open Android Studio and add a maven repository url in your project level `build.gradle` file
+Open Android Studio and in the project level `build.gradle` file, add the repository URLs to all `allprojects` block.
 
 ```groovy
 maven {
@@ -34,7 +34,7 @@ maven {
 }
 ```
 
-Specify the following in `local.properties` file:
+Add the following keys in `local.properties` file:
 
 ```
 ACCESS_KEY=<ACCESS_KEY>
@@ -85,7 +85,7 @@ const callModule = () => {
 }
 ```
 
-You can read about the error codes in [this](/device-connect/react-native.html#error-codes) section.
+Read about the error codes in [this](/device-connect/react-native.html#error-codes) section.
 
 ## Start Periodic Sync Method
 
