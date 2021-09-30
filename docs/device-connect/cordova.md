@@ -1,14 +1,6 @@
 # DeviceConnect: Cordova
 The Cordova plugin can be used to integrate mobile apps with DeviceConnect so that users can share their data.
 
-::: warning NOTE
-Following will be shared by FinBox team at the time of integration:
-- `ACCESS_KEY`
-- `SECRET_KEY`
-- `DC_SDK_VERSION`
-- `CLIENT_API_KEY`
-:::
-
 ## Setting up the bridge
 
 1. Install the Cordova SDK from the npm package:
@@ -18,11 +10,24 @@ Following will be shared by FinBox team at the time of integration:
 
 2. Specify the following in `local.properties` file:
     ```
-    AWS_KEY=<ACCESS_KEY>
-    AWS_SECRET=<SECRET_KEY>
-    FINBOX_RM_VERSION=<DC_SDK_VERSION>
-    FINBOX_RM_ARTIFACT=pfm-release
+    ACCESS_KEY=<ACCESS_KEY>
+    SECRET_KEY=<SECRET_KEY>
+    DC_SDK_VERSION=<DC_SDK_VERSION>
+    COMMON_SDK_VERSION=<COMMON_SDK_VERSION>
+    COMMON_FLAVOR=<COMMON_FLAVOR>
+    LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
     ```
+
+::: warning NOTE
+Following will be shared by FinBox team at the time of integration:
+- `ACCESS_KEY`
+- `SECRET_KEY`
+- `DC_SDK_VERSION`
+- `COMMON_SDK_VERSION`
+- `COMMON_FLAVOR`
+- `LOGGER_SDK_VERSION`
+- `CLIENT_API_KEY`
+:::
 
 ## Create User Method
 Call `createUser` method using the `FinBoxRiskManager` instance to create the user (first time) or check the API credentials for the SDK. It takes `CUSTOMER_ID` as one of its arguments which is a unique identifier for a user.
