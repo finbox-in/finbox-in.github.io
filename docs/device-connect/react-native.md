@@ -1,52 +1,61 @@
 # DeviceConnect: React Native
-The React Native package can be used to integrate mobile apps with DeviceConnect so that users can share their data.
+Device Connect React Native SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
+
+## Installation
+
+Using yarn:
+
+```sh
+yarn add react-native-risk-sdk
+```
+
+or using npm:
+
+```sh
+npm install --save react-native-risk-sdk
+```
+
+Our SDK will auto link automatically with your application
+
+## Authentication
+
+Open Android Studio and in the project level `build.gradle` file, add the repository URLs to all `allprojects` block.
+
+```groovy
+maven {
+    url "s3://risk-manager-android-sdk/artifacts"
+    credentials(AwsCredentials) {
+        accessKey = "<ACCESS_KEY>"
+        secretKey = "<SECRET_KEY>"
+    }
+    content {
+        includeGroup("in.finbox")
+    }
+}
+```
+
+Add the following keys in `local.properties` file:
+
+```
+ACCESS_KEY=<ACCESS_KEY>
+SECRET_KEY=<SECRET_KEY>
+DC_SDK_VERSION=<DC_SDK_VERSION>
+COMMON_SDK_VERSION=<COMMON_SDK_VERSION>
+COMMON_FLAVOR=<COMMON_FLAVOR>
+LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
+```
 
 ::: warning NOTE
 Following will be shared by FinBox team at the time of integration:
 - `ACCESS_KEY`
 - `SECRET_KEY`
 - `DC_SDK_VERSION`
+- `COMMON_SDK_VERSION`
+- `COMMON_FLAVOR`
+- `LOGGER_SDK_VERSION`
 - `CLIENT_API_KEY`
 :::
-
-## Setting up the bridge
-
-1. Install the React SDK from the npm package:
-    ```sh
-    yarn add react-native-risk-sdk
-    ```
-2. Now to auto link this native module to your app, run following command:
-    ```sh
-    react-native link
-    ```
-3. Once the linking is done you need to open Android Studio and add a maven repository url in your project level `build.gradle` file
-    ```groovy
-    maven {  
-        url "s3://risk-manager-android-sdk/artifacts"  
-        credentials(AwsCredentials) {  
-            accessKey = "<ACCESS_KEY>"
-            secretKey = "<SECRET_KEY>"  
-        }
-    }
-    ```
-4. Specify the following in `local.properties` file:
-    ```
-    AWS_KEY=<ACCESS_KEY>
-    AWS_SECRET=<SECRET_KEY>
-    FINBOX_RM_VERSION=<DC_SDK_VERSION>
-    FINBOX_RM_ARTIFACT=parent-release
-    ```
-5. Final change required is in the `MainApplication` class of your native app.
-    ```java
-    @Override  
-    protected List<ReactPackage> getPackages() {
-        return Arrays.<ReactPackage>asList(
-            ....
-            new RiskSdkPackage(),
-            ...
-        );
-    }
-    ```
+```
 
 ## Create User Method
 Call `createUser` method using the `FinBoxRiskSdk` instance to create the user (first time) or check the API credentials for the SDK. It takes `CUSTOMER_ID` as one of its arguments which is a unique identifier for a user.
@@ -76,7 +85,7 @@ const callModule = () => {
 }
 ```
 
-You can read about the error codes in [this](/device-connect/react-native.html#error-codes) section.
+Read about the error codes in [this](/device-connect/react-native.html#error-codes) section.
 
 ## Start Periodic Sync Method
 
