@@ -434,6 +434,7 @@ GET **`base_url`/v1/loan/repayments?loanApplicationID=`someLongLoanApplicationUU
 ```json
 {
     "data": {
+        "lenderName": "XYZ Lender",
         "emiList": [
             {
                 "loanPaymentID": "1c9387b3-c1f8-4d81-89e9-eabd06e8536c",
@@ -456,6 +457,7 @@ GET **`base_url`/v1/loan/repayments?loanApplicationID=`someLongLoanApplicationUU
 Response fields are explained below:
 | Field | Type | Description |
 | - | - | - |
+| lenderName | String | Lender Name |
 | loanPaymentID | String | A UUID identifying an installment |
 | amount | Float | EMI amount |
 | installmentNum | Integer | Instalment number varies from 1 to `tenureMonths` (from loan offer API) |
@@ -465,6 +467,67 @@ Response fields are explained below:
 | paidDate | String | Date of payment in `YYYY-MM-DD` format, if not paid the value is blank string `""` |
 | totalPayable | Float | Total amount to be paid by user, excluding partial payments made |
 | amountReceived | Float | Denotes the amount paid by customer against the EMI |
+
+### EDI
+In case the loan product involves EDI (daily installments), you'll get an additional `ediInfo` key in response.
+
+Sample Response
+```json
+{
+    "data": {
+        "ediInfo": {
+            "amountPerDay": 6.65,
+            "edisPaid": 26,
+            "totalEDIs": 78
+        },
+        "emiList": [
+            {
+                "loanPaymentID": "01580ade-e750-4c1a-8a84-c78ee3d74123",
+                "amount": 173,
+                "installmentNum": 3,
+                "lateCharge": 0,
+                "status": "UNPAID",
+                "dueDate": "2021-12-03",
+                "paidDate": "",
+                "totalPayable": 173,
+                "amountReceived": 0
+            },
+            {
+                "loanPaymentID": "bc1aa687-035a-4c71-8988-628c8c519123",
+                "amount": 173,
+                "installmentNum": 2,
+                "lateCharge": 0,
+                "status": "UNPAID",
+                "dueDate": "2021-11-03",
+                "paidDate": "",
+                "totalPayable": 173,
+                "amountReceived": 2
+            },
+            {
+                "loanPaymentID": "84e0bcdf-7fa1-4634-8852-c648e4897123",
+                "amount": 173,
+                "installmentNum": 1,
+                "lateCharge": 0,
+                "status": "PAID",
+                "dueDate": "2021-10-04",
+                "paidDate": "2021-09-15",
+                "totalPayable": 173,
+                "amountReceived": 173
+            }
+        ],
+        "lenderName": "XYZ Lender"
+    },
+    "error": "",
+    "status": true
+}
+```
+
+EDI Keys:
+| Field | Type | Description |
+| - | - | - |
+| amountPerDay | Float | EDI Amount to be paid per day |
+| totalEDIs | Integer | Number of EDIs to be paid |
+| edisPaid | Integer | Number of EDIs fully paid |
 
 ## Repay Loan
 Marks the repayment of a given loan EMI
