@@ -26,6 +26,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | canara | Canara Bank |
 | central | Central Bank of India |
 | citi | Citibank |
+| citizens | Citizens Co-op Bank Ltd |
 | city_union | City Union Bank |
 | corporation | Corporation Bank |
 | cosmos | Cosmos Co-operative Bank Ltd |
@@ -43,6 +44,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | fincarebnk | Fincare Small Finance Bank |
 | fingrowth | Fingrowth Co-Operative Bank | 
 | gsmahanagar | GS Mahanagar Co-Op Bank |
+| gandhidham | The Gandhidham Co-Op Bank Limited |
 | hdfc | HDFC Bank |
 | hsbc | HSBC Bank |
 | icici | ICICI India |
@@ -66,6 +68,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | mahabk | Bank of Maharashtra |
 | mahagrambnk | Maharashtra Gramin Bank |
 | mizoram | Mizoram Rural Bank |
+| nainital | Nainital Bank Limited |
 | national_mercantile | National Mercantile Co-operative Bank Limited |
 | nawanagar | The Nawanagar Co-operative Bank Ltd |
 | ncb | National Commercial Bank (AlAhli Bank) |
@@ -80,6 +83,8 @@ The table below lists the supported banks with their corresponding identifier. T
 | primebnk | Prime Co-operative Bank Ltd |
 | punjab_sind | Punjab & Sind Bank |
 | rbl | RBL Bank |
+| rmgbbnk | Rajasthan Marudhara Gramin Bank |
+| sadhana | Sadhana Sahakari Bank Ltd |
 | saraswat | Saraswat Co-operative Bank |
 | sbi | State Bank of India |
 | shinhan | Shinhan Bank India |
