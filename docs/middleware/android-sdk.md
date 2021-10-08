@@ -71,6 +71,29 @@ dependencies {
 </template>
 </CodeSwitcher>
 
+
+## ProGuard
+
+While generating a signed application, make sure **ProGuard** file uses `proguard-android.txt` not `proguard-android-optimize.txt`.
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+```
+
+</template>
+<template v-slot:groovy>
+
+```groovy
+proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+```
+
+</template>
+</CodeSwitcher>
+
+
 ## Adding Dependency
 
 Add the repository url to `allprojects` in the project `build.gradle` file.
@@ -177,47 +200,6 @@ The following keys will be shared over an email
 - `COMMON_FLAVOR`
 :::
 
-## Permissions
-
-Lending SDK requires `SMS` and `Location` permission as mandatory. Make sure you **dont** have any node markers that remove these permissions in your manifest file
-
-Manifest **should not** have any of the following
-```xml
-<uses-permission
-    android:name="android.permission.RECEIVE_SMS"
-    tools:node="remove" />
-<uses-permission
-    android:name="android.permission.READ_SMS"
-    tools:node="remove" />
-<uses-permission
-    android:name="android.permission.ACCESS_COARSE_LOCATION"
-    tools:node="remove" />
-<uses-permission
-    android:name="android.permission.ACCESS_FINE_LOCATION"
-    tools:node="remove" />
-```
-
-:::warning ProGuard
-While generating a signed application, make sure **ProGuard** file uses `proguard-android.txt` **not** `proguard-android-optimize.txt`, i.e. make sure it is:
-
-<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
-<template v-slot:kotlin>
-
-```kotlin
-proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-```
-
-</template>
-<template v-slot:groovy>
-
-```groovy
-proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-```
-
-</template>
-</CodeSwitcher>
-
-:::
 
 ## Start SDK flow
 
