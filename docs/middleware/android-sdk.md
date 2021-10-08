@@ -411,17 +411,6 @@ class SampleMessService: FirebaseMessagingService(), FinBoxLendingMessagingImpl 
         )
     }
 
-    override fun getRepayLendingIntent(): PendingIntent {
-        val intent = generateFinBoxLending().getRepayLendingIntent(applicationContext)
-        // Create the TaskStackBuilder
-        return PendingIntent.getActivity(
-            this,
-            REQUEST_CODE_NOTIFICATION_LOAN_REPAY_STATUS,
-            intent,
-            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-        )
-    }
-
     //Common builder object to start lending SDK
     private fun generateFinBoxLending(): FinBoxLending {
         val builder = FinBoxLending.Builder(applicationContext)
@@ -463,18 +452,6 @@ class SampleMessService extends FirebaseMessagingService implements FinBoxLendin
         return PendingIntent.getActivity(
                 this,
                 REQUEST_CODE_NOTIFICATION_LOAN_STATUS,
-                intent,
-                PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT
-        );
-    }
-
-    @NotNull
-    @Override
-    public PendingIntent getRepayLendingIntent() {
-        Intent intent = generateFinBoxLending().getRepayLendingIntent(getApplicationContext());
-        return PendingIntent.getActivity(
-                this,
-                REQUEST_CODE_NOTIFICATION_LOAN_REPAY_STATUS,
                 intent,
                 PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT
         );
