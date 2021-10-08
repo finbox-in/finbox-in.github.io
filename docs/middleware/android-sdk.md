@@ -473,13 +473,7 @@ class SampleMessService extends FirebaseMessagingService implements FinBoxLendin
 Make sure the value passed is a valid URL
 :::
 
-2. The toolbar title can be updated which will be visible in the Dashboard module. In order to update the toolbar just add a String resource for the same.
-
-```xml
-<string name="finbox_appbar_title">My App</string>
-```
-
-3. SDK fonts can be customised to match the parent application. The SDK used 3 main fonts as mentioned below:
+2. SDK fonts can be customised to match the parent application. The SDK used 3 main fonts as mentioned below:
 
 ```xml
 <style name="FBLendingAppTheme.FinBox.TextPrimary" parent="TextAppearance.AppCompat">
@@ -501,7 +495,7 @@ Make sure the value passed is a valid URL
 
 Customize the SDK font by adding the application `fontFamily` in the styles.
 
-4. SDK Buttons can be customized by overriding `FBLendingAppTheme`
+3. SDK Buttons can be customized by overriding `FBLendingAppTheme`
 
 ```xml
 <style name="FBLendingAppTheme.FinBox.Button" parent="Widget.MaterialComponents.Button">
