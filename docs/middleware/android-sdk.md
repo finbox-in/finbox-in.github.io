@@ -124,64 +124,16 @@ implementation ("in.finbox.lending:onboarding:<LENDING_SDK_VERSION>:release@aar"
     exclude("in.finbox", "logger")
     isTransitive = true
 }
-implementation ("in.finbox.lending:preloan:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:dashboard:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:kyc:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:loan:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:esign:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:enach:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:payment:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:bankconnect:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    exclude("in.finbox", "bankconnect")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:pennydrop:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:gst:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:videokyc:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
 implementation ("in.finbox.lending:core:<LENDING_SDK_VERSION>:release@aar") {
     isTransitive = true
 }
 implementation('in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar') {
     isTransitive = true
 }
-implementation('in.finbox:common:<COMMON_SDK_VERSION>:<PLATFORM_NAME>-release@aar') {
+implementation('in.finbox:common:<COMMON_SDK_VERSION>:<COMMON_FLAVOR>-release@aar') {
     isTransitive = true
 }
 implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar") {
-    isTransitive = true
-}
-implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
     isTransitive = true
 }
 ```
@@ -196,64 +148,16 @@ implementation ("in.finbox.lending:onboarding:<LENDING_SDK_VERSION>:release@aar"
     exclude group: 'in.finbox', module: 'logger'
     transitive = true
 }
-implementation ("in.finbox.lending:preloan:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:dashboard:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:kyc:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:loan:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:esign:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:enach:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:payment:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:bankconnect:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    exclude group: 'in.finbox', module: 'bankconnect'
-    transitive = true
-}
-implementation ("in.finbox.lending:pennydrop:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:gst:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:videokyc:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
 implementation ("in.finbox.lending:core:<LENDING_SDK_VERSION>:release@aar") {
     transitive = true
 }
 implementation('in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar') {
     transitive = true
 }
-implementation('in.finbox:common:<COMMON_SDK_VERSION>:<PLATFORM_NAME>-release@aar') {
+implementation('in.finbox:common:<COMMON_SDK_VERSION>:<COMMON_FLAVOR>-release@aar') {
     transitive = true
 }
 implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar") {
-    transitive = true
-}
-implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
     transitive = true
 }
 ```
@@ -270,7 +174,7 @@ The following keys will be shared over an email
 - `COMMON_SDK_VERSION`
 - `LOGGER_SDK_VERSION`
 - `BC_SDK_VERSION`
-- `PLATFORM_NAME`
+- `COMMON_FLAVOR`
 :::
 
 ## Permissions
