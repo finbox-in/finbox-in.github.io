@@ -337,20 +337,6 @@ Possible values for `resultCode` are as follows:
 | `CL200` | Credit line withdrawal success |
 | `CL500` | Credit line withdrawal failed |
 
-Possible values for `screen` are as follows:
-| Screen | Description |
-| - | - | - |
-| `Launcher` | The base screen (Hidden Activity) |
-| `Permissions` | Permission list screen |
-| `Profile` | Basic profile screen |
-| `PAN Consent` | PAN consent screen |
-| `Dashboard` | Dashboard screen |
-| `Loan Form` | Loan application screen |
-| `KYC` | KYC screen |
-| `Bank Verification` | Bank verification screen |
-| `Loan Offer` | Loan details screen |
-| `Sign Agreement` | Sign agreement screen |
-
 
 ## Notifications
 
