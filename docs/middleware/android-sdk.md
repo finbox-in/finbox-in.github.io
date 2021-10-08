@@ -407,7 +407,7 @@ class SampleMessService: FirebaseMessagingService(), FinBoxLendingMessagingImpl 
             this,
             REQUEST_CODE_NOTIFICATION_LOAN_STATUS,
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
     }
 
@@ -418,7 +418,7 @@ class SampleMessService: FirebaseMessagingService(), FinBoxLendingMessagingImpl 
             this,
             REQUEST_CODE_NOTIFICATION_LOAN_REPAY_STATUS,
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
     }
 
@@ -464,7 +464,7 @@ class SampleMessService extends FirebaseMessagingService implements FinBoxLendin
                 this,
                 REQUEST_CODE_NOTIFICATION_LOAN_STATUS,
                 intent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT
         );
     }
 
@@ -476,7 +476,7 @@ class SampleMessService extends FirebaseMessagingService implements FinBoxLendin
                 this,
                 REQUEST_CODE_NOTIFICATION_LOAN_REPAY_STATUS,
                 intent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT
         );
     }
 
