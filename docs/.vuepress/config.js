@@ -90,6 +90,10 @@ module.exports = {
             {
               title: 'Insights API',
               path: '/device-connect/insights-api.html'
+            },
+            {
+              title: 'Salt Generation',
+              path: '/device-connect/salt-generation.html'
             }
           ]
         }
