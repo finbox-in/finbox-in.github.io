@@ -84,6 +84,10 @@ module.exports = {
           collapsable: false,
           children: [
             {
+              title: 'Integration',
+              path: '/device-connect/rest-integration-flow.html'
+            },
+            {
               title: 'REST API',
               path: '/device-connect/rest-api.html'
             }
