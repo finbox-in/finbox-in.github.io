@@ -36,12 +36,12 @@ module.exports = {
               path: '/device-connect/'
             },
             {
-              title: 'Getting Started',
-              path: '/device-connect/getting-started.html'
-            },
-            {
               title: 'Integration',
               path: '/device-connect/integration-flow.html'
+            },
+            {
+              title: 'Getting Started',
+              path: '/device-connect/getting-started.html'
             },
           ]
         },
