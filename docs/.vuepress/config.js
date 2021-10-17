@@ -88,8 +88,8 @@ module.exports = {
               path: '/device-connect/rest-integration-flow.html'
             },
             {
-              title: 'REST API',
-              path: '/device-connect/rest-api.html'
+              title: 'Insights API',
+              path: '/device-connect/insights-api.html'
             }
           ]
         }
