@@ -15,4 +15,4 @@ An overview of the API calling is shown below
 The response status will be `"complete"` instead of `"in_progress"` if the results are already computed and returned through callback in the last 15 mins.
 :::
 
-Incase we have the `request_id` and want to fetch the pre-computed results for that `request_id` check the [Querying by webhook](rest-api.html#querying-by-webhook) Section.
+Incase we have the `request_id` and want to fetch the pre-computed results for that `request_id` check the [Querying by webhook](insights-api.html#querying-by-webhook) Section.
