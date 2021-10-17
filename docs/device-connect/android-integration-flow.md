@@ -2,7 +2,7 @@
 
 Integration flow in the mobile app should be as follows
 
-<img src="/client_workflow.png" alt="Client Workflow" style="width:80%;height:80%" />
+<img src="/device_connect_android_integration.jpg" alt="Device Connect Android Integration Workflow" style="width:80%;height:80%" />
 
 ### Step 1: Requesting Runtime Permissions
 It is required to show what all permissions you will be needing from users in your app, and then ask them for the permissions. Please refer [Handle Permissions](/device-connect/android.html#handle-permissions) section to get the list of permissions the SDK needs. Also in case you want to exclude certain permissions, you can use node marker value `remove` as mentioned in the same article.
