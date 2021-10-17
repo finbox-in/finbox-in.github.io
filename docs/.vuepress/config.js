@@ -85,7 +85,7 @@ module.exports = {
           children: [
             {
               title: 'Integration',
-              path: '/device-connect/rest-integration-flow.html'
+              path: '/device-connect/insights-integration-flow.html'
             },
             {
               title: 'Insights API',
