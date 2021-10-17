@@ -265,29 +265,12 @@ Sample Response Body:
 
 ## Webhook Integration
 
-FinBox fires a webhook when a user's results are updated. Upon receipt of the webhook, you can query the insights API to fetch these results. 
-
-
-The webhook payload has the following keys:
-- **service**: It indicates the service whose results have been updated. Currently, It will be set to `PREDICTORS`.
-- **customer_id**: customer_id for which result was updated.
-- **salt**: A salt is used to authenticate webhook. It is computed basis logic mentioned in the [Salt Generation](/device-connect/insights-api.html#salt-generation) section.
-- **request_id**: A unique string corresponding to each each request.
-
+FinBox fires a webhook when a user's results are updated. The response received in the callback is same as the [Insights API Response](#response).
 
 :::warning IMPORTANT
 You have to register your webhook address with FinBox. Please get in touch with us for the same.
 :::
 
-
-```json
-{
-    "service": "PREDICTORS",
-    "customer_id": "89561ea2190946a9",
-    "salt": "/+Y459HYwFtWB2656bE5eTvB4NmTSoTmoAyt9SAtwek=",
-    "request_id": "aad12-dabmd-ddb-1123d"
-}
-```
 
 ## Querying by webhook
 
