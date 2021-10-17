@@ -25,7 +25,7 @@ Clients need to call the **Insights API** with `CUSTOMER_ID` to get the predicto
 
 ### Workflow
 
-<img src="/rest_api_workflow.png" alt="Rest API Workflow" />
+<img src="/device_connect_back_end_integration.jpg" alt="Device Connect Backed Integration Workflow" />
 
 1. Call FinBox Insights API
 2. In case the response status is `"in_progress"`, retry after 10 seconds
