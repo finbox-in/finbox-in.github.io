@@ -1,4 +1,4 @@
-# DeviceConnect: Integration
+# DeviceConnect: Integration Flow
 
 Integration flow in the mobile app and the backend should be as follows
 

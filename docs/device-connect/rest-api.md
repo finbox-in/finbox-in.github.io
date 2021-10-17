@@ -15,22 +15,6 @@ FinBox provides a valid and signed certificate for all API methods and endpoints
 
 Authentication for the APIs are based on **SERVER_API_KEY** provided by the FinBox. Server to server communication can commence when **IP of requester are whitelisted** on the FinBox servers. This can be easily done upon request.
 
-## API Integration Workflow
-
-### Insights API
-
-Once FinBox DeviceConnect SDK is initialized, data from the device is sent to the FinBox processing engine against an anonymous `CUSTOMER_ID` which will be the primary key from retrieving any information from the server.
-
-Clients need to call the **Insights API** with `CUSTOMER_ID` to get the predictors for a given customer. An overview of the API calling is shown in the [Workflow](/device-connect/rest-api.html#workflow) section. In case Insights API returns with status `"in_progress"` (meaning data is currently being processed), the client should poll the Insights API with a delay of at least **10 seconds**
-
-### Workflow
-
-<img src="/device_connect_back_end_integration.jpg" alt="Device Connect Backed Integration Workflow" />
-
-1. Call FinBox Insights API
-2. In case the response status is `"in_progress"`, retry after 10 seconds
-3. In case the response status is `"complete"`, receive data as per format mentioned in [Insights API Response](/device-connect/rest-api.html#insights-api-response) section.
-
 ## Insights API Endpoints
 
 ::: tip Base URL
