@@ -1,11 +1,11 @@
 module.exports = {
   title: 'FinBox Documentation',
   description: 'Documentation for FinBox SDK',
-  plugins: ['code-switcher', ['vuepress-plugin-code-copy',{
+  plugins: ['code-switcher', ['vuepress-plugin-code-copy', {
     color: "#3eaf7c"
   }], ['@vuepress/search', {
     test: ["^((?!device-connect\/transactions).)*$"]
-  }],  '@vuepress/medium-zoom'],
+  }], '@vuepress/medium-zoom'],
   mounted() {
     const hash = document.location.hash;
     if (hash.length > 1) {
@@ -34,7 +34,15 @@ module.exports = {
             {
               title: 'Introduction',
               path: '/device-connect/'
-            }
+            },
+            {
+              title: 'Getting Started',
+              path: '/device-connect/getting-started.html'
+            },
+            {
+              title: 'Integration',
+              path: '/device-connect/integration-flow.html'
+            },
           ]
         },
         {
@@ -43,7 +51,7 @@ module.exports = {
           children: [
             {
               title: 'Integration',
-              path: '/device-connect/integration-flow.html'
+              path: '/device-connect/android-integration-flow.html'
             },
             {
               title: 'Permissions',
@@ -245,5 +253,5 @@ module.exports = {
         },
       ]
     }
-    },
+  },
 }
