@@ -8,6 +8,11 @@ An overview of the API calling is shown below
 
 <img src="/device_connect_back_end_integration.jpg" alt="Device Connect Backed Integration Workflow" />
 
-1. Call FinBox Insights API
-2. In case the response status is `"in_progress"`, wait for the callback to receive [Insights API Response](/device-connect/rest-api.html#insights-api-response).
-3. In case the response status is `"complete"`, consume the [Insights API Response](/device-connect/rest-api.html#insights-api-response) section.
+1. Call Insights API. If the response status is `"in_progress"`, a callback is registered.
+3. Wait for the callback to receive [Insights API Response](/device-connect/rest-api.html#insights-api-response).
+
+::: tip
+The response status will be `"complete"` instead of `"in_progress"` if the results are already computed and returned through callback in the last 15 mins.
+:::
+
+Incase we have the `request_id` and want to fetch the pre-computed results for that `request_id` check the [Querying by webhook](rest-api.html#querying-by-webhook) Section.
