@@ -1,11 +1,11 @@
 # DeviceConnect: Getting Started
 FinBox DeviceConnect requires two integrations - first on Android app from which **users can share data**:
-- [Android](/android.html)
-- [React Native](/react-native.html)
-- [Cordova](/cordova.html)
-- [Flutter](/flutter.html)
+- [Android](/device-connect/android.html)
+- [React Native](/device-connect/react-native.html)
+- [Cordova](/device-connect/cordova.html)
+- [Flutter](/device-connect/flutter.html)
 
 And then on the backend to **fetch predictors** responsible for making decisions:
-- [Insights API](/insights-api.html)
+- [Insights API](/device-connect/insights-api.html)
 
-Checkout the [integration flow](/integration.html) for better understanding
+Checkout the [integration flow]((/device-connect/integration.html)) for better understanding
