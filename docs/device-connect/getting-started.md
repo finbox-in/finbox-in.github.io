@@ -6,6 +6,6 @@ FinBox DeviceConnect requires two integrations - first on Android app from which
 - [Flutter](/device-connect/flutter.html)
 
 And then on the backend to **fetch predictors** responsible for making decisions:
-- [REST API](/device-connect/rest-api.html)
+- [Insights API](/device-connect/insights-api.html)
 
-Checkout the [integration flow]((/device-connect/#integration)) for better understanding
+Checkout the [integration flow]((/device-connect/integration.html)) for better understanding
