@@ -93,6 +93,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | sadhana | Sadhana Sahakari Bank Ltd |
 | saraswat | Saraswat Co-operative Bank |
 | sarvodaya | Sarvodaya Commercial Co-Operative Bank Limited |
+| saurashtra | Saurashtra Gramin Bank |
 | sbi | State Bank of India |
 | shinhan | Shinhan Bank India |
 | sib | South Indian Bank |
