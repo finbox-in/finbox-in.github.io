@@ -111,7 +111,7 @@ Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alpha
 :::
 
 ```dart
-FinBoxDcPlugin.createUser("apiKey", "customerId").fold(
+FinBoxDcPlugin.createUser("CLIENT_API_KEY", "CUSTOMER_ID").fold(
     (right) => {
           // Authentication is success
           print("Access Token: $right")
