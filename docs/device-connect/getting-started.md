@@ -8,4 +8,4 @@ FinBox DeviceConnect requires two integrations - first on Android app from which
 And then on the backend to **fetch predictors** responsible for making decisions:
 - [Insights API](/device-connect/insights-api.html)
 
-Checkout the [integration flow](/device-connect/integration.html) for better understanding
+Checkout the [integration flow](/device-connect/integration-flow.html) for better understanding
