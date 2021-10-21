@@ -145,6 +145,15 @@ FinBoxDcPlugin.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
 ```
 
 
+## Cancel Periodic Sync
+
+If you have already set up the sync for the user, cancel the syncs using `stopPeriodicSync` method.
+
+```dart
+FinBoxDcPlugin.stopPeriodicSync();
+```
+
+
 ## Handle Sync Frequency
 
 By default sync frequency is set to **8 hours**, you can modify it by passing preferred time **in seconds** as an argument to `setSyncFrequency` method once the user is created.
