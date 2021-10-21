@@ -391,7 +391,7 @@ By default sync frequency is set to **8 hours**, you can modify it by passing pr
 <template v-slot:kotlin>
 
 ```kotlin
-finbox.setSyncFrequency()
+finbox.setSyncFrequency(12 * 60 * 60)
 ```
 
 </template>
