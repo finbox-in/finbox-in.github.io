@@ -244,8 +244,8 @@ Create the builder by passing email address, phone number and name of the custom
 ```kotlin
 val deviceMatch = DeviceMatch.Builder().apply {
     setEmail("useremail@gmail.com")
-    setPhone("User Name")
-    setName("9999999999")
+    setName("Full Name")
+    setPhone("9999999999")
 }.build()
 ```
 
