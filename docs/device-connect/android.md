@@ -210,7 +210,7 @@ You can read about the errors in the [Error Codes](/device-connect/error-codes.h
 
 ## Start Periodic Sync
 
-This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals:
+This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -362,9 +362,9 @@ FinBox.initLibrary(this);
 </template>
 </CodeSwitcher>
 
-## Cancel Periodic Syncing
+## Cancel Periodic Sync
 
-If you have already set up the sync for the user data, you can cancel it any time by the following code:
+If you have already set up the sync for the user, cancel the syncs using `stopPeriodicSync` method.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
