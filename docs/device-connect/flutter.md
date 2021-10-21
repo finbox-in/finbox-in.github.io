@@ -133,6 +133,7 @@ This is to be called only on a successful response to `createUser` method's call
 FinBoxDcPlugin.startPeriodicSync();
 ```
 
+
 ## Match Details on Device
 
 Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
@@ -141,4 +142,13 @@ Call `setDeviceMatch` method before starting the syncs.
 
 ```dart
 FinBoxDcPlugin.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
+```
+
+
+## Reset User Data
+
+In case the user data needs to be removed to re-sync the entire data, use the method `resetData`.
+
+```dart
+FinBoxDcPlugin.resetData();
 ```
