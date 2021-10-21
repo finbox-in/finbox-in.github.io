@@ -110,17 +110,25 @@ Call `createUser` method to create the user. It takes Client Api Key and Custome
 Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never `null` or a blank string `""`.
 :::
 
-  ```dart
-  FinBoxDcPlugin.createUser("apiKey", "customerId").fold(
-      (right) => {
-            // Authentication is success
-            print("Access Token: $right")
-          },
-      (left) => {
-            // Authentication failed
-            print("Error Code $left")
-          });
-  ```
+```dart
+FinBoxDcPlugin.createUser("apiKey", "customerId").fold(
+    (right) => {
+          // Authentication is success
+          print("Access Token: $right")
+        },
+    (left) => {
+          // Authentication failed
+          print("Error Code $left")
+        });
+```
 
 You can read about the errors in the [Error Codes](/device-connect/error-codes.html) section.
 
+
+## Start Periodic Sync
+
+This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals.
+
+```dart
+FinBoxDcPlugin.startPeriodicSync();
+```
