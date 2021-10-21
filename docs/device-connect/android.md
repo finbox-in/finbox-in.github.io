@@ -387,6 +387,24 @@ finbox.stopPeriodicSync();
 
 By default sync frequency is set to **8 hours**, you can modify it by passing preferred time **in seconds** as an argument to `setSyncFrequency` method once the user is created.
 
+<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
+<template v-slot:kotlin>
+
+```kotlin
+finbox.setSyncFrequency()
+```
+
+</template>
+<template v-slot:java>
+
+```java
+finbox.setSyncFrequency();
+```
+
+</template>
+</CodeSwitcher>
+
+
 ## Reset User Data
 
 In case the user data needs to be removed to re-sync the entire data, use the method `resetData`.
