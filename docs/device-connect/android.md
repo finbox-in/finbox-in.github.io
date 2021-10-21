@@ -395,14 +395,14 @@ In case the user data needs to be removed to re-sync the entire data, use the me
 <template v-slot:kotlin>
 
 ```kotlin
-finbox.resetData()
+Finbox.resetData()
 ```
 
 </template>
 <template v-slot:java>
 
 ```java
-finbox.resetData();
+Finbox.resetData();
 ```
 
 </template>
