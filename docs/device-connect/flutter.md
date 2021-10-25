@@ -145,6 +145,17 @@ FinBoxDcPlugin.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
 ```
 
 
+## Forward Notifications to SDK
+
+In certain cases, FinBox server requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
+
+Add the following lines inside `FirebaseMessaging.onMessage.listen` method.
+
+```dart
+FinBoxDcPlugin.forwardFinBoxNotificationToSDK(event.data);
+```
+
+
 ## Cancel Periodic Sync
 
 If you have already set up the sync for the user, cancel the syncs using `stopPeriodicSync` method.
