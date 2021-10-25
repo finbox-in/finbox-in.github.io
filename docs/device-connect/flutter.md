@@ -156,6 +156,32 @@ FinBoxDcPlugin.forwardFinBoxNotificationToSDK(event.data);
 ```
 
 
+## Multi-Process Support
+
+DeviceConnect uses a content provider to auto initialize the SDK. The limitation with the OS is that content providers are only initialized once in a **multi-process application** and from the main process. For this reason, any calls to the SDK from other processes will lead to unstable behavior.
+
+In case, you want to use the Flutter SDK from a process other than the main process, follow the two steps mentioned below to initialize the SDK.
+
+### Remove the Content Provider
+
+Remove the content provider that auto initializes the SDK from the Android Manifest file.
+```xml
+<provider
+    android:name="in.finbox.mobileriskmanager.init.AutoInitProvider"
+    android:authorities="in.finbox.lenderapplication.riskmanagerprovider"
+    android:enabled="true"
+    android:exported="false"
+    tools:node="remove" />
+```
+### Initialize the SDK
+
+Initialize the FinBox Flutter SDK in the `onCreate` method of FlutterApplication class.
+
+```dart
+FinBoxDcPlugin.initLibrary(this)
+```
+
+
 ## Cancel Periodic Sync
 
 If you have already set up the sync for the user, cancel the syncs using `stopPeriodicSync` method.
