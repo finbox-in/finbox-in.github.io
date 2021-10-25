@@ -291,7 +291,7 @@ For Device Match to work at full potential, the SDK expects `android.permission.
 
 ## Forward Notifications to SDK
 
-In certain cases, FinBox server often requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
+In certain cases, FinBox server requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
 
 Add the following lines inside the overridden `onMessageReceived` method available in the service that extends `FirebaseMessagingService`.
 
@@ -300,9 +300,8 @@ Add the following lines inside the overridden `onMessageReceived` method availab
 
 ```kotlin
 if (MessagingService.forwardToFinBoxSDK(remoteMessage.data)) {
-    val firebaseMessagingService = MessagingService()
-    firebaseMessagingService.attachContext(this)
-    firebaseMessagingService.onMessageReceived(remoteMessage)
+    val firebaseMessagingService = MessagingService(this)
+    firebaseMessagingService.onMessageReceived(remoteMessage.data)
 } else {
     // Rest of your FCM logic
 }
@@ -313,9 +312,8 @@ if (MessagingService.forwardToFinBoxSDK(remoteMessage.data)) {
 
 ```java
 if(MessagingService.forwardToFinBoxSDK(remoteMessage.getData())) {
-    final MessagingService firebaseMessagingService = new MessagingService();
-    firebaseMessagingService.attachContext(this);
-    firebaseMessagingService.onMessageReceived(remoteMessage);
+    final MessagingService firebaseMessagingService = new MessagingService(this);
+    firebaseMessagingService.onMessageReceived(remoteMessage.getData());
 } else {
     // Rest of your FCM logic
 }
