@@ -28,6 +28,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | boi | Bank of India |
 | canara | Canara Bank |
 | central | Central Bank of India |
+| chikhli | The Chikhli Urban Co-Op Bank Ltd |
 | citi | Citibank |
 | citizens | Citizens Co-op Bank Ltd |
 | city_union | City Union Bank |
@@ -47,6 +48,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | financial | The Financial Co-Operative Bank Ltd |
 | fincarebnk | Fincare Small Finance Bank |
 | fingrowth | Fingrowth Co-Operative Bank | 
+| finobnk | Fino Payments Bank | 
 | gsmahanagar | GS Mahanagar Co-Op Bank |
 | gandhidham | The Gandhidham Co-Op Bank Limited |
 | hdfc | HDFC Bank |
@@ -73,6 +75,8 @@ The table below lists the supported banks with their corresponding identifier. T
 | mahabk | Bank of Maharashtra |
 | mahagrambnk | Maharashtra Gramin Bank |
 | mizoram | Mizoram Rural Bank |
+| mumbai_district | The Mumbai District Central Co-operative Bank |
+| municipalbnk | The Municipal Co-Op Bank Ltd, Mumbai |
 | nainital | Nainital Bank Limited |
 | national_mercantile | National Mercantile Co-operative Bank Limited |
 | nawanagar | The Nawanagar Co-operative Bank Ltd |
@@ -85,9 +89,12 @@ The table below lists the supported banks with their corresponding identifier. T
 | paytm | Paytm Payments Bank |
 | pnbbnk | Punjab National Bank |
 | pochampally | Pochampally Co-Operative Urban Bank |
+| pratap | The Pratap Co-Operative Bank Ltd|
 | primebnk | Prime Co-operative Bank Ltd |
+| pune_people | Pune Peoples Co-op Bank Ltd. |
 | punjab_sind | Punjab & Sind Bank |
 | purvanchalbnk | Purvanchal Bank Ltd |
+| rajkot | Rajkot Nagrik Sahakari Bank Ltd |
 | rbl | RBL Bank |
 | rmgbbnk | Rajasthan Marudhara Gramin Bank |
 | sadhana | Sadhana Sahakari Bank Ltd |
@@ -97,7 +104,9 @@ The table below lists the supported banks with their corresponding identifier. T
 | sbi | State Bank of India |
 | shinhan | Shinhan Bank India |
 | sib | South Indian Bank |
+| suratbnk | The Surat District Co-Op. Bank Ltd. |
 | suryodaybnk | Suryoday Small Finance Bank |
+| sutexbnk | The Sutex co-operative bank Ltd. |
 | svcbnk | SVC Co-Operative Bank |
 | syndicate | Syndicate Bank |
 | tamil_mercantile | Tamilnad Mercantile Bank |
