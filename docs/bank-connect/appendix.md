@@ -9,27 +9,32 @@ The table below lists the supported banks with their corresponding identifier. T
 | abhyudaya | Abhyudaya Co-operative Bank Ltd |
 | ahmedabad_mercantile | The Ahmedabad Mercantile Co-operative Bank Limited |
 | airtel | Airtel Payments Bank |
+| akola | The Akola Urban Co-Operative Bank Ltd |
 | allahabad | Allahabad Bank |
 | alrajhi | Al Rajhi Bank |
 | andhra | Andhra Bank |
 | apgvbnk | Andhra Pradesh Grameena Vikas Bank |
 | andhra_pragathi | Andhra Pragathi Grameena Bank |
 | apna_sahakari | Apna Sahakari Bank Ltd |
+| associatebnk | Associate Co Operative Bank |
 | ausfbnk | AU Small Finance Bank |
 | axis | Axis Bank |
 | bandhan | Bandhan Bank |
 | baramati | The Baramti Sahakari Bank Ltd |
 | baroda | Bank of Baroda |
+| baroda_gujratbnk | Baroda Gujrat Gramin Bank |
 | bassein | Bassein Catholic Co-operative Bank Ltd |
 | bharatbnk | Bharat Co-Operative Bank |
 | boi | Bank of India |
 | canara | Canara Bank |
 | central | Central Bank of India |
+| chikhli | The Chikhli Urban Co-Op Bank Ltd |
 | citi | Citibank |
 | citizens | Citizens Co-op Bank Ltd |
 | city_union | City Union Bank |
 | corporation | Corporation Bank |
 | cosmos | Cosmos Co-operative Bank Ltd |
+| csbbnk | Catholic Syrian Bank Limited |
 | dhanlakshmi | Dhanlaxmi Bank |
 | dbsbnk | DBS Bank |
 | dcbbnk | DCB Bank |
@@ -43,6 +48,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | financial | The Financial Co-Operative Bank Ltd |
 | fincarebnk | Fincare Small Finance Bank |
 | fingrowth | Fingrowth Co-Operative Bank | 
+| finobnk | Fino Payments Bank | 
 | gsmahanagar | GS Mahanagar Co-Op Bank |
 | gandhidham | The Gandhidham Co-Op Bank Limited |
 | hdfc | HDFC Bank |
@@ -59,6 +65,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | jivan | Jivan Commercial Co-operative Bank Ltd |
 | jnkbnk | Jammu and Kashmir Bank |
 | jskb | Jila Sahakari Kendriya Bank, Khargone |
+| kalyan | Kalyan Janata Sahakari Bank |
 | karnataka | Karnataka Bank |
 | karnavati | Karnavati Co-op Bank Ltd |
 | karur | Karur Vysya Bank |
@@ -68,6 +75,8 @@ The table below lists the supported banks with their corresponding identifier. T
 | mahabk | Bank of Maharashtra |
 | mahagrambnk | Maharashtra Gramin Bank |
 | mizoram | Mizoram Rural Bank |
+| mumbai_district | The Mumbai District Central Co-operative Bank |
+| municipalbnk | The Municipal Co-Op Bank Ltd, Mumbai |
 | nainital | Nainital Bank Limited |
 | national_mercantile | National Mercantile Co-operative Bank Limited |
 | nawanagar | The Nawanagar Co-operative Bank Ltd |
@@ -80,26 +89,36 @@ The table below lists the supported banks with their corresponding identifier. T
 | paytm | Paytm Payments Bank |
 | pnbbnk | Punjab National Bank |
 | pochampally | Pochampally Co-Operative Urban Bank |
+| pratap | The Pratap Co-Operative Bank Ltd|
 | primebnk | Prime Co-operative Bank Ltd |
+| pune_people | Pune Peoples Co-op Bank Ltd. |
 | punjab_sind | Punjab & Sind Bank |
+| purvanchalbnk | Purvanchal Bank Ltd |
+| rajkot | Rajkot Nagrik Sahakari Bank Ltd |
 | rbl | RBL Bank |
 | rmgbbnk | Rajasthan Marudhara Gramin Bank |
 | sadhana | Sadhana Sahakari Bank Ltd |
 | saraswat | Saraswat Co-operative Bank |
+| sarvodaya | Sarvodaya Commercial Co-Operative Bank Limited |
+| saurashtra | Saurashtra Gramin Bank |
 | sbi | State Bank of India |
 | shinhan | Shinhan Bank India |
 | sib | South Indian Bank |
+| suratbnk | The Surat District Co-Op. Bank Ltd. |
 | suryodaybnk | Suryoday Small Finance Bank |
+| sutexbnk | The Sutex co-operative bank Ltd. |
 | svcbnk | SVC Co-Operative Bank |
 | syndicate | Syndicate Bank |
 | tamil_mercantile | Tamilnad Mercantile Bank |
 | thane | Thane District Central Cooperative Bank |
+| thane_bharat | Thane Bharat Sahakari Bank Ltd. |
 | tjsb_sahakari | TJSB Sahakari Bank Ltd |
 | ubi | Union Bank of India |
 | uco | UCO Bank |
 | ujjivan | Ujjivan Small Finance Bank |
 | united | United Bank of India |
 | urbancoop | The New Urban Co-operative Bank Ltd |
+| utkarshbnk | Utkarsh Small Finance Bank Ltd |
 | vaidyanath | The Vaidyanath Urban Co-Op Bank Ltd |
 | varachha | The Varachha Co-Op Bank Ltd |
 | vijaya | Vijaya Bank |
