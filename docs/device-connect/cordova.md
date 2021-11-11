@@ -59,12 +59,8 @@ You can read about the errors in the [Error Codes](/device-connect/error-codes.h
 This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals:
 
 ```javascript
-cordova.plugins.FinBoxRiskManager.startPeriodicSync(12) //Start the sync periodically after every 12 hour
+cordova.plugins.FinBoxRiskManager.startPeriodicSync()
 ```
-
-::: tip Handle Sync Frequency
-`startPeriodicSync` takes one argument which indicates the frequency of sync **in hours**.
-:::
 
 ## Cancel Periodic Syncing
 
