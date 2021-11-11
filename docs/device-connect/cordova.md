@@ -1,15 +1,9 @@
 # DeviceConnect: Cordova
-The Cordova plugin can be used to integrate mobile apps with DeviceConnect so that users can share their data.
 
-## Installation
+Device Connect Cordova SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
 
-Install the Cordova SDK from the npm package:
 
-```sh
-cordova plugin add cordova-plugin-finbox-risk-manager
-```
-
-## Authentication
+## Add Plugin
 
 Specify the following in `local.properties` file:
 
@@ -22,6 +16,12 @@ COMMON_FLAVOR=<COMMON_FLAVOR>
 LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
 ```
 
+Add the plugin from the npm package:
+
+```sh
+cordova plugin add cordova-plugin-finbox-risk-manager
+```
+
 ::: warning NOTE
 Following will be shared by FinBox team at the time of integration:
 - `ACCESS_KEY`
@@ -32,6 +32,7 @@ Following will be shared by FinBox team at the time of integration:
 - `LOGGER_SDK_VERSION`
 - `CLIENT_API_KEY`
 :::
+
 
 ## Create User Method
 Call `createUser` method using the `FinBoxRiskManager` instance to create the user (first time) or check the API credentials for the SDK. It takes `CUSTOMER_ID` as one of its arguments which is a unique identifier for a user.
