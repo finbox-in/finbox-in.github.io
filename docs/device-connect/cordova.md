@@ -34,14 +34,14 @@ Following will be shared by FinBox team at the time of integration:
 :::
 
 
-## Create User Method
-Call `createUser` method using the `FinBoxRiskManager` instance to create the user (first time) or check the API credentials for the SDK. It takes `CUSTOMER_ID` as one of its arguments which is a unique identifier for a user.
+## Create User
+
+Call `createUser` method to create the user. It takes Client Api Key and Customer Id as the arguments.
 
 ::: danger IMPORTANT
-Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never `null` or a blank string `""`.
+Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never be `null` or a blank string `""`.
 :::
 
-The response to this method (success or failure) can be captured using the callback, and on success [Start Periodic Sync Method](/device-connect/cordova.html#start-period-sync-method) should be called.
 ```javascript
 cordova.plugins.FinBoxRiskManager.createUser("CLIENT_API_KEY", "CUSTOMER_ID", function (response) {
     console.log(response);
@@ -50,6 +50,9 @@ cordova.plugins.FinBoxRiskManager.createUser("CLIENT_API_KEY", "CUSTOMER_ID", fu
     console.log(error);
 });
 ```
+
+You can read about the errors in the [Error Codes](/device-connect/error-codes.html) section.
+
 
 ## Start Periodic Sync Method
 
