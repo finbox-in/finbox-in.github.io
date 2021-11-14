@@ -76,6 +76,37 @@ cordova.plugins.FinBoxRiskManager.setDeviceMatch("useremail@gmail.com", "Full Na
 ```
 
 
+## Multi-Process Support
+
+DeviceConnect uses a content provider to auto initialize the SDK. The limitation with the OS is that content providers are only initialized once in a **multi-process application** and from the main process. For this reason, any calls to the SDK from other processes will lead to unstable behavior.
+
+In case, you want to use the Cordova SDK from a process other than the main process, follow the two steps mentioned below to initialize the SDK.
+
+### Remove the Content Provider
+
+Remove the content provider that auto initializes the SDK from the Android Manifest file using `config.xml` file. Add the changes inside `<platform name="android">` tag.
+
+```xml
+<config-file parent="/manifest/application" target="AndroidManifest.xml">
+    <provider android:authorities="in.finbox.lenderapplication.riskmanagerprovider" android:enabled="true" android:exported="false" android:name="in.finbox.mobileriskmanager.init.AutoInitProvider" tools:node="remove" />
+</config-file>
+```
+
+Update the widget tag to include
+
+```xml
+<widget ... xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+```
+
+### Initialize the SDK
+
+Initialize the FinBox Cordova SDK as soon as the `onDeviceReady` method is called.
+
+```javascript
+cordova.plugins.FinBoxRiskManager.initLibrary(this)
+```
+
+
 ## Cancel Periodic Syncing
 
 If you have already set up the sync for the user data, you can cancel it any time by the following code:
