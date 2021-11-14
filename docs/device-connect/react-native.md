@@ -60,7 +60,7 @@ Following will be shared by FinBox team at the time of integration:
 Call `createUser` method using the `FinBoxRiskSdk` instance to create the user (first time) or check the API credentials for the SDK. It takes `CUSTOMER_ID` as one of its arguments which is a unique identifier for a user.
 
 ::: danger IMPORTANT
-Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never `null` or a blank string `""`.
+Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never be `null` or a blank string `""`.
 :::
 
 The response to this method (success or failure) can be captured using the callback, and on success [Start Periodic Sync Method](/device-connect/react-native.html#start-period-sync-method) should be called.
