@@ -44,9 +44,11 @@ Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alpha
 
 ```javascript
 cordova.plugins.FinBoxRiskManager.createUser("CLIENT_API_KEY", "CUSTOMER_ID", function (response) {
+    // User is created successfully
     console.log(response);
-    cordova.plugins.FinBoxRiskManager.startPeriodicSync(12); 
 }, function (error) {
+    // User is failed to created
+    // Log the error
     console.log(error);
 });
 ```
