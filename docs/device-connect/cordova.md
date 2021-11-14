@@ -135,6 +135,16 @@ cordova.plugins.FinBoxRiskManager.startPeriodicSync()
 ```
 
 
+## Forward Notifications to SDK
+
+In certain cases, FinBox server requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
+
+Add the following lines inside `cordova.plugins.firebase.messaging.onMessage` and `cordova.plugins.firebase.messaging.onBackgroundMessage` method.
+
+```javascript
+cordova.plugins.FinBoxRiskManager.forwardFinBoxNotificationToSDK(data);
+```
+
 ## Match Details on Device
 
 Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
