@@ -122,10 +122,6 @@ module.exports = {
               path: '/bank-connect/android-client.html'
             },
             {
-              title: 'React Client SDK',
-              path: '/bank-connect/react.html'
-            },
-            {
               title: 'Cordova SDK',
               path: '/bank-connect/cordova.html'
             },
