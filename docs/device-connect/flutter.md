@@ -5,7 +5,7 @@ Device Connect Flutter SDK is used to collect anonymised non-PII data from the d
 
 ## Requirements
 
-Device Connect Flutter SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring to support older versions.
+Device Connect Flutter SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
 <template v-slot:kotlin>
