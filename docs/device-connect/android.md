@@ -7,7 +7,7 @@ Device Connect Android SDK is used to collect anonymised non-PII data from the d
 
 ## Requirements
 
-Device Connect Android SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring to support older versions.
+Device Connect Android SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
 <template v-slot:kotlin>
@@ -164,7 +164,7 @@ Following will be shared by FinBox team at the time of integration:
 Call `createUser` method to create the user. It takes Client Api Key and Customer Id as the arguments.
 
 ::: danger IMPORTANT
-Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never `null` or a blank string `""`.
+Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never be `null` or a blank string `""`.
 :::
 
 The response to this method (success or failure) can be captured using the callback `FinBoxAuthCallback`.
@@ -210,7 +210,7 @@ You can read about the errors in the [Error Codes](/device-connect/error-codes.h
 
 ## Start Periodic Sync
 
-This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals:
+This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -244,8 +244,8 @@ Create the builder by passing email address, phone number and name of the custom
 ```kotlin
 val deviceMatch = DeviceMatch.Builder().apply {
     setEmail("useremail@gmail.com")
-    setPhone("User Name")
-    setName("9999999999")
+    setName("Full Name")
+    setPhone("9999999999")
 }.build()
 ```
 
@@ -291,7 +291,7 @@ For Device Match to work at full potential, the SDK expects `android.permission.
 
 ## Forward Notifications to SDK
 
-In certain cases, FinBox server often requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
+In certain cases, FinBox server requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
 
 Add the following lines inside the overridden `onMessageReceived` method available in the service that extends `FirebaseMessagingService`.
 
@@ -300,9 +300,8 @@ Add the following lines inside the overridden `onMessageReceived` method availab
 
 ```kotlin
 if (MessagingService.forwardToFinBoxSDK(remoteMessage.data)) {
-    val firebaseMessagingService = MessagingService()
-    firebaseMessagingService.attachContext(this)
-    firebaseMessagingService.onMessageReceived(remoteMessage)
+    val firebaseMessagingService = MessagingService(this)
+    firebaseMessagingService.onMessageReceived(remoteMessage.data)
 } else {
     // Rest of your FCM logic
 }
@@ -313,9 +312,8 @@ if (MessagingService.forwardToFinBoxSDK(remoteMessage.data)) {
 
 ```java
 if(MessagingService.forwardToFinBoxSDK(remoteMessage.getData())) {
-    final MessagingService firebaseMessagingService = new MessagingService();
-    firebaseMessagingService.attachContext(this);
-    firebaseMessagingService.onMessageReceived(remoteMessage);
+    final MessagingService firebaseMessagingService = new MessagingService(this);
+    firebaseMessagingService.onMessageReceived(remoteMessage.getData());
 } else {
     // Rest of your FCM logic
 }
@@ -362,9 +360,9 @@ FinBox.initLibrary(this);
 </template>
 </CodeSwitcher>
 
-## Cancel Periodic Syncing
+## Cancel Periodic Sync
 
-If you have already set up the sync for the user data, you can cancel it any time by the following code:
+If you have already set up the sync for the user, cancel the syncs using `stopPeriodicSync` method.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -387,6 +385,24 @@ finbox.stopPeriodicSync();
 
 By default sync frequency is set to **8 hours**, you can modify it by passing preferred time **in seconds** as an argument to `setSyncFrequency` method once the user is created.
 
+<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
+<template v-slot:kotlin>
+
+```kotlin
+finbox.setSyncFrequency(12 * 60 * 60)
+```
+
+</template>
+<template v-slot:java>
+
+```java
+finbox.setSyncFrequency();
+```
+
+</template>
+</CodeSwitcher>
+
+
 ## Reset User Data
 
 In case the user data needs to be removed to re-sync the entire data, use the method `resetData`.
@@ -395,14 +411,14 @@ In case the user data needs to be removed to re-sync the entire data, use the me
 <template v-slot:kotlin>
 
 ```kotlin
-finbox.resetData()
+Finbox.resetData()
 ```
 
 </template>
 <template v-slot:java>
 
 ```java
-finbox.resetData();
+Finbox.resetData();
 ```
 
 </template>
