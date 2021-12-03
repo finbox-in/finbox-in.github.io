@@ -94,7 +94,7 @@ Here `is_eligible` is a **boolean** indicating whether the user is eligible or n
 This API can be called multiple times for an eligible user, and is used to get a valid token that can be used by the Android App to initialize the SDK.
 
 ::: warning Token Validity
-- In case of **production** environment, the token is valid for **24 hours** and in **UAT** it is valid for **1 week**.
+- The token is valid for **24 hours**.
 - It is recommended to call this API everytime user clicks on the banner on app, so that a fresh token is issued for the user session everytime.
 :::
 
