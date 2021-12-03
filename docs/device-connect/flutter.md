@@ -5,7 +5,7 @@ Device Connect Flutter SDK is used to collect anonymised non-PII data from the d
 
 ## Requirements
 
-Device Connect Flutter SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring to support older versions.
+Device Connect Flutter SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
 <template v-slot:kotlin>
@@ -104,23 +104,106 @@ Following will be shared by FinBox team at the time of integration:
 
 ## Create User
 
-Call `FinBoxDcPlugin.createUser` method to create the user. It takes Client Api Key and Customer Id as the arguments.
+Call `createUser` method to create the user. It takes Client Api Key and Customer Id as the arguments.
 
 ::: danger IMPORTANT
-Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never `null` or a blank string `""`.
+Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never be `null` or a blank string `""`.
 :::
 
-  ```dart
-  static String _deviceConnectValue = "";
+```dart
+FinBoxDcPlugin.createUser("CLIENT_API_KEY", "CUSTOMER_ID").fold(
+    (right) => {
+          // Authentication is success
+          print("Access Token: $right")
+        },
+    (left) => {
+          // Authentication failed
+          print("Error Code $left")
+        });
+```
 
-    Future _loadDC() async {
-      try {
-        _deviceConnectValue = await FinBoxDcPlugin.createUser("CLIENT_API_KEY", "CUSTOMER_ID");
-      } on PlatformException catch (e) {
-        _deviceConnectValue = 'Failed to fetch data';
-        print(e.message);
-      }
-    }
-  ```
-As success result, you will get an 'accessToken'
+You can read about the errors in the [Error Codes](/device-connect/error-codes.html) section.
 
+
+## Start Periodic Sync
+
+This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals.
+
+```dart
+FinBoxDcPlugin.startPeriodicSync();
+```
+
+
+## Match Details on Device
+
+Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
+
+Call `setDeviceMatch` method before starting the syncs.
+
+```dart
+FinBoxDcPlugin.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
+```
+
+
+## Forward Notifications to SDK
+
+In certain cases, FinBox server requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
+
+Add the following lines inside `FirebaseMessaging.onMessage.listen` method.
+
+```dart
+FinBoxDcPlugin.forwardFinBoxNotificationToSDK(event.data);
+```
+
+
+## Multi-Process Support
+
+DeviceConnect uses a content provider to auto initialize the SDK. The limitation with the OS is that content providers are only initialized once in a **multi-process application** and from the main process. For this reason, any calls to the SDK from other processes will lead to unstable behavior.
+
+In case, you want to use the Flutter SDK from a process other than the main process, follow the two steps mentioned below to initialize the SDK.
+
+### Remove the Content Provider
+
+Remove the content provider that auto initializes the SDK from the Android Manifest file.
+```xml
+<provider
+    android:name="in.finbox.mobileriskmanager.init.AutoInitProvider"
+    android:authorities="in.finbox.lenderapplication.riskmanagerprovider"
+    android:enabled="true"
+    android:exported="false"
+    tools:node="remove" />
+```
+### Initialize the SDK
+
+Initialize the FinBox Flutter SDK in the `onCreate` method of FlutterApplication class.
+
+```dart
+FinBoxDcPlugin.initLibrary(this)
+```
+
+
+## Cancel Periodic Sync
+
+If you have already set up the sync for the user, cancel the syncs using `stopPeriodicSync` method.
+
+```dart
+FinBoxDcPlugin.stopPeriodicSync();
+```
+
+
+## Handle Sync Frequency
+
+By default sync frequency is set to **8 hours**, you can modify it by passing preferred time **in seconds** as an argument to `setSyncFrequency` method once the user is created.
+
+```dart
+FinBoxDcPlugin.setSyncFrequency(12 * 60 * 60);
+```
+
+
+## Reset User Data
+
+In case the user data needs to be removed to re-sync the entire data, use the method `resetData`.
+
+```dart
+FinBoxDcPlugin.resetData();
+```

@@ -355,6 +355,8 @@ val builder = FinBoxLending.Builder(context)
     .setCustomerId("<CUSTOMER_ID>")
     .setFinBoxApiKey("<CLIENT_API_KEY>")
     .setUserToken("<USER_TOKEN>")
+    .setSplashIcon(<DRAWABLE>)
+    .setToolbarIcon(<DRAWABLE>)
     .build()
 
 startActivityForResult(
@@ -373,6 +375,8 @@ FinBoxLending builder = FinBoxLending.Builder(context)
     .setCustomerId(<CUSTOMER_ID>)
     .setFinBoxApiKey(<CLIENT_API_KEY>)
     .setUserToken(<USER_TOKEN>)
+    .setSplashIcon(<DRAWABLE>)
+    .setToolbarIcon(<DRAWABLE>)
     .build();
 
 startActivityForResult(
@@ -384,6 +388,10 @@ startActivityForResult(
 
 </template>
 </CodeSwitcher>
+
+- `setSplashIcon` is the optional method that will contain the drawable (in **Int**) that can be used to show icon on the splash screen.
+- `setToolbarIcon` is the optional method that will contain the drawable (in **Int**) that can be used to show the icon on the toolbar.
+
 
 ## Credit Line
 
@@ -424,6 +432,8 @@ val builder = FinBoxLending.Builder(context)
     .setCustomerId("<CUSTOMER_ID>")
     .setFinBoxApiKey("<CLIENT_API_KEY>")
     .setUserToken("<USER_TOKEN>")
+    .setSplashIcon(<DRAWABLE>)
+    .setToolbarIcon(<DRAWABLE>)
     .setCreditLineAmount(<WITHDRAW_AMOUNT>)
     .setCreditLineTransactionId("<TRANSACTION_ID>")
     .build()
@@ -444,6 +454,8 @@ FinBoxLending builder = FinBoxLending.Builder(context)
     .setCustomerId("<CUSTOMER_ID>")
     .setFinBoxApiKey("<CLIENT_API_KEY>")
     .setUserToken("<USER_TOKEN>")
+    .setSplashIcon(<DRAWABLE>)
+    .setToolbarIcon(<DRAWABLE>)
     .setCreditLineAmount(<WITHDRAW_AMOUNT>)
     .setCreditLineTransactionId("<TRANSACTION_ID>")
     .build();
