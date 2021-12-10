@@ -466,6 +466,54 @@ Response fields are explained below:
 | totalPayable | Float | Total amount to be paid by user, excluding partial payments made |
 | amountReceived | Float | Denotes the amount paid by customer against the EMI |
 
+## EDI (Equated Daily Installments)
+Returns repayment information in case an EDI product is configured.
+
+::: tip Endpoint
+GET **`base_url`/v1/edi/repayments?loanApplicationID=`someLongLoanApplicationUUID`**
+:::
+
+**Response Format**
+```json
+{
+    "data": {
+        "loanApplicationID": "c24ef33f-f167-46ed-89c7-d101e636b0a5",
+        "numTotalEDIs": 79,
+        "numPaidEDIs": 0,
+        "numUnpaidEDIs": 79,
+        "numOverdueEDIs": 9,
+        "totalLoanAmount": 26499,
+        "amountPaid": 7,
+        "amountUnpaid": 26499,
+        "amountOverdue": 3024,
+        "lateCharges": 0,
+        "totalLateFees": 5,
+        "lastEDIPaidDate": "2021-11-24T00:00:00Z",
+        "lastEDIPaidAmount": 1,
+        "excessFunds": 2
+    },
+    "error": "",
+    "status": true
+}
+```
+
+| Key | Type | Nullable|  Description |
+| - | -  | - | - |
+| loanApplicationID | string | No | Id of the loan application for which the data is queried |
+| numTotalEDIs | int | No | Total number of EDIs for the loan application  |
+| numPaidEDIs |  int | No | Number of EDIs settled so far  |
+| numUnpaidEDIs | int | No | Number of EDIs remaining to be paid from user's side  |
+| numOverdueEDIs |int | No | Number of EDIs which should be paid by now, but has not been paid yet |
+| totalLoanAmount | float64 | No | Includes the repayment amount which the customer will be paying. This will not include the late charges incurred  |
+| amountPaid | float64 | No | Total amount paid so far across the settled EDIs  |
+| amountUnpaid | float64 | No | Remaining EDI amount to be paid by the user  |
+| amountOverdue | float64 | No | Total EDI amount that the user has not paid till date  |
+| lateCharges | float64 | No | Late fees which is pending to be paid by the user  |
+| totalLateFees | float64 | No | Total late fees which the user has incurred so far  |
+| lastEDIPaidDate| date time | Yes | Date of most recent payment done (EDI/Late Fees)  |
+| lastEDIPaidAmount | float64 | Yes | Amount of most recent payment done by the customer (EDI/ Late fees)  |
+| excessFunds | float64 | No| Excess amount apart from the amount used for settling the EDI and Late Fees  |
+
 ## Repay Loan
 Marks the repayment of a given loan EMI
 
