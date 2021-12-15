@@ -356,7 +356,7 @@ val builder = FinBoxLending.Builder(context)
     .setFinBoxApiKey("<CLIENT_API_KEY>")
     .setUserToken("<USER_TOKEN>")
     .setSplashIcon(<DRAWABLE>)
-    .setToolbarIcon(<DRAWABLE>)
+    .setFooterIcon(<DRAWABLE>)
     .build()
 
 startActivityForResult(
@@ -376,7 +376,7 @@ FinBoxLending builder = FinBoxLending.Builder(context)
     .setFinBoxApiKey(<CLIENT_API_KEY>)
     .setUserToken(<USER_TOKEN>)
     .setSplashIcon(<DRAWABLE>)
-    .setToolbarIcon(<DRAWABLE>)
+    .setFooterIcon(<DRAWABLE>)
     .build();
 
 startActivityForResult(
