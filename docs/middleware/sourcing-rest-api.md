@@ -816,6 +816,50 @@ On successful updating the status, API will give a response with 200 HTTP status
 | amount should be greater than 0 | 400 |
 | sum of invoice amounts cannot exceed transaction amount | 400 |
 
+## Merge Credit Line Transactions
+Merge Credit Line Transactions in processing state to a single transaction. Useful when different orders have same invoice. After merging, invoice can be moved to cancelled / confirmed state. 
+
+::: warning NOTE
+1. This API's request format is specific to e-commerce use case, and is disabled by default for clients with a different use case.
+2. For other use cases if this is required, FinBox team will share a different API.
+:::
+
+::: tip Endpoint
+POST **`base_url`/v1/creditline/txn/merge**
+:::
+
+**Request Format**
+```json
+{
+    "txnIDs": ["039b0552-31e3-4724-a35c-0d5edd663bcf", "234b0552-21e3-1722-a35c-1e2edd663bcf"]
+}
+```
+| Field | Type | Description |
+| - | - | - |
+| txnIDs | Array of strings | Array of unique FinBox Transaction IDs, this can be fetched using the [Credit Line Transactions API](/middleware/sourcing-rest-api.html#credit-line-transactions)  |
+
+On successful merging, API will give a response with 200 HTTP status code and new merged finbox txn id.
+
+### Response
+```json
+{
+    "data": {
+        "mergedTxnID": "712c0552-33e3-5224-b35c-1d5edd663bde"
+    },
+    "status": true,
+    "error": ""
+}
+```
+
+### Error Cases
+| Case | HTTP Code |
+| - | - |
+| Missing txnIDs | 400 |
+| < 2 items in txnIDs key | 400 |
+| txnID passed is not found | 404 |
+| mismatch in txn loan details | 409 |
+| transaction passed not in processing state | 409 |
+
 ## User Activity History
 Returns the activity 
 ::: tip Endpoint
