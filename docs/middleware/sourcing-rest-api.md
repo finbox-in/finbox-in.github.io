@@ -131,6 +131,83 @@ Here `token` field indicates the token.
 ::: warning Tracking Source
 In case you are using same API key across different platforms, and want to track the source of the user, also pass a string field `source` in the request body, indicating a unique source from which the user is accessing the SDK from.
 :::
+
+## Partner Push
+This API is used to pass partner data to FinBox system if required. This API is to be called before calling `/v1/user/eligibility` API.
+
+Hence, the flow of APIs will be as follows:
+1. Create User API `/v1/user/create` (One Time)
+2. Push User Data API `/v1/user/push` (One Time)
+3. Get Eligibility API `/v1/user/eligibility` (One Time)
+4. Token API `/v1/user/token` / Session API `/v1/user/session` (Every time user resumes/starts journey)
+
+::: tip Endpoint
+POST **`base_url`/v1/user/push**
+:::
+
+### Request Format
+```json
+{
+    "customerID": "somecustomerid",
+    "pan": "BQGPM6873M",
+    "name": "Sample User",
+    "dob": "1992-01-01",
+    "email": "test@finbox.in",
+    "gender": "Male",
+    "gstin": "18BQGPM6873M1ZM",
+    "vintageDate": "2006-01-02"
+}
+
+```
+
+| Field       | Type   | Mandatory  | Description   |
+| ----------- | ------ | --------- | ------ |
+| customerID  | String | Yes       | Unique customerID which was used while creating user in Create User API |
+| pan | String | No | Applicant's Personal PAN |
+| name        | String | No       | Full Name  |
+| dob         | String | No       | Date of Birth in `YYYY-MM-DD` format  |
+| email         | String | No       | Applicant's Email  |
+| gender      | String | No       | Gender, possible values are `Male`, `Female` or `Other` |
+| gstin | String | No | GSTIN of applicant's business |
+| vintageDate | String | No | Platform onboarding date of customer in `YYYY-MM-DD` format | 
+
+::: warning NOTE
+1. Based on pre-qualification criteria, additional fields might be required to be passed in this API endpoint. These fields will be communicated by FinBox team, if required.
+2. Except `customerID` all other fields are optional. Fields can be passed as per requirement, like in business loan / credit line, GSTIN can be passed, while in personal loan / credit line journey this can be left out.
+:::
+
+### Response
+```json
+{
+    "data": {
+        "message": "added"
+    },
+    "error": "",
+    "status": true
+}
+```
+
+### Error Cases
+| Error Message | HTTP Code | Description |
+| ------------------- | --------- | ----------------------- |
+| Missing customerID    | 403  | Compulsory field `customerID` was not passed  |
+| request validation failed   | 400       | Invalid Request Body Format |
+| User not found | 404       | No user with given `cusomterID` exists        |
+| User journey already started. Partner data should be pushed before starting journey | 400   | User journey already started. Partner data should be pushed before starting journey |
+| Invalid `fieldname`, passed value: `passedvalue` | 400 | Value passed for the field was in invalid format |
+| PAN is not matching with GSTIN, passed value: PAN = `passed_pan`, GSTIN = `passed_gstin` | 400 | PAN extracted from GSTIN is not matching with the propreitor's PAN |
+| something went wrong  | 409   | Internal error while processing the request  |
+
+
+**Error Response format:**
+```json
+{
+    "data": {},
+    "error": "ERROR_MESSAGE_HERE",
+    "status": false
+}
+```
+
 ## List Users
 Lists all the users created from a given sourcing entity's account. It's a paginated API.
 ::: tip Endpoint
