@@ -937,6 +937,65 @@ On successful merging, API will give a response with 200 HTTP status code and ne
 | mismatch in txn loan details | 409 |
 | transaction passed not in processing state | 409 |
 
+## Overdue Credit Lines
+Returns customers with overdue txns and payment links 
+
+::: tip Endpoint
+GET **`base_url`/v1/creditline/overdue**
+:::
+
+### Response
+```json
+{
+    "data": {
+        "users": [
+            {
+                "customerID": "some_customer_id",
+                "loanApplicationNo": "FB1620071147561625",
+                "availableLimit": 7000,
+                "maxLimit": 16000,
+                "status": "INACTIVE",
+                "inactiveReason": "pay emis to reactive link",
+                "paymentLink": "https://payment-link",
+                "overdueAmount": 9000,
+                "overdueTxns": [
+                    {
+                        "txnID": "8cf9ae88-d379-4afa-b7a8-eeb1165bbecc",
+                        "txnAmount": 9000,
+                        "totalPayable": 9000,
+                        "invoiceNo": "A123",
+                        "awbNo": "123456764534534",
+                        "partnerTxnID": "partner_txn_id_sample",
+                        "dueDate": "2021-06-05",
+                        "amountReceived": 0
+                    }
+                ]
+            }
+        ]
+    },
+    "error": "",
+    "status": true
+}
+```
+| Field | Type | Description |
+| - | - | - |
+| customerID | String | Customer ID of the user  |
+| loanApplicationNo | String | Loan Application No linked with credit link account  |
+| availableLimit | Float | Available Limit |
+| maxLimit | Float | Maximum Limit |
+| status | String | Credit Line Status, can be `ACTIVE` or `INACTIVE` |
+| inactiveReason | String | specifies the reason for status being `INACTIVE` |
+| paymentLink | String | Payment Link for clearing all dues |
+| overdueAmount | Float | Sum of all pending amounts (totalPayable - amountReceived) |
+| txnID | String | Unique FinBox Txn ID |
+| txnAmount | Float | Transaction Amount |
+| totalPayable | Float | Total amount expected to be paid off against the transaction (doesn't include partially paid amount) |
+| amountReceived | Float | Total amount paid (partial) paid against the transaction |
+| awbNo | String | AWB No of the transaction |
+| invoiceNo | String | Invoice No of the transaction |
+| partnerTxnID | String | Order ID / Partner Txn ID |
+| dueDate | String | Oldest due date of the overdue txn |
+
 ## User Activity History
 Returns the activity 
 ::: tip Endpoint
