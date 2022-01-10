@@ -94,7 +94,7 @@ Here `is_eligible` is a **boolean** indicating whether the user is eligible or n
 This API can be called multiple times for an eligible user, and is used to get a valid token that can be used by the Android App to initialize the SDK.
 
 ::: warning Token Validity
-- In case of **production** environment, the token is valid for **24 hours** and in **UAT** it is valid for **1 week**.
+- The token is valid for **24 hours**.
 - It is recommended to call this API everytime user clicks on the banner on app, so that a fresh token is issued for the user session everytime.
 :::
 
@@ -131,6 +131,83 @@ Here `token` field indicates the token.
 ::: warning Tracking Source
 In case you are using same API key across different platforms, and want to track the source of the user, also pass a string field `source` in the request body, indicating a unique source from which the user is accessing the SDK from.
 :::
+
+## Partner Push
+This API is used to pass partner data to FinBox system if required. This API is to be called before calling `/v1/user/eligibility` API.
+
+Hence, the flow of APIs will be as follows:
+1. Create User API `/v1/user/create` (One Time)
+2. Push User Data API `/v1/user/push` (One Time)
+3. Get Eligibility API `/v1/user/eligibility` (One Time)
+4. Token API `/v1/user/token` / Session API `/v1/user/session` (Every time user resumes/starts journey)
+
+::: tip Endpoint
+POST **`base_url`/v1/user/push**
+:::
+
+### Request Format
+```json
+{
+    "customerID": "somecustomerid",
+    "pan": "BQGPM6873M",
+    "name": "Sample User",
+    "dob": "1992-01-01",
+    "email": "test@finbox.in",
+    "gender": "Male",
+    "gstin": "18BQGPM6873M1ZM",
+    "vintageDate": "2006-01-02"
+}
+
+```
+
+| Field       | Type   | Mandatory  | Description   |
+| ----------- | ------ | --------- | ------ |
+| customerID  | String | Yes       | Unique customerID which was used while creating user in Create User API |
+| pan | String | No | Applicant's Personal PAN |
+| name        | String | No       | Full Name  |
+| dob         | String | No       | Date of Birth in `YYYY-MM-DD` format  |
+| email         | String | No       | Applicant's Email  |
+| gender      | String | No       | Gender, possible values are `Male`, `Female` or `Other` |
+| gstin | String | No | GSTIN of applicant's business |
+| vintageDate | String | No | Platform onboarding date of customer in `YYYY-MM-DD` format | 
+
+::: warning NOTE
+1. Based on pre-qualification criteria, additional fields might be required to be passed in this API endpoint. These fields will be communicated by FinBox team, if required.
+2. Except `customerID` all other fields are optional. Fields can be passed as per requirement, like in business loan / credit line, GSTIN can be passed, while in personal loan / credit line journey this can be left out.
+:::
+
+### Response
+```json
+{
+    "data": {
+        "message": "added"
+    },
+    "error": "",
+    "status": true
+}
+```
+
+### Error Cases
+| Error Message | HTTP Code | Description |
+| ------------------- | --------- | ----------------------- |
+| Missing customerID    | 403  | Compulsory field `customerID` was not passed  |
+| request validation failed   | 400       | Invalid Request Body Format |
+| User not found | 404       | No user with given `cusomterID` exists        |
+| User journey already started. Partner data should be pushed before starting journey | 400   | User journey already started. Partner data should be pushed before starting journey |
+| Invalid `fieldname`, passed value: `passedvalue` | 400 | Value passed for the field was in invalid format |
+| PAN is not matching with GSTIN, passed value: PAN = `passed_pan`, GSTIN = `passed_gstin` | 400 | PAN extracted from GSTIN is not matching with the propreitor's PAN |
+| something went wrong  | 409   | Internal error while processing the request  |
+
+
+**Error Response format:**
+```json
+{
+    "data": {},
+    "error": "ERROR_MESSAGE_HERE",
+    "status": false
+}
+```
+
 ## List Users
 Lists all the users created from a given sourcing entity's account. It's a paginated API.
 ::: tip Endpoint
@@ -271,7 +348,7 @@ GET **`base_url`/v1/loan/details?loanApplicationID=`someLongLoanApplicationUUID`
         "appliedLoanAmount":15000,
         "status": "BANK_ADDED",
         "createdAt": "2020-09-15 18:56:15",
-        "userDetails": {
+        "loanDetails": {
             "customerID": "someCustomerID",
             "name": "Amazing User",
             "email": "username@email.com",
@@ -434,7 +511,6 @@ GET **`base_url`/v1/loan/repayments?loanApplicationID=`someLongLoanApplicationUU
 ```json
 {
     "data": {
-        "lenderName": "XYZ Lender",
         "emiList": [
             {
                 "loanPaymentID": "1c9387b3-c1f8-4d81-89e9-eabd06e8536c",
@@ -457,7 +533,6 @@ GET **`base_url`/v1/loan/repayments?loanApplicationID=`someLongLoanApplicationUU
 Response fields are explained below:
 | Field | Type | Description |
 | - | - | - |
-| lenderName | String | Lender Name |
 | loanPaymentID | String | A UUID identifying an installment |
 | amount | Float | EMI amount |
 | installmentNum | Integer | Instalment number varies from 1 to `tenureMonths` (from loan offer API) |
@@ -468,66 +543,53 @@ Response fields are explained below:
 | totalPayable | Float | Total amount to be paid by user, excluding partial payments made |
 | amountReceived | Float | Denotes the amount paid by customer against the EMI |
 
-### EDI
-In case the loan product involves EDI (daily installments), you'll get an additional `ediInfo` key in response.
+## EDI (Equated Daily Installments)
+Returns repayment information in case an EDI product is configured.
 
-Sample Response
+::: tip Endpoint
+GET **`base_url`/v1/edi/repayments?loanApplicationID=`someLongLoanApplicationUUID`**
+:::
+
+**Response Format**
 ```json
 {
     "data": {
-        "ediInfo": {
-            "amountPerDay": 6.65,
-            "edisPaid": 26,
-            "totalEDIs": 78
-        },
-        "emiList": [
-            {
-                "loanPaymentID": "01580ade-e750-4c1a-8a84-c78ee3d74123",
-                "amount": 173,
-                "installmentNum": 3,
-                "lateCharge": 0,
-                "status": "UNPAID",
-                "dueDate": "2021-12-03",
-                "paidDate": "",
-                "totalPayable": 173,
-                "amountReceived": 0
-            },
-            {
-                "loanPaymentID": "bc1aa687-035a-4c71-8988-628c8c519123",
-                "amount": 173,
-                "installmentNum": 2,
-                "lateCharge": 0,
-                "status": "UNPAID",
-                "dueDate": "2021-11-03",
-                "paidDate": "",
-                "totalPayable": 173,
-                "amountReceived": 2
-            },
-            {
-                "loanPaymentID": "84e0bcdf-7fa1-4634-8852-c648e4897123",
-                "amount": 173,
-                "installmentNum": 1,
-                "lateCharge": 0,
-                "status": "PAID",
-                "dueDate": "2021-10-04",
-                "paidDate": "2021-09-15",
-                "totalPayable": 173,
-                "amountReceived": 173
-            }
-        ],
-        "lenderName": "XYZ Lender"
+        "loanApplicationID": "c24ef33f-f167-46ed-89c7-d101e636b0a5",
+        "numTotalEDIs": 79,
+        "numPaidEDIs": 0,
+        "numUnpaidEDIs": 79,
+        "numOverdueEDIs": 9,
+        "totalLoanAmount": 26499,
+        "amountPaid": 7,
+        "amountUnpaid": 26499,
+        "amountOverdue": 3024,
+        "lateCharges": 0,
+        "totalLateFees": 5,
+        "lastEDIPaidDate": "2021-11-24T00:00:00Z",
+        "lastEDIPaidAmount": 1,
+        "excessFunds": 2
     },
     "error": "",
     "status": true
 }
 ```
 
-EDI Keys:
-| Field | Type | Description |
-| - | - | - |
-| amountPerDay | Float | EDI Amount to be paid per day |
-| totalEDIs | Integer | Number of EDIs to be paid |
-| edisPaid | Integer | Number of EDIs fully paid |
+| Key | Type | Nullable|  Description |
+| - | -  | - | - |
+| loanApplicationID | string | No | Id of the loan application for which the data is queried |
+| numTotalEDIs | int | No | Total number of EDIs for the loan application  |
+| numPaidEDIs |  int | No | Number of EDIs settled so far  |
+| numUnpaidEDIs | int | No | Number of EDIs remaining to be paid from user's side  |
+| numOverdueEDIs |int | No | Number of EDIs which should be paid by now, but has not been paid yet |
+| totalLoanAmount | float64 | No | Includes the repayment amount which the customer will be paying. This will not include the late charges incurred  |
+| amountPaid | float64 | No | Total amount paid so far across the settled EDIs  |
+| amountUnpaid | float64 | No | Remaining EDI amount to be paid by the user  |
+| amountOverdue | float64 | No | Total EDI amount that the user has not paid till date  |
+| lateCharges | float64 | No | Late fees which is pending to be paid by the user  |
+| totalLateFees | float64 | No | Total late fees which the user has incurred so far  |
+| lastEDIPaidDate| date time | Yes | Date of most recent payment done (EDI/Late Fees)  |
+| lastEDIPaidAmount | float64 | Yes | Amount of most recent payment done by the customer (EDI/ Late fees)  |
+| excessFunds | float64 | No| Excess amount apart from the amount used for settling the EDI and Late Fees  |
 
 ## Repay Loan
 Marks the repayment of a given loan EMI
@@ -830,6 +892,109 @@ On successful updating the status, API will give a response with 200 HTTP status
 | only transaction with status PROCESSING can be splitted | 403 |
 | amount should be greater than 0 | 400 |
 | sum of invoice amounts cannot exceed transaction amount | 400 |
+
+## Merge Credit Line Transactions
+Merge Credit Line Transactions in processing state to a single transaction. Useful when different orders have same invoice. After merging, invoice can be moved to cancelled / confirmed state. 
+
+::: warning NOTE
+1. This API's request format is specific to e-commerce use case, and is disabled by default for clients with a different use case.
+2. For other use cases if this is required, FinBox team will share a different API.
+:::
+
+::: tip Endpoint
+POST **`base_url`/v1/creditline/txn/merge**
+:::
+
+**Request Format**
+```json
+{
+    "txnIDs": ["039b0552-31e3-4724-a35c-0d5edd663bcf", "234b0552-21e3-1722-a35c-1e2edd663bcf"]
+}
+```
+| Field | Type | Description |
+| - | - | - |
+| txnIDs | Array of strings | Array of unique FinBox Transaction IDs, this can be fetched using the [Credit Line Transactions API](/middleware/sourcing-rest-api.html#credit-line-transactions)  |
+
+On successful merging, API will give a response with 200 HTTP status code and new merged finbox txn id.
+
+### Response
+```json
+{
+    "data": {
+        "mergedTxnID": "712c0552-33e3-5224-b35c-1d5edd663bde"
+    },
+    "status": true,
+    "error": ""
+}
+```
+
+### Error Cases
+| Case | HTTP Code |
+| - | - |
+| Missing txnIDs | 400 |
+| < 2 items in txnIDs key | 400 |
+| txnID passed is not found | 404 |
+| mismatch in txn loan details | 409 |
+| transaction passed not in processing state | 409 |
+
+## Overdue Credit Lines
+Returns customers with overdue txns and payment links 
+
+::: tip Endpoint
+GET **`base_url`/v1/creditline/overdue**
+:::
+
+### Response
+```json
+{
+    "data": {
+        "users": [
+            {
+                "customerID": "some_customer_id",
+                "loanApplicationNo": "FB1620071147561625",
+                "availableLimit": 7000,
+                "maxLimit": 16000,
+                "status": "INACTIVE",
+                "inactiveReason": "pay emis to reactive link",
+                "paymentLink": "https://payment-link",
+                "overdueAmount": 9000,
+                "overdueTxns": [
+                    {
+                        "txnID": "8cf9ae88-d379-4afa-b7a8-eeb1165bbecc",
+                        "txnAmount": 9000,
+                        "totalPayable": 9000,
+                        "invoiceNo": "A123",
+                        "awbNo": "123456764534534",
+                        "partnerTxnID": "partner_txn_id_sample",
+                        "dueDate": "2021-06-05",
+                        "amountReceived": 0
+                    }
+                ]
+            }
+        ]
+    },
+    "error": "",
+    "status": true
+}
+```
+| Field | Type | Description |
+| - | - | - |
+| customerID | String | Customer ID of the user  |
+| loanApplicationNo | String | Loan Application No linked with credit link account  |
+| availableLimit | Float | Available Limit |
+| maxLimit | Float | Maximum Limit |
+| status | String | Credit Line Status, can be `ACTIVE` or `INACTIVE` |
+| inactiveReason | String | specifies the reason for status being `INACTIVE` |
+| paymentLink | String | Payment Link for clearing all dues |
+| overdueAmount | Float | Sum of all pending amounts (totalPayable - amountReceived) |
+| txnID | String | Unique FinBox Txn ID |
+| txnAmount | Float | Transaction Amount |
+| totalPayable | Float | Total amount expected to be paid off against the transaction (doesn't include partially paid amount) |
+| amountReceived | Float | Total amount paid (partial) paid against the transaction |
+| awbNo | String | AWB No of the transaction |
+| invoiceNo | String | Invoice No of the transaction |
+| partnerTxnID | String | Order ID / Partner Txn ID |
+| dueDate | String | Oldest due date of the overdue txn |
 
 ## User Activity History
 Returns the activity 
