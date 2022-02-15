@@ -201,6 +201,10 @@ module.exports = {
               path: '/middleware/android-sdk.html'
             },
             {
+              title: 'Hybrid SDK',
+              path: '/middleware/hybrid-sdk.html'
+            },
+            {
               title: 'React Native',
               path: '/middleware/react-native.html'
             },
