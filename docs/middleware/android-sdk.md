@@ -401,7 +401,7 @@ For credit line journey, include the following dependency in the module `build.g
 <template v-slot:kotlin>
 
 ```kotlin
-implementation("in.finbox.lending:creditline:<LENDING_SDK_VERSION>:uat@aar") {
+implementation("in.finbox.lending:creditline:<LENDING_SDK_VERSION>:release@aar") {
     exclude("in.finbox.lending", "core")
     isTransitive = true
 }
@@ -411,7 +411,7 @@ implementation("in.finbox.lending:creditline:<LENDING_SDK_VERSION>:uat@aar") {
 <template v-slot:groovy>
 
 ```groovy
-implementation("in.finbox.lending:creditline:<LENDING_SDK_VERSION>:uat@aar") {
+implementation("in.finbox.lending:creditline:<LENDING_SDK_VERSION>:release@aar") {
     exclude group: 'in.finbox.lending', module: 'core'
     transitive = true
 }
