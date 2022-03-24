@@ -193,7 +193,7 @@ POST **`base_url`/v1/user/push**
 | Missing customerID    | 403  | Compulsory field `customerID` was not passed  |
 | request validation failed   | 400       | Invalid Request Body Format |
 | User not found | 404       | No user with given `cusomterID` exists        |
-| User journey already started. Partner data should be pushed before starting journey | 400   | User journey already started. Partner data should be pushed before starting journey |
+| User journey already started. Partner data should be pushed before starting journey | 406   | User journey already started. Partner data should be pushed before starting journey |
 | Invalid `fieldname`, passed value: `passedvalue` | 400 | Value passed for the field was in invalid format |
 | PAN is not matching with GSTIN, passed value: PAN = `passed_pan`, GSTIN = `passed_gstin` | 400 | PAN extracted from GSTIN is not matching with the propreitor's PAN |
 | something went wrong  | 409   | Internal error while processing the request  |
@@ -690,6 +690,7 @@ GET **`base_url`/v1/creditline/transactions?customerID=`someCustomerID`**
                 "disbursalAmount": 1171.68,
                 "createdAt": "2020-02-12 13:02:12",
                 "disbursalUTR": "",
+                "lenderName": "XYZ Lender",
                 "emis": [
                     {
                         "amount": 1200,
@@ -738,6 +739,7 @@ Response fields are explained below:
 | emiCalculationMethod | String | Can be `flat_rate` or `reducing_balance` |
 | createdAt | String | Transaction creation time in `YYYY-MM-DD HH:MM:SS` format |
 | disbursalUTR | String | UTR number of disbursal made by lender |
+| lenderName | String | Lender Name |
 
 objects in `emis` contain:
 | Field | Type | Description |
