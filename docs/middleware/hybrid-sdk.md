@@ -141,13 +141,10 @@ Add the Lending SDK dependency to the module `build.gradle` file
 <template v-slot:kotlin>
 
 ```kotlin
-implementation ("in.finbox.lending:onboarding:<LENDING_SDK_VERSION>:release@aar") {
+implementation ("in.finbox.lending:hybrid:<LENDING_SDK_VERSION>:release@aar") {
     exclude("in.finbox", "mobileriskmanager")
     exclude("in.finbox", "common")
     exclude("in.finbox", "logger")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:core:<LENDING_SDK_VERSION>:release@aar") {
     isTransitive = true
 }
 implementation("in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar") {
@@ -166,13 +163,10 @@ implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:release@aar") {
 <template v-slot:groovy>
 
 ```groovy
-implementation ("in.finbox.lending:onboarding:<LENDING_SDK_VERSION>:release@aar") {
+implementation ("in.finbox.lending:hybrid:<LENDING_SDK_VERSION>:release@aar") {
     exclude group: 'in.finbox', module: 'mobileriskmanager'
     exclude group: 'in.finbox', module: 'common'
     exclude group: 'in.finbox', module: 'logger'
-    transitive = true
-}
-implementation ("in.finbox.lending:core:<LENDING_SDK_VERSION>:release@aar") {
     transitive = true
 }
 implementation('in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar') {
