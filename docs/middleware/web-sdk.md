@@ -35,6 +35,7 @@ This API require a **Server API Key** to be passed in `x-api-key` **header**. Th
 }
 ```
 
+
 ::: warning NOTE
 - Once the user exits the loan journey at any point, the SDK will redirect to the above specified URL
 - Make sure this API is called only when the user is created and eligibility is fetched.

@@ -105,9 +105,18 @@ POST **`base_url`/v1/user/token**
 ### Request Format
 ```json
 {
-    "customerID": "somecustomerid"
+    "customerID": "somecustomerid",
+    "source": "ANDROID"
 }
 ```
+
+Here, `source` is an optional key. 
+
+::: warning Tracking Source
+In case you are using same API key across different platforms, and want to track the source of the user, also pass a string field `source` in the request body, indicating a unique source from which the user is accessing the SDK from. The values it can take are `WEB`. `IOS`, and `ANDROID`. 
+:::
+
+
 ### Response
 ```json
 {
@@ -120,6 +129,7 @@ POST **`base_url`/v1/user/token**
 ```
 Here `token` field indicates the token.
 
+
 ### Error Cases
 | Case | HTTP Code |
 | - | - |
@@ -128,9 +138,6 @@ Here `token` field indicates the token.
 | User eligibility not available | 400 |
 | User not eligible for loan | 403 |
 
-::: warning Tracking Source
-In case you are using same API key across different platforms, and want to track the source of the user, also pass a string field `source` in the request body, indicating a unique source from which the user is accessing the SDK from.
-:::
 
 ## Partner Push
 This API is used to pass partner data to FinBox system if required. This API is to be called before calling `/v1/user/eligibility` API.
