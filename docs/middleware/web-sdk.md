@@ -65,7 +65,6 @@ In case you want to hide the close button from the sdk navbar you can pass a boo
 }
 ```
 Use `url` to open up the Lending SDK. This URL can be:
-- embedded inside an `<iframe>`
 - rendered in a mobile Web View
 - opened in a new tab or current window.
 
@@ -171,12 +170,4 @@ You can share the following JSON (or its subset) with FinBox team to customize t
     "errorColor": "#F44336bb",
     "warningBackground": "#FDF0EF"
 }
-```
-
-## Camera Permissions in iframe
-
-In case you are showing the web sdk URL in an iframe, make sure to provide camera permission for the iframe using the `allow` attribute as shown:
-```html
-<!--Allow camera access within the context of this iframe-->
-<iframe src="https://lendingwebuat.finbox.in/session/167af08b-b33f-47f3" allow="camera"></iframe>
 ```
