@@ -71,7 +71,6 @@ dependencies {
 </template>
 </CodeSwitcher>
 
-
 ## ProGuard
 
 While generating a signed application, make sure **ProGuard** file uses `proguard-android.txt` not `proguard-android-optimize.txt`.
@@ -92,7 +91,6 @@ proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pr
 
 </template>
 </CodeSwitcher>
-
 
 ## Adding Dependency
 
@@ -185,14 +183,14 @@ implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:release@aar") {
 
 ::: tip Note
 The following keys will be shared over an email
+
 - `ACCESS_KEY`
 - `SECRET_KEY`
 - `LENDING_SDK_VERSION`
 - `DC_SDK_VERSION`
 - `COMMON_SDK_VERSION`
 - `LOGGER_SDK_VERSION`
-:::
-
+  :::
 
 ## Start SDK flow
 
@@ -213,12 +211,14 @@ In the `onCreate` of your application class initialize dependencies required by 
 ```kotlin
 CoreApp.initDi(this)
 ```
+
 </template>
 <template v-slot:java>
 
 ```java
 CoreApp.Companion.initDi(this)
 ```
+
 </template>
 </CodeSwitcher>
 
@@ -236,6 +236,7 @@ val builder = FinBoxLending.Builder(context)
     .setUserToken("<USER_TOKEN>")
     .setSplashIcon(<DRAWABLE>)
     .setToolbarIcon(<DRAWABLE>)
+    .enableDeviceConnect(<true/false>)
     .build()
 
 startActivityForResult(
@@ -256,6 +257,7 @@ FinBoxLending builder = FinBoxLending.Builder(context)
     .setUserToken(<USER_TOKEN>)
     .setSplashIcon(<DRAWABLE>)
     .setToolbarIcon(<DRAWABLE>)
+    .enableDeviceConnect(<true/false>)
     .build();
 
 startActivityForResult(
@@ -270,6 +272,7 @@ startActivityForResult(
 
 - `setSplashIcon` is the optional method that will contain the drawable (in **Int**) that can be used to show icon on the splash screen.
 - `setToolbarIcon` is the optional method that will contain the drawable (in **Int**) that can be used to show the icon on the toolbar.
+- `enableDeviceConnect` is an optional method that will enable device connect feature in the lending journey.
 
 ## Callback
 
@@ -317,6 +320,7 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
 </CodeSwitcher>
 
 FinBoxJourneyResult has the following values:
+
 - `resultCode`: Status code for the journey.
 - `screen`: Name of the last screen in the journey
 - `message`: Any additional message to describe the resultCode
@@ -329,7 +333,6 @@ Possible values for `resultCode` are as follows:
 | `MW400` | Some error occurred in the SDK |
 | `CL200` | Credit line withdrawal success |
 | `CL500` | Credit line withdrawal failed |
-
 
 ## Notifications
 
@@ -486,3 +489,43 @@ Customize the SDK font by adding the application `fontFamily` in the styles.
 ```
 
 Change button corner radius and text font as per your application theme.
+
+4. Customize toolbar
+
+Toolbar can be configured to use custom icons and title. Drawables can be passed for `DRAWABLE_PROFILE`,`DRAWABLE_FAQ`,`DRAWABLE_HOME` icons.
+
+```kotlin
+val REQUEST_CODE_ONBOARDING = 101
+val builder = FinBoxLending.Builder(context)
+        .setLendingEnvironment(“<ENVIRONMENT>“)
+        .setFinBoxApiKey(“<CLIENT_API_KEY>“)
+        .setCustomerId(“<CUSTOMER_ID>“)
+        .setUserToken(“<USER_TOKEN>“)
+        .setToolBarConfig(
+            ToolbarConfig(
+                “<APP_NAME>“,
+                <DRAWABLE_PROFILE>,
+                <DRAWABLE_FAQ>,
+                <DRAWABLE_HOME>
+                )
+            )
+        .showToolbar(<true/false>)
+        .enableDeviceConnect(<true/false>)
+        .build()
+
+startActivityForResult(builder.getLendingIntent(context),REQUEST_CODE_ONBOARDING)
+```
+
+The color of the toolbar can be customised to match your theme by adding color attibutes in `colors.xml`.
+
+| Key| Description |
+| - | - | - |
+| `finboxToolbarColor` | Background color of toolbar |
+| `finboxToolbarTextColor` | Toolbar text color |
+| `finboxToolbarIconColor` | Toolbar icon color |
+
+````xml
+<color name="finboxToolbarColor">#67A135</color>
+<color name="finboxToolbarTextColor">#FFFFFF</color>
+<color name="finboxToolbarIconColor">#FFFFFF</color>```
+````
