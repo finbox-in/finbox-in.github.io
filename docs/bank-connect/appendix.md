@@ -3,192 +3,214 @@
 ## Bank Identifiers
 The table below lists the supported banks with their corresponding identifier. These identifiers will be used throughout the BankConnect product, whenever a `bank` or `bank_name` field are involved.
 
-| Identifier           | Bank Name                                            |
-|----------------------|------------------------------------------------------|
-| ABHYUDAYA            | Abhyudaya Co-operative Bank Ltd                      |
-| AHMADABAD_DISTRICT   | Ahmadabad district co-op bank                        |
-| AHMEDABAD_MERCHENT   | Ahmednagar Merchant's Co-op Bank Ltd                 |
-| AIRTEL               | Airtel Payments Bank                                 |
-| AKOLA_JANATA         | Akola Janta Co-operative bank Ltd                    |
-| ALLAHABAD            | Allahabad Bank                                       |
-| ALRAJHI              | Al Rajhi Bank                                        |
-| AMBAJOGAI_PEOPLES    | Ambajogai Peoples co-op bank                         |
-| AMBARNATH            | Ambarnath Jai-Hind Co-Op Bank Limited                |
-| ANDHRA               | Andhra Bank                                          |
-| APGVBNK              | Andhra Pradesh Grameena Vikas Bank                   |
-| ANDHRA_PRAGATHI      | Andhra Pragathi Grameena Bank                        |
-| APNA_SAHAKARI        | Apna Sahakari Bank Ltd                               |
-| ARVIND_SAHAKARI      | Arvind Sahakari Bank Ltd                             |
-| ASSOCIATEBNK         | Associate Co Operative Bank                          |
-| AUSFBNK              | AU Small Finance Bank                                |
-| AXIS                 | Axis Bank                                            |
-| BANAS                | Banaskantha District Central Cooperative Bank Ltd.   |
-| BANDHAN              | Bandhan Bank                                         |
-| BARODA               | Bank of Baroda                                       |
-| BOI                  | Bank of India                                        |
-| MAHABK               | Bank of Maharashtra                                  |
-| BARODA_GUJRATBNK     | Baroda Gujrat Gramin Bank                            |
-| BASSEIN              | Bassein Catholic Co-Operative Bank                   |
-| MTHE_BHAYALAKSHMI    | Bhagyalakshmi Mahila Sah Bank Ltd                    |
-| BHAGYODAYA           | Bhagyodaya co-operative Bank Ltd                     |
-| BHARATBNK            | Bharat Co-Operative Bank                             |
-| BHINGAR              | Bhingar Urban Co Op Bank Ltd                         |
-| CANARA               | Canara Bank                                          |
-| CSBBNK               | Catholic Syrian Bank Limited                         |
-| CENTRAL              | Central Bank of India                                |
-| CHHATTISGARH         | Chhattisgarh Rajya Gramin Bank                       |
-| CITI                 | Citibank                                             |
-| CITIZEN_CREDIT       | Citizen Credit Co-operative Bank Ltd                 |
-| CITIZENS             | Citizens Co-op Bank Ltd                              |
-| CITY_UNION           | City Union Bank                                      |
-| CORPORATION          | Corporation Bank                                     |
-| DAPOLI               | DAPOLI URBAN CO-OP BANK LTD.                         |
-| DBSBNK               | DBS Bank                                             |
-| DCBBNK               | DCB Bank                                             |
-| DEENDAYAL            | Deendayal Nagari Sahakari Bank Ltd                   |
-| DENA                 | Dena Bank                                            |
-| DEOGIRI              | Deogiri Nagari Sahakari Bank Ltd. Aurangabad         |
-| DEUTSCHE             | Deutsche Bank                                        |
-| DHANLAXMI            | Dhanlakshmi Bank                                     |
-| DMK_JAOLI            | DMK Jaoli Bank                                       |
-| DNSBNK               | Dombivli Nagari Sahakari Bank                        |
-| EQUITAS              | Equitas Small Finance Bank                           |
-| ESAFBNK              | ESAF Small Finance Bank                              |
-| FEDERAL              | Federal Bank                                         |
-| FINCAREBNK           | Fincare Small Finance Bank                           |
-| FINGROWTH            | Fingrowth Co-operative Bank                          |
-| FINOBNK              | Fino Payments Bank                                   |
-| GP_PARSIK            | GP Parsik sahakari bank                              |
-| GREATERBNK           | Greater Bombay Co-operative Bank Ltd                 |
-| GSMAHANAGAR          | GS Mahanagar Co-op Bank                              |
-| HDFC                 | HDFC Bank                                            |
-| HSBC                 | HSBC Bank                                            |
-| HUTATMA              | Hutatma Sahakari Bank Ltd.                           |
-| ICICI                | ICICI Bank                                           |
-| IDBI                 | IDBI Bank                                            |
-| IDFC                 | IDFC First Bank                                      |
-| INDBNK               | Indian Bank                                          |
-| IOB                  | Indian Overseas Bank                                 |
-| INDIA_POST           | India post payments bank                             |
-| INDUSIND             | IndusInd Bank                                        |
-| JNKBNK               | Jammu and Kashmir Bank                               |
-| JANA_SAHAKARI        | Janakalyan Sahakari Bank Ltd                         |
-| JANA                 | Jana Small Finance Bank                              |
-| JANTASAHAKARI        | Janata Sahakari Bank Ltd                             |
-| JSKB                 | Jila Sahakari Kendriya Bank, Khargone                |
-| JIVAN                | Jivan Commercial Co-operative Bank Ltd               |
-| JUGALKISHOR          | Jugalkishor Tapdiya Shree Mahesh Urban co-op bank    |
-| KALYAN               | Kalyan Janata Sahakari Bank                          |
-| KARNATAKA            | Karnataka Bank                                       |
-| KARNATAKA_GRAMIN     | Karnataka Gramin Bank                                |
-| KARNATAKA_VIKAS      | Karnataka Vikas Grameena Bank                        |
-| KARNAVATI            | Karnavati Co-op Bank Ltd                             |
-| KARUR                | Karur Vysya Bank                                     |
-| KHATTRI              | Khattri Coop Urban Bank Ltd                          |
-| KOTAK                | Kotak Mahindra Bank                                  |
-| VILAS                | Lakshmi Vilas Bank                                   |
-| MADHYANCHAL          | MADHYANCHAL GRAMIN BANK                              |
-| MAHAGRAMBNK          | Maharashtra Gramin Bank                              |
-| MAHESH_SAHAKARI      | Mahesh Sahakari Bank LTD  Ltd                        |
-| MIZORAM              | Mizoram Rural Bank                                   |
-| MOTIRAM              | Motiram Agrawal Jalna Merchants co-op bank Ltd       |
-| NAINITAL             | Nainital Bank Limited                                |
-| NANDED               | Nanded Merchants Co-Op. Bank Ltd                     |
-| NCB                  | National Commercial Bank                             |
-| NATIONAL_MERCANTILE  | National Mercantile Co-operative Bank Limited        |
-| NAVI_MUMBAI          | Navi Mumbai Co op Bank Ltd.                          |
-| NEWINDIA             | New India Co-Operative Bank                          |
-| NKGSBBNK             | NKGSB Co-operative Bank                              |
-| NESFINBNK            | North East Small Finance Bank Limited                |
-| NUTAN_SAHAKARI       | Nutan Nagarik Sahakari Bank Limited                  |
-| ODPCB                | Omprakash Deora Peoples Co-Operative Bank Ltd        |
-| OBC                  | Oriental Bank of Commerce                            |
-| PANDHARPUR           | Pandharpur Urban Co-op Bank Ltd                      |
-| PAYTM                | Paytm Payments Bank                                  |
-| POCHAMPALLY          | Pochampally Co-Operative Urban Bank                  |
-| POORNAWADI_NAGRIK    | Poornawadi Nagrik Sahakari Bank                      |
-| PRIMEBNK             | Prime Co-operative Bank Ltd                          |
-| PRIYADARSHANI        | Priyadarshani Nagari Sahakari Bank Ltd               |
-| PUNE_PEOPLE          | Pune Peoples Co-op Bank Ltd.                         |
-| PNBBNK               | Punjab National Bank                                 |
-| PUNJAB_SIND          | Punjab & Sind Bank                                   |
-| PURVANCHALBNK        | Purvanchal Bank Ltd                                  |
-| RSMCSBNK             | Rajarshi Shahu Multistate Co-Op Credit Society Ltd   |
-| RMGBBNK              | Rajasthan Marudhara Gramin Bank                      |
-| RSBBNK               | Rajgurunagar Sahakari Bank Ltd.                      |
-| RAJKOT               | Rajkot Nagrik Sahakari Bank Ltd                      |
-| RAMPURZILA           | Rampur Zila Sahakari Bank                            |
-| RDCC                 | Ratnagiri District Central Co-Operative Bank Ltd.    |
-| RBL                  | RBL Bank                                             |
-| SADHANA              | Sadhana Sahakari Bank Ltd                            |
-| SAMARTH_SAHAKARI     | Samarth Sahakari Bank Ltd.Solapur                    |
-| SANGLI_URBAN         | Sangli Urban Co-Operative Bank                       |
-| SARASPUR             | Saraspur Nagrik Co-Operative Bank                    |
-| SARASWAT             | Saraswat Co-operative Bank                           |
-| SARVODAYA            | Sarvodaya Commercial Co-Operative Bank Limited       |
-| SAURASHTRA           | Saurashtra Gramin Bank                               |
-| SHARAD               | Sharad Sahakari Bank Ltd                             |
-| SHINHAN              | Shinhan Bank India                                   |
-| SHIVALIK             | Shivalik Small Finance Bank                          |
-| KNSB                 | Shree Kadi Nagrik Sahakari Bank Ltd                  |
-| ARIHANTBNK           | Shri Arihant Co-Op Bank Ltd                          |
-| CRSUCBNK             | Shri Chhatrapati Rajarshi Shahu Urban Co-Op Bank Ltd |
-| SIDDHESHWAR          | Siddheshwar Sahakari Bank Ltd                        |
-| SIB                  | South Indian Bank                                    |
-| SBI                  | State Bank of India                                  |
-| SNCB                 | Surat National Co-op Bank Ltd                        |
-| SURYODAYBNK          | Suryoday Small Finance Bank                          |
-| SUVARNAYUG           | Suvarnayug Sahakari Bank Ltd. Pune                   |
-| SVCBNK               | SVC Co-Operative Bank                                |
-| SYNDICATE            | Syndicate Bank                                       |
-| TAMIL_MERCANTILE     | Tamilnad Mercantile Bank                             |
-| TELANGANA            | Telangana Grameena Bank                              |
-| THANE_BHARAT         | Thane Bharat Sahakari Bank Ltd.                      |
-| THANE                | Thane District Central Cooperative Bank              |
-| ABHINAV_SAHAKARI     | The Abhinav Sahakari Bank Ltd                        |
-| AHMEDABAD_MERCANTILE | The Ahmedabad Mercantile Co-operative Bank Limited   |
-| AKOLA                | The Akola Urban Co-Operative Bank Ltd                |
-| APCOB                | The Andhra Pradesh State Co-Operative Bank Ltd.      |
-| BARAMATI             | The Baramti Sahakari Bank Ltd                        |
-| CHIKHLI              | The Chikhli Urban Co-Op Bank Ltd                     |
-| MEHSANA              | The co-op bank of Mehsana                            |
-| COSMOS               | The Cosmos Co-Op Bank Ltd                            |
-| FINANCIAL            | The Financial Co-Operative Bank Ltd                  |
-| GANDHIDHAM           | The Gandhidham Co-Op Bank Limited                    |
-| HASTI                | The Hasti Co-Op Bank                                 |
-| HINDUSTHAN           | The Hindusthan Co-Op Bank Ltd                        |
-| JALGAON_SAHKARI      | The Jalgaon Janata Sahakari Bank                     |
-| KALUPURBNK           | The Kalupur Commercial Co.op. Bank Ltd               |
-| KANGRA               | The Kangra Co-operative Bank Ltd                     |
-| MALAD                | The Malad Sahakari Bank Limited                      |
-| MOGAVEERA            | The Mogaveera Co-Operative Bank Ltd                  |
-| MUMBAI_DISTRICT      | The Mumbai District Central Co-operative Bank        |
-| MUNICIPALBNK         | The Municipal Co-Op Bank Ltd, Mumbai                 |
-| NAWANAGAR            | The Nawanagar Co-operative Bank Ltd                  |
-| URBANCOOP            | The New Urban Co-op Bank Ltd                         |
-| PRATAPBNK            | The Pratap Co-Operative Bank Ltd                     |
-| SABARKANTHA          | The Sabarkantha District Central Co-Op. Bank Ltd     |
-| SAHYADRI_SAHAKARI    | The Sahyadri Sahakari Bank Ltd. Mumbai               |
-| SARVODAYA_SAHAKARI   | The Sarvodaya Sahakari Bank Ltd                      |
-| SATARA_DISTRICT      | The Satara District Central Co-Op Bank Ltd           |
-| SURATBNK             | The Surat District Co-Op. Bank Ltd.                  |
-| SPCB                 | The Surat People's Co-operative Bank Ltd.            |
-| SUTEXBNK             | The Sutex co-op bank Ltd.                            |
-| VAIDYANATH           | The Vaidyanath Urban Co-Op Bank Ltd                  |
-| VARACHHA             | The Varachha Co-Op Bank Ltd                          |
-| WAI_URBAN            | The Wai Urban Co-operative Bank Ltd                  |
-| WBSCB                | The West Bengal State Co-Operative Bank              |
-| TJSB_SAHAKARI        | TJSB Sahakari Bank Ltd                               |
-| UCO                  | UCO Bank                                             |
-| UJJIVAN              | Ujjivan Small Finance Bank                           |
-| UBI                  | Union Bank of India                                  |
-| UNITED               | United Bank of India                                 |
-| UTKARSHBNK           | Utkarsh Small Finance Bank Ltd                       |
-| UTTRAKHAND_GRAMIN    | Uttrakhand gramin Bank                               |
-| VAISHYA              | Vaishya Sahakari BankLtd.                            |
-| VASAI                | Vasai Vikas Sahakari Bank Ltd                        |
-| VIJAYA               | Vijaya Bank                                          |
-| YESBNK               | Yes Bank                                             |
+| Identifier           | Bank Name                                              |
+|----------------------|--------------------------------------------------------|
+| ABHYUDAYA            | Abhyudaya Co-operative Bank Ltd                        |
+| AHMADABAD_DISTRICT   | Ahmadabad district co-op bank                          |
+| AHMEDABAD_MERCHENT   | Ahmednagar Merchant's Co-op Bank Ltd                   |
+| AIRTEL               | Airtel Payments Bank                                   |
+| AKOLA_JANATA         | Akola Janta Co-operative bank Ltd                      |
+| ALLAHABAD            | Allahabad Bank                                         |
+| ALRAJHI              | Al Rajhi Bank                                          |
+| AMBAJOGAI_PEOPLES    | Ambajogai Peoples co-op bank                           |
+| AMBARNATH            | Ambarnath Jai-Hind Co-Op Bank Limited                  |
+| ANDHRA               | Andhra Bank                                            |
+| APGVBNK              | Andhra Pradesh Grameena Vikas Bank                     |
+| ANDHRA_PRAGATHI      | Andhra Pragathi Grameena Bank                          |
+| APNA_SAHAKARI        | Apna Sahakari Bank Ltd                                 |
+| ARVIND_SAHAKARI      | Arvind Sahakari Bank Ltd                               |
+| ASSOCIATEBNK         | Associate Co Operative Bank                            |
+| AUSFBNK              | AU Small Finance Bank                                  |
+| AXIS                 | Axis Bank                                              |
+| BANAS                | Banaskantha District Central Cooperative Bank Ltd.     |
+| BANDHAN              | Bandhan Bank                                           |
+| BARODA               | Bank of Baroda                                         |
+| BOI                  | Bank of India                                          |
+| MAHABK               | Bank of Maharashtra                                    |
+| BARODA_GUJRATBNK     | Baroda Gujrat Gramin Bank                              |
+| BASSEIN              | Bassein Catholic Co-Operative Bank                     |
+| MTHE_BHAYALAKSHMI    | Bhagyalakshmi Mahila Sah Bank Ltd                      |
+| BHAGYODAYA           | Bhagyodaya co-operative Bank Ltd                       |
+| BHARATBNK            | Bharat Co-Operative Bank                               |
+| BHINGAR              | Bhingar Urban Co Op Bank Ltd                           |
+| CANARA               | Canara Bank                                            |
+| CSBBNK               | Catholic Syrian Bank Limited                           |
+| CENTRAL              | Central Bank of India                                  |
+| CHHATTISGARH         | Chhattisgarh Rajya Gramin Bank                         |
+| CITI                 | Citibank                                               |
+| CITIZEN_CREDIT       | Citizen Credit Co-operative Bank Ltd                   |
+| CITIZENS             | Citizens Co-op Bank Ltd                                |
+| CITY_UNION           | City Union Bank                                        |
+| CORPORATION          | Corporation Bank                                       |
+| DAPOLI               | DAPOLI URBAN CO-OP BANK LTD.                           |
+| DBSBNK               | DBS Bank                                               |
+| DCBBNK               | DCB Bank                                               |
+| DEENDAYAL            | Deendayal Nagari Sahakari Bank Ltd                     |
+| DENA                 | Dena Bank                                              |
+| DEOGIRI              | Deogiri Nagari Sahakari Bank Ltd. Aurangabad           |
+| DEUTSCHE             | Deutsche Bank                                          |
+| DHANLAXMI            | Dhanlakshmi Bank                                       |
+| DMK_JAOLI            | DMK Jaoli Bank                                         |
+| DNSBNK               | Dombivli Nagari Sahakari Bank                          |
+| EQUITAS              | Equitas Small Finance Bank                             |
+| ESAFBNK              | ESAF Small Finance Bank                                |
+| FEDERAL              | Federal Bank                                           |
+| FINCAREBNK           | Fincare Small Finance Bank                             |
+| FINGROWTH            | Fingrowth Co-operative Bank                            |
+| FINOBNK              | Fino Payments Bank                                     |
+| GP_PARSIK            | GP Parsik sahakari bank                                |
+| GREATERBNK           | Greater Bombay Co-operative Bank Ltd                   |
+| GSMAHANAGAR          | GS Mahanagar Co-op Bank                                |
+| HDFC                 | HDFC Bank                                              |
+| HSBC                 | HSBC Bank                                              |
+| HUTATMA              | Hutatma Sahakari Bank Ltd.                             |
+| ICICI                | ICICI Bank                                             |
+| IDBI                 | IDBI Bank                                              |
+| IDFC                 | IDFC First Bank                                        |
+| INDBNK               | Indian Bank                                            |
+| IOB                  | Indian Overseas Bank                                   |
+| INDIA_POST           | India post payments bank                               |
+| INDUSIND             | IndusInd Bank                                          |
+| JNKBNK               | Jammu and Kashmir Bank                                 |
+| JANA_SAHAKARI        | Janakalyan Sahakari Bank Ltd                           |
+| JANASEVA             | Janaseva Sahakari Bank Ltd                             |
+| JANA                 | Jana Small Finance Bank                                |
+| JANTASAHAKARI        | Janata Sahakari Bank Ltd                               |
+| JSKB                 | Jila Sahakari Kendriya Bank, Khargone                  |
+| JIVAN                | Jivan Commercial Co-operative Bank Ltd                 |
+| JUGALKISHOR          | Jugalkishor Tapdiya Shree Mahesh Urban co-op bank      |
+| KAIJSB               | Kallapanna Awade Ichalkaranji Janata Sahakari Bank Ltd |
+| KALYAN               | Kalyan Janata Sahakari Bank                            |
+| KARNATAKA            | Karnataka Bank                                         |
+| KARNATAKA_GRAMIN     | Karnataka Gramin Bank                                  |
+| KARNATAKA_VIKAS      | Karnataka Vikas Grameena Bank                          |
+| KARNAVATI            | Karnavati Co-op Bank Ltd                               |
+| KARUR                | Karur Vysya Bank                                       |
+| KHATTRI              | Khattri Coop Urban Bank Ltd                            |
+| KOKAN                | Kokan Mercantile Co-operative Bank Ltd.                |
+| KOTAK                | Kotak Mahindra Bank                                    |
+| VILAS                | Lakshmi Vilas Bank                                     |
+| MADHYANCHAL          | MADHYANCHAL GRAMIN BANK                                |
+| MAHAGRAMBNK          | Maharashtra Gramin Bank                                |
+| MAHESH_SAHAKARI      | Mahesh Sahakari Bank LTD  Ltd                          |
+| MIZORAM              | Mizoram Rural Bank                                     |
+| model                | Model Co-op. Bank Ltd.                                 |
+| MOTIRAM              | Motiram Agrawal Jalna Merchants co-op bank Ltd         |
+| NAINITAL             | Nainital Bank Limited                                  |
+| NANDED               | Nanded Merchants Co-Op. Bank Ltd                       |
+| NCB                  | National Commercial Bank                               |
+| NATIONAL_MERCANTILE  | National Mercantile Co-operative Bank Limited          |
+| NAVI_MUMBAI          | Navi Mumbai Co op Bank Ltd.                            |
+| NEELKANTH            | Neelkanth co-oprerative bank ltd                       |
+| NEWINDIA             | New India Co-Operative Bank                            |
+| NKGSBBNK             | NKGSB Co-operative Bank                                |
+| NESFINBNK            | North East Small Finance Bank Limited                  |
+| NUTAN_SAHAKARI       | Nutan Nagarik Sahakari Bank Limited                    |
+| ODPCB                | Omprakash Deora Peoples Co-Operative Bank Ltd          |
+| OBC                  | Oriental Bank of Commerce                              |
+| PANDHARPUR           | Pandharpur Urban Co-op Bank Ltd                        |
+| PAYTM                | Paytm Payments Bank                                    |
+| POCHAMPALLY          | Pochampally Co-Operative Urban Bank                    |
+| POORNAWADI_NAGRIK    | Poornawadi Nagrik Sahakari Bank                        |
+| PRIMEBNK             | Prime Co-operative Bank Ltd                            |
+| PRIYADARSHANI        | Priyadarshani Nagari Sahakari Bank Ltd                 |
+| PUNE_PEOPLE          | Pune Peoples Co-op Bank Ltd.                           |
+| PUNE_URBAN           | Pune Urban Co Operative Bank Ltd                       |
+| PNBBNK               | Punjab National Bank                                   |
+| PUNJAB_SIND          | Punjab & Sind Bank                                     |
+| PURVANCHALBNK        | Purvanchal Bank Ltd                                    |
+| RSMCSBNK             | Rajarshi Shahu Multistate Co-Op Credit Society Ltd     |
+| RMGBBNK              | Rajasthan Marudhara Gramin Bank                        |
+| RSBBNK               | Rajgurunagar Sahakari Bank Ltd.                        |
+| RAJKOT               | Rajkot Nagrik Sahakari Bank Ltd                        |
+| RAMPURZILA           | Rampur Zila Sahakari Bank                              |
+| RDCC                 | Ratnagiri District Central Co-Operative Bank Ltd.      |
+| RBL                  | RBL Bank                                               |
+| SADHANA              | Sadhana Sahakari Bank Ltd                              |
+| SAMARTH_SAHAKARI     | Samarth Sahakari Bank Ltd.Solapur                      |
+| SANGLI               | Sangli District Central Co.-Op. Bank Ltd               |
+| SANGLI_URBAN         | Sangli Urban Co-Operative Bank                         |
+| SARASPUR             | Saraspur Nagrik Co-Operative Bank                      |
+| SARASWAT             | Saraswat Co-operative Bank                             |
+| SARVODAYA            | Sarvodaya Commercial Co-Operative Bank Limited         |
+| SAURASHTRA           | Saurashtra Gramin Bank                                 |
+| SBMBANK              | SBM Bank India                                         |
+| SNSBNK               | Shankar Nagari Sahakari Bank Ltd                       |
+| SHARAD               | Sharad Sahakari Bank Ltd                               |
+| SHINHAN              | Shinhan Bank India                                     |
+| SHIVALIK             | Shivalik Small Finance Bank                            |
+| KNSB                 | Shree Kadi Nagrik Sahakari Bank Ltd                    |
+| ARIHANTBNK           | Shri Arihant Co-Op Bank Ltd                            |
+| CRSUCBNK             | Shri Chhatrapati Rajarshi Shahu Urban Co-Op Bank Ltd   |
+| RAJKOT_DISTRICT      | Shri Rajkot District Co-operative Bank Ltd             |
+| SIDDHESHWAR          | Siddheshwar Sahakari Bank Ltd                          |
+| SIB                  | South Indian Bank                                      |
+| SBI                  | State Bank of India                                    |
+| SNCB                 | Surat National Co-op Bank Ltd                          |
+| SURYODAYBNK          | Suryoday Small Finance Bank                            |
+| SUVARNAYUG           | Suvarnayug Sahakari Bank Ltd. Pune                     |
+| SVCBNK               | SVC Co-Operative Bank                                  |
+| SYNDICATE            | Syndicate Bank                                         |
+| TAMIL_MERCANTILE     | Tamilnad Mercantile Bank                               |
+| TELANGANA            | Telangana Grameena Bank                                |
+| THANE_BHARAT         | Thane Bharat Sahakari Bank Ltd.                        |
+| THANE                | Thane District Central Cooperative Bank                |
+| ABHINAV_SAHAKARI     | The Abhinav Sahakari Bank Ltd                          |
+| ADARSH               | The Adarsh Co-Operative Urban Bank Limited             |
+| AHMEDABAD_MERCANTILE | The Ahmedabad Mercantile Co-operative Bank Limited     |
+| AKOLA                | The Akola Urban Co-Operative Bank Ltd                  |
+| APCOB                | The Andhra Pradesh State Co-Operative Bank Ltd.        |
+| BARAMATI             | The Baramti Sahakari Bank Ltd                          |
+| CNSBNK               | The Chembur Nagarik Sahakari Bank,                     |
+| CHIKHLI              | The Chikhli Urban Co-Op Bank Ltd                       |
+| MEHSANA              | The co-op bank of Mehsana                              |
+| COSMOS               | The Cosmos Co-Op Bank Ltd                              |
+| DELHIBNK             | The Delhi State Co-operative Bank Ltd                  |
+| FINANCIAL            | The Financial Co-Operative Bank Ltd                    |
+| GANDHIDHAM           | The Gandhidham Co-Op Bank Limited                      |
+| GSCB                 | The Gujarat State Co-operative Bank Limited            |
+| HASTI                | The Hasti Co-Op Bank                                   |
+| HINDUSTHAN           | The Hindusthan Co-Op Bank Ltd                          |
+| JALGAON_SAHKARI      | The Jalgaon Janata Sahakari Bank                       |
+| JALGAON              | The Jalgaon Peoples Co-Operative Bank Ltd.             |
+| KALUPURBNK           | The Kalupur Commercial Co.op. Bank Ltd                 |
+| KANGRA               | The Kangra Co-operative Bank Ltd                       |
+| MALAD                | The Malad Sahakari Bank Limited                        |
+| MEHSANA_URBAN        | The Mehsana Urban Co-operative Bank Ltd.               |
+| MOGAVEERA            | The Mogaveera Co-Operative Bank Ltd                    |
+| MUMBAI_DISTRICT      | The Mumbai District Central Co-operative Bank          |
+| MUNICIPALBNK         | The Municipal Co-Op Bank Ltd, Mumbai                   |
+| NAWANAGAR            | The Nawanagar Co-operative Bank Ltd                    |
+| URBANCOOP            | The New Urban Co-op Bank Ltd                           |
+| PANIPAT_URBAN        | The Panipat Urban Co-operative Bank Ltd                |
+| PRATAPBNK            | The Pratap Co-Operative Bank Ltd                       |
+| SABARKANTHA          | The Sabarkantha District Central Co-Op. Bank Ltd       |
+| SAHYADRI_SAHAKARI    | The Sahyadri Sahakari Bank Ltd. Mumbai                 |
+| SARVODAYA_SAHAKARI   | The Sarvodaya Sahakari Bank Ltd                        |
+| SATARA_DISTRICT      | The Satara District Central Co-Op Bank Ltd             |
+| SURATBNK             | The Surat District Co-Op. Bank Ltd.                    |
+| SPCB                 | The Surat People's Co-operative Bank Ltd.              |
+| SUTEXBNK             | The Sutex co-op bank Ltd.                              |
+| VAIDYANATH           | The Vaidyanath Urban Co-Op Bank Ltd                    |
+| VARACHHA             | The Varachha Co-Op Bank Ltd                            |
+| VIZAG                | The Visakhapatnam Co-operative Bank Ltd                |
+| WAI_URBAN            | The Wai Urban Co-operative Bank Ltd                    |
+| WBSCB                | The West Bengal State Co-Operative Bank                |
+| TIRUPATI             | Tirupati Urban Co-Op Bank Ltd                          |
+| TJSB_SAHAKARI        | TJSB Sahakari Bank Ltd                                 |
+| UCO                  | UCO Bank                                               |
+| UJJIVAN              | Ujjivan Small Finance Bank                             |
+| UBI                  | Union Bank of India                                    |
+| UNITED               | United Bank of India                                   |
+| UTKARSHBNK           | Utkarsh Small Finance Bank Ltd                         |
+| UTTRAKHAND_GRAMIN    | Uttrakhand gramin Bank                                 |
+| VAISHYA_NAGARI       | Vaishya Nagari sahakari bank ltd                       |
+| VAISHYA              | Vaishya Sahakari BankLtd.                              |
+| VASAI                | Vasai Vikas Sahakari Bank Ltd                          |
+| VIJAYA               | Vijaya Bank                                            |
+| VSBBNK               | Vishweshawar Sahakari Bank Ltd                         |
+| YASHBNK              | Yash Urban Co-Operative Credit Society ltd.            |
+| YESBNK               | Yes Bank                                               |
 
 <!-- | stanchar | Standard Chartered | -->
 
