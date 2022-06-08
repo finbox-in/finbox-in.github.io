@@ -196,7 +196,7 @@ POST **`base_url`/v1/user/push**
 | User journey already started. Partner data should be pushed before starting journey | 406   | User journey already started. Partner data should be pushed before starting journey |
 | Invalid `fieldname`, passed value: `passedvalue` | 400 | Value passed for the field was in invalid format |
 | PAN is not matching with GSTIN, passed value: PAN = `passed_pan`, GSTIN = `passed_gstin` | 400 | PAN extracted from GSTIN is not matching with the propreitor's PAN |
-| something went wrong  | 409   | Internal error while processing the request  |
+| something went wrong  | 500   | Internal error while processing the request  |
 
 
 **Error Response format:**
