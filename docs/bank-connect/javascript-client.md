@@ -38,6 +38,7 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session/**
 | to_date | string | End date range to fetch statements. Should be of format `dd/MM/YYYY` | No | Yesterday |
 | logo_url | string | An optional parameter to show logo branding in bankconnect SDK. Should be a URL.| No | - |
 | bank_name | string | pass the [bank identifier](/bank-connect/appendix.html#bank-identifiers) to skip the bank selection screen and directly open a that bank's screen instead | No | - |
+| mode | string | optional parameter to set the mode(i.e. pdf, aa, and online) | No | - |
 
 `from_date` and `to_date` specify the period for which the statements will be fetched. For example, if you need the last 6 months of statements, `from_date` will be today's date - 6 months and `to_date` will be today's date - 1 day. If not provided the default date range is 6 months from the current date. It should be in `dd/MM/yyyy` format.
 
