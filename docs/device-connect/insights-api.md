@@ -270,16 +270,3 @@ FinBox fires a webhook when a user's results are updated. The response received 
 :::warning IMPORTANT
 You have to register your webhook address with FinBox. Please get in touch with us for the same.
 :::
-
-
-## Pre-Computed Results
-
-If you already have a `request_id`, you can make a POST request of the `insights` API using the param `source` = `webhook` and `request_id` = `{request_id}`. This will return the updated data to you instantly. 
-
-`https://insights.finbox.in/v2/risk/predictors?source=webhook&request_id={request_id}`
-
-:::warning IMPORTANT
-- You must only use the `source` param once you have received the webhook.
-- Param `request_id` must be the same as the request_id received in the response payload of the webhook.
-- The `request_id` expires in 24 hours.
-:::
