@@ -132,11 +132,11 @@ module.exports = {
             {
               title: 'REST API',
               path: '/bank-connect/upload-rest-api.html'
-            },
-            {
-              title: 'Python',
-              path: '/bank-connect/upload-python.html'
             }
+            // {
+            //   title: 'Python',
+            //   path: '/bank-connect/upload-python.html'
+            // }
           ]
         },
         {
@@ -151,10 +151,10 @@ module.exports = {
               title: 'REST API',
               path: '/bank-connect/rest-api.html'
             },
-            {
-              title: 'Python',
-              path: '/bank-connect/python.html'
-            },
+            // {
+            //   title: 'Python',
+            //   path: '/bank-connect/python.html'
+            // },
             {
               title: 'Webhook',
               path: '/bank-connect/webhook.html'
