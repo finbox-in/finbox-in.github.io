@@ -192,6 +192,7 @@ On fetching information successfully, the response would be of the following for
             "statement_id": "uuid4_for_statement",
             "status": "completed",
             "message": null,
+            "transaction_status": "completed",
             "source": "pdf"
         }
     ],
@@ -211,7 +212,8 @@ On fetching information successfully, the response would be of the following for
                 "2020-01",
                 "2020-02",
                 "2020-03"
-            ]
+            ],
+            "last_updated": "2022-07-21T12:15:35.411458Z"
         }
     ],
     "fraud": {
@@ -244,6 +246,7 @@ The response fields are the same as in [List Accounts](/bank-connect/rest-api.ht
 
 | Field | Type | Description |
 | - | - | - |
+| transaction_status | string | Indicates the transaction extraction status for a statement, and can be `processing`, `completed` or `failed`|
 | account_id | string | a unique identifier for the account for which the identity information is referred to in the object |
 | name | string | extracted account holder name |
 | address | string | extracted account holder address |
