@@ -140,6 +140,23 @@ function create_salt($customer_id, $server_hash) {
 
 </template>
 
+<template v-slot:ruby>
+
+```ruby
+require 'digest'
+require 'base64'
+
+def create_salt(customer_id, server_hash)
+    customer_hash = Digest::MD5.hexdigest(customer_id).upcase
+    intermediate_hash = customer_hash << server_hash
+    salt_encoded = Digest::SHA256.digest intermediate_hash
+    salt = Base64.encode64(salt_encoded)
+    return salt
+end
+```
+
+</template>
+
 </CodeSwitcher>
 
 
