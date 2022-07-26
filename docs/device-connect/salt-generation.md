@@ -12,7 +12,7 @@ Salt is calculated as follows:
 
 Sample code for salt generation in different languages:
 
-<CodeSwitcher :languages="{java:'Java',python:'Python',go:'Go',php:'PHP'}">
+<CodeSwitcher :languages="{java:'Java',python:'Python',go:'Go',php:'PHP',ruby:'Ruby'}">
 <template v-slot:java>
 
 ```java
@@ -136,6 +136,23 @@ function create_salt($customer_id, $server_hash) {
     $salt = base64_encode($sha_hash);
     return $salt;
 }
+```
+
+</template>
+
+<template v-slot:ruby>
+
+```ruby
+require 'digest'
+require 'base64'
+
+def create_salt(customer_id, server_hash)
+    customer_hash = Digest::MD5.hexdigest(customer_id).upcase
+    intermediate_hash = customer_hash << server_hash
+    salt_encoded = Digest::SHA256.digest intermediate_hash
+    salt = Base64.encode64(salt_encoded)
+    return salt
+end
 ```
 
 </template>
