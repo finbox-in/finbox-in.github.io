@@ -12,7 +12,7 @@ Salt is calculated as follows:
 
 Sample code for salt generation in different languages:
 
-<CodeSwitcher :languages="{java:'Java',python:'Python',go:'Go',php:'PHP'}">
+<CodeSwitcher :languages="{java:'Java',python:'Python',go:'Go',php:'PHP',ruby:'Ruby'}">
 <template v-slot:java>
 
 ```java
