@@ -43,7 +43,7 @@ For all the Insights API request structure is the same, all requests must have `
 | --- | --- | --- |
 | customer_id | String | `CUSTOMER_ID` for which feature vector is required |
 | version | Integer | Version of the feature set shared by FinBox team as `DC_PREDICTORS_VERSION` |
-| salt | String | A salt which is computed basis logic mentioned in the [Salt Generation](/salt-generation.html) section |
+| salt | String | A salt which is computed basis logic mentioned in the [Salt Generation](/device-connect/salt-generation.html) section |
 | metadata (`optional`) | Json | A dictionary which can be used to pass additional information for example loan_type, loan_amount or any tags |
 
 **Sample Metadata value**
