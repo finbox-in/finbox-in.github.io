@@ -168,12 +168,13 @@ POST **`base_url`/v1/user/push**
 | dob         | String | No       | Date of Birth in `YYYY-MM-DD` format  |
 | email         | String | No       | Applicant's Email  |
 | gender      | String | No       | Gender, possible values are `Male`, `Female` or `Other` |
-| gstin | String | No | GSTIN of applicant's business |
+| gstin | String | No | GSTIN of applicant's business. This should match with personal PAN specified, i.e. personal PAN should be present in the GSTIN specified (Propreitorships) |
 | vintageDate | String | No | Platform onboarding date of customer in `YYYY-MM-DD` format | 
 
 ::: warning NOTE
 1. Based on pre-qualification criteria, additional fields might be required to be passed in this API endpoint. These fields will be communicated by FinBox team, if required.
 2. Except `customerID` all other fields are optional. Fields can be passed as per requirement, like in business loan / credit line, GSTIN can be passed, while in personal loan / credit line journey this can be left out.
+3. In case of partner push failure. API response and the activity log description will mention the reason for failure.
 :::
 
 ### Response
