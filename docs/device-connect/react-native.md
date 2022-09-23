@@ -113,3 +113,12 @@ In case the user data needs to be removed to re-sync the entire data, use the me
 ```javascript
 FinBoxRiskSdk.resetData();
 ```
+
+
+## Forget User
+
+In case the user choose to be forgotten, use the method `forgetUser`. This will delete the user details in our system.
+
+```javascript
+FinBoxRiskSdk.forgetUser();
+```
