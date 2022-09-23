@@ -9,13 +9,11 @@ Create a Permission Screeen with the list of permissions with a description that
 Below are the list of Runtime permissions the sdk automatically adds to the application Manifest, if Manifest Merger is enabled:
 ```xml
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.READ_SMS" />
 <uses-permission android:name="android.permission.RECEIVE_SMS" />
-<uses-permission android:name="android.permission.READ_CONTACTS" />
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+<uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 ```
 
 <!-- ::: warning WARNING
@@ -26,7 +24,7 @@ In the case of Xiaomi we need to ask for a special Service SMS Permission so tha
 To remove the unused permissions, add node marker value as `remove` to that permission as shown below:
 ```xml
 <uses-permission
-    android:name="android.permission.READ_CONTACTS"
+    android:name="android.permission.ACCESS_FINE_LOCATION"
     tools:node="remove" />
 ```
 
