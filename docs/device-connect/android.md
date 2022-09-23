@@ -424,3 +424,24 @@ Finbox.resetData();
 </template>
 </CodeSwitcher>
 
+
+## Forget User
+
+In case the user choose to be forgotten, use the method `forgetUser`. This will delete the user details in our system.
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
+<template v-slot:kotlin>
+
+```kotlin
+Finbox.forgetUser()
+```
+
+</template>
+<template v-slot:java>
+
+```java
+Finbox.forgetUser();
+```
+
+</template>
+</CodeSwitcher>
