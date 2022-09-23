@@ -207,7 +207,7 @@ cordova.plugins.FinBoxRiskManager.setSyncFrequency(12 * 60 * 60);
 
 ## Reset User Data
 
-In case the user data needs to be removed to re-sync the entire data, use the method `resetData`.
+In case the user data needs to be removed on the device so that you can re-sync the entire data, use the method `resetData`.
 
 ```javascript
 cordova.plugins.FinBoxRiskManager.resetData();
