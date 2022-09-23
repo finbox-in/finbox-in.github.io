@@ -108,7 +108,7 @@ FinBoxRiskSdk.stopPeriodicSync();
 
 ## Reset User Data
 
-In case the user data needs to be removed to re-sync the entire data, use the method `resetData`.
+In case the user data needs to be removed on the device so that you can re-sync the entire data, use the method `resetData`.
 
 ```javascript
 FinBoxRiskSdk.resetData();
