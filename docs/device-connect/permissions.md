@@ -4,7 +4,7 @@ The Runtime permissions needs to handled by the developer when calling the helpe
 
 Create a Permission Screeen with the list of permissions with a description that explains how the data is collected benefits the user. In addition to it, add Privacy Policy to the bottom of the screen.
 
-<img src="/permission_screen.jpg" alt="Permission Screen" style="width:80%;height:80%" />
+<img src="/permission_screen.png" alt="Permission Screen" style="width:80%;height:80%" />
 
 Below are the list of Runtime permissions the sdk automatically adds to the application Manifest, if Manifest Merger is enabled:
 ```xml
