@@ -344,7 +344,7 @@ func GetSaltForCustomer(customerId string, webhookSecret string) string {
     hasher := md5.New()
 	hasher.Write([]byte(customerId))
 	hexHasher := hex.EncodeToString(hasher.Sum(nil))
-	data := strings.ToUpper(hexHasher)+ webhookSecret
+	data := strings.ToUpper(hexHasher) + webhookSecret
 	newSha256 := sha256.New()
 	newSha256.Write([]byte(data))
     finalData := base64.StdEncoding.EncodeToString(newSha256.Sum(nil))
