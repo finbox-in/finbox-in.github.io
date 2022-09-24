@@ -116,7 +116,7 @@ func GetSaltForCustomer(customerId string, serverHash string) string {
     hasher := md5.New()
 	hasher.Write([]byte(customerId))
 	hexHasher := hex.EncodeToString(hasher.Sum(nil))
-	data := strings.ToUpper(hexHasher)+ serverHash
+	data := strings.ToUpper(hexHasher) + serverHash
 	newSha256 := sha256.New()
 	newSha256.Write([]byte(data))
     finalData := base64.StdEncoding.EncodeToString(newSha256.Sum(nil))
@@ -150,7 +150,7 @@ def create_salt(customer_id, server_hash)
     customer_hash = Digest::MD5.hexdigest(customer_id).upcase
     intermediate_hash = customer_hash << server_hash
     salt_encoded = Digest::SHA256.digest intermediate_hash
-    salt = Base64.encode64(salt_encoded)
+    salt = Base64.strict_encode64(salt_encoded)
     return salt
 end
 ```

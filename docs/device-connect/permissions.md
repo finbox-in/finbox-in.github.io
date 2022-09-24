@@ -4,29 +4,22 @@ The Runtime permissions needs to handled by the developer when calling the helpe
 
 Create a Permission Screeen with the list of permissions with a description that explains how the data is collected benefits the user. In addition to it, add Privacy Policy to the bottom of the screen.
 
-<img src="/permission_screen.jpg" alt="Permission Screen" style="width:80%;height:80%" />
+<img src="/permission_screen.png" alt="Permission Screen" style="width:80%;height:80%" />
 
 Below are the list of Runtime permissions the sdk automatically adds to the application Manifest, if Manifest Merger is enabled:
 ```xml
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.READ_SMS" />
 <uses-permission android:name="android.permission.RECEIVE_SMS" />
-<uses-permission android:name="android.permission.READ_CONTACTS" />
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+<uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 ```
-
-<!-- ::: warning WARNING
-In the case of Xiaomi we need to ask for a special Service SMS Permission so that SMS Data can be synced. Please look at the sample app in which in order to navigate the user to the settings screen, we are calling the function:
-`CommonUtils.showServiceSmsPermissionSetting(this);` and then listening to the callback in `OnActivityResult` with RequestCode `REQUEST_SMS_PERMISSION_CODE`
-::: -->
 
 To remove the unused permissions, add node marker value as `remove` to that permission as shown below:
 ```xml
 <uses-permission
-    android:name="android.permission.READ_CONTACTS"
+    android:name="android.permission.ACCESS_FINE_LOCATION"
     tools:node="remove" />
 ```
 
