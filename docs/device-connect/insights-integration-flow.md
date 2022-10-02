@@ -16,4 +16,4 @@ An overview of the API calling is shown below
 The response status will be `"complete"` instead of `"in_progress"` if the results are already computed and returned through callback in the last 15 mins.
 ::: -->
 
-Incase we have the `request_id` and we can fetch the [Pre-Computed results](insights-api.html#pre-computed-results).
+<!-- Incase we have the `request_id` and we can fetch the [Pre-Computed results](insights-api.html#pre-computed-results). -->
