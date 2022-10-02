@@ -263,10 +263,10 @@ Sample Response Body:
 ```
 
 
-## Webhook Integration
+<!-- ## Webhook Integration
 
 FinBox fires a webhook when a user's results are updated. The response received in the callback is same as the [Insights API Response](#response).
 
 :::warning IMPORTANT
 You have to register your webhook address with FinBox. Please get in touch with us for the same.
-:::
+::: -->
