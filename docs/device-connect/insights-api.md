@@ -106,10 +106,9 @@ Depending on the availability of data, there can be different cases with differe
 
 | Case | `status` value | HTTP Status Code | Description / Action |
 | - | - | - | - |
-| [Calculation in progress](/device-connect/insights-api.html#case-1-calculation-in-progress) | `"in_progress"` | 202 | The request input is correct and a webhook callback is registered |
+| [Calculation in progress](/device-connect/insights-api.html#case-1-calculation-in-progress) | `"in_progress"` | 202 | The request input is correct and data processing started |
 | [Calculation complete and data is available](/device-connect/insights-api.html#case-2-calculation-complete-and-data-is-available) | `"complete"` | 200 | The request input is correct and processing has completed. Response contains the predictors |
 | [Calculation complete and data is unavailable](/device-connect/insights-api.html#case-3-calculation-complete-and-data-is-unavailable) | `"no_data"` | 200 | The request input is correct and processing has completed but response contains no predictors because of lack of data from user's device |
-| [Data fetch for request Id before webhook callback or after 24 hours](/device-connect/insights-api.html#case-4-data-fetch-for-request-id-before-webhook-callback-or-after-24-hours) | `"webhook_not_found"` | 200 | The request has no data assosciated with it because the request id was never sent from webhook callback or it is deleted because 24 hours passed from when it was sent |
 | [Invalid customer ID](/device-connect/insights-api.html#case-4-invalid-customer-id) | `"not_found"` | 200 | User does not exist in FinBox system |
 | [Bad request](/device-connect/insights-api.html#case-5-bad-request) | `"error"` | 400 | The request input is incorrect / malformed. More details available in `message` key |
 | [Unauthorized](/device-connect/insights-api.html#case-6-unauthorized) | `"error"` | 403 | This happens in case SERVER_API_KEY is incorrect or IP address in not whitelisted |
@@ -172,24 +171,8 @@ Sample Response Body:
 }
 ```
 
-### Case 4 - Data fetch for request Id before webhook callback or after 24 hours
 
-HTTP Status Code: **200**
-
-Sample Response Body:
-
-```json
-{
-    "customer_id": "A145BC6312B50CA2B58233288F81C02114A6A74E9A62482169F9F",
-    "request_id": "abcd-def-dfdf-000l",
-    "date_requested": "2019-01-03T06:37:44:003",
-    "date_processed": "2018-12-12T01:01:57:221",
-    "status": "webhook_not_found",
-    "message": "The Webhook response for the given request ID was not found. This can happen if the webhook URL was called before receiving the webhook event or after 24 hours of receiving webhook event"
-}
-```
-
-### Case 5 - Invalid Customer ID
+### Case 4 - Invalid Customer ID
 
 HTTP Status Code: **200**
 
@@ -207,7 +190,7 @@ Sample Response Body:
 }
 ```
 
-### Case 6 - Bad Request
+### Case 5 - Bad Request
 
 HTTP Status Code: **400**
 
@@ -223,7 +206,7 @@ Sample Response Body:
 }
 ```
 
-### Case 7 - Unauthorized
+### Case 6 - Unauthorized
 
 HTTP Status Code: **403**
 
@@ -236,7 +219,7 @@ Sample Response Body:
 }
 ```
 
-### Case 8 - Internal Server Error
+### Case 7 - Internal Server Error
 
 HTTP Status Code: **5xx**
 
@@ -249,7 +232,7 @@ Sample Response Body:
 }
 ```
 
-### Case 9 - Rate Limit Exceeded
+### Case 8 - Rate Limit Exceeded
 
 HTTP Status Code: **429**
 
@@ -263,10 +246,10 @@ Sample Response Body:
 ```
 
 
-## Webhook Integration
+<!-- ## Webhook Integration
 
 FinBox fires a webhook when a user's results are updated. The response received in the callback is same as the [Insights API Response](#response).
 
 :::warning IMPORTANT
 You have to register your webhook address with FinBox. Please get in touch with us for the same.
-:::
+::: -->
