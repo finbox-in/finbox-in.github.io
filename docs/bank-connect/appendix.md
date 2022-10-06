@@ -212,9 +212,40 @@ The table below lists the supported banks with their corresponding identifier. T
 | VAISHYA              | Vaishya Sahakari BankLtd.                              | No                       | Yes                 |
 | VASAI                | Vasai Vikas Sahakari Bank Ltd                          | No                       | Yes                 |
 | VIJAYA               | Vijaya Bank                                            | No                       | Yes                 |
-| VSBBNK               | Vishweshawar Sahakari Bank Ltd                         | No                       | Yes                 |
+| VSBBNK               | The Vishweshawar Sahakari Bank Ltd                         | No                       | Yes                 |
 | YASHBNK              | Yash Urban Co-Operative Credit Society ltd.            | No                       | Yes                 |
 | YESBNK               | Yes Bank                                               | Yes                      | Yes                 |
+| SURAT_MERCANTILE     | The Surat Mercantile Co-Op. Bank Ltd, India            | No                       | Yes                 |
+| VSCBNK               | Vikas Souharda Co-Op Bank Ltd                          | No                       | Yes                 |
+| AKOLA_WASHIM         | The Akola-Washim District Central Co-Op. Bank Ltd      | No                       | Yes                 |
+| AKHAND_ANAND         | Akhand Anand Co-Operative Bank Ltd                     | No                       | Yes                 |
+| BNSBNK               | Bhagini Nivedita Sahakari Bank Ltd                     | No                       | Yes                 |
+| PUSAD                | Pusad Urban Co-Op Bank Ltd                             | No                       | Yes                 |
+| TSCABBNK             | Telangana State Co-Op Apex Bank Ltd                    | No                       | Yes                 |
+| LATUR_URBAN          | Latur Urban Co-Op. Bank Ltd                            | No                       | Yes                 |
+| ANDHRA_MAHESH        | Andhra Pradesh Mahesh Co-Op Urban Bank Ltd             | No                       | Yes                 |
+| INDRAYANI            | Indrayani Co-Op Bank                                   | No                       | Yes                 |
+| SHIVESHWAR_SAHAKARI  | Shri Shiveshwar Nagari Sahakari Bank Ltd               | No                       | Yes                 |
+| AJARA_URBAN          | The Ajara Urban Co-Op Bank Ltd                         | No                       | Yes                 |
+| VIDYA_SAHAKARI       | Vidya Sahkari Bank Ltd                                 | No                       | Yes                 |
+| SHGBNK               | Sarva Haryana Gramin Bank                              | No                       | Yes                 |
+| LAXMI_URBAN          | Laxmi Urban Co-op Bank                                 | No                       | Yes                 |
+| KUKARWADA_NAGRIK     | Kukarwada Nagrik Sahakari Bank                         | No                       | Yes                 |
+| SANT_SOPANKAKA       | Sant Sopankaka Sahakari Bank Ltd                       | No                       | Yes                 |
+| VARDHAMAN_URBAN      | Vardhaman Mahila Co-Op Urban Bank Ltd                  | No                       | Yes                 |
+| RAJKOT_COBNK         | The Co-Operative Bank of Rajkot                        | No                       | Yes                 |
+| ADILABAD_DCCBNK      | Adilabad District Co-Op Central Bank Ltd               | No                       | Yes                 |
+| GANDHINAGAR_NAGARIK  | Gandhinagar Nagrik Co-Op Bank                          | No                       | Yes                 |
+| GAYATRI_URBAN        | The Gayatri Co-Operative Urban Bank Ltd.               | No                       | Yes                 |
+| MUSLIMBNK            | The Muslim Co-Op Bank Ltd                              | No                       | Yes                 |
+| MSCBNK               | The Maharashtra State Co-Op Bank Ltd                   | No                       | Yes                 |
+| NAVJEEVANBNK         | Navjeevan Co-Op Bank Ltd                               | No                       | Yes                 |
+| WARANA_SAHAKARI      | Shree Warana Sahakari Bank Ltd                         | No                       | Yes                 |
+| AGRASEN_URBAN        | Agrasen Co-op Urban Bank Ltd                           | No                       | Yes                 |
+| KANKARIABNK          | Kankaria Maninagar Nagrik Sahakari Bank Ltd.           | No                       | Yes                 |
+| RAIGANJ_CENTRAL      | Raiganj Central Co-Op Bank Ltd                         | No                       | Yes                 |
+| CAPITAL_SMALL_FINANCE| Capital Small Finance Bank                             | No                       | Yes                 |
+| VIJAY_CO_OP_BNK      | Vijay Commercial Co-Op Bank Ltd                        | No                       | Yes                 |
 
 <!-- | stanchar | Standard Chartered | -->
 
