@@ -850,12 +850,9 @@ On successful updating the status, API will give a response with 200 HTTP status
 | only transaction with status PROCESSING can be updated | 403 |
 
 ## Split Credit Line Transaction
-Splits Credit Line Transaction in processing state into different transactions. Useful when same order has different invoices, shipment or deliveries. After splitting, each transaction can further be splitted or moved to cancelled / confirmed state. 
+Splits Credit Line Transaction in processing state into different transactions.
 
-::: warning NOTE
-1. This API's request format is specific to e-commerce use case, and is disabled by default for clients with a different use case.
-2. For other use cases if this is required, FinBox team will share a different API.
-:::
+Example of a use-case for this API in e-commerce contet would when the same order has different invoices, shipment or deliveries. After splitting, each transaction can further be splitted or moved to cancelled / confirmed state.
 
 ::: tip Endpoint
 POST **`base_url`/v1/creditline/txn/split**
@@ -878,7 +875,44 @@ POST **`base_url`/v1/creditline/txn/split**
 | invoiceNo | String | Invoice Number. This is optional and can be skipped by passing blank string |
 | amount | Float | Amount of the sub transaction |
 
-On successful updating the status, API will give a response with 200 HTTP status code.
+#### Response format
+
+On successful updating the status, API will give a response with 200 HTTP status code with details on sub-transactions created after the split. 
+
+For the example, let's assume transaction id `039b0552-31e3-4724-a35c-0d5edd663bcf` had original amount of 34,000, and example request payload above was used.
+
+```json
+{
+    "data": {
+        "msg": "success",
+        "transactions": [
+            {
+                "txnID": "74ecb785-5323-45b9-bed5-303f3a927cb1",
+                "amount": 1000,
+                "invoiceNo": "DEFS123"
+            },
+            {
+                "txnID": "226eefa8-458c-4a58-9336-28e90bdcd2e6",
+                "amount": 500,
+                "invoiceNo": "ABNC456"
+            },
+            {
+                "txnID": "ceb4c3eb-51eb-4164-b4a6-d6279e64e07d",
+                "amount": 1500,
+                "invoiceNo": ""
+            },
+            {
+                "txnID": "c0dcfe89-f8b3-414d-a52c-0d9d022ec382",
+                "amount": 31000,
+                "invoiceNo": ""
+            }
+        ]
+    },
+    "error": "",
+    "status": true
+}
+```
+
 
 ::: warning NOTE
 1. Please make sure sum of amounts add up to the original transaction amount being split
@@ -898,11 +932,6 @@ On successful updating the status, API will give a response with 200 HTTP status
 
 ## Merge Credit Line Transactions
 Merge Credit Line Transactions in processing state to a single transaction. Useful when different orders have same invoice. After merging, invoice can be moved to cancelled / confirmed state. 
-
-::: warning NOTE
-1. This API's request format is specific to e-commerce use case, and is disabled by default for clients with a different use case.
-2. For other use cases if this is required, FinBox team will share a different API.
-:::
 
 ::: tip Endpoint
 POST **`base_url`/v1/creditline/txn/merge**
