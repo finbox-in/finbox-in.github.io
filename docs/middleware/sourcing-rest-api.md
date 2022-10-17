@@ -913,6 +913,8 @@ For the example, let's assume transaction id `039b0552-31e3-4724-a35c-0d5edd663b
 }
 ```
 
+Here, `amount` is of type **Float**.
+
 
 ::: warning NOTE
 1. Please make sure sum of amounts add up to the original transaction amount being split
