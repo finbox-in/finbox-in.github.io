@@ -246,6 +246,18 @@ The table below lists the supported banks with their corresponding identifier. T
 | RAIGANJ_CENTRAL      | Raiganj Central Co-Op Bank Ltd                         | No                       | Yes                 |
 | CAPITAL_SMALL_FINANCE| Capital Small Finance Bank                             | No                       | Yes                 |
 | VIJAY_CO_OP_BNK      | Vijay Commercial Co-Op Bank Ltd                        | No                       | Yes                 |
+| VERAVAL_PEOPLES      | The Veraval Peoples Co-Op Bank,                        | No                       | Yes                 | 
+| UNION_CO_OP_BNK      | The Union Co-Op Bank Ltd,                              | No                       | Yes                 |
+| SHRI_MAHAVIR_URBAN   | Shri Mahavir Urban Co-Op Bank Ltd.                     | No                       | Yes                 |
+| LONAVALA_SAHAKARI    | Lonavala Sahakari Bank                                 | No                       | Yes                 |
+| ICHALKARANJI_MERCHANTS|The Ichalkaranji Merchants Co-Op Bank Ltd              | No                       | Yes                 |
+| NATIONAL_CO_OP_BNK   | The National Co-Op Bank Ltd                            | No                       | Yes                 |
+| KOLHAPUR_URBAN       | Kolhapur Urban Co-Op Bank                              | No                       | Yes                 |
+| OSMANABAD_JANATA     | Osmanabad Janata Sahakari Bank Ltd                     | No                       | Yes                 |
+| PUNE_CANT_SAHAKARI   | Pune Cantonment Sahakari Bank Ltd                      | No                       | Yes                 |
+| DECCAN_MERCHANTS     | Deccan Merchants Co-op Bank Ltd                        | No                       | Yes                 |
+| HIMATNAGAR_NAGARIK   | Himatnagar Nagarik Sahakari Bank Ltd                   | No                       | Yes                 |
+| PRERANA_BNK          | Prerana Co-Op. Bank Ltd                                | No                       | Yes                 |
 
 <!-- | stanchar | Standard Chartered | -->
 
