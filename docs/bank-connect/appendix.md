@@ -212,7 +212,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | VAISHYA              | Vaishya Sahakari BankLtd.                              | No                       | Yes                 |
 | VASAI                | Vasai Vikas Sahakari Bank Ltd                          | No                       | Yes                 |
 | VIJAYA               | Vijaya Bank                                            | No                       | Yes                 |
-| VSBBNK               | The Vishweshawar Sahakari Bank Ltd                         | No                       | Yes                 |
+| VSBBNK               | The Vishweshawar Sahakari Bank Ltd                     | No                       | Yes                 |
 | YASHBNK              | Yash Urban Co-Operative Credit Society ltd.            | No                       | Yes                 |
 | YESBNK               | Yes Bank                                               | Yes                      | Yes                 |
 | SURAT_MERCANTILE     | The Surat Mercantile Co-Op. Bank Ltd, India            | No                       | Yes                 |
@@ -258,6 +258,27 @@ The table below lists the supported banks with their corresponding identifier. T
 | DECCAN_MERCHANTS     | Deccan Merchants Co-op Bank Ltd                        | No                       | Yes                 |
 | HIMATNAGAR_NAGARIK   | Himatnagar Nagarik Sahakari Bank Ltd                   | No                       | Yes                 |
 | PRERANA_BNK          | Prerana Co-Op. Bank Ltd                                | No                       | Yes                 |
+| MAHANAGAR_NAGRIK	   | MAHANAGAR_NAGRIK                                       | No                       | Yes                 |
+| TEXTILE_TRADERS      | TEXTILE_TRADERS                                        | No                       | Yes                 |
+| JUNAGADH_BNK         | JUNAGADH_BNK                                           | No                       | Yes                 |
+| NAGPUR_NAGARIK       | NAGPUR_NAGARIK                                         | No                       | Yes                 |
+| UTKAL_GRAMEEN        | UTKAL_GRAMEEN                                          | No                       | Yes                 |
+| NOIDA_CCBNK          | NOIDA_CCBNK                                            | No                       | Yes                 |
+| JAIHIND_URBAN        | JAIHIND_URBAN                                          | No                       | Yes                 |
+| SAURASHTRA_CO_BNK    | SAURASHTRA_CO_BNK                                      | No                       | Yes                 |
+| COASTAL_AREA_BNK     | COASTAL_AREA_BNK                                       | No                       | Yes                 |
+| RAJKOT_PEOPLES       | RAJKOT_PEOPLES                                         | No                       | Yes                 |
+| NIDHI_CO_BNK         | NIDHI_CO_BNK                                           | No                       | Yes                 |
+| SHRI_GANESH_SAHAKARI | SHRI_GANESH_SAHAKARI                                   | No                       | Yes                 |
+| KARAD_URBAN          | KARAD_URBAN                                            | No                       | Yes                 |
+| SINDHUDURG_BNK       | SINDHUDURG_BNK                                         | No                       | Yes                 |
+| SHREE_MAHESH_BNK     | SHREE_MAHESH_BNK                                       | No                       | Yes                 |
+| SAMPADA_SAHAKARI     | SAMPADA_SAHAKARI                                       | No                       | Yes                 |
+| BANASKANTHA_MERCANTILE| BANASKANTHA_MERCANTILE                                | No                       | Yes                 | 
+| RAJARSHI_SHAHU       | RAJARSHI_SHAHU                                         | No                       | Yes                 |
+| MAHESH_URBAN         | MAHESH_URBAN                                           | No                       | Yes                 |
+| VCOBNK               | VCOBNK                                                 | No                       | Yes                 |
+| BOMBAY_MERCANTILE    | BOMBAY_MERCANTILE                                      | No                       | Yes                 |
 
 <!-- | stanchar | Standard Chartered | -->
 
