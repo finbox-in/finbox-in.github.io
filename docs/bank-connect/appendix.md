@@ -212,7 +212,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | VAISHYA              | Vaishya Sahakari BankLtd.                              | No                       | Yes                 |
 | VASAI                | Vasai Vikas Sahakari Bank Ltd                          | No                       | Yes                 |
 | VIJAYA               | Vijaya Bank                                            | No                       | Yes                 |
-| VSBBNK               | The Vishweshawar Sahakari Bank Ltd                         | No                       | Yes                 |
+| VSBBNK               | The Vishweshawar Sahakari Bank Ltd                     | No                       | Yes                 |
 | YASHBNK              | Yash Urban Co-Operative Credit Society ltd.            | No                       | Yes                 |
 | YESBNK               | Yes Bank                                               | Yes                      | Yes                 |
 | SURAT_MERCANTILE     | The Surat Mercantile Co-Op. Bank Ltd, India            | No                       | Yes                 |
@@ -258,6 +258,27 @@ The table below lists the supported banks with their corresponding identifier. T
 | DECCAN_MERCHANTS     | Deccan Merchants Co-op Bank Ltd                        | No                       | Yes                 |
 | HIMATNAGAR_NAGARIK   | Himatnagar Nagarik Sahakari Bank Ltd                   | No                       | Yes                 |
 | PRERANA_BNK          | Prerana Co-Op. Bank Ltd                                | No                       | Yes                 |
+| MAHANAGAR_NAGRIK	   | Mahanagar Nagrik Sahakari Bank                         | No                       | Yes                 |
+| TEXTILE_TRADERS      | Textile Traders Co-Op. Bank Ltd                        | No                       | Yes                 |
+| JUNAGADH_BNK         | Junagadh Commercial Co-Op Bank Ltd                     | No                       | Yes                 |
+| NAGPUR_NAGARIK       | Nagpur Nagarik Sahakari Bank                           | No                       | Yes                 |
+| UTKAL_GRAMEEN        | Utkal Grameen Bank                                     | No                       | Yes                 |
+| NOIDA_CCBNK          | Noida Commercial Co-Op. Bank Ltd                       | No                       | Yes                 |
+| JAIHIND_URBAN        | Jaihind Urban Co-Op Bank Ltd                           | No                       | Yes                 |
+| SAURASHTRA_CO_BNK    | The Saurashtra Co-Op Bank Ltd                          | No                       | Yes                 |
+| COASTAL_AREA_BNK     | Coastal Local Area Bank Ltd.                           | No                       | Yes                 |
+| RAJKOT_PEOPLES       | Rajkot Peoples Co-Op Bank Ltd                          | No                       | Yes                 |
+| NIDHI_CO_BNK         | Nidhi Co-Op. Bank Ltd                                  | No                       | Yes                 |
+| SHRI_GANESH_SAHAKARI | Shree Ganesh Sahakari Bank Ltd                         | No                       | Yes                 |
+| KARAD_URBAN          | The Karad Urban Co-op Bank                             | No                       | Yes                 |
+| SINDHUDURG_BNK       | Sindhudurg District Central Co-Op Bank Ltd             | No                       | Yes                 |
+| SHREE_MAHESH_BNK     | Shree Mahesh Co-Op. Bank Ltd                           | No                       | Yes                 |
+| SAMPADA_SAHAKARI     | Sampada Sahakari Bank Ltd                              | No                       | Yes                 |
+| BANASKANTHA_MERCANTILE|The Banaskantha Mercantile Co Op Bank Ltd.             | No                       | Yes                 | 
+| RAJARSHI_SHAHU       | Rajarshi Shahu Sahakari Bank Ltd                       | No                       | Yes                 |
+| MAHESH_URBAN         | Mahesh Urban Co-Operative Bank Ltd                     | No                       | Yes                 |
+| VCOBNK               | Vijay Co-Op. Bank Ltd                                  | No                       | Yes                 |
+| BOMBAY_MERCANTILE    | Bombay Mercantile Co-Operative Bank Ltd.               | No                       | Yes                 |
 
 <!-- | stanchar | Standard Chartered | -->
 
