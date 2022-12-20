@@ -426,6 +426,7 @@ GET **`base_url`/v1/loan/offers?loanApplicationID=`someLongLoanApplicationUUID`*
             "status": "offer_accepted",
             "disbursalAmount": 5674,
             "totalPayableAmount": 6966,
+            "lenderName": "XYZ Lender",
             "emis": [
                 {
                     "emiDate": "2021-02-03",
@@ -472,6 +473,7 @@ Response fields are explained below:
 | status | String | Can be `offer_accepted` or `offered` |
 | disbursalAmount | Float | Final Disbursal Amount |
 | totalPayableAmount | Float | Total Payable Amount |
+| lenderName | String | Name of the lender against which offers were generated |
 | emis | Array of Objects | Contains emi objects containing date and amount sorted in sequence of installments |
 | emiAmount | Float | Tells the EMI Amount |
 | emiDate | String | Contains `YYYY-MM-DD` format |
