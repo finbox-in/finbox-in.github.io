@@ -74,6 +74,10 @@ module.exports = {
               path: '/device-connect/cordova.html'
             },
             {
+              title: 'Ionic React',
+              path: '/device-connect/ionic-react.html'
+            },
+            {
               title: 'Error Codes',
               path: '/device-connect/error-codes.html'
             }
