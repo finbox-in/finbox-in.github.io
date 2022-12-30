@@ -96,6 +96,16 @@ module.exports = {
               path: '/device-connect/salt-generation.html'
             }
           ]
+        },
+        {
+          title: 'FAQ',
+          collapsable: true,
+          children: [
+            {
+              title: 'FAQ',
+              path: '/device-connect/faq.html'
+            }
+          ]
         }
       ],
       '/bank-connect/': [
