@@ -10,7 +10,7 @@ The size of the SDK is ~300 kB which is integrated in the lending application.
 <details open>
 <summary>What OS does the DeviceConnect SDK support? (Android/IOS/Web)?</summary>
 
-SDK is currently available only in Android.
+The SDK is currently available only in Android.
 </details>
 <br>
 <br>
@@ -25,7 +25,6 @@ The SDK currently supports Java, Kotlin, React Native, Flutter, Cordova, Ionic A
 <summary>How many processes are involved in the integration of DeviceConnect SDK? How much time is required for each process?</summary>
 
 There are 2 processes involved.
-<br>
 <br>
 
 | Process                       | Time Required                                             |
