@@ -76,7 +76,7 @@ The DeviceConnect SDK accesses only anonymized data which includes non-PII trans
 <details open>
 <summary>How to get the keys, credentials and version number for DeviceConnect?</summary>
 
-FinBox will communicate the keys and credentials after relevant processing between the parties. For more information, Contact Us.
+FinBox will communicate the keys and credentials after relevant processing between the parties. For more information, [Contact Us](mailto:biz@finbox.in).
 </details>
 <br>
 <br>
