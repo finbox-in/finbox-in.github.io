@@ -90,5 +90,5 @@ FinBox will share the list of features after initial discussions. For more detai
 <details open>
 <summary>How to generate salt?</summary>
 
-Salt is required for authentication and the generation details are under available under [Salt Generation](https://docs.finbox.in/device-connect/salt-generation.html#calculate-salt) section
+Salt is required for authentication and the generation details are under available under [Salt Generation](/device-connect/salt-generation.html) section
 </details>
