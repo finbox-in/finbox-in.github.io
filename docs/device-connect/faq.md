@@ -1,4 +1,4 @@
-# DeviceConnect: FAQ
+# DeviceConnect: Frequently Asked Questions
 
 <details open>
 <summary>What is the size of DeviceConnect SDK?</summary>
