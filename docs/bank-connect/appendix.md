@@ -279,6 +279,14 @@ The table below lists the supported banks with their corresponding identifier. T
 | MAHESH_URBAN         | Mahesh Urban Co-Operative Bank Ltd                     | No                       | Yes                 |
 | VCOBNK               | Vijay Co-Op. Bank Ltd                                  | No                       | Yes                 |
 | BOMBAY_MERCANTILE    | Bombay Mercantile Co-Operative Bank Ltd.               | No                       | Yes                 |
+| STERLING_URBAN       | Sterling Urban Co-Op Bank                              | No                       | Yes                 |
+| KURLA_NAGRIK         | The Kurla Nagrik Sahakari Bank Ltd                     | No                       | Yes                 |
+| UNJHA_NAGARIK        | Unjha Nagarik Sahakari Bank Ltd                        | No                       | Yes                 |    
+| ADINATH_BNK          | The Adinath Co-Operative Bank Ltd.                     | No                       | Yes                 |     
+| SOLAPUR_DISTRICT     | Solapur District Central Co.-Op. Bank Ltd.             | No                       | Yes                 |              
+| BARODA_RAJASTHAN     | Baroda Rajasthan Kshetriya Gramin Bank                 | No                       | Yes                 |          
+| COMMERCIAL_CO_BNK    | The Commercial Co-Op Bank Ltd                          | No                       | Yes                 |  
+| BHADRADRI_URBAN      | Bhadradri Co-Op Urban Bank                             | No                       | Yes                 |
 
 <!-- | stanchar | Standard Chartered | -->
 
