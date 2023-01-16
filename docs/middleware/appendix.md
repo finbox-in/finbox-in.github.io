@@ -96,7 +96,7 @@ Please note that the event description is always a **string**
 | credit_line_limit_updated | Credit Line Limit Updated | System | `{"availableLimit": 50000.00}` |
 | credit_line_txn_confirmed | Credit Line Transaction Confirmed | Sourcing Entity | `{"txnID": "your_txn_id"}` |
 | credit_line_txn_cancelled | Credit Line Transaction Cancelled | Sourcing Entity | `{"txnID": "your_txn_id"}` |
-| credit_line_txn_disbursed | Credit Line Transaction Disbursed | System / Lender | `{"txnID": "your_txn_id"}` |
+| credit_line_txn_disbursed | Credit Line Transaction Disbursed | System / Lender | `{"txnID": "your_txn_id", "utr": "SOME_UTR"}` |
 | credit_line_txn_paid | All EMIs for Credit Line Transaction Paid | System | `{"txnID": "your_txn_id"}` |
 | credit_line_txn_splitted | Credit Line Transaction is splitted into different transactions based on order shipment | Sourcing Entity | `{"txnID": "your_txn_id", "splitCount": 5}` |
 
