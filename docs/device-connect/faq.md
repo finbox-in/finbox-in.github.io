@@ -1,12 +1,14 @@
 # DeviceConnect: Frequently Asked Questions
 
+&NewLine;
+&NewLine;
 <details>
 <summary><b>What is the size of DeviceConnect SDK?</b></summary>
 
 The size of the SDK is ~300 kB which is integrated in the lending application.
 </details>
-<br>
-<br>
+` `
+` `
 <details>
 <summary><b>What OS does the DeviceConnect SDK support? (Android/IOS/Web)?</b></summary>
 
@@ -91,3 +93,5 @@ FinBox will share the list of features after initial discussions. For more detai
 
 Salt is required for authentication and the generation details are under available under [Salt Generation](/device-connect/salt-generation.html) section
 </details>
+
+In case of any questions, feel free to Contact Us.
