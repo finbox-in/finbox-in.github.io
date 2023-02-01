@@ -93,5 +93,6 @@ FinBox will share the list of features after initial discussions. For more detai
 
 Salt is required for authentication and the generation details are under available under [Salt Generation](/device-connect/salt-generation.html) section
 </details>
-
-In case of any questions, feel free to Contact Us.
+` `
+` `
+In case of any questions, feel free to [Contact Us](mailto:biz@finbox.in).
