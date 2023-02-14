@@ -28,7 +28,7 @@ export default {
       var isCorrect = false
       if (this.var1) {
         var hashedValue = MD5(this.var1).toString()
-        if (hashedValue == "e0956577147184845d5bd2249abb417b") {
+        if (hashedValue == "8b0c687f51a863cfe89e3120bb1fe9a8") {
           const data = JSON.stringify({
             time: new Date().getTime()
           })
