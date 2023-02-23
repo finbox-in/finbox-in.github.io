@@ -64,7 +64,7 @@ Please note that the event description is always a **string**
 | kyc_resubmitted | KYC document re-submitted by Customer | Customer | - |
 | lender_assigned | A lender was assigned to finance the loan application | System | - |
 | loan_approved | Loan was approved by a lender | System / Lender | - |
-| loan_rejected | Loan was rejected by a lender | System / Lender | - |
+| loan_rejected | Application was rejected by a lender | System / Lender | - |
 | loan_offer_accepted | Loan offer was accepted by customer | Customer | - |
 | bank_details_added | Customer updated bank details - acc number & IFSC | Customer | - |
 | bank_verification_failed | Bank could not be verified | System | - |
@@ -90,15 +90,20 @@ Please note that the event description is always a **string**
 | emi_due_in_3_days | EMI is due in 3 days | System | `{"installmentNum": 1}` |
 | emi_due_in_tomorrow | EMI is due tomorrow | System | `{"installmentNum": 1}` |
 | emi_overdue | EMI is overdue | System | `{"installmentNum": 1}` |
-| credit_line_created | Credit Line Created | System | `{"limit": 100000.00}`
+| credit_line_created | Credit Line Created | System | `{"limit": 100000.00}` |
+| credit_line_deactivated | System / Lender | `reason for deactivation` |
+| credit_line_closed | System / Lender | - |
 | credit_line_withdrew | Credit Line Transaction Created / Withdrawl Made | Customer | `{"amount": 2323.00, "txnID": "your_txn_id", "refID": "some_reference_id"}` |
 | credit_line_withdrew_failed | Credit Line Transaction Withdrawl Failed | Customer | `{"amount": 2323.00, "txnID": "your_txn_id", "refID": "some_reference_id"}` |
-| credit_line_limit_updated | Credit Line Limit Updated | System | `{"availableLimit": 50000.00}` |
+| credit_line_limit_updated | Credit Line Available Limit Updated | System | `{"availableLimit": 50000.00}` |
+| credit_line_max_limit_increased | Credit Line Max Limit Increased | System / Lender | `{"newMaxLimit": 50000.00}` |
+| credit_line_max_limit_decreased | Credit Line Max Limit Decreased | System / Lender | `{"newMaxLimit": 50000.00}` |
 | credit_line_txn_confirmed | Credit Line Transaction Confirmed | Sourcing Entity | `{"txnID": "your_txn_id"}` |
 | credit_line_txn_cancelled | Credit Line Transaction Cancelled | Sourcing Entity | `{"txnID": "your_txn_id"}` |
 | credit_line_txn_disbursed | Credit Line Transaction Disbursed | System / Lender | `{"txnID": "your_txn_id", "utr": "SOME_UTR"}` |
 | credit_line_txn_paid | All EMIs for Credit Line Transaction Paid | System | `{"txnID": "your_txn_id"}` |
 | credit_line_txn_splitted | Credit Line Transaction is splitted into different transactions based on order shipment | Sourcing Entity | `{"txnID": "your_txn_id", "splitCount": 5}` |
+
 
 :::tip Credit Line Specific Event Description
 
