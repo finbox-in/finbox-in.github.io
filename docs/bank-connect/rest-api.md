@@ -1514,3 +1514,39 @@ The list value of `predictors` key will be empty if any one of the statements ha
 - `null` value will come for some fields (mentioned in types), when that month's data is unavailable
 - total days = (`end_date` - `start_date`) in days
 :::
+
+## Bank-Connect Score <Badge text="New" />
+Get Bank-Connect score for a given entity **account wise**.
+
+::: tip Endpoint
+GET **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/entity/`<entity_id>`/score/**
+:::
+
+### Authentication
+Request headers `x-api-key` with API Key as value and `server-hash` with Server Hash as value must be present in request.
+
+### Response
+On fetching information successfully, the response would be of the following format with **200 HTTP code**:
+```json
+{
+    "entity_id": "uuid4_for_entity",
+    "progress": [
+        {
+            "statement_id": "uuid4_for_statement",
+            "status": "completed",
+            "message": null,
+            "source": "pdf"
+        }
+    ],
+    "score": [
+        {
+            "account_id": "uuid4_for_account-id",
+            "score": "score"
+        }
+    ]
+}
+```
+
+The list value score will be blank if any statement is in processing mode. When all the transactions are successfully processed for all statments, a list of objects with account-id and bank-connect score will be available.
+
+The bank-connect score ranges in the scale of 300-900. The score is also available in the excel report.
