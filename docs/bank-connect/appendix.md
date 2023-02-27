@@ -82,7 +82,7 @@ The table below lists the supported banks with their corresponding identifier. T
 | JUGALKISHOR          | Jugalkishor Tapdiya Shree Mahesh Urban co-op bank      | No                       | Yes                 |
 | KAIJSB               | Kallapanna Awade Ichalkaranji Janata Sahakari Bank Ltd | No                       | Yes                 |
 | KALYAN               | Kalyan Janata Sahakari Bank                            | No                       | Yes                 |
-| KARNATAKA            | Karnataka Bank                                         | No                       | Yes                 |
+| KARNATAKA            | Karnataka Bank                                         | Yes                      | Yes                 |
 | KARNATAKA_GRAMIN     | Karnataka Gramin Bank                                  | No                       | Yes                 |
 | KARNATAKA_VIKAS      | Karnataka Vikas Grameena Bank                          | No                       | Yes                 |
 | KARNAVATI            | Karnavati Co-op Bank Ltd                               | No                       | Yes                 |
@@ -287,8 +287,38 @@ The table below lists the supported banks with their corresponding identifier. T
 | BARODA_RAJASTHAN     | Baroda Rajasthan Kshetriya Gramin Bank                 | No                       | Yes                 |          
 | COMMERCIAL_CO_BNK    | The Commercial Co-Op Bank Ltd                          | No                       | Yes                 |  
 | BHADRADRI_URBAN      | Bhadradri Co-Op Urban Bank                             | No                       | Yes                 |
-
-<!-- | stanchar | Standard Chartered | -->
+| SATARA_SAHAKARI      | The Satara Sahakari Bank Ltd.                          | No                       | Yes                 |      
+| BHAVNAGAR_DISTRICT   | The Bhavnagar District Co-Op Bank Ltd                  | No                       | Yes                 |                      
+| RAJARAMBAPU_SAHAKARI | Rajarambapu Sahakari Bank Ltd                          | No                       | Yes                 |               
+| PUNE MERCHANTS       | Pune Merchants Co-Op Bank                              | No                       | Yes                 |              
+| PRATHAMA GRAMIN      | Prathama U.P. Gramin Bank                              | No                       | Yes                 |             
+| SANTRAMPUR_URBAN     | The Santrampur Urban Co-Op Bank Ltd                    | No                       | Yes                 |            
+| MANSA_NAGRIK         | The Mansa Nagrik Sahakari Bank Ltd                     | No                       | Yes                 |      
+| STANCHAR             | Standard Chartered                                     | No                       | Yes                 |
+| UDAIPUR_URBAN        | The Udaipur Urban Co-Op Bank Ltd					    | No                       | Yes                 |
+| VASAI_JANATA         | Vasai Janata Sahakari Bank Ltd							| No                       | Yes                 |
+| LASALGAON_MERCHANTS  | The Lasalgaon Merchants Co-op Bank Ltd    				| No                       | Yes                 |
+| BARODA_CITY_BNK      | The Baroda City Co-Op Bank Ltd							| No                       | Yes                 |
+| SOLAPUR_JANATA       | Solapur Janata Sahakari Bank							| No                       | Yes                 |
+| TAMLUK_GHATAL_BNK    | Tamlukghatal Central Co-Op Bank Ltd    				| No                       | Yes                 |
+| VERAVAL_MERCANTILE   | Veraval Mercantile Co-Op Bank Ltd    					| No                       | Yes                 |
+| VIDYANAND_CO_BNK     | Vidyanand Co-Op Bank									| No                       | Yes                 |
+| IDAR_NAGARIK         | The Idar Nagarik Sahakari Bank Ltd.					| No                       | Yes                 |
+| ANNASAHEB_SAVANT     | The Annasaheb Savant Co-Op Urban Bank Mahad Ltd		| No                       | Yes                 |
+| ADARSH_CO_BNK        | The Adarsh Co-Operative Bank Ltd						| No                       | Yes                 |
+| RAJKOT_COMMERCIAL    | Rajkot Commercial Co-Op. Bank Ltd    					| No                       | Yes                 |
+| RAMESHWAR_CO_OP_BNK  | Rameshwar Co-Op Bank Ltd, India    					| No                       | Yes                 |
+| RAMRAJYA_SAHAKARI    | Ramrajya Sahakari Bank Ltd, India    					| No                       | Yes                 |
+| MANVI_PATTANA        | Manvi Pattana Souharda Sahakari Bank Niyamita, India	| No                       | Yes                 |
+| ASHOK_SAHAKARI       | Ashok Sahakari Bank Ltd, India							| No                       | Yes                 |
+| SANMATI_SAHAKARI     | Sanmati Sahakari Bank Ltd, India    				    | No                       | Yes                 |
+| JHARKHAND_RAJYA      | Jharkhand Rajya Gramin Bank, India						| No                       | Yes                 |
+| LOKMANGAL_CO_OP_BNK  | Lokmangal Co-Op Bank Ltd, India    					| No                       | Yes                 |
+| NOBLE_CO_OP_BNK      | Noble Co-Op Bank Ltd, India							| No                       | Yes                 |
+| JAI_TULJABHAVANI     | Jai Tuljabhavani Urban Co-Op Bank, India    			| No                       | Yes                 |
+| ALMORA_URBAN         | Almora Urban Co-Op Bank Ltd, India						| No                       | Yes                 |
+| PAVANA_SAHAKARI      | Pavana Sahakari Bank Ltd, India						| No                       | Yes                 |
+| GODAVARI_URBAN       | Godavari Urban Co-Op Bank, India						| No                       | Yes                 |
 
 ## Transaction Channel
 The list below indicates the possible value for `transaction_channel` field:
@@ -316,6 +346,7 @@ The list below indicates the possible value for `transaction_channel` field:
 | auto_debit_payment | Debits like NACH or ECS |
 | self_transfer | Fund transfers within own accounts  |
 | demand_draft | transfer payment from one bank account to another and it is a negotiable instrument unlike cheque |
+| auto_credit  | Auto-Credit transactions |
 | Others | Others |
 
 ## Description
@@ -333,6 +364,7 @@ The list below indicates the possible values for `description` field of the tran
 | deposit_by_machine | indicates cash deposit was made on an ATM/Kiosk. Transaction channel is `cash_deposit` |
 | chq_bounce_insuff_funds | cheque bounced due to insufficient funds. Transaction channel is `inward_cheque_bounce` or `outward_cheque_bounce` |
 | neft_return | return transaction if money is not credited to beneficiary by means of neft . Transaction channel is `refund` |
+| deposit_machine_words | deposit transactions |
 
 ## Merchant Category
 The list below indicates the possible value for `merchant_category` field:
@@ -353,6 +385,9 @@ The list below indicates the possible value for `merchant_category` field:
 | bills | Bills |
 | ewallet | E-Wallet |
 | loans | Lender |
+| insurance | Insurance |
+| tax| Tax |
+| bnpl | Buy Now, Pay Later |
 
 <!-- ## What is the FinBox Startup Program?
 Our mission is to democratize financial services for the next billion Indians. We realized that the infrastructure for distribution and access to financial services in India is broken and we are fixing it one API at a time. Through FinBox Startup Program, we want to support other early-stage FinTech companies who are building financial services and products for the next billion Indians.
