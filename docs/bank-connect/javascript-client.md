@@ -42,6 +42,8 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session/**
 
 `from_date` and `to_date` specify the period for which the statements will be fetched. For example, if you need the last 6 months of statements, `from_date` will be today's date - 6 months and `to_date` will be today's date - 1 day. If not provided the default date range is 6 months from the current date. It should be in `dd/MM/yyyy` format.
 
+<b>Note</b>: If the `to-date` lies in the first week of the month, the respective month is not considered in the journey.
+
 ::: warning NOTE
 - `redirect_url` in request is a compulsory field in [Redirect Workflow](/bank-connect/javascript-client.html#redirect-workflow) but is not required with the [Inline Frame workflow](/bank-connect/javascript-client.html#inline-frame-workflow)
 - Please make sure `from_date` is always less than `to_date`
