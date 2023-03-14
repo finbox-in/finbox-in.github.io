@@ -32,7 +32,7 @@ Call `openBankConnect` method using the `FinBoxBankConnectPlugin` instance to op
 ::: danger IMPORTANT
 1. Please make sure `LINK_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never `null` or a blank string `""`.
 2. By default the SDK will request for 6 months data. In order to pass custom date range make use of these params `FROM_DATE` & `TO_DATE`.
-3. `FROM_DATE` & `TO_DATE` should be of the format `dd/MM/yyyy`. And `TO_DATE` should *NOT* be todays date
+3. `FROM_DATE` & `TO_DATE` should be of the format `DD/MM/YYYY`. And `TO_DATE` should *NOT* be todays date
 :::
 
 The response to this method (success or failure) can be captured using the callback
