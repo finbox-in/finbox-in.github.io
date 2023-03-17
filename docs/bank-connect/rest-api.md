@@ -135,7 +135,8 @@ On fetching information successfully, the response would be of the following for
             "account_number": "Account Number Extracted",
             "account_category": "individual",
             "credit_limit": 0,
-            "bank": "axis"
+            "bank": "axis",
+            "last_updated": "2023-03-04T07:37:27.976531Z"
         }
     ],
     "fraud": {
@@ -168,6 +169,7 @@ The response has the following fields:
     | account_category | string | account category, can be `individual` or `corporate` |
     | account_number | string | account number |
     | credit_limit   | Integer |  limit up to which a company can withdraw from the working capital limit sanctioned |
+    | last_updated | Timestamp |  Timestamp when the account was last updated|
 
 - `progress` (read more in [Progress Field](/bank-connect/rest-api.html#progress-field) section)
 - `fraud` (read more in [Fraud Field](/bank-connect/rest-api.html#fraud-field) section)
@@ -298,7 +300,8 @@ On fetching information successfully, the response would be of the following for
             "micr": null,
             "account_category": "individual",
             "account_number": "Account Number Extracted",
-            "bank": "axis"
+            "bank": "axis",
+            "last_updated": "2023-03-04T07:37:27.976531Z"
         }
     ],
     "fraud": {
@@ -389,7 +392,8 @@ On fetching information successfully, the response would be of the following for
             "micr": null,
             "account_category": "individual",
             "account_number": "Account Number Extracted",
-            "bank": "axis"
+            "bank": "axis",
+            "last_updated": "2023-03-04T07:37:27.976531Z"
         }
     ],
     "fraud": {
@@ -657,7 +661,8 @@ On fetching information successfully, the response would be of the following for
             "micr": null,
             "account_category": "individual",
             "account_number": "Account Number Extracted",
-            "bank": "axis"
+            "bank": "axis",
+            "last_updated": "2023-03-04T07:37:27.976531Z"
         }
     ],
     "fraud": {
