@@ -173,6 +173,7 @@ The response has the following fields:
 
 - `progress` (read more in [Progress Field](/bank-connect/rest-api.html#progress-field) section)
 - `fraud` (read more in [Fraud Field](/bank-connect/rest-api.html#fraud-field) section)
+- `last_updated` (denotes when was the last statement with this account-number processed. format: yyyy-MM-ddTHH:mm:ss.SSSZ.)
 
 ## Identity
 Lists extracted identities for a given entity.
