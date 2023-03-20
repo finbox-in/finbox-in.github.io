@@ -17,6 +17,9 @@ jobs:
         with:
           node-version: 'latest'
 
+      - name: Setup Node Options
+        run: echo "::set-env name=NODE_OPTIONS::--openssl-legacy-provider"
+
       - name: Build
         run: npm ci && npm run docs:build
 
