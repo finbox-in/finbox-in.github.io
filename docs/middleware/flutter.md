@@ -144,7 +144,7 @@ Now that all required parameters are available, we can start the SDK flow as fol
 
 1. Invoke MethodChannel for communicate between Flutter and Android Module.
 
-```flutter
+```dart
 static const platform = const MethodChannel('in.finbox.lending/middleware');
 
 Future _loadLending() async {
