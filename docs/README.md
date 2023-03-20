@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: logo.png
+heroImage: logo.jpg
 footer: Copyright © 2023 Moshpit Technologies Pvt. Ltd.
 ---
 <style>
