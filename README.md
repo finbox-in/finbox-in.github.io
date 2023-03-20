@@ -1,17 +1,15 @@
 # FinBox Documentation
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a3f328ec-6b46-4314-a1d9-104eaf52305e/deploy-status)](https://app.netlify.com/sites/finbox-docs/deploys)
-
-Holds the documentation for FinBox SDK
+Holds the documentation for FinBox SDK: [https://docs.finbox.in](https://docs.finbox.in)
 
 ## Setting up locally
-Make sure `yarn` and `node` are installed on your system. Just navigate to the repository directory then and run the following command:
+Make sure `node` (with `npm`) are installed on your system. Just navigate to the repository directory then and run the following command:
 ```bash
-yarn install
+npm install
 ```
 To run it locally:
 ```bash
-yarn docs:dev
+npm docs:dev
 ```
 
 ## Adding or modifying articles

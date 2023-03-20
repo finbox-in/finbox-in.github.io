@@ -1,7 +1,7 @@
 ---
 home: true
-heroImage: logo.png
-footer: Copyright © 2020 Moshpit Technologies Pvt. Ltd.
+heroImage: logo.jpg
+footer: Copyright © 2023 Moshpit Technologies Pvt. Ltd.
 ---
 <style>
 .home .feature {
