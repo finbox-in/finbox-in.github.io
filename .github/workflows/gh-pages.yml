@@ -15,10 +15,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 'latest'
-
-      - name: Setup Node Options
-        run: echo "::set-env name=NODE_OPTIONS::--openssl-legacy-provider"
+          node-version: '16'
 
       - name: Build
         run: npm ci && npm run docs:build
