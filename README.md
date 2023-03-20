@@ -1,6 +1,6 @@
 # FinBox Documentation
 
-Holds the documentation for FinBox SDK
+Holds the documentation for FinBox SDK: [https://docs.finbox.in](https://docs.finbox.in)
 
 ## Setting up locally
 Make sure `node` (with `npm`) are installed on your system. Just navigate to the repository directory then and run the following command:
