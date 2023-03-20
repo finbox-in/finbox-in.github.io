@@ -169,11 +169,10 @@ The response has the following fields:
     | account_category | string | account category, can be `individual` or `corporate` |
     | account_number | string | account number |
     | credit_limit   | Integer |  limit up to which a company can withdraw from the working capital limit sanctioned |
-    | last_updated | Timestamp |  Timestamp when the account was last updated|
+    | last_updated | Timestamp |  denotes when was the last statement with this account-number processed. format: yyyy-MM-ddTHH:mm:ss.SSSZ|
 
 - `progress` (read more in [Progress Field](/bank-connect/rest-api.html#progress-field) section)
 - `fraud` (read more in [Fraud Field](/bank-connect/rest-api.html#fraud-field) section)
-- `last_updated` (denotes when was the last statement with this account-number processed. format: yyyy-MM-ddTHH:mm:ss.SSSZ.)
 
 ## Identity
 Lists extracted identities for a given entity.
