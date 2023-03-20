@@ -6,7 +6,7 @@
         cursor text !important
         left 0 !important
         width 10rem !important
-        border-color: #3eaf7c !important
+        border-color: $accentColor !important
 
 .site-name.can-hide
     display: none
@@ -42,7 +42,7 @@
 
 .download_button
     background-color: white
-    color: rgb(36, 202, 122)
+    color: $accentColor
     width: 300px
     text-align: center
     display: flex
@@ -52,7 +52,7 @@
     cursor: pointer
     border-width: 0.07em
     border-style: solid
-    border-color: rgb(36, 202, 122)
+    border-color: $accentColor
     border-image: initial
     padding: 10px 0px
     text-decoration: none
@@ -61,6 +61,9 @@
     text-decoration:none
 
 .download_button:hover
-    background-color: rgb(36, 202, 122)
+    background-color: $accentColor
     color: white
     text-decoration: none !important
+
+.custom-block.tip
+    border-color: $accentColor

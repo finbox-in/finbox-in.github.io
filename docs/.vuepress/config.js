@@ -2,7 +2,7 @@ module.exports = {
   title: 'FinBox Documentation',
   description: 'Documentation for FinBox SDK',
   plugins: ['code-switcher', ['vuepress-plugin-code-copy', {
-    color: "#3eaf7c"
+    color: "#00b1ff"
   }], ['@vuepress/search', {
     test: ["^((?!device-connect\/transactions).)*$"]
   }], '@vuepress/medium-zoom'],
