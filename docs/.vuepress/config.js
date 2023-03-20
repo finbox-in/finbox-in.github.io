@@ -15,7 +15,7 @@ module.exports = {
     }
   },
   themeConfig: {
-    logo: '/logo.svg',
+    logo: '/header.svg',
     heroText: ' ',
     smoothScroll: true,
     lastUpdated: 'Last Updated',
