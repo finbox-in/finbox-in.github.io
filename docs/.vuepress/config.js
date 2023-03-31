@@ -211,12 +211,8 @@ module.exports = {
               path: '/middleware/sourcing-entity.html'
             },
             {
-              title: 'Android SDK',
-              path: '/middleware/android-sdk.html'
-            },
-            {
-              title: 'Hybrid SDK',
-              path: '/middleware/hybrid-sdk.html'
+              title: 'Android',
+              path: '/middleware/android.html'
             },
             {
               title: 'React Native',
