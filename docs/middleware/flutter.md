@@ -1,6 +1,6 @@
 # FinBox Lending: Flutter
 
-FinBox Lending SDK is a drop-in module that can add a digital lending journey to any mobile application.
+FinBox Lending Flutter SDK is a wrapper around the Android SDK which helps add a digital lending journey to any mobile application.
 
 ## Requirements
 
