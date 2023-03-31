@@ -174,3 +174,12 @@ Following json will be received
 - `code`: Status code for the journey.
 - `screen`: Name of the last screen in the journey
 - `message`: Any additional message to describe the resultCode
+
+Possible values for `resultCode` are as follows:
+| Result Code | Description |
+| - | - | - |
+| `MW200` | Journey is completed successfully |
+| `MW500` | User exits the journey |
+| `MW400` | Some error occurred in the SDK |
+| `CL200` | Credit line withdrawal success |
+| `CL500` | Credit line withdrawal failed |
