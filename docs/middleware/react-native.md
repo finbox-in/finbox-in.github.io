@@ -1,5 +1,6 @@
 # FinBox Lending: React Native
-FinBox Lending SDK is a drop-in module that can add a digital lending journey to any mobile application.
+
+FinBox Lending React Native SDK is a wrapper around the Web SDK which helps add a digital lending journey to any mobile application.
 
 ## Setting up the bridge
 
