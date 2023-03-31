@@ -223,6 +223,10 @@ module.exports = {
               path: '/middleware/react-native.html'
             },
             {
+              title: 'Flutter',
+              path: '/middleware/flutter.html'
+            },
+            {
               title: 'REST API',
               path: '/middleware/sourcing-rest-api.html'
             },
