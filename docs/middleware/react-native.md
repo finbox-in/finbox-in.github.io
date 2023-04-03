@@ -2,55 +2,62 @@
 
 FinBox Lending React Native SDK is a wrapper around the Web SDK which helps add a digital lending journey to any mobile application.
 
-## Setting up the bridge
+## Installation
 
-1. Install the React SDK from the npm package:
-    ```sh
-    yarn add react-native-finbox-middleware-sdk
-    ```
-2. Now to auto link this native module to your app, run following command:
-    ```sh
-    react-native link
-    ```
-3. Once the linking is done you need to open Android Studio and add a maven repository url in your project level `build.gradle` file
-    ```groovy
-    maven {  
-        url "s3://risk-manager-android-sdk/artifacts"  
-        credentials(AwsCredentials) {  
-            accessKey = "<ACCESS_KEY>"
-            secretKey = "<SECRET_KEY>"  
-        }
+Using yarn:
+
+```sh
+yarn add react-native-finbox-middleware-sdk
+```
+
+or using npm:
+
+```sh
+npm install --save react-native-finbox-middleware-sdk
+```
+
+Our SDK will auto link automatically with your application
+
+## Authentication
+
+Open Android Studio and in the project level `build.gradle` file, add the repository URLs to all `allprojects` block.
+
+```groovy
+maven {
+    url "s3://risk-manager-android-sdk/artifacts"
+    credentials(AwsCredentials) {
+        accessKey = "<ACCESS_KEY>"
+        secretKey = "<SECRET_KEY>"
     }
-    ```
-4. Specify the following in `local.properties` file:
-    ```
-    AWS_KEY=<ACCESS_KEY>
-    AWS_SECRET=<SECRET_KEY>
-    FINBOX_LENDING_SDK_VERSION=<LENDING_SDK_VERSION>
-    FINBOX_RM_SDK_VERSION=<RISK_SDK_VERSION>
-    FINBOX_LENDING_ENVIRONMENT=<ENVIRONMENT>
-    ```
-    
-    Following keys will be shared by the FinBox team:
-
-    - ACCESS_KEY & SECRET_KEY - These keys will give access to the AWS bucket to fetch SDK
-    - LENDING_SDK_VERSION - Middleware Lending SDK version
-    - RISK_SDK_VERSION - Device Connect SDK version
-    - ENVIRONMENT - SDK environment supports [`uat` & `prod`]
-
-5. Final change required is in the `MainApplication` class of your native app.
-    ```java
-    @Override  
-    protected List<ReactPackage> getPackages() {
-        return Arrays.<ReactPackage>asList(
-            ....
-            new RNFinboxMiddlewareSdkPackage(),
-            ...
-        );
+    content {
+        includeGroup("in.finbox")
+        includeGroup("in.finbox.lending")
     }
-    ```
-6. Minimum SDK Version
-    Lending SDK supports a minimum SDK version of 21. So please update the minimum SDK version to 21
+}
+```
+
+Add the following keys in `local.properties` file:
+
+```
+ACCESS_KEY=<ACCESS_KEY>
+SECRET_KEY=<SECRET_KEY>
+DC_SDK_VERSION=<DC_SDK_VERSION>
+COMMON_SDK_VERSION=<COMMON_SDK_VERSION>
+COMMON_FLAVOR=<COMMON_FLAVOR>
+LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
+```
+
+::: warning NOTE
+Following will be shared by FinBox team at the time of integration:
+
+- `ACCESS_KEY`
+- `SECRET_KEY`
+- `DC_SDK_VERSION`
+- `COMMON_SDK_VERSION`
+- `COMMON_FLAVOR`
+- `LOGGER_SDK_VERSION`
+- `CLIENT_API_KEY`
+:::
 
 ## Start SDK flow
 
