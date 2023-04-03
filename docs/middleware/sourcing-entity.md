@@ -8,7 +8,7 @@ The diagram below shows the integration workflow for partner app:
 <img src="https://finbox-cdn.s3.ap-south-1.amazonaws.com/docs/assets/ill_sourcing_entity_flow.png" alt="Sourcing Entity Integration Workflow" />
 
 :::tip Web SDK
-In case of [Web SDK](/middleware/web-sdk.html), instead of **Get Token API**, you will have to call the **Session API**, which will return you a web URL to be redirected or rendered in a web view. You can read more about the Web SDK [here](/middleware/web-sdk.html).
+In case of [Web SDK](/middleware/web-sdk.html), instead of **Get Token API**, you will have to call the **Session API**, which will return you a web URL to be redirected or rendered in a web view.
 :::
 
 ## Integration Guides
@@ -16,5 +16,4 @@ On the sourcing entity side, integration is required on the server side (REST AP
 - [Android SDK](/middleware/android-sdk.html)
 - [REST API](/middleware/sourcing-rest-api.html)
 - [React Native SDK](/middleware/react-native.html)
-
-You can also integrate our UI SDK using our [Web SDK](/middleware/web-sdk.html).
+- [Web SDK](/middleware/web-sdk.html)
