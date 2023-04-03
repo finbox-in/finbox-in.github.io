@@ -90,7 +90,7 @@ const callModule = () => {
 
 You can read about the errors in the [Error Codes](/device-connect/error-codes.html) section.
 
-## Start Periodic Sync Method
+## Start Periodic Sync
 
 This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals:
 
@@ -102,7 +102,7 @@ FinBoxRiskSdk.startPeriodicSync(12) //Start the sync periodically after every 12
 `startPeriodicSync` takes one argument which indicates the frequency of sync **in hours**.
 :::
 
-## Cancel Periodic Syncing
+## Cancel Periodic
 
 If you have already set up the sync for the user data, you can cancel it any time by the following code:
 
