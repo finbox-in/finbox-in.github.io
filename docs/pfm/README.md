@@ -9,9 +9,9 @@ Personal Finance Manager SDK helps people manage their financial activities.
 6. Easily analyse the spending patterns in a month and across months.
 
 ::: tip Try Personal Finance Manager
-Click [here](https://finbox.in/contact-us) to contact us and request for a pilot.
+[Contact us](https://finbox.in/contact-us) and request for a pilot.
 :::
 
 ## Getting Started
-FinBox Personal Finance Manager SDK integration guide can be found here:
+FinBox Personal Finance Manager SDK integration guide:
 - [Android SDK](/pfm/android.html)
