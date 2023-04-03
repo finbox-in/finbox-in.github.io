@@ -12,7 +12,7 @@ Salt is calculated as follows:
 
 Sample code for salt generation in different languages:
 
-<CodeSwitcher :languages="{java:'Java',python:'Python',go:'Go',php:'PHP',ruby:'Ruby'}">
+<CodeSwitcher :languages="{python:'Python',go:'Go',java:'Java',php:'PHP',ruby:'Ruby',javascript:'JavaScript'}">
 <template v-slot:java>
 
 ```java
@@ -153,6 +153,22 @@ def create_salt(customer_id, server_hash)
     salt = Base64.strict_encode64(salt_encoded)
     return salt
 end
+```
+
+</template>
+
+<template v-slot:javascript>
+
+```javascript
+const crypto = require('crypto');
+
+function create_salt(customer_id, server_hash) {
+    let customer_hash = crypto.createHash('md5').update(customer_id, 'utf-8').digest("hex").toUpperCase();
+    let intermediate_hash = customer_hash + server_hash
+
+    let salt_encoded = crypto.createHash('sha256').update(intermediate_hash, 'utf-8').digest('base64')
+    return salt_encoded
+}
 ```
 
 </template>
