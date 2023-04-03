@@ -61,10 +61,14 @@ Following will be shared by FinBox team at the time of integration:
 
 ## Start SDK flow
 
-Once all dependencies are added, SDK requires 3 inputs: `customer_id`, `user_token` and `client_api_key`.
+Once all dependencies are added, SDK requires 3 inputs: `CUSTOMER_ID`, `USER_TOKEN` and `CLIENT_API_KEY`.
+
+`ENVIRONMENT` is an optional field. Default value of environment is `PROD`.
 
 ::: tip Note
-`user_token` needs to be generated against a `customer_id` on backend before starting the SDK. Refer [here](/middleware/sourcing-rest-api.html#generate-token)
+`USER_TOKEN` needs to be generated against a `CUSTOMER_ID` on backend before starting the SDK. Refer [here](/middleware/sourcing-rest-api.html#generate-token)
+
+`ENVIRONMENT` needs to be updated to `PROD` when migrating application to production.
 :::
 
 Now that all required parameters are available, we can start the SDK flow as follows:
@@ -74,17 +78,18 @@ import FinBoxMiddlewareSdk from 'react-native-finbox-middleware-sdk';
 //Function to trigger Lending journey
 const callModule = () => {
     FinBoxMiddlewareSdk.startLendingJourney(
-        "CLIENT_API_KEY",
-        "CUSTOMER_ID",
-        "TOKEN",
+        "<ENVIRONMENT>",
+        "<CLIENT_API_KEY>",
+        "<CUSTOMER_ID>",
+        "<USER_TOKEN>"
         (errorMessage) => {
-	    // Error Callback
+            // Error Callback
             console.log("Error message -> ", errorMessage)
         }, 
         (resultCode) => {
             // Success Callback, once the user exits from the journey
-	    console.log("resultCode", resultCode)
-	}
+            console.log("resultCode", resultCode)
+        }
     )
 }
 ```
@@ -98,19 +103,20 @@ import FinBoxMiddlewareSdk from 'react-native-finbox-middleware-sdk';
 //Function to trigger credit line withdrawl
 const callModule = () => {
     FinBoxMiddlewareSdk.startCreditLineLendingJourney(
-        "CLIENT_API_KEY",
-        "CUSTOMER_ID",
-        "TOKEN",
+        "<ENVIRONMENT>",
+        "<CLIENT_API_KEY>",
+        "<CUSTOMER_ID>",
+        "<USER_TOKEN>",
         WITHDRAW_AMOUNT,
         "TRANSACTION_ID",
         (errorMessage) => {
-	    // Error Callback
+            // Error Callback
             console.log("Error message -> ", errorMessage)
         }, 
         (resultCode) => {
             // Success Callback, once the user exits from the journey
-	    console.log("resultCode", resultCode)
-	}
+            console.log("resultCode", resultCode)
+        }
     )
 }
 ```

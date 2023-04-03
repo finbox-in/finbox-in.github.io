@@ -195,6 +195,7 @@ The following keys will be shared over an email
 ## Start SDK flow
 
 Once all dependencies are added, SDK requires 3 inputs: `CUSTOMER_ID`, `USER_TOKEN` and `CLIENT_API_KEY`.
+
 `ENVIRONMENT` is an optional field. Default value of environment is `PROD`.
 
 ::: tip Note
@@ -231,8 +232,8 @@ Now that all required parameters are available, we can start the SDK flow as fol
 val REQUEST_CODE_ONBOARDING = 101
 val builder = FinBoxLending.Builder(context)
     .setLendingEnvironment("<ENVIRONMENT>")
-    .setCustomerId("<CUSTOMER_ID>")
     .setFinBoxApiKey("<CLIENT_API_KEY>")
+    .setCustomerId("<CUSTOMER_ID>")
     .setUserToken("<USER_TOKEN>")
     .setSplashIcon(<DRAWABLE>)
     .setToolbarIcon(<DRAWABLE>)
@@ -252,8 +253,8 @@ startActivityForResult(
 private String REQUEST_CODE_ONBOARDING = 101;
 FinBoxLending builder = FinBoxLending.Builder(context)
     .setLendingEnvironment(<ENVIRONMENT>)
-    .setCustomerId(<CUSTOMER_ID>)
     .setFinBoxApiKey(<CLIENT_API_KEY>)
+    .setCustomerId(<CUSTOMER_ID>)
     .setUserToken(<USER_TOKEN>)
     .setSplashIcon(<DRAWABLE>)
     .setToolbarIcon(<DRAWABLE>)
