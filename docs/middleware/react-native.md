@@ -1,62 +1,74 @@
 # FinBox Lending: React Native
-FinBox Lending SDK is a drop-in module that can add a digital lending journey to any mobile application.
 
-## Setting up the bridge
+FinBox Lending React Native SDK is a wrapper around the Web SDK which helps add a digital lending journey to any mobile application.
 
-1. Install the React SDK from the npm package:
-    ```sh
-    yarn add react-native-finbox-middleware-sdk
-    ```
-2. Now to auto link this native module to your app, run following command:
-    ```sh
-    react-native link
-    ```
-3. Once the linking is done you need to open Android Studio and add a maven repository url in your project level `build.gradle` file
-    ```groovy
-    maven {  
-        url "s3://risk-manager-android-sdk/artifacts"  
-        credentials(AwsCredentials) {  
-            accessKey = "<ACCESS_KEY>"
-            secretKey = "<SECRET_KEY>"  
-        }
+## Installation
+
+Using yarn:
+
+```sh
+yarn add react-native-finbox-middleware-sdk
+```
+
+or using npm:
+
+```sh
+npm install --save react-native-finbox-middleware-sdk
+```
+
+Our SDK will auto link automatically with your application
+
+## Authentication
+
+Open Android Studio and in the project level `build.gradle` file, add the repository URLs to all `allprojects` block.
+
+```groovy
+maven {
+    url "s3://risk-manager-android-sdk/artifacts"
+    credentials(AwsCredentials) {
+        accessKey = "<ACCESS_KEY>"
+        secretKey = "<SECRET_KEY>"
     }
-    ```
-4. Specify the following in `local.properties` file:
-    ```
-    AWS_KEY=<ACCESS_KEY>
-    AWS_SECRET=<SECRET_KEY>
-    FINBOX_LENDING_SDK_VERSION=<LENDING_SDK_VERSION>
-    FINBOX_RM_SDK_VERSION=<RISK_SDK_VERSION>
-    FINBOX_LENDING_ENVIRONMENT=<ENVIRONMENT>
-    ```
-    
-    Following keys will be shared by the FinBox team:
-
-    - ACCESS_KEY & SECRET_KEY - These keys will give access to the AWS bucket to fetch SDK
-    - LENDING_SDK_VERSION - Middleware Lending SDK version
-    - RISK_SDK_VERSION - Device Connect SDK version
-    - ENVIRONMENT - SDK environment supports [`uat` & `prod`]
-
-5. Final change required is in the `MainApplication` class of your native app.
-    ```java
-    @Override  
-    protected List<ReactPackage> getPackages() {
-        return Arrays.<ReactPackage>asList(
-            ....
-            new RNFinboxMiddlewareSdkPackage(),
-            ...
-        );
+    content {
+        includeGroup("in.finbox")
+        includeGroup("in.finbox.lending")
     }
-    ```
-6. Minimum SDK Version
-    Lending SDK supports a minimum SDK version of 21. So please update the minimum SDK version to 21
+}
+```
+
+Add the following keys in `local.properties` file:
+
+```
+ACCESS_KEY=<ACCESS_KEY>
+SECRET_KEY=<SECRET_KEY>
+DC_SDK_VERSION=<DC_SDK_VERSION>
+COMMON_SDK_VERSION=<COMMON_SDK_VERSION>
+COMMON_FLAVOR=<COMMON_FLAVOR>
+LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
+```
+
+::: warning NOTE
+Following will be shared by FinBox team at the time of integration:
+
+- `ACCESS_KEY`
+- `SECRET_KEY`
+- `DC_SDK_VERSION`
+- `COMMON_SDK_VERSION`
+- `COMMON_FLAVOR`
+- `LOGGER_SDK_VERSION`
+- `CLIENT_API_KEY`
+:::
 
 ## Start SDK flow
 
-Once all dependencies are added, SDK requires 3 inputs: `customer_id`, `user_token` and `client_api_key`.
+Once all dependencies are added, SDK requires 3 inputs: `CUSTOMER_ID`, `USER_TOKEN` and `CLIENT_API_KEY`.
+
+`ENVIRONMENT` is an optional field. Default value of environment is `PROD`.
 
 ::: tip Note
-`user_token` needs to be generated against a `customer_id` on backend before starting the SDK. Refer [here](/middleware/sourcing-rest-api.html#generate-token)
+`USER_TOKEN` needs to be generated against a `CUSTOMER_ID` on backend before starting the SDK. Refer [here](/middleware/sourcing-rest-api.html#generate-token)
+
+`ENVIRONMENT` needs to be updated to `PROD` when migrating application to production.
 :::
 
 Now that all required parameters are available, we can start the SDK flow as follows:
@@ -66,17 +78,18 @@ import FinBoxMiddlewareSdk from 'react-native-finbox-middleware-sdk';
 //Function to trigger Lending journey
 const callModule = () => {
     FinBoxMiddlewareSdk.startLendingJourney(
-        "CLIENT_API_KEY",
-        "CUSTOMER_ID",
-        "TOKEN",
+        "<ENVIRONMENT>",
+        "<CLIENT_API_KEY>",
+        "<CUSTOMER_ID>",
+        "<USER_TOKEN>"
         (errorMessage) => {
-	    // Error Callback
+            // Error Callback
             console.log("Error message -> ", errorMessage)
         }, 
         (resultCode) => {
             // Success Callback, once the user exits from the journey
-	    console.log("resultCode", resultCode)
-	}
+            console.log("resultCode", resultCode)
+        }
     )
 }
 ```
@@ -90,19 +103,20 @@ import FinBoxMiddlewareSdk from 'react-native-finbox-middleware-sdk';
 //Function to trigger credit line withdrawl
 const callModule = () => {
     FinBoxMiddlewareSdk.startCreditLineLendingJourney(
-        "CLIENT_API_KEY",
-        "CUSTOMER_ID",
-        "TOKEN",
+        "<ENVIRONMENT>",
+        "<CLIENT_API_KEY>",
+        "<CUSTOMER_ID>",
+        "<USER_TOKEN>",
         WITHDRAW_AMOUNT,
         "TRANSACTION_ID",
         (errorMessage) => {
-	    // Error Callback
+            // Error Callback
             console.log("Error message -> ", errorMessage)
         }, 
         (resultCode) => {
             // Success Callback, once the user exits from the journey
-	    console.log("resultCode", resultCode)
-	}
+            console.log("resultCode", resultCode)
+        }
     )
 }
 ```

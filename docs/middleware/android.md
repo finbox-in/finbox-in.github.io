@@ -1,6 +1,6 @@
 # FinBox Lending: Android
 
-FinBox Lending SDK is a drop-in module that can add a digital lending journey to any mobile application.
+FinBox Lending Android SDK is a wrapper around the Web SDK which helps add a digital lending journey to any mobile application.
 
 ## Requirements
 
@@ -71,6 +71,27 @@ dependencies {
 </template>
 </CodeSwitcher>
 
+## ProGuard
+
+While generating a signed application, make sure **ProGuard** file uses `proguard-android.txt` not `proguard-android-optimize.txt`.
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+```
+
+</template>
+<template v-slot:groovy>
+
+```groovy
+proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+```
+
+</template>
+</CodeSwitcher>
+
 ## Adding Dependency
 
 Add the repository url to `allprojects` in the project `build.gradle` file.
@@ -118,71 +139,21 @@ Add the Lending SDK dependency to the module `build.gradle` file
 <template v-slot:kotlin>
 
 ```kotlin
-implementation ("in.finbox.lending:onboarding:<LENDING_SDK_VERSION>:release@aar") {
+implementation ("in.finbox.lending:hybrid:<LENDING_SDK_VERSION>:release@aar") {
     exclude("in.finbox", "mobileriskmanager")
     exclude("in.finbox", "common")
     exclude("in.finbox", "logger")
     isTransitive = true
 }
-implementation ("in.finbox.lending:preloan:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
+implementation("in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar") {
     isTransitive = true
 }
-implementation ("in.finbox.lending:dashboard:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
+implementation("in.finbox:common:<COMMON_SDK_VERSION>:release@aar") {
+    transitive = true
 }
-implementation ("in.finbox.lending:kyc:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:loan:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:esign:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:enach:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:payment:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:bankconnect:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    exclude("in.finbox", "bankconnect")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:pennydrop:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:gst:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:videokyc:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-implementation ("in.finbox.lending:core:<LENDING_SDK_VERSION>:release@aar") {
-    isTransitive = true
-}
-implementation('in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar') {
-    isTransitive = true
-}
-implementation('in.finbox:common:<COMMON_SDK_VERSION>:<PLATFORM_NAME>-release@aar') {
-    isTransitive = true
-}
-implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar") {
-    isTransitive = true
-}
-implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
-    isTransitive = true
+
+implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:release@aar") {
+    transitive = true
 }
 ```
 
@@ -190,70 +161,19 @@ implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
 <template v-slot:groovy>
 
 ```groovy
-implementation ("in.finbox.lending:onboarding:<LENDING_SDK_VERSION>:release@aar") {
+implementation ("in.finbox.lending:hybrid:<LENDING_SDK_VERSION>:release@aar") {
     exclude group: 'in.finbox', module: 'mobileriskmanager'
     exclude group: 'in.finbox', module: 'common'
     exclude group: 'in.finbox', module: 'logger'
     transitive = true
 }
-implementation ("in.finbox.lending:preloan:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:dashboard:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:kyc:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:loan:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:esign:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:enach:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:payment:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:bankconnect:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    exclude group: 'in.finbox', module: 'bankconnect'
-    transitive = true
-}
-implementation ("in.finbox.lending:pennydrop:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:gst:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:videokyc:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-implementation ("in.finbox.lending:core:<LENDING_SDK_VERSION>:release@aar") {
-    transitive = true
-}
 implementation('in.finbox:mobileriskmanager:<DC_SDK_VERSION>:parent-release@aar') {
     transitive = true
 }
-implementation('in.finbox:common:<COMMON_SDK_VERSION>:<PLATFORM_NAME>-release@aar') {
+implementation("in.finbox:common:<COMMON_SDK_VERSION>:release@aar") {
     transitive = true
 }
-implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar") {
-    transitive = true
-}
-implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
+implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:release@aar") {
     transitive = true
 }
 ```
@@ -263,61 +183,19 @@ implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
 
 ::: tip Note
 The following keys will be shared over an email
+
 - `ACCESS_KEY`
 - `SECRET_KEY`
 - `LENDING_SDK_VERSION`
 - `DC_SDK_VERSION`
 - `COMMON_SDK_VERSION`
 - `LOGGER_SDK_VERSION`
-- `BC_SDK_VERSION`
-- `PLATFORM_NAME`
-:::
-
-## Permissions
-
-Lending SDK requires `SMS` and `Location` permission as mandatory. Make sure you **dont** have any node markers that remove these permissions in your manifest file
-
-Manifest **should not** have any of the following
-```xml
-<uses-permission
-    android:name="android.permission.RECEIVE_SMS"
-    tools:node="remove" />
-<uses-permission
-    android:name="android.permission.READ_SMS"
-    tools:node="remove" />
-<uses-permission
-    android:name="android.permission.ACCESS_COARSE_LOCATION"
-    tools:node="remove" />
-<uses-permission
-    android:name="android.permission.ACCESS_FINE_LOCATION"
-    tools:node="remove" />
-```
-
-:::warning ProGuard
-While generating a signed application, make sure **ProGuard** file uses `proguard-android.txt` **not** `proguard-android-optimize.txt`, i.e. make sure it is:
-
-<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
-<template v-slot:kotlin>
-
-```kotlin
-proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-```
-
-</template>
-<template v-slot:groovy>
-
-```groovy
-proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-```
-
-</template>
-</CodeSwitcher>
-
-:::
+  :::
 
 ## Start SDK flow
 
 Once all dependencies are added, SDK requires 3 inputs: `CUSTOMER_ID`, `USER_TOKEN` and `CLIENT_API_KEY`.
+
 `ENVIRONMENT` is an optional field. Default value of environment is `PROD`.
 
 ::: tip Note
@@ -334,12 +212,14 @@ In the `onCreate` of your application class initialize dependencies required by 
 ```kotlin
 CoreApp.initDi(this)
 ```
+
 </template>
 <template v-slot:java>
 
 ```java
 CoreApp.Companion.initDi(this)
 ```
+
 </template>
 </CodeSwitcher>
 
@@ -352,11 +232,12 @@ Now that all required parameters are available, we can start the SDK flow as fol
 val REQUEST_CODE_ONBOARDING = 101
 val builder = FinBoxLending.Builder(context)
     .setLendingEnvironment("<ENVIRONMENT>")
-    .setCustomerId("<CUSTOMER_ID>")
     .setFinBoxApiKey("<CLIENT_API_KEY>")
+    .setCustomerId("<CUSTOMER_ID>")
     .setUserToken("<USER_TOKEN>")
     .setSplashIcon(<DRAWABLE>)
     .setToolbarIcon(<DRAWABLE>)
+    .enableDeviceConnect(<true/false>)
     .build()
 
 startActivityForResult(
@@ -372,11 +253,12 @@ startActivityForResult(
 private String REQUEST_CODE_ONBOARDING = 101;
 FinBoxLending builder = FinBoxLending.Builder(context)
     .setLendingEnvironment(<ENVIRONMENT>)
-    .setCustomerId(<CUSTOMER_ID>)
     .setFinBoxApiKey(<CLIENT_API_KEY>)
+    .setCustomerId(<CUSTOMER_ID>)
     .setUserToken(<USER_TOKEN>)
     .setSplashIcon(<DRAWABLE>)
     .setToolbarIcon(<DRAWABLE>)
+    .enableDeviceConnect(<true/false>)
     .build();
 
 startActivityForResult(
@@ -391,86 +273,7 @@ startActivityForResult(
 
 - `setSplashIcon` is the optional method that will contain the drawable (in **Int**) that can be used to show icon on the splash screen.
 - `setToolbarIcon` is the optional method that will contain the drawable (in **Int**) that can be used to show the icon on the toolbar.
-
-
-## Credit Line
-
-For credit line journey, include the following dependency in the module `build.gradle` file:
-
-<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
-<template v-slot:kotlin>
-
-```kotlin
-implementation("in.finbox.lending:creditline:<LENDING_SDK_VERSION>:release@aar") {
-    exclude("in.finbox.lending", "core")
-    isTransitive = true
-}
-```
-
-</template>
-<template v-slot:groovy>
-
-```groovy
-implementation("in.finbox.lending:creditline:<LENDING_SDK_VERSION>:release@aar") {
-    exclude group: 'in.finbox.lending', module: 'core'
-    transitive = true
-}
-```
-
-</template>
-</CodeSwitcher>
-
-In case of credit line product, once the lending journey is completed, user can opt-in for a credit while doing a transaction. For such a case use following method to start the credit line withdrawl journey:
-
-<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
-<template v-slot:kotlin>
-
-```kotlin
-val REQUEST_CODE_ONBOARDING = 101
-val builder = FinBoxLending.Builder(context)
-    .setLendingEnvironment(<ENVIRONMENT>)
-    .setCustomerId("<CUSTOMER_ID>")
-    .setFinBoxApiKey("<CLIENT_API_KEY>")
-    .setUserToken("<USER_TOKEN>")
-    .setSplashIcon(<DRAWABLE>)
-    .setToolbarIcon(<DRAWABLE>)
-    .setCreditLineAmount(<WITHDRAW_AMOUNT>)
-    .setCreditLineTransactionId("<TRANSACTION_ID>")
-    .build()
-
-startActivityForResult(
-    builder.getLendingIntent(context),
-    REQUEST_CODE_ONBOARDING
-)
-```
-
-</template>
-<template v-slot:java>
-
-```java
-private String REQUEST_CODE_ONBOARDING = 101;
-FinBoxLending builder = FinBoxLending.Builder(context)
-    .setLendingEnvironment(<ENVIRONMENT>)
-    .setCustomerId("<CUSTOMER_ID>")
-    .setFinBoxApiKey("<CLIENT_API_KEY>")
-    .setUserToken("<USER_TOKEN>")
-    .setSplashIcon(<DRAWABLE>)
-    .setToolbarIcon(<DRAWABLE>)
-    .setCreditLineAmount(<WITHDRAW_AMOUNT>)
-    .setCreditLineTransactionId("<TRANSACTION_ID>")
-    .build();
-
-startActivityForResult(
- builder.getLendingIntent(getContext()),
- REQUEST_CODE_ONBOARDING
-)
-
-```
-</template>
-</CodeSwitcher>
-
-- `setCreditLineAmount` is the method that will contain the amount (in **Float**) that a user is trying to withdraw
-- `setCreditLineTransactionId` will hold the transaction id (in **String**) for the withdrawal flow
+- `enableDeviceConnect` is an optional method that will enable device connect feature in the lending journey.
 
 ## Callback
 
@@ -518,6 +321,7 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
 </CodeSwitcher>
 
 FinBoxJourneyResult has the following values:
+
 - `resultCode`: Status code for the journey.
 - `screen`: Name of the last screen in the journey
 - `message`: Any additional message to describe the resultCode
@@ -530,21 +334,6 @@ Possible values for `resultCode` are as follows:
 | `MW400` | Some error occurred in the SDK |
 | `CL200` | Credit line withdrawal success |
 | `CL500` | Credit line withdrawal failed |
-
-Possible values for `screen` are as follows:
-| Screen | Description |
-| - | - | - |
-| `Launcher` | The base screen (Hidden Activity) |
-| `Permissions` | Permission list screen |
-| `Profile` | Basic profile screen |
-| `PAN Consent` | PAN consent screen |
-| `Dashboard` | Dashboard screen |
-| `Loan Form` | Loan application screen |
-| `KYC` | KYC screen |
-| `Bank Verification` | Bank verification screen |
-| `Loan Offer` | Loan details screen |
-| `Sign Agreement` | Sign agreement screen |
-
 
 ## Notifications
 
@@ -583,18 +372,7 @@ class SampleMessService: FirebaseMessagingService(), FinBoxLendingMessagingImpl 
             this,
             REQUEST_CODE_NOTIFICATION_LOAN_STATUS,
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT
-        )
-    }
-
-    override fun getRepayLendingIntent(): PendingIntent {
-        val intent = generateFinBoxLending().getRepayLendingIntent(applicationContext)
-        // Create the TaskStackBuilder
-        return PendingIntent.getActivity(
-            this,
-            REQUEST_CODE_NOTIFICATION_LOAN_REPAY_STATUS,
-            intent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
     }
 
@@ -640,19 +418,7 @@ class SampleMessService extends FirebaseMessagingService implements FinBoxLendin
                 this,
                 REQUEST_CODE_NOTIFICATION_LOAN_STATUS,
                 intent,
-                PendingIntent.FLAG_UPDATE_CURRENT
-        );
-    }
-
-    @NotNull
-    @Override
-    public PendingIntent getRepayLendingIntent() {
-        Intent intent = generateFinBoxLending().getRepayLendingIntent(getApplicationContext());
-        return PendingIntent.getActivity(
-                this,
-                REQUEST_CODE_NOTIFICATION_LOAN_REPAY_STATUS,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT
         );
     }
 
@@ -677,7 +443,7 @@ class SampleMessService extends FirebaseMessagingService implements FinBoxLendin
 
 </template>
 </CodeSwitcher>
- 
+
 ## Customizations
 
 1. The privacy policy URL needs to be updated to the company policy. The default privacy policy is pointing to FinBox privacy. Add a String resource to specify the policy URL.
@@ -690,13 +456,7 @@ class SampleMessService extends FirebaseMessagingService implements FinBoxLendin
 Make sure the value passed is a valid URL
 :::
 
-2. The toolbar title can be updated which will be visible in the Dashboard module. In order to update the toolbar just add a String resource for the same.
-
-```xml
-<string name="finbox_appbar_title">My App</string>
-```
-
-3. SDK fonts can be customised to match the parent application. The SDK used 3 main fonts as mentioned below:
+2. SDK fonts can be customised to match the parent application. The SDK used 3 main fonts as mentioned below:
 
 ```xml
 <style name="FBLendingAppTheme.FinBox.TextPrimary" parent="TextAppearance.AppCompat">
@@ -718,7 +478,7 @@ Make sure the value passed is a valid URL
 
 Customize the SDK font by adding the application `fontFamily` in the styles.
 
-4. SDK Buttons can be customized by overriding `FBLendingAppTheme`
+3. SDK Buttons can be customized by overriding `FBLendingAppTheme`
 
 ```xml
 <style name="FBLendingAppTheme.FinBox.Button" parent="Widget.MaterialComponents.Button">
@@ -730,3 +490,43 @@ Customize the SDK font by adding the application `fontFamily` in the styles.
 ```
 
 Change button corner radius and text font as per your application theme.
+
+4. Customize toolbar
+
+Toolbar can be configured to use custom icons and title. Drawables can be passed for `DRAWABLE_PROFILE`,`DRAWABLE_FAQ`,`DRAWABLE_HOME` icons.
+
+```kotlin
+val REQUEST_CODE_ONBOARDING = 101
+val builder = FinBoxLending.Builder(context)
+        .setLendingEnvironment(“<ENVIRONMENT>“)
+        .setFinBoxApiKey(“<CLIENT_API_KEY>“)
+        .setCustomerId(“<CUSTOMER_ID>“)
+        .setUserToken(“<USER_TOKEN>“)
+        .setToolBarConfig(
+            ToolbarConfig(
+                “<APP_NAME>“,
+                <DRAWABLE_PROFILE>,
+                <DRAWABLE_FAQ>,
+                <DRAWABLE_HOME>
+                )
+            )
+        .showToolbar(<true/false>)
+        .enableDeviceConnect(<true/false>)
+        .build()
+
+startActivityForResult(builder.getLendingIntent(context),REQUEST_CODE_ONBOARDING)
+```
+
+The color of the toolbar can be customised to match your theme by adding color attibutes in `colors.xml`.
+
+| Key| Description |
+| - | - | - |
+| `finboxToolbarColor` | Background color of toolbar |
+| `finboxToolbarTextColor` | Toolbar text color |
+| `finboxToolbarIconColor` | Toolbar icon color |
+
+````xml
+<color name="finboxToolbarColor">#67A135</color>
+<color name="finboxToolbarTextColor">#FFFFFF</color>
+<color name="finboxToolbarIconColor">#FFFFFF</color>```
+````
