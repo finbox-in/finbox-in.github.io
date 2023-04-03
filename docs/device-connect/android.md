@@ -411,14 +411,14 @@ In case the user data needs to be removed on the device so that you can re-sync 
 <template v-slot:kotlin>
 
 ```kotlin
-Finbox.resetData()
+FinBox.resetData()
 ```
 
 </template>
 <template v-slot:java>
 
 ```java
-Finbox.resetData();
+FinBox.resetData();
 ```
 
 </template>
@@ -433,14 +433,14 @@ In case the user choose to be forgotten, use the method `forgetUser`. This will 
 <template v-slot:kotlin>
 
 ```kotlin
-Finbox.forgetUser()
+FinBox.forgetUser()
 ```
 
 </template>
 <template v-slot:java>
 
 ```java
-Finbox.forgetUser();
+FinBox.forgetUser();
 ```
 
 </template>
