@@ -1,4 +1,5 @@
 # DeviceConnect: Ionic React
+
 Device Connect Ionic React SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
 
 ## Installation
@@ -57,15 +58,15 @@ Following will be shared by FinBox team at the time of integration:
 - `CLIENT_API_KEY`
 :::
 
-## Create User Method
+## Create User
 
-Call `createUser` method using the `FinBoxRiskSdk` instance to create the user (first time) or check the API credentials for the SDK. It takes `CUSTOMER_ID` as one of its arguments which is a unique identifier for a user.
+Call `createUser` method to create the user. It takes Client Api Key and Customer Id as the arguments.
 
 ::: danger IMPORTANT
 Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never be `null` or a blank string `""`.
 :::
 
-The response to this method (success or failure) can be captured using the callback, and on success [Start Periodic Sync Method](/device-connect/react-native.html#start-period-sync-method) should be called.
+The response to this method (success or failure) can be captured using the callback.
 
 ```javascript
 import FinBoxRiskSdk from 'react-native-risk-sdk';
@@ -87,7 +88,7 @@ const callModule = () => {
 }
 ```
 
-Read about the error codes in [this](/device-connect/react-native.html#error-codes) section.
+You can read about the errors in the [Error Codes](/device-connect/error-codes.html) section.
 
 ## Start Periodic Sync Method
 
