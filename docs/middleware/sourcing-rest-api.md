@@ -59,6 +59,7 @@ POST **`base_url`/v1/user/create**
 | Missing mobile number | 403 |
 | Invalid mobile number | 403 |
 | User already exists | 409 |
+| customerID cannot exceed 50 characters | 400 |
 
 
 ## Get Eligibility
