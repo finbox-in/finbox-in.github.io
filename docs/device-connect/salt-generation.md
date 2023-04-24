@@ -133,7 +133,7 @@ function create_salt($customer_id, $server_hash) {
     $customer_hash = strtoupper(md5($customer_id));
     $intermediate_hash = $customer_hash."".$server_hash;
     $salt_encoded = openssl_digest($intermediate_hash, 'sha256', true);
-    $salt = base64_encode($sha_hash);
+    $salt = base64_encode($salt_encoded);
     return $salt;
 }
 ```
