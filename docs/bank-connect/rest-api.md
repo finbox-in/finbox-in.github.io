@@ -1013,7 +1013,7 @@ Different fields that hold this monthly analysis are as follows:
 
 > \* We extrapolate previous available EOD balance as a proxy for EOD balances for dates missing in the statement. In case when no previous EOD balance is available, EOD balance of the closest available dates are used.
 
-## Rolling Monthly Analysis <Badge text="New" />
+<!-- ## Rolling Monthly Analysis <Badge text="New" />
 Get Rolling monthly analysis for a given entity.
 
 ::: tip Endpoint
@@ -1169,7 +1169,7 @@ Different fields that hold this monthly analysis are as follows:
 - If input is for 6 months statement, then 0-5 months of monthly data (type monthly), and two aggregated data for 3 and 6 months 
 - If input is for 12 months statement, then 0-11 months of monthly data (type monthly), and three aggregated data for 3, 6 and 12 months
 - Validation on  finbox end to throw error in case complete 3 months, or 6 months or, 12 months data not received
-:::
+::: -->
 
 <!-- ## Transactions in Excel Workbook <Badge text="New" />
 Get **enriched transactions** and **monthly analysis** for a given entity **account wise** in .xlsx (Excel workbook) format.
