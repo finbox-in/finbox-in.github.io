@@ -319,6 +319,38 @@ The table below lists the supported banks with their corresponding identifier. T
 | ALMORA_URBAN         | Almora Urban Co-Op Bank Ltd, India						| No                       | Yes                 |
 | PAVANA_SAHAKARI      | Pavana Sahakari Bank Ltd, India						| No                       | Yes                 |
 | GODAVARI_URBAN       | Godavari Urban Co-Op Bank, India						| No                       | Yes                 |
+| SUNDARLAL_SAWJI      | Sundarlal Sawji Urban Co-Op. Bank Ltd, India           | No                       | Yes                 |                 
+| BAPUNAGAR_MAHILA     | bapunagar mahila co-operative bank ltd                 | No                       | Yes                 |                                                               
+| SHRI_ADINATH         | SHRI ADINATH CO-OP.BANK LTD.ICHALKARANJI               | No                       | Yes                 |
+| APPASAHEB_BIRNALE    | Appasaheb Birnale Sahakari Bank Ltd                    | No                       | Yes                 |
+| PARIJAT_CO_OP_BNK    | Parijat Co-Operative Credit Society ltd                | No                       | Yes                 |
+| SOLAPUR_SIDDHESHWAR  | Solapur Siddheshwar Sahakari Bank                      | No                       | Yes                 |
+| AMRELI_JILLA_SAHAKARI| Amreli Jilla Madhyastha Sahakari Bank Ltd              | No                       | Yes                 | 
+| SBPP_CO_OP_BNK       | Sardar Bhiladwala Pardi People's Co-Operative Bank Ltd | No                       | Yes                 |                 
+| KURUNDWAD_URBAN_BNK  | Swatantra Senani Late Shripal Alase Kurundwad Co-Op Bank Ltd | No                 | Yes                 |              
+| MPSCB_APEX_BNK       | MP Rajya Sahakari Bank (Apex Bank)                     | No                       | Yes                 |
+| ABASAHEB_PATIL       | Abasaheb Patil Rendal Sahakari Bank Ltd, India         | No                       | Yes                 |           
+| KARIMNAGAR_DISTRICT  | Karimnagar District Co-Op Central Bank Ltd, India      | No                       | Yes                 |           
+| PASCHIM_BANGA        | Paschim Banga Gramin Bank, India                       | No                       | Yes                 |
+| DURGAPUR_STEEL       | Durgapur Steel Peoples Co-Op Bank Ltd, India           | No                       | Yes                 |        
+| KERALA_GRAMIN        | Kerala Gramin Bank Ltd, India                          | No                       | Yes                 |
+| SARANGPUR_CO_OP_BNK  | Sarangpur Co-Op. Bank Ltd, India                       | No                       | Yes                 |
+| DAKSHIN_BIHAR        | Dakshin Bihar Gramin Bank, India                       | No                       | Yes                 |
+| JANSEWA_URBAN        | Jansewa Urban Co-Op Bank Ltd, India                    | No                       | Yes                 | 
+| MALVIYA_URBAN        | Malviya Urban Co-Op Bank Ltd, India                    | No                       | Yes                 | 
+| MEDAK_DISTRICT       | Medak District Co-Op Central Bank Ltd, India           | No                       | Yes                 |         
+| PRATHAMA_BANK        | Prathama Bank , India                                  | No                       | Yes                 |
+| NAVNIRMAN_CO_OP_BNK  | Navnirman Co-op Bank Ltd, India                        | No                       | Yes                 |
+| VISHWAS_CO_OP_BNK    | Vishwas Co-operative Bank Ltd                          | No                       | Yes                 |
+| KRISHNA_BHIMA        | Krishna Bhima Samruddhi Bank, India                    | No                       | Yes                 |      
+| MANINAGAR_CO_OP_BNK  | Maninagar Co-Op. Bank Ltd, India                       | No                       | Yes                 |  
+| PATAN_NAGARIK        | Patan Nagarik Sahakari Bank Ltd, India                 | No                       | Yes                 |          
+| SHIRPUR_PEOPLE       | Shirpur People Co-Op Bank Ltd, India                   | No                       | Yes                 |      
+| UDAIPUR_MAHILA_URBAN | The Udaipur Mahila Urban Co-Op Bank Ltd, India         | No                       | Yes                 |          
+| GADHINGLAJ_URBAN     | Gadhinglaj Urban Co-Op. Bank Ltd, India                | No                       | Yes                 |  
+| JIJAMATA_MAHILA      | Jijamata Mahila Sahakari Bank, India                   | No                       | Yes                 |
+| SAMATA_SAHKARI       | Samata Sahkari Bank Ltd, India                         | No                       | Yes                 |
+| SHRI_CHHANI_SAHAKARI | Shri Chhani Sahakari Bank Ltd, India                   | No                       | Yes                 |
 
 ## Transaction Channel
 The list below indicates the possible value for `transaction_channel` field:
