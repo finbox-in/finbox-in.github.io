@@ -320,8 +320,8 @@ The table below lists the supported banks with their corresponding identifier. T
 | PAVANA_SAHAKARI      | Pavana Sahakari Bank Ltd, India						| No                       | Yes                 |
 | GODAVARI_URBAN       | Godavari Urban Co-Op Bank, India						| No                       | Yes                 |
 | SUNDARLAL_SAWJI      | Sundarlal Sawji Urban Co-Op. Bank Ltd, India           | No                       | Yes                 |                 
-| BAPUNAGAR_MAHILA     | bapunagar mahila co-operative bank ltd                 | No                       | Yes                 |                                                               
-| SHRI_ADINATH         | SHRI ADINATH CO-OP.BANK LTD.ICHALKARANJI               | No                       | Yes                 |
+| BAPUNAGAR_MAHILA     | Bapunagar mahila co-operative bank ltd                 | No                       | Yes                 |                                                               
+| SHRI_ADINATH         | Shri Adinath Co-Op.Bank Ltd                            | No                       | Yes                 |
 | APPASAHEB_BIRNALE    | Appasaheb Birnale Sahakari Bank Ltd                    | No                       | Yes                 |
 | PARIJAT_CO_OP_BNK    | Parijat Co-Operative Credit Society ltd                | No                       | Yes                 |
 | SOLAPUR_SIDDHESHWAR  | Solapur Siddheshwar Sahakari Bank                      | No                       | Yes                 |
