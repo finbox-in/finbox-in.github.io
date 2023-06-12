@@ -102,6 +102,16 @@ FinBoxRiskSdk.startPeriodicSync(12) //Start the sync periodically after every 12
 `startPeriodicSync` takes one argument which indicates the frequency of sync **in hours**.
 :::
 
+## Match Details on Device
+
+Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
+
+Call `setDeviceMatch` method before starting the syncs.
+
+```javascript
+FinBoxRiskSdk.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
+```
+
 ## Cancel Periodic
 
 If you have already set up the sync for the user data, you can cancel it any time by the following code:
