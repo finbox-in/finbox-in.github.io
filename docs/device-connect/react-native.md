@@ -112,6 +112,16 @@ Call `setDeviceMatch` method before starting the syncs.
 FinBoxRiskSdk.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
 ```
 
+## Forward Notifications to SDK
+
+In certain cases, FinBox server requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
+
+Add the following lines inside `firebase.messaging().onMessage` method.
+
+```javascript
+FinBoxRiskSdk.forwardFinBoxNotificationToSDK(remoteMessage.data);
+```
+
 ## Cancel Periodic
 
 If you have already set up the sync for the user data, you can cancel it any time by the following code:
