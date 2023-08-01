@@ -849,7 +849,7 @@ Here, the `progress` field holds an array of statement wise progress status, whi
 Get monthly analysis for a given entity.
 
 ::: tip Endpoint
-GET **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/entity/`<entity_id>`/monthly_analysis/**
+GET **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/entity/`<entity_id>`/monthly_analysis_updated/**
 :::
 
 ### Authentication
