@@ -12,7 +12,6 @@ Below are the list of Runtime permissions the sdk automatically adds to the appl
 <uses-permission android:name="android.permission.READ_SMS" />
 <uses-permission android:name="android.permission.RECEIVE_SMS" />
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 ```
 
