@@ -1,6 +1,6 @@
 # DeviceConnect: Insights API
 
-FinBox DeviceConnect REST API enables **"server to server data"** fetching of customers' Android device data. The customer's data can be fetched using the `CUSTOMER_ID`. API accepts JSON-encoded request bodies, returns JSON-encoded responses.
+FinBox DeviceConnect REST API enables **server to server data** fetching of customers' Android device data. The customer's data can be fetched using the `CUSTOMER_ID`. API accepts JSON-encoded request bodies, returns JSON-encoded responses.
 
 ::: warning NOTE
 Following will be shared by FinBox team at the time of integration:
@@ -17,21 +17,10 @@ Authentication for the APIs are based on **SERVER_API_KEY** provided by the FinB
 
 ## Endpoints
 
-::: tip Base URL
-For all the endpoints, the base URL for different environments are as follows: 
-| Environment | Base URL |
+| Insights | Endpoint | Request Type | IP Whitelisting |
 | - | - | -| - |
-| Production | **https://insights.finbox.in/v2/** |
-| Development | **https://insights.finbox.in/staging/** |
-:::
-
-| Insights | Endpoint | Request Type | Description |
-| - | - | -| - |
-| General Predictors | **/risk/predictors** | POST | General features extracted from customer's data |
-
-::: tip Predictors
-Other than general predictors, there are also more predictor endpoints which will be shared based on the  requirement by the FinBox team.
-:::
+| Production | **https://insights.finbox.in/v2/risk/predictors** | POST | Yes |
+| Development | **https://insights.finbox.in/staging/risk/predictors** | POST |  No |
 
 ## Request
 
