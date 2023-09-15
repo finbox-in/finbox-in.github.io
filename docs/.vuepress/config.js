@@ -51,7 +51,7 @@ module.exports = {
           children: [
             {
               title: 'Integration',
-              path: '/device-connect/android-integration-flow.html'
+              path: '/device-connect/mobile-integration.html'
             },
             {
               title: 'Permissions',
