@@ -79,6 +79,8 @@ Specify the following in `local.properties` file:
   ACCESS_KEY=<ACCESS_KEY>
   SECRET_KEY=<SECRET_KEY>
   LENDING_SDK_VERSION=<LENDING_SDK_VERSION>
+
+  # Required when using DC + EF
   DC_SDK_VERSION=<DC_SDK_VERSION>
   COMMON_SDK_VERSION=<COMMON_SDK_VERSION>
   COMMON_FLAVOR=<COMMON_FLAVOR>
@@ -115,20 +117,20 @@ Once all dependencies are added, SDK requires 3 inputs: `CUSTOMER_ID`, `USER_TOK
 `ENVIRONMENT` needs to be updated to `PROD` when migrating application to production.
 :::
 
-In the `onCreate` of your application class initialize dependencies required by the SDK:
-
-```kotlin
-FinBoxLendingPlugin.initLibrary(this)
-```
-
-Now that all required parameters are available, we can start the SDK flow as follows:
+Pass the required variables to `initSdk` method to setup the SDK.
 
 ```dart
  FinBoxLendingPlugin.initSdk(
     "<ENVIRONMENT>",
-    "<CUSTOMER_ID>",
     "<CLIENT_API_KEY>",
+    "<CUSTOMER_ID>",
     "<USER_TOKEN>");
+```
+
+Start the lending journey by calling `startLending` method.
+
+```dart
+ FinBoxLendingPlugin.startLending();
 ```
 
 ## Credit Line
@@ -151,6 +153,14 @@ For credit line journey, include the following dependency in the module `build.g
 ## Callback
 
 The callback will be provided when the user exits the SDK. You can track the status of user exit actions in the `onActivityResult` callback function
+
+Set method handler inside `build` method of your home page
+
+```dart
+FinBoxLendingPlugin.platform.setMethodCallHandler(_getJourneyResult);
+```
+
+Read the argument received when `_getJourneyResult` method gets invoked
 
 ```dart
 static Future<void> _getJourneyResult(MethodCall call) async {
