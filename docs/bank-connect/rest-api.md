@@ -1,5 +1,5 @@
 ---
-base_url: https://portal.finbox.in/bank-connect #base URL for the API
+base_url: https://apis.bankconnect.finbox.in/bank-connect #base URL for the API
 version: v1 # version of API
 ---
 
