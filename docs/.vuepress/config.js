@@ -139,7 +139,10 @@ module.exports = {
               title: 'Cordova',
               path: '/bank-connect/cordova.html'
             },
-            
+            {
+              title: 'Flutter',
+              path: '/bank-connect/flutter.html'
+            },
             {
               title: 'JavaScript Client SDK',
               path: '/bank-connect/javascript-client.html'
