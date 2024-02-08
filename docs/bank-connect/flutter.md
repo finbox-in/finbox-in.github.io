@@ -78,7 +78,7 @@ Specify the following in `local.properties` file:
 ```
 ACCESS_KEY=<ACCESS_KEY>
 SECRET_KEY=<SECRET_KEY>
-LENDING_SDK_VERSION=<BC_SDK_VERSION>
+BC_SDK_VERSION=<BC_SDK_VERSION>
 ```
 
 Add plugin dependency in `pubspec.yaml` file:
