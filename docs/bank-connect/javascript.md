@@ -2,8 +2,8 @@
 base_url: https://apis.bankconnect.finbox.in/bank-connect #base URL for the API
 version: v1 # version of API
 ---
-# BankConnect: JavaScript Client SDK
-The JavaScript Client SDK helps user submit their bank statements via upload or net banking credentials in your Web applications. The SDK will be opened via a web URL.
+# BankConnect: JavaScript SDK
+The JavaScript SDK helps user submit their bank statements via upload or net banking credentials in your Web applications. The SDK will be opened via a web URL.
 
 The first step in integration involves calling the [Session API](/bank-connect/javascript-client.html#session-api)
 Then the workflow can be implemented in one of the following ways:
@@ -50,12 +50,12 @@ Use `redirect_url` to open up the BankConnect SDK. This URL can be used embedded
 
 ## Redirect Workflow
 
-<img src="/javascript_redirect.jpg" alt="JavaScript Client SDK Redirect Workflow" />
+<img src="/javascript_redirect.jpg" alt="JavaScript SDK Redirect Workflow" />
 
 The flow for this involves following steps:
 - Create a session using [Session API](/bank-connect/javascript-client.html#session-api)
 - Get the URL received from above API and open it in a new tab
-- On success / exit, Client SDK will redirect to the specified redirect URL with parameters as follows:
+- On success / exit, SDK will redirect to the specified redirect URL with parameters as follows:
   - Exit: `{url}?success=false`
   - Success: `{url}?success=true&entity_id=<some-entity-id>`
 
@@ -65,7 +65,7 @@ Since there is no callback received on this flow, it is recommended to configure
 
 ## Inline Frame Workflow
 
-<img src="/javascript_iframe.jpg" alt="JavaScript Client SDK iframe Workflow" />
+<img src="/javascript_iframe.jpg" alt="JavaScript SDK iframe Workflow" />
 
 The flow for this involves the following steps:
 - Create a session using [Session API](/bank-connect/javascript-client.html#session-api)

@@ -148,8 +148,8 @@ module.exports = {
               path: '/bank-connect/flutter.html'
             },
             {
-              title: 'JavaScript Client SDK',
-              path: '/bank-connect/javascript-client.html'
+              title: 'JavaScript',
+              path: '/bank-connect/javascript.html'
             },
             {
               title: 'REST API',
