@@ -84,7 +84,7 @@ maven {
         secretKey = <SECRET_KEY>
     }
     content {
-        includeGroup("in.finbox")
+        includeGroup("in.finbox.bankconnect")
     }
 }
 ```
@@ -100,7 +100,7 @@ maven {
         secretKey = <SECRET_KEY>
     }
     content {
-        includeGroup("in.finbox")
+        includeGroup("in.finbox.bankconnect")
     }
 }
 ```
@@ -114,7 +114,7 @@ Now add the dependency to module level `build.gradle.kts` or `build.gradle` file
 <template v-slot:kotlin>
 
 ```kotlin
-implementation("in.finbox:bankconnect:hybrid:<BC_SDK_VERSION>:release@aar") {
+implementation("in.finbox.bankconnect:hybrid:<BC_SDK_VERSION>:release@aar") {
     isTransitive = true
 }
 ```
@@ -123,7 +123,7 @@ implementation("in.finbox:bankconnect:hybrid:<BC_SDK_VERSION>:release@aar") {
 <template v-slot:groovy>
 
 ```groovy
-implementation('in.finbox:bankconnect:hybrid:<BC_SDK_VERSION>:release@aar') {
+implementation('in.finbox.bankconnect:hybrid:<BC_SDK_VERSION>:release@aar') {
     transitive = true
 }
 ```
