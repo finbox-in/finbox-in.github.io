@@ -114,15 +114,7 @@ Now add the dependency to module level `build.gradle.kts` or `build.gradle` file
 <template v-slot:kotlin>
 
 ```kotlin
-implementation("in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar") {
-    isTransitive = true
-    exclude("in.finbox", "common")
-    exclude("in.finbox", "logger")
-}
-implementation("in.finbox:common:<COMMON_SDK_VERSION>:<COMMON_FLAVOR>-release@aar") {
-    isTransitive = true
-}
-implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar") {
+implementation("in.finbox:bankconnect:hybrid:<BC_SDK_VERSION>:release@aar") {
     isTransitive = true
 }
 ```
@@ -131,15 +123,7 @@ implementation("in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar") {
 <template v-slot:groovy>
 
 ```groovy
-implementation('in.finbox:bankconnect:<BC_SDK_VERSION>:release@aar') {
-    transitive = true
-    exclude group: "in.finbox", module: "common"
-    exclude group: "in.finbox", module: "logger"
-}
-implementation ('in.finbox:common:<COMMON_SDK_VERSION>:<COMMON_FLAVOR>-release@aar') {
-    transitive = true
-}
-implementation ('in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar') {
+implementation('in.finbox:bankconnect:hybrid:<BC_SDK_VERSION>:release@aar') {
     transitive = true
 }
 ```
@@ -153,8 +137,6 @@ Following will be shared by FinBox team at the time of integration:
 - `ACCESS_KEY`
 - `SECRET_KEY`
 - `BC_SDK_VERSION`
-- `COMMON_SDK_VERSION`
-- `LOGGER_SDK_VERSION`
 - `CLIENT_API_KEY`
 :::
 
