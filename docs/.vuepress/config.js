@@ -132,16 +132,24 @@ module.exports = {
               path: '/bank-connect/upload-overview.html'
             },
             {
-              title: 'Android Client SDK',
-              path: '/bank-connect/android-client.html'
+              title: 'See in action',
+              path: '/bank-connect/see-in-action.html'
             },
             {
-              title: 'Cordova SDK',
+              title: 'Android',
+              path: '/bank-connect/android.html'
+            },
+            {
+              title: 'Cordova',
               path: '/bank-connect/cordova.html'
             },
             {
-              title: 'JavaScript Client SDK',
-              path: '/bank-connect/javascript-client.html'
+              title: 'Flutter',
+              path: '/bank-connect/flutter.html'
+            },
+            {
+              title: 'JavaScript',
+              path: '/bank-connect/javascript.html'
             },
             {
               title: 'REST API',

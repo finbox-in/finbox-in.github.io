@@ -1,17 +1,6 @@
 # BankConnect: React Client SDK
 The React Client SDK helps user submit their bank statements via upload or net banking credentials in your React application.
 
-## See in action
-The demo video below shows how a user submit bank statement using net banking credentials:
-<div class="embed-container">
-<iframe src="https://www.youtube.com/embed/lynnwojp0vA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-The video below shows a user submit bank statement by uploading the PDF file:
-<div class="embed-container">
-<iframe src="https://www.youtube.com/embed/ZUGDZqico2o?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
 ## Integration Workflow
 The diagram below illustrates the integration workflow in a nutshell:
 <img src="/client_sdk.jpg" alt="Client SDK Workflow" />

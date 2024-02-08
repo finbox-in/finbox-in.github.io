@@ -1,16 +1,6 @@
 # BankConnect: Cordova
 BankConnect Cordova SDK helps user submits their bank statements via upload or net banking credentials in your Android application.
 
-## See in action
-The demo video below shows how a user submit a bank statement using net banking credentials:
-<div class="embed-container">
-<iframe src="https://www.youtube.com/embed/SvRV5BX1gSo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-The video below shows a user submit bank statement by uploading the PDF file:
-<div class="embed-container">
-<iframe src="https://www.youtube.com/embed/hxG9H9_iX8E?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
 
 ## Setting up the bridge
 

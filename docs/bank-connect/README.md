@@ -19,7 +19,7 @@ You can get your keys on [FinBox Dashboard](https://dashboard.finbox.in/)
 
 ## Sample Projects
 We have hosted some sample projects on GitHub. You can find them on the links below:
-- [Android Client SDK](https://github.com/finbox-in/bankconnect-android)
+- [Flutter SDK](https://github.com/finbox-in/bank-connect-sample-flutter)
 - [React Client SDK](https://github.com/finbox-in/bankconnect-react)
 
 ## Postman Collection

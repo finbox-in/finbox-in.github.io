@@ -8,7 +8,7 @@ As shown in the diagram there are two ways you can go ahead with this step:
 
 ## Using the Client SDK
 As in the lower part of the diagram, Users can submit a PDF statement or enter **Net Banking** credentials in the Client SDK that resides in your Web / Android Application. While initializing this SDK you have to pass `link_id`, and the Client SDK will talk with the BankConnect Backend. On successful uploading of the statement, your application will get a callback / redirect with an `entity_id`. Client SDK is available for the following:
-- [Android](/bank-connect/android-client.html)
+- [Android](/bank-connect/android.html)
 - [JavaScript](/bank-connect/javascript-client.html)
 
 
