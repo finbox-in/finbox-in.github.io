@@ -1,4 +1,4 @@
-# BankConnect: Android SDK
+# BankConnect: Android
 The Android SDK helps user submits their bank statements via upload or net banking credentials in your Android application.
 
 ## See in action
@@ -14,7 +14,7 @@ The video below shows a user submit bank statement by uploading the PDF file:
 
 ## Requirements
 
-Bank Connect Android SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring to support older versions.
+Bank Connect Android SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
 <template v-slot:kotlin>
