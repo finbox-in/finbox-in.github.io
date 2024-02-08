@@ -2,7 +2,7 @@
 base_url: https://apis.bankconnect.finbox.in/bank-connect #base URL for the API
 version: v1 # version of API
 ---
-# BankConnect: JavaScript SDK
+# BankConnect: JavaScript
 The JavaScript SDK helps user submit their bank statements via upload or net banking credentials in your Web applications. The SDK will be opened via a web URL.
 
 The first step in integration involves calling the [Session API](/bank-connect/javascript.html#session-api)
