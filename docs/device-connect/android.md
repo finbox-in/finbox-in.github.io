@@ -18,7 +18,7 @@ android {
     defaultConfig {
         ...
         // Minimum 5.0+ devices
-        minSdkVersion(21)
+        minSdk 21
         ...
     }
     ...
@@ -75,7 +75,7 @@ dependencies {
 </CodeSwitcher>
 
 ## Adding Dependency
-In the project level `build.gradle` file, add the repository URLs to all `allprojects` block.
+In the project level `build.gradle` file or `settings.gradle`, add the repository URLs to all `allprojects` block or `repositories` block inside `dependencyResolutionManagement`.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
 <template v-slot:kotlin>
@@ -271,7 +271,7 @@ Once the in-device values are set, call `setDeviceMatch` before starting the syn
 <template v-slot:kotlin>
 
 ```kotlin
-finBox.setDeviceMatch(deviceMatch)
+finbox.setDeviceMatch(deviceMatch)
 ```
 
 </template>
@@ -279,7 +279,7 @@ finBox.setDeviceMatch(deviceMatch)
 <template v-slot:java>
 
 ```java
-finBox.setDeviceMatch(deviceMatch);
+finbox.setDeviceMatch(deviceMatch);
 ```
 
 </template>
