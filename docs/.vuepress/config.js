@@ -132,8 +132,8 @@ module.exports = {
               path: '/bank-connect/upload-overview.html'
             },
             {
-              title: 'Android Client SDK',
-              path: '/bank-connect/android-client.html'
+              title: 'Android SDK',
+              path: '/bank-connect/android.html'
             },
             {
               title: 'Cordova SDK',

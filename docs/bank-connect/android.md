@@ -1,5 +1,5 @@
-# BankConnect: Android Client SDK
-The Android Client SDK helps user submits their bank statements via upload or net banking credentials in your Android application.
+# BankConnect: Android SDK
+The Android SDK helps user submits their bank statements via upload or net banking credentials in your Android application.
 
 ## See in action
 The demo video below shows how a user submit a bank statement using net banking credentials:
