@@ -10,17 +10,6 @@ Then the workflow can be implemented in one of the following ways:
 - [Load in a new page with redirect URL](/bank-connect/javascript-client.html#redirect-workflow)
 - [Embedding inside an Inline Frame (`<iframe>`)](/bank-connect/javascript-client.html#inline-frame-workflow)
 
-## See in action
-The demo video below shows how a user submit bank statement using net banking credentials:
-<div class="embed-container">
-<iframe src="https://www.youtube.com/embed/lynnwojp0vA?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-The video below shows a user submit bank statement by uploading the PDF file:
-<div class="embed-container">
-<iframe src="https://www.youtube.com/embed/ZUGDZqico2o?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
 ## Session API
 To start with the integration, call the following API to create a session:
 

@@ -132,6 +132,10 @@ module.exports = {
               path: '/bank-connect/upload-overview.html'
             },
             {
+              title: 'See in action',
+              path: '/bank-connect/see-in-action.html'
+            },
+            {
               title: 'Android',
               path: '/bank-connect/android.html'
             },
