@@ -5,10 +5,10 @@ version: v1 # version of API
 # BankConnect: JavaScript SDK
 The JavaScript SDK helps user submit their bank statements via upload or net banking credentials in your Web applications. The SDK will be opened via a web URL.
 
-The first step in integration involves calling the [Session API](/bank-connect/javascript-client.html#session-api)
+The first step in integration involves calling the [Session API](/bank-connect/javascript.html#session-api)
 Then the workflow can be implemented in one of the following ways:
-- [Load in a new page with redirect URL](/bank-connect/javascript-client.html#redirect-workflow)
-- [Embedding inside an Inline Frame (`<iframe>`)](/bank-connect/javascript-client.html#inline-frame-workflow)
+- [Load in a new page with redirect URL](/bank-connect/javascript.html#redirect-workflow)
+- [Embedding inside an Inline Frame (`<iframe>`)](/bank-connect/javascript.html#inline-frame-workflow)
 
 ## Session API
 To start with the integration, call the following API to create a session:
@@ -34,7 +34,7 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session/**
 <b>Note</b>: If the `to-date` lies in the first week of the month, the respective month is not considered in the journey.
 
 ::: warning NOTE
-- `redirect_url` in request is a compulsory field in [Redirect Workflow](/bank-connect/javascript-client.html#redirect-workflow) but is not required with the [Inline Frame workflow](/bank-connect/javascript-client.html#inline-frame-workflow)
+- `redirect_url` in request is a compulsory field in [Redirect Workflow](/bank-connect/javascript.html#redirect-workflow) but is not required with the [Inline Frame workflow](/bank-connect/javascript.html#inline-frame-workflow)
 - Please make sure `from_date` is always less than `to_date`
 - Make sure `to_date` is never today's date, the maximum possible value for it is today's date - 1 day
 :::
@@ -53,7 +53,7 @@ Use `redirect_url` to open up the BankConnect SDK. This URL can be used embedded
 <img src="/javascript_redirect.jpg" alt="JavaScript SDK Redirect Workflow" />
 
 The flow for this involves following steps:
-- Create a session using [Session API](/bank-connect/javascript-client.html#session-api)
+- Create a session using [Session API](/bank-connect/javascript.html#session-api)
 - Get the URL received from above API and open it in a new tab
 - On success / exit, SDK will redirect to the specified redirect URL with parameters as follows:
   - Exit: `{url}?success=false`
@@ -68,9 +68,9 @@ Since there is no callback received on this flow, it is recommended to configure
 <img src="/javascript_iframe.jpg" alt="JavaScript SDK iframe Workflow" />
 
 The flow for this involves the following steps:
-- Create a session using [Session API](/bank-connect/javascript-client.html#session-api)
+- Create a session using [Session API](/bank-connect/javascript.html#session-api)
 - Get the URL received from above API and embed it in an `<iframe>`
-- You'll [receive callbacks](/bank-connect/javascript-client.html#receive-callbacks) by implementing an event listener. Based on the event you can close / hide the inline frame.
+- You'll [receive callbacks](/bank-connect/javascript.html#receive-callbacks) by implementing an event listener. Based on the event you can close / hide the inline frame.
 
 ## Receive callbacks
 1. To receive callbacks in `<iframe>` workflow, you need to implement an event listener. It can be implemented as follows:
