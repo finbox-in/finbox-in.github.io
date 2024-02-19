@@ -7,16 +7,16 @@ Device Connect Ionic React SDK is used to collect anonymised non-PII data from t
 Using yarn:
 
 ```sh
-yarn add react-native-risk-sdk
+yarn add ionic-risk-sdk
 ```
 
 or using npm:
 
 ```sh
-npm install --save react-native-risk-sdk
+npm install --save ionic-risk-sdk
 ```
 
-Our SDK will auto link automatically with your application
+Register our SDK using `registerPlugin(IonicRiskSdkPlugin.class);` in your `MainActivity` class.
 
 ## Authentication
 
@@ -69,23 +69,9 @@ Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alpha
 The response to this method (success or failure) can be captured using the callback.
 
 ```javascript
-import FinBoxRiskSdk from 'react-native-risk-sdk';
+import { IonicRiskSdk } from 'ionic-risk-sdk';
 //Function to trigger RiskSdk
-const callModule = () => {
-    FinBoxRiskSdk.createUser(
-        "CLIENT_API_KEY",
-        "CUSTOMER_ID",
-        (errorStatus) => {
-     // Error Callback
-            console.log("Error status -> ", errorStatus)
-        }, 
-        (msg) => {
-            // Success Callback, Call the periodic sync once the user has been created
-     console.log("Final message", msg)
-     FinBoxRiskSdk.startPeriodicSync(12) //Start the sync periodically after every 12 hour
- }
-    )
-}
+const token = await IonicRiskSdk.createUser({ apiKey: API_KEY, customerId: CUSTOMER_ID });
 ```
 
 You can read about the errors in the [Error Codes](/device-connect/error-codes.html) section.
@@ -95,7 +81,7 @@ You can read about the errors in the [Error Codes](/device-connect/error-codes.h
 This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals:
 
 ```javascript
-FinBoxRiskSdk.startPeriodicSync(12) //Start the sync periodically after every 12 hour
+IonicRiskSdk.startPeriodicSync(); //Start the sync periodically after every 12 hour
 ```
 
 ::: tip Handle Sync Frequency
@@ -107,7 +93,7 @@ FinBoxRiskSdk.startPeriodicSync(12) //Start the sync periodically after every 12
 If you have already set up the sync for the user data, you can cancel it any time by the following code:
 
 ```javascript
-FinBoxRiskSdk.stopPeriodicSync();
+IonicRiskSdk.stopPeriodicSync();
 ```
 
 ## Reset User Data
@@ -115,7 +101,7 @@ FinBoxRiskSdk.stopPeriodicSync();
 In case the user data needs to be removed on the device so that you can re-sync the entire data, use the method `resetData`.
 
 ```javascript
-FinBoxRiskSdk.resetData();
+IonicRiskSdk.resetData();
 ```
 
 ## Forget User
@@ -123,5 +109,5 @@ FinBoxRiskSdk.resetData();
 In case the user choose to be forgotten, use the method `forgetUser`. This will delete the user details in our system.
 
 ```javascript
-FinBoxRiskSdk.forgetUser();
+IonicRiskSdk.forgetUser();
 ```
