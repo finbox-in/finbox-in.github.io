@@ -4,7 +4,7 @@ Device Connect Web SDK is used to collect anonymised non-PII data from the devic
 
 ## Requirements
 
-Device Connect Web SDK works on Google Chrome 27 and above.
+Device Connect Web SDK works on Google Chrome, Safari, Opera and other popular browsers.
 
 ## Adding Dependency
 
