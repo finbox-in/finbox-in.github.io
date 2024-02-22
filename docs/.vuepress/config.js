@@ -74,7 +74,7 @@ module.exports = {
               path: '/device-connect/cordova.html'
             },
             {
-              title: 'Ionic React',
+              title: 'Ionic Capacitor',
               path: '/device-connect/ionic-capacitor.html'
             },
             {
