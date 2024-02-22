@@ -1,6 +1,6 @@
-# DeviceConnect: Ionic React
+# DeviceConnect: Ionic Capacitor
 
-Device Connect Ionic React SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
+Device Connect Ionic Capacitor SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
 
 ## Installation
 
