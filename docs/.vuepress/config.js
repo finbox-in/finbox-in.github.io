@@ -75,7 +75,7 @@ module.exports = {
             },
             {
               title: 'Ionic React',
-              path: '/device-connect/ionic-react.html'
+              path: '/device-connect/ionic-capacitor.html'
             },
             {
               title: 'Error Codes',
