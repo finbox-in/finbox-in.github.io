@@ -5,6 +5,7 @@ Salt is generated at the client side for Authentication
 ## Calculate salt
 
 Salt is calculated as follows:
+
 1. A = Create MD5 hash of `CUSTOMER_ID`
 2. B = Concatenate string of A and `SERVER_HASH` shared by FinBox.
 3. C = Create an SHA-256 hash of B
@@ -12,7 +13,7 @@ Salt is calculated as follows:
 
 Sample code for salt generation in different languages:
 
-<CodeSwitcher :languages="{python:'Python',go:'Go',java:'Java',php:'PHP',ruby:'Ruby',javascript:'JavaScript'}">
+<CodeSwitcher :languages="{python:'Python',go:'Go',java:'Java',csharp:'C#',php:'PHP',ruby:'Ruby',javascript:'JavaScript'}">
 <template v-slot:java>
 
 ```java
@@ -30,7 +31,7 @@ public class SaltGeneration {
     private static String CUSTOMER_ID = "<CUSTOMER_ID>";
     private static String SERVER_HASH = "<SERVER_HASH>";
     
-    private static String getSaltForBody() {
+    public static String getSaltForBody() {
         String hashedOutput = getMd5Hash(CUSTOMER_ID);
         String concatString = hashedOutput + SERVER_HASH;
         String shaOutput = get256Encoded(concatString);
@@ -81,6 +82,66 @@ public class SaltGeneration {
 ```
 
 </template>
+
+<template v-slot:csharp>
+
+```csharp
+using System;
+using System.Security.Cryptography;
+using System.Text;
+
+public class SaltGeneration {
+
+  private static string HEX_255 = "x2";
+  private static string CUSTOMER_ID = "<CUSTOMER_ID>";
+  private static string SERVER_HASH = "<SERVER_HASH>";
+
+  public static string CreateSalt() {
+    string customerHash = CalculateMD5(CUSTOMER_ID).ToUpper();
+    string intermediateHash = customerHash + SERVER_HASH;
+    string shaOutput = CalculateSHA256(intermediateHash);
+    return HexToBase64(shaOutput);
+  }
+
+  private static string CalculateMD5(string s) {
+    using(MD5 md5 = MD5.Create()) {
+      byte[] inputBytes = Encoding.UTF8.GetBytes(s);
+      byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+      StringBuilder sb = new StringBuilder();
+      for (int i = 0; i < hashBytes.Length; i++) {
+        sb.Append(hashBytes[i].ToString(HEX_255));
+      }
+      return sb.ToString();
+    }
+  }
+
+  private static string CalculateSHA256(string input) {
+    using(SHA256 sha256 = SHA256.Create()) {
+      byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+      byte[] hashBytes = sha256.ComputeHash(inputBytes);
+
+    StringBuilder sb = new StringBuilder();
+      for (int i = 0; i < hashBytes.Length; i++) {
+        sb.Append(hashBytes[i].ToString(HEX_255));
+      }
+      return sb.ToString();
+    }
+  }
+
+  private static string HexToBase64(string hexString) {
+    int NumberChars = hexString.Length;
+    byte[] bytes = new byte[NumberChars / 2];
+    for (int i = 0; i < NumberChars; i += 2) {
+      bytes[i / 2] = Convert.ToByte(hexString.Substring(i, 2), 16);
+    }
+    return Convert.ToBase64String(bytes);
+  }
+}
+```
+
+</template>
+
 <template v-slot:python>
 
 ```python
@@ -105,22 +166,22 @@ def create_salt(customer_id, server_hash):
 
 ```go
 import (
-	"crypto/md5"
-	"crypto/sha256"
-	"fmt"
-	"encoding/base64"
-	"encoding/hex"
-	"strings"
+    "crypto/md5"
+    "crypto/sha256"
+    "fmt"
+    "encoding/base64"
+    "encoding/hex"
+    "strings"
 )
 func GetSaltForCustomer(customerId string, serverHash string) string {
     hasher := md5.New()
-	hasher.Write([]byte(customerId))
-	hexHasher := hex.EncodeToString(hasher.Sum(nil))
-	data := strings.ToUpper(hexHasher) + serverHash
-	newSha256 := sha256.New()
-	newSha256.Write([]byte(data))
+    hasher.Write([]byte(customerId))
+    hexHasher := hex.EncodeToString(hasher.Sum(nil))
+    data := strings.ToUpper(hexHasher) + serverHash
+    newSha256 := sha256.New()
+    newSha256.Write([]byte(data))
     finalData := base64.StdEncoding.EncodeToString(newSha256.Sum(nil))
-	return finalData
+    return finalData
 }
 ```
 
@@ -175,7 +236,6 @@ function create_salt(customer_id, server_hash) {
 
 </CodeSwitcher>
 
-
 ## Debug Salt Generation
 
 You can cross check each individual step of your salt generation logic by using the following parameters
@@ -185,16 +245,13 @@ customer_id = 82169C6312B50CA8233482169F9F288F812B5C02114A6A74E9A62
 server_hash = 5f8cd80c69a34b9785dc66298eabe95b
 ```
 
-
-**Step A Result - Hexdigest of MD5Hash** 
+**Step A Result - Hexdigest of MD5Hash**
 
 `7B85689C14D32209779241F14A09C29B`
 
-
-**Step B Result -  Intermediate Hash** 
+**Step B Result -  Intermediate Hash**
 
 `7B85689C14D32209779241F14A09C29B5f8cd80c69a34b9785dc66298eabe95b`
-
 
 **Step C Result - Hexdigest Version**
 
