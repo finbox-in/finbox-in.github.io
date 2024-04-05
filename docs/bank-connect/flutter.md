@@ -123,7 +123,7 @@ class MainApp:FlutterApplication() {
 Initialize the `FinBoxBcPlugin` in dart file
 
 ```dart
-FinBoxBcPlugin.initSdk("CLIENT_API_KEY","FROM_DATE","TO_DATE","BANK_NAME");
+FinBoxBcPlugin.initSdk("CLIENT_API_KEY","FROM_DATE","TO_DATE","BANK_NAME","MODE");
 ```
 
 | Builder Property | Description | Required |
@@ -133,6 +133,7 @@ FinBoxBcPlugin.initSdk("CLIENT_API_KEY","FROM_DATE","TO_DATE","BANK_NAME");
 | `fromDate` | specifies the starting period of the statement in `DD/MM/YYYY`format | No |
 | `toDate` | specifies the end period of the statement in `DD/MM/YYYY` format | No |
 | `bank` | pass the [bank identifier](/bank-connect/appendix.html#bank-identifiers) to skip the bank selection screen and directly open a that bank's screen instead | No |
+| `mode` | set the mode as pdf (manual upload) or aa (Account Aggregator) or online (Net Banking) | No |
 
 `fromDate` and `toDate` specify the period for which the statements will be fetched. For example, if you need the last 6 months of statements, `fromDate` will be today's date - 6 months and `toDate` will be today's date - 1 day. If not provided the default date range is 6 months from the current date. It should be in `DD/MM/YYYY` format.
 
