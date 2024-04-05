@@ -109,19 +109,6 @@ We have hosted a sample project on GitHub, you can check it out here:
 
 ## Show SDK Screen
 
-Initialize the `FinBoxBcPlugin` in Kotlin Application class
-
-```kotlin
-class MainApp:FlutterApplication() {
-    override fun onCreate() {
-        super.onCreate()
-        FinBoxBcPlugin.initLibrary(this)
-    }
-}
-```
-
-Initialize the `FinBoxBcPlugin` in dart file
-
 ```dart
 FinBoxBcPlugin.initSdk("CLIENT_API_KEY","FROM_DATE","TO_DATE","BANK_NAME","MODE");
 ```
