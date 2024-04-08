@@ -110,7 +110,7 @@ We have hosted a sample project on GitHub, you can check it out here:
 ## Show SDK Screen
 
 ```dart
-FinBoxBcPlugin.initSdk("CLIENT_API_KEY","FROM_DATE","TO_DATE","BANK_NAME","MODE");
+FinBoxBcPlugin.initSdk("CLIENT_API_KEY","FROM_DATE","TO_DATE","BANK_NAME","MODE", "MOBILE_NUMBER", "JOURNEY_MODE", "AA_JOURNEY_MODE", "AA_RECURRING_TENURE_MONTH_COUNT", "AA_RECURRING_FREQUENCY_UNIT", "AA_RECURRING_FREQUENCY_VALUE");
 ```
 
 | Builder Property | Description | Required |
@@ -121,6 +121,12 @@ FinBoxBcPlugin.initSdk("CLIENT_API_KEY","FROM_DATE","TO_DATE","BANK_NAME","MODE"
 | `toDate` | specifies the end period of the statement in `DD/MM/YYYY` format | No |
 | `bank` | pass the [bank identifier](/bank-connect/appendix.html#bank-identifiers) to skip the bank selection screen and directly open a that bank's screen instead | No |
 | `mode` | set the mode as pdf (manual upload) or aa (Account Aggregator) or online (Net Banking) | No |
+| `mobile_number` | Prefills phone number in Account Aggregator mode | No |
+| `journey_mode` | Optional parameter to set the journey (i.e.multi_pdf or multi_banking) | No |
+| `aa_journey_mode` | set the journey mode for AA (i.e only_once or only_recurring) | No |
+| `aa_recurring_tenure_month_count` | set the recurring consent duration (min: 1 and max: 24) | No |
+| `aa_recurring_frequecy_unit` | set the frequency unit to pull the data during the recurring consent duration (year, month, day, hour) | No |
+| `aa_recurring_frequency_value` | set the frequency value to pull the data during the recurring consent duration (min: 1 and max: 3) | No |
 
 `fromDate` and `toDate` specify the period for which the statements will be fetched. For example, if you need the last 6 months of statements, `fromDate` will be today's date - 6 months and `toDate` will be today's date - 1 day. If not provided the default date range is 6 months from the current date. It should be in `DD/MM/YYYY` format.
 
