@@ -173,7 +173,7 @@ FinBoxBankConnect.Builder(applicationContext)
     .journeyMode(MULTI_PDF) // Optional: Multi PDF journey
     .aaJourneyMode(ONLY_RECURRING) // Optional: Recurring AA pulls
     .aaRecurringTenureMonthCount(3) // Optional: Consent duration is valid for 3 months
-    .aaRecurringFrequecyUnit(TimeUnit.DAYS) // Optional: Frequency value is in Days
+    .aaRecurringFrequencyUnit(TimeUnit.DAYS) // Optional: Frequency value is in Days
     .aaRecurringFrequencyValue(2) // Optional: Number of times to pull the data
     .build()
 ```
@@ -193,7 +193,7 @@ new FinBoxBankConnect.Builder(getApplicationContext())
     .journeyMode(MULTI_PDF) // Optional: Multi PDF journey
     .aaJourneyMode(ONLY_RECURRING) // Optional: Recurring AA pulls
     .aaRecurringTenureMonthCount(3) // Optional: Consent duration is valid for 3 months
-    .aaRecurringFrequecyUnit(TimeUnit.DAYS) // Optional: Frequency value is in Days
+    .aaRecurringFrequencyUnit(TimeUnit.DAYS) // Optional: Frequency value is in Days
     .aaRecurringFrequencyValue(2) // Optional: Number of times to pull the data
     .build();
 ```
@@ -213,7 +213,7 @@ new FinBoxBankConnect.Builder(getApplicationContext())
 | `journey_mode` | Optional parameter to set the journey (i.e.multi_pdf or multi_banking) | No |
 | `aa_journey_mode` | set the journey mode for AA (i.e only_once or only_recurring) | No |
 | `aa_recurring_tenure_month_count` | set the recurring consent duration (min: 1 and max: 24) | No |
-| `aa_recurring_frequecy_unit` | set the frequency unit to pull the data during the recurring consent duration (year, month, day, hour) | No |
+| `aa_recurring_frequency_unit` | set the frequency unit to pull the data during the recurring consent duration (year, month, day, hour) | No |
 | `aa_recurring_frequency_value` | set the frequency value to pull the data during the recurring consent duration (min: 1 and max: 3) | No |
 
 `fromDate` and `toDate` specify the period for which the statements will be fetched. For example, if you need the last 6 months of statements, `fromDate` will be today's date - 6 months and `toDate` will be today's date - 1 day. If not provided the default date range is 6 months from the current date. It should be in `DD/MM/YYYY` format.

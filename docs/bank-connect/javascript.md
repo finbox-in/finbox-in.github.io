@@ -36,7 +36,7 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session/**
 | journey_mode | string | Optional parameter to set the journey (i.e.multi_pdf or multi_banking) | No | - |
 | aa_journey_mode | string | set the journey mode for AA (i.e only_once or only_recurring) | No | - |
 | aa_recurring_tenure_month_count | integer | set the recurring consent duration (min: 1 and max: 24) | No | - |
-| aa_recurring_frequecy_unit | string | set the frequency unit to pull the data during the recurring consent duration (year, month, day, hour) | No | - |
+| aa_recurring_frequency_unit | string | set the frequency unit to pull the data during the recurring consent duration (year, month, day, hour) | No | - |
 | aa_recurring_frequency_value | integer | set the frequency value to pull the data during the recurring consent duration (min: 1 and max: 3) | No | - |
 
 `from_date` and `to_date` specify the period for which the statements will be fetched. For example, if you need the last 6 months of statements, `from_date` will be today's date - 6 months and `to_date` will be today's date - 1 day. If not provided the default date range is 6 months from the current date. It should be in `DD/MM/YYYY` format.
