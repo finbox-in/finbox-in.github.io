@@ -9,7 +9,7 @@ npm install
 ```
 To run it locally:
 ```bash
-npm docs:dev
+npm run docs:dev
 ```
 
 ## Adding or modifying articles

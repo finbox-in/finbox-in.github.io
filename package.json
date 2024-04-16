@@ -4,13 +4,15 @@
     "docs:build": "vuepress build docs"
   },
   "devDependencies": {
-    "@vuepress/plugin-medium-zoom": "^1.9.9",
-    "vuepress": "^1.9.9"
+    "@vuepress/plugin-medium-zoom": "^1.9.10",
+    "vuepress": "^1.9.10"
   },
   "dependencies": {
-    "crypto-js": "^4.1.1",
+    "crypto-js": "^4.2.0",
     "v-dialogs": "^2.2.0",
     "vuepress-plugin-code-copy": "^1.0.6",
-    "vuepress-plugin-code-switcher": "~1.0"
+    "vuepress-plugin-code-switcher": "^2.0.0",
+    "vue": "2.7.16",
+    "vue-server-renderer": "2.7.16"
   }
 }
