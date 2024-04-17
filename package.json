@@ -11,7 +11,7 @@
     "crypto-js": "^4.2.0",
     "v-dialogs": "^2.2.0",
     "vuepress-plugin-code-copy": "^1.0.6",
-    "vuepress-plugin-code-switcher": "^2.0.0",
+    "vuepress-plugin-code-switcher": "^1.1.0",
     "vue": "2.7.16",
     "vue-server-renderer": "2.7.16"
   }
