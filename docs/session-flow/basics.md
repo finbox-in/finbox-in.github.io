@@ -19,9 +19,9 @@ Bank transaction records submitted or fetched within a session, identified by a 
 
 
 ## Note
-You have the flexibility to generate multiple sessions for an individual user, also referred as a `link_id` in BankConnect. Each session exclusively provides responses for the statements uploaded within that specific session. 
-It's important to note that data from different sessions cannot be combined.
-For instance, when a customer visits your platform, you initiate BankConnect with a new session_id. The customer uploads multiple statements to cover a 6-month duration. If the customer returns after 3 months, a new session must be created for that subsequent interaction.
+You have the flexibility to generate multiple sessions for an individual user. A unique user is mapped to a `link_id` in bankconnect. Each session exclusively provides responses for the statements uploaded within that specific session. 
+It's important to note that data from different sessions cannot be combined. <br>
+For instance, when a customer visits your platform, you initiate BankConnect with a new `session_id`. The customer uploads multiple statements to cover a 6-month duration. If the customer returns after 3 months, a new session must be created for that subsequent interaction.
 
 
-Now since these terms are clear, you can head towards the next section [Integration Pre-requisite](/session-flow/integration-steps.html) to understand the integration process.
+Now since these terms are clear, you can head towards the next section [Integration Pre-requisites](/session-flow/integration-steps.html) to understand the integration process.

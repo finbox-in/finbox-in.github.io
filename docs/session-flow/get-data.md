@@ -1,4 +1,10 @@
-## BankConnect: Get Data from Finbox
+---
+base_url: https://apis.bankconnect.finbox.in/bank-connect #base URL for the API
+version: v1 # version of API
+---
+
+
+## Fetch Enriched data
 
 Upon finishing the statement upload or completing the BankConnect journey, please activate the processing of the uploaded statements by triggering the designated processing API.
 

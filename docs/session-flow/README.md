@@ -8,7 +8,7 @@ loan disbursals by platforms and lenders in their respective online / offline jo
 
 This guide will help you integrate BankConnect in your application flow.
 
-Watch the video below then head towards the [Basics](/bank-connect/basics.html) section to understand the basic terms associated with BankConnect.
+Head towards the [Basics](/session-flow/basics.html) section to understand the basic terms associated with BankConnect.
 
 <!-- ## Understanding the Integration Flow
 The video below gives a brief overview of the BankConnect Integration flow: -->
@@ -21,7 +21,7 @@ The video below gives a brief overview of the BankConnect Integration flow: -->
 ## Getting API Keys
 BankConnect requires API Keys to initialize the SDK and/or access the REST APIs. There will be separate keys for **DEV** and **PROD** environments. APIs for fetching enriched data also require an additional **Server Hash**.
 
-You can get your keys on [FinBox Dashboard](https://dashboard.finbox.in/). Please login to the BankConnect Dashboard using the credentials shared with you by the Finbox team. Once you're in, head to the Settings \> Configurations tab, where you'll find the Integration Keys (Bank Connect). These keys are essential for making API calls in your workflow.
+You can get your keys on [FinBox Dashboard](https://dashboard.bankconnect.finbox.in/). Please login to the BankConnect Dashboard using the credentials shared with you by the FinBox team. Once you're in, head to the Settings \> Configurations tab, where you'll find the Integration Keys (Bank Connect). These keys are essential for making API calls in your workflow.
 
 
 <!-- ## Postman Collection

@@ -211,7 +211,7 @@ module.exports = {
           collapsable: false
         },
         {
-          title: 'Integration Pre-requisite',
+          title: 'Integration Pre-requisites',
           path: '/session-flow/integration-steps.html',
           collapsable: true
         },

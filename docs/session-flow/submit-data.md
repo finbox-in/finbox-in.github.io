@@ -1,3 +1,8 @@
+---
+base_url: https://apis.bankconnect.finbox.in/bank-connect #base URL for the API
+version: v1 # version of API
+---
+
 ## BankConnect: Submit Data to FinBox (Uploading Bank Statements)
 
 The data can be submitted / uploaded to FinBox backend in two ways:
@@ -27,11 +32,11 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session/**
 | from_date    | string | Start date range to fetch statements. Should be of format `DD/MM/YYYY`                                                                                    | No                            | Last 6 month start date |
 | to_date      | string | End date range to fetch statements. Should be of format `DD/MM/YYYY`                                                                                      | No                            | Yesterday               |
 | logo_url     | string | An optional parameter to show logo branding in bankconnect SDK. Should be a URL.                                                                          | No                            | -                       |
-| bank_name    | string | pass the [bank identifier](/bank-connect/appendix.html#bank-identifiers) to skip the bank selection screen and directly open a that bank's screen instead | No                            | -                       |
-| mode         | string | optional parameter to set the mode(i.e. pdf, aa, and online)                                                                                              | No                            | -                       |
+| bank_name    | string | Pass the [bank identifier](/session-flow/appendix.html#bank-identifiers) to skip the bank selection screen and directly open a that bank's screen instead | No                            | -                       |
+| mode         | string | Optional parameter to set the mode(i.e. pdf, aa, and online)                                                                                              | No                            | -                       |
 | mobile_number  | string  | Optional parameter to prefill phone number in Account Aggregator mode                                     | No                        |
 | session_expiry | integer | Optional parameter to set expiry timing for each session created                                          | No                        |
-| journey_mode   | string  | optional parameter to set the journey(i.e. multi_pdf or multi_banking)                                    | No                        |
+| journey_mode   | string  | Optional parameter to set the journey(i.e. multi_pdf or multi_banking)                                    | No                        |
 
 
 `from_date` and `to_date` specify the period for which the statements will be fetched. For example, if you need the last 6 months of statements, `from_date` will be today's date - 6 months and `to_date` will be today's date - 1 day. If not provided the default date range is 6 months from the current date. It should be in `DD/MM/YYYY` format.
@@ -77,8 +82,8 @@ To proceed with additional enriched APIs, it is imperative to store the
 **The following table lists API error codes applicable to this API.**
 
 
-|Error code|Error message|HTTP Response|Status|
-| ------------ | ----------------------------------------------------------------------------------- | ----------------------------- | ----------------------- |
+|Error code|Error message|HTTP Status Code|
+| ------------ | ----------------------------------------------------------------------------------- | ----------------------------- |
 |INVALID_DATE_FORMAT|Invalid 'from_date' or 'to_date' format. Use 'DD/MM/YYYY'. |400|
 |INVALID_DATE_RANGE|from_date' can't be greater or equal to 'to_date'.|400|
 |MISSING_DATE_FIELD| from_date' and 'to_date' are required. |400|
@@ -111,11 +116,11 @@ The flow for this involves following steps:
 - On success / exit, Client SDK will redirect to the specified
   redirect URL with parameters as follows:
   - Exit: `{url}?success=false`
-  - Success: `{url}?success=true&entity_id=<some-session-id>`
+  - Success: `{url}?success=true&session_id=<some-session-id>`
 
 <b>NOTE</b>: Since there is no callback received on this flow, it is recommended to configure Webhook
 
-## Backend integration (JavaScript SDK)
+## Backend integration
 
 **Uploading via REST APIs**
 
@@ -139,7 +144,7 @@ Request header `x-api-key` with API Key as value must be present in request.
 | Name | Type | Description | Required  | Default |
 | - | - | - | - | - |
 | file | file  | the statement pdf file | Yes | - |
-| bank_name | string | a valid [bank identifier](/bank-connect/appendix.html#bank-identifiers) | Yes | - |
+| bank_name | string | a valid [bank identifier](/session-flow/appendix.html#bank-identifiers) | Yes | - |
 | session_id | string | a `session_id` against which you want to upload the statement | Yes | - |
 | upload_type | string | The format of file that is being uploaded (PDF, BASE64) | Yes | - |
 | pdf_password | string | password for the pdf in case it is password protected | No | - |
@@ -147,9 +152,6 @@ Request header `x-api-key` with API Key as value must be present in request.
 
 **Query Parameters:** Optional parameters appended to the URL like
 _upload_session/?identity=true_
-
-_entity_progress (optional, string):_ Filters progress for a specific
-session.
 
 _progress (optional, string):_ Provides progress of uploaded statements.
 
@@ -164,15 +166,15 @@ statements.
     "bank_name": "icici",
     "statement_id": "567700a6-570d-4f75-ae60-d79357dabdb4",
     "identity": {
-        "account_number": "036805005804",
-        "name": "SHUBH EDIBLE PRODUCTS PRIVATE",
-        "address": "215/142 ANAND PURI,RAILWAY ROAD,MEERUT CITY,MEERUT,250002,UTTAR PRADESH,INDIA",
+        "account_number": "XXXXXXXXXXX",
+        "name": "XYZ PRODUCTS PRIVATE",
+        "address": "567/435,Gol Chauraha,MEERUT,250002,UTTAR PRADESH,INDIA",
         "ifsc": "ICIC0000368",
         "micr": null,
         "account_category": "corporate",
         "credit_limit": null,
         "od_limit": null,
-        "account_id": "8702145a-aaa3-4ee0-acb7-9a328b54905a",
+        "account_id": "8702145a-aaa3-7gju-7v78-9a327y54905a",
         "bank_name": "icici"
     },
     "date_range": {
@@ -195,9 +197,9 @@ statements.
         "to_date": "2024-03-23"
     },
     "account_id": "8702145a-aaa3-4ee0-acb7-9a328b54905a",
-    "masked_account_number": "XXXXXXXX5804",
+    "masked_account_number": "XXXXXXXXXXX",
     "status": 1,
-    "session_id": "c215f3fd-fcd8-4452-a4d7-2be7a262aef9"
+    "session_id": "c215f3fd-fcd8-4452-a4d7-2b7ju262aef9"
 }
 ```
 
@@ -205,7 +207,7 @@ statements.
 
 ```json
 {
-  "entity_id":"",
+  "session_id":"",
   "statement_id":"",
   "error": {
     "code": "SESSION_NOT_FOUND",
