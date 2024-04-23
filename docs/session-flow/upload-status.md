@@ -1,0 +1,145 @@
+## BankConnect: Check Session Upload Status
+
+### 1. Webhooks
+
+Utilize Webhooks for real-time notification on completion of upload in the session. Webhooks need to be configured once and then both the webhooks for Completion and [Enrichment](session-flow/integration-components.html#bankconnect-check-processing-status) would be triggered on the configured URL.
+
+Ensure your webhook endpoint is consistently available; if not, consider the polling approach or fetching all payloads for a given session_id
+
+**Important Note:** The webhook will only be triggered once the upload has been completed by the user.
+
+**Configuration:** Share a valid endpoint that receives a POST request, accepts a request body with content-type application/json and returns a 200 status code on successful reception.
+
+**Update the endpoint using the API:**
+
+::: tip Endpoint
+
+POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data/update_webhook/**
+
+:::
+
+**Request:**
+
+```json
+{
+    "webhook_url": "https://postman-echo.com/post",
+    "webhook_mode": 3  // Enable for all modes
+}
+```
+**Note :** Ensure to specify webhook_mode to invoke webhooks for all
+modes.
+
+**Authentication**
+
+The request header "x-secret-key" with the Secret Key as its value will be included in the request. The client will provide this Secret Key, and it is optional.
+
+**Receiving Success Payload:**
+
+```json
+{
+    "session_id": "6d105744-f304-4637-8220-1e217ec84fcf",
+    "session_date_range": {
+        "from_date": "",
+        "to_date": ""
+    },
+    "event_name": "SESSION_REQUIREMENT_COMPLETION_NOTIFICATION",
+    "message": "",
+    "accounts": [
+        {
+            "account_id": "8702145a-aaa3-4ee0-acb7-9a328b54905a",
+            "account_number": "036805005804",
+            "bank_name": "icici",
+            "account_status": "COMPLETED",
+            "created_at": "2024-04-16 07:47:42",
+            "last_updated_at": "2024-04-16 07:48:21",
+            "statements": [
+                {
+                    "statement_id": "567700a6-570d-4f75-ae60-d79357dabdb4",
+                    "statement_status": "completed",
+                    "error_code": "",
+                    "error_message": ""
+                    "source": "pdf",
+                    "created_at": "2024-04-16T07:47:40.806223Z"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### 2. Polling:
+
+Use Polling as a backup if the webhook endpoint is down or a webhook call fails.
+
+For cases when the COMPLETION webhook is not triggered, the Upload Status API can be polled to check the status. Polling requires the session_id.
+
+**Note:** To review the status at the account/statement level, refer to the statuses within the corresponding block.
+
+::: tip Endpoint
+
+GET **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data/`<session_id>`/upload_status/**
+
+:::
+
+**Success Response:**
+
+On successful API call, it gives a 200 HTTP code with a response in following format:
+
+```json
+{
+    "session_id": "",
+    "session_date_range": {
+        "from_date": "",
+        "to_date": ""
+    },
+    "upload_status": "NO_UPLOAD/IN_PROGRESS/COMPLETED",
+    "accounts": [
+        {
+            "account_id": "8702145a-aaa3-4ee0-acb7-9a328b54905a",
+            "account_number": "036805005804",
+            "bank_name": "icici",
+            "account_status": "PARTIAL/COMPLETED",
+            "months": [],
+            "created_at": "2024-04-16 07:47:42",
+            "last_updated_at": "2024-04-16 07:48:21",
+            "statements": [
+                {
+                    "statement_id": "567700a6-570d-4f75-ae60-d79357dabdb4",
+                    "statement_status": "completed",
+                    "error_code": "",
+                    "error_message": "",
+                    "source": "pdf",
+                    "statement_date_range": {
+                        "from_date": "",
+                        "to_date": ""
+                    },
+                    "created_at": "2024-04-16T07:47:40.806223Z"
+                }
+            ]
+        }
+    ]
+}
+
+```
+
+**Error Response:**
+
+```json
+{
+  "error": {
+    "code": "SESSION_NOT_FOUND",
+    "message": "The provided session ID is invalid"
+  }
+}
+```
+
+### List of API Error Codes
+
+**The following table lists API error codes applicable to this API.**
+
+|Code|Message|HTTP status code|
+|------------------------------| ----------------------------------| ---------------|
+|SESSION_NOT_FOUND|The provided session ID is invalid|404|
+|SESSION_DELETED|The provided session ID has been deleted|410|
+|ACCESS_DENIED|Authentication credentials were not provided|403|
+
