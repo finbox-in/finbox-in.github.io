@@ -20,15 +20,15 @@ immediately during the upload process.
 
 ## Level 2 Validation (Post-processing):
 
+-   **At Least One Transaction Per Month (Default):** Ensure that there
+    is at least one transaction per month within the specified duration.
+
 -   **At Least One Transaction:** Validate that there is at least one
     transaction present within the specified duration.
 
 -   **At Least One Transaction in Start and End Months:** Confirm that
     there is at least one transaction in both the start and end months
     of the specified duration.
-
--   **At Least One Transaction Per Month (Default):** Ensure that there
-    is at least one transaction per month within the specified duration.
 
 Errors encountered during Level 2 validation are communicated through
 the webhook or status APIs after the statement has been processed.

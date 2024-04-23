@@ -64,7 +64,7 @@ REST APIs. There will be separate keys for DEV and PROD environments.
 You can get your keys on the [[FinBox
 Dashboard]](https://dashboard.bankconnect.finbox.in/settings).
 Please login to the BankConnect Dashboard using the credentials shared
-with you by the Finbox team. Once you\'re in, head to the Settings\>
+with you by the FinBox team. Once you\'re in, head to the Settings\>
 Configurations tab, where you\'ll find the Integration Keys (Bank
 Connect). These keys are essential for making API calls in your
 workflow.
@@ -272,7 +272,7 @@ NOTE: Since there is no callback received on this flow, it is
 recommended to configure Webhook
 
 
-## Backend integration (JavaScript SDK)
+## Backend integration
 
 **Uploading via REST APIs**
 
@@ -406,7 +406,7 @@ statements.
                                  been detected                 
   -----------------------------------------------------------------------
 
-## BankConnect: Get Data from Finbox
+## Fetch Enriched data
 
 Upon finishing the statement upload or completing the BankConnect
 journey, please activate the processing of the uploaded statements by
@@ -421,7 +421,7 @@ cannot be uploaded as the session will have concluded and expired.**
 **Endpoint**
 
 POST
-https://apis.bankconnect.finbox.in/bank-connect/v1/session_data/{{session_id}}/initiate_p
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data/`<session_id>`/initiate_p
 rocessing/
 
 **Success Response:**

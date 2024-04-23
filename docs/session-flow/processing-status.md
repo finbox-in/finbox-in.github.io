@@ -1,10 +1,15 @@
+---
+base_url: https://apis.bankconnect.finbox.in/bank-connect #base URL for the API
+version: v1 # version of API
+---
+
 ## BankConnect: Check Processing Status
 
 ### 1. Webhooks
 
 Utilize Webhooks for real-time notification on completion or failure of the transaction extraction process.
 
-Ensure your webhook endpoint is consistently available; if not, consider the polling approach or fetching all payloads for a given session_id
+Ensure your webhook endpoint is consistently available; if not, consider the polling approach or fetching all payloads for a given `session_id`
 
 **Important Note:** The webhook will only be triggered once the processing has been completed.
 
@@ -23,15 +28,13 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data
 ```json
 {
     "webhook_url": "https://postman-echo.com/post",
-    "webhook_mode": 3  // Enable for all modes
+    "webhook_mode": ["ENRICHMENT_NOTIFICATION"]
 }
 ```
-**Note :** Ensure to specify webhook_mode to invoke webhooks for all
-modes.
 
 **Authentication**
 
-The request header "x-secret-key" with the Secret Key as its value will be included in the request. The client will provide this Secret Key, and it is optional.
+The request header `x-secret-key` with the Secret Key as its value will be included in the request. The client will provide this Secret Key, and it is optional.
 
 **Receiving Success Payload:**
 
@@ -87,7 +90,7 @@ For failed cases, the following error codes and messages are applicable:
 
 Use Polling as a backup if the webhook endpoint is down or a webhook call fails.
 
-Continuously poll the Progress API every 2 seconds until `session_progress` indicate "completed" for the session. Polling requires the session_id.
+Continuously poll the Progress API every 2 seconds until `session_progress` indicate "completed" for the session. Polling requires the `session_id`.
 
 Once session_progress is "completed" proceed to step B and fetch data using REST API.
 
@@ -95,7 +98,7 @@ Once session_progress is "completed" proceed to step B and fetch data using REST
 
 ::: tip Endpoint
 
-GET **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data/{{session_id}}/progress/**
+GET **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data/`<session_id>`/progress/**
 
 :::
 

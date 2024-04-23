@@ -1,10 +1,15 @@
+---
+base_url: https://apis.bankconnect.finbox.in/bank-connect #base URL for the API
+version: v1 # version of API
+---
+
 ## BankConnect: Check Session Upload Status
 
 ### 1. Webhooks
 
 Utilize Webhooks for real-time notification on completion of upload in the session. Webhooks need to be configured once and then both the webhooks for Completion and [Enrichment](session-flow/integration-components.html#bankconnect-check-processing-status) would be triggered on the configured URL.
 
-Ensure your webhook endpoint is consistently available; if not, consider the polling approach or fetching all payloads for a given session_id
+Ensure your webhook endpoint is consistently available; if not, consider the polling approach or fetching all payloads for a given `session_id`
 
 **Important Note:** The webhook will only be triggered once the upload has been completed by the user.
 
@@ -23,15 +28,13 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data
 ```json
 {
     "webhook_url": "https://postman-echo.com/post",
-    "webhook_mode": 3  // Enable for all modes
+    "webhook_mode": ["ENRICHMENT_NOTIFICATION"]
 }
 ```
-**Note :** Ensure to specify webhook_mode to invoke webhooks for all
-modes.
 
 **Authentication**
 
-The request header "x-secret-key" with the Secret Key as its value will be included in the request. The client will provide this Secret Key, and it is optional.
+The request header `x-secret-key` with the Secret Key as its value will be included in the request. The client will provide this Secret Key, and it is optional.
 
 **Receiving Success Payload:**
 
@@ -47,7 +50,7 @@ The request header "x-secret-key" with the Secret Key as its value will be inclu
     "accounts": [
         {
             "account_id": "8702145a-aaa3-4ee0-acb7-9a328b54905a",
-            "account_number": "036805005804",
+            "account_number": "XXXXXXXXXX",
             "bank_name": "icici",
             "account_status": "COMPLETED",
             "created_at": "2024-04-16 07:47:42",
@@ -57,7 +60,7 @@ The request header "x-secret-key" with the Secret Key as its value will be inclu
                     "statement_id": "567700a6-570d-4f75-ae60-d79357dabdb4",
                     "statement_status": "completed",
                     "error_code": "",
-                    "error_message": ""
+                    "error_message": "",
                     "source": "pdf",
                     "created_at": "2024-04-16T07:47:40.806223Z"
                 }
@@ -71,7 +74,7 @@ The request header "x-secret-key" with the Secret Key as its value will be inclu
 
 Use Polling as a backup if the webhook endpoint is down or a webhook call fails.
 
-For cases when the COMPLETION webhook is not triggered, the Upload Status API can be polled to check the status. Polling requires the session_id.
+For cases when the COMPLETION webhook is not triggered, the Upload Status API can be polled to check the status. Polling requires the `session_id`.
 
 **Note:** To review the status at the account/statement level, refer to the statuses within the corresponding block.
 
@@ -96,7 +99,7 @@ On successful API call, it gives a 200 HTTP code with a response in following fo
     "accounts": [
         {
             "account_id": "8702145a-aaa3-4ee0-acb7-9a328b54905a",
-            "account_number": "036805005804",
+            "account_number": "XXXXXXXXXX",
             "bank_name": "icici",
             "account_status": "PARTIAL/COMPLETED",
             "months": [],
