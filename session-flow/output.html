@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>BankConnect Session Flow Implementation | FinBox Documentation</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="Documentation for FinBox SDK">
+    
+    <link rel="preload" href="/assets/css/0.styles.2320aabd.css" as="style"><link rel="preload" href="/assets/js/app.57e04089.js" as="script"><link rel="preload" href="/assets/js/4.7f609412.js" as="script"><link rel="preload" href="/assets/js/2.a409744d.js" as="script"><link rel="preload" href="/assets/js/1.9be25c31.js" as="script"><link rel="preload" href="/assets/js/89.4827cda5.js" as="script"><link rel="prefetch" href="/assets/js/100.3dc88c89.js"><link rel="prefetch" href="/assets/js/101.1c90d9f8.js"><link rel="prefetch" href="/assets/js/11.a81d671e.js"><link rel="prefetch" href="/assets/js/12.0c346857.js"><link rel="prefetch" href="/assets/js/13.59d89b18.js"><link rel="prefetch" href="/assets/js/14.473dec51.js"><link rel="prefetch" href="/assets/js/15.e28d3a0b.js"><link rel="prefetch" href="/assets/js/16.062030b1.js"><link rel="prefetch" href="/assets/js/17.37a5d2b1.js"><link rel="prefetch" href="/assets/js/18.120b49a6.js"><link rel="prefetch" href="/assets/js/19.d64eb9ef.js"><link rel="prefetch" href="/assets/js/20.80932b38.js"><link rel="prefetch" href="/assets/js/21.0e968812.js"><link rel="prefetch" href="/assets/js/22.2c093f2d.js"><link rel="prefetch" href="/assets/js/23.14acaf9e.js"><link rel="prefetch" href="/assets/js/24.440f9dc2.js"><link rel="prefetch" href="/assets/js/25.27f414f5.js"><link rel="prefetch" href="/assets/js/26.ea05e79e.js"><link rel="prefetch" href="/assets/js/27.52227f32.js"><link rel="prefetch" href="/assets/js/28.9f6ee4ab.js"><link rel="prefetch" href="/assets/js/29.fd98ec7f.js"><link rel="prefetch" href="/assets/js/3.a6163b8f.js"><link rel="prefetch" href="/assets/js/30.ac752400.js"><link rel="prefetch" href="/assets/js/31.cb9f31a3.js"><link rel="prefetch" href="/assets/js/32.fe543f2f.js"><link rel="prefetch" href="/assets/js/33.b3ce722c.js"><link rel="prefetch" href="/assets/js/34.59a51f1b.js"><link rel="prefetch" href="/assets/js/35.9b037c0c.js"><link rel="prefetch" href="/assets/js/36.074c1d4a.js"><link rel="prefetch" href="/assets/js/37.17b1d183.js"><link rel="prefetch" href="/assets/js/38.e8a04317.js"><link rel="prefetch" href="/assets/js/39.6058dc84.js"><link rel="prefetch" href="/assets/js/40.7c028110.js"><link rel="prefetch" href="/assets/js/41.4cd4c96b.js"><link rel="prefetch" href="/assets/js/42.07170092.js"><link rel="prefetch" href="/assets/js/43.9988f824.js"><link rel="prefetch" href="/assets/js/44.ca571020.js"><link rel="prefetch" href="/assets/js/45.55090df3.js"><link rel="prefetch" href="/assets/js/46.c4495fc7.js"><link rel="prefetch" href="/assets/js/47.3ae5baa5.js"><link rel="prefetch" href="/assets/js/48.62da1796.js"><link rel="prefetch" href="/assets/js/49.8c43748f.js"><link rel="prefetch" href="/assets/js/5.d6aeb4c8.js"><link rel="prefetch" href="/assets/js/50.84b9add8.js"><link rel="prefetch" href="/assets/js/51.35d25c7f.js"><link rel="prefetch" href="/assets/js/52.6574a59b.js"><link rel="prefetch" href="/assets/js/53.e5892785.js"><link rel="prefetch" href="/assets/js/54.fc14afac.js"><link rel="prefetch" href="/assets/js/55.c6de58d3.js"><link rel="prefetch" href="/assets/js/56.d1886c22.js"><link rel="prefetch" href="/assets/js/57.06be5316.js"><link rel="prefetch" href="/assets/js/58.8c035855.js"><link rel="prefetch" href="/assets/js/59.36d4fa88.js"><link rel="prefetch" href="/assets/js/6.2927104c.js"><link rel="prefetch" href="/assets/js/60.dbdca9fe.js"><link rel="prefetch" href="/assets/js/61.c5dc417f.js"><link rel="prefetch" href="/assets/js/62.3e7d0a96.js"><link rel="prefetch" href="/assets/js/63.1142fe11.js"><link rel="prefetch" href="/assets/js/64.77c1dd2e.js"><link rel="prefetch" href="/assets/js/65.94125544.js"><link rel="prefetch" href="/assets/js/66.bdbf6780.js"><link rel="prefetch" href="/assets/js/67.25bf053d.js"><link rel="prefetch" href="/assets/js/68.f4edb339.js"><link rel="prefetch" href="/assets/js/69.3781f144.js"><link rel="prefetch" href="/assets/js/7.87013b79.js"><link rel="prefetch" href="/assets/js/70.5b6eca40.js"><link rel="prefetch" href="/assets/js/71.3f71e290.js"><link rel="prefetch" href="/assets/js/72.959d98c8.js"><link rel="prefetch" href="/assets/js/73.b0246e54.js"><link rel="prefetch" href="/assets/js/74.83ae73d6.js"><link rel="prefetch" href="/assets/js/75.758a03d0.js"><link rel="prefetch" href="/assets/js/76.0bde4f2b.js"><link rel="prefetch" href="/assets/js/77.c9afe9c8.js"><link rel="prefetch" href="/assets/js/78.bb6c2f60.js"><link rel="prefetch" href="/assets/js/79.b1656ecc.js"><link rel="prefetch" href="/assets/js/8.f340bc97.js"><link rel="prefetch" href="/assets/js/80.63846d26.js"><link rel="prefetch" href="/assets/js/81.896c381c.js"><link rel="prefetch" href="/assets/js/82.ff44edc3.js"><link rel="prefetch" href="/assets/js/83.913327b7.js"><link rel="prefetch" href="/assets/js/84.27e77ab5.js"><link rel="prefetch" href="/assets/js/85.95b4420f.js"><link rel="prefetch" href="/assets/js/86.645f914a.js"><link rel="prefetch" href="/assets/js/87.24905994.js"><link rel="prefetch" href="/assets/js/88.4790e258.js"><link rel="prefetch" href="/assets/js/90.bedfb040.js"><link rel="prefetch" href="/assets/js/91.1289e1fe.js"><link rel="prefetch" href="/assets/js/92.cc02f3c3.js"><link rel="prefetch" href="/assets/js/93.0d73a8b9.js"><link rel="prefetch" href="/assets/js/94.1c03f2a3.js"><link rel="prefetch" href="/assets/js/95.deebb6d7.js"><link rel="prefetch" href="/assets/js/96.5b69ca8f.js"><link rel="prefetch" href="/assets/js/97.73748a80.js"><link rel="prefetch" href="/assets/js/98.519045c5.js"><link rel="prefetch" href="/assets/js/99.a99c675d.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.0464d051.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.2320aabd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-692ea4ed><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/header.svg" alt="FinBox Documentation" class="logo"> <span class="site-name can-hide">FinBox Documentation</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/device-connect/" class="nav-link">
+  DeviceConnect
+</a></div><div class="nav-item"><a href="/bank-connect/" class="nav-link">
+  BankConnect
+</a></div><div class="nav-item"><a href="https://finbox.in" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  About
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/device-connect/" class="nav-link">
+  DeviceConnect
+</a></div><div class="nav-item"><a href="/bank-connect/" class="nav-link">
+  BankConnect
+</a></div><div class="nav-item"><a href="https://finbox.in" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  About
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/session-flow/" aria-current="page" class="sidebar-link">Overview</a></li><li><a href="/session-flow/basics.html" class="sidebar-link">Basics</a></li><li><a href="/session-flow/integration-steps.html" class="sidebar-link">Integration Pre-requisite</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/session-flow/integration-components.html" class="sidebar-heading clickable"><span>Integration Steps</span> <span class="arrow right"></span></a> <!----></section></li><li><a href="/session-flow/acceptance-criteria.html" class="sidebar-link">Acceptance Criteria</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="bankconnect-session-flow-implementation"><a href="#bankconnect-session-flow-implementation" class="header-anchor">#</a> BankConnect Session Flow Implementation</h1> <h2 id="bankconnect-overview"><a href="#bankconnect-overview" class="header-anchor">#</a> BankConnect: Overview</h2> <p>FinBox BankConnect allows users to submit their bank account statements
+(including scanned statements) via Account Aggregator (AA), Net banking
+or manual upload methods in your application, then processes them and
+shares the enriched data with you.</p> <p>BankConnect is currently used in use-cases such as personal and business
+loan disbursals by platforms and lenders in their respective online /
+offline journeys.</p> <h2 id="key-terminologies"><a href="#key-terminologies" class="header-anchor">#</a> Key Terminologies</h2> <img src="/basic_terms.jpg" alt="Basic Terms"> <p><strong>Link ID:</strong> A unique identifier provided by the client to reference an
+individual user.</p> <p>This is used to uniquely identify a user throughout the BankConnect
+integration process. This identifier is referred to as link_id</p> <p><strong>Session:</strong> Instances generated to initiate the BankConnect process are
+called sessions. The creation of a session can be achieved through the
+<a href="https://docs.finbox.in/bank-connect/javascript-client.html#session-api" target="_blank" rel="noopener noreferrer">[Sessions]<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+API. Every BankConnect journey is associated with a specific session.
+Each session is valid for a defined TTL (Time To Live) of x time.</p> <p><strong>Account:</strong> Bank accounts connected within a session, located in the
+same or different banks.</p> <p>Each account within a session is uniquely identified by an account_id
+assigned by FinBox.</p> <p><strong>Statement:</strong> Bank transaction records submitted or fetched within a
+session. Identified by a unique statement_id, multiple statements can be
+uploaded for a given account over a period. BankConnect automatically
+links statements to the corresponding account using the account_id.</p> <p><strong>Notes:</strong></p> <p>You have the flexibility to generate multiple sessions for an individual
+user, also referred as a LinkID in BankConnect. Each session exclusively
+provides responses for the statements uploaded within that specific
+session.</p> <p>It's important to note that data from different sessions cannot be
+combined.</p> <p>For instance, when a customer visits your platform, you initiate
+BankConnect with a new sessionID. The customer uploads multiple
+statements to cover a 6-month duration. If the customer returns after 3
+months, a new session must be created for that subsequent interaction.</p> <h1 id="getting-api-keys"><a href="#getting-api-keys" class="header-anchor">#</a> Getting API Keys</h1> <p>BankConnect requires API Keys to initialize the SDK and/or access the
+REST APIs. There will be separate keys for DEV and PROD environments.</p> <p>You can get your keys on the <a href="https://dashboard.bankconnect.finbox.in/settings" target="_blank" rel="noopener noreferrer">[FinBox
+Dashboard]<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.
+Please login to the BankConnect Dashboard using the credentials shared
+with you by the Finbox team. Once you're in, head to the Settings&gt;
+Configurations tab, where you'll find the Integration Keys (Bank
+Connect). These keys are essential for making API calls in your
+workflow.</p> <h2 id="implementation-flow"><a href="#implementation-flow" class="header-anchor">#</a> Implementation Flow</h2> <img src="/basic_terms.jpg" alt="Basic Terms"> <h1 id="integration-components"><a href="#integration-components" class="header-anchor">#</a> Integration Components</h1> <p>The BankConnect journey can be divided broadly into two steps:</p> <ol><li><p>Submit the data to FinBox</p></li> <li><p>Get enriched data from FinBox</p></li></ol> <h2 id="bankconnect-submit-data-to-finbox-uploading-bank-statements"><a href="#bankconnect-submit-data-to-finbox-uploading-bank-statements" class="header-anchor">#</a> BankConnect: Submit Data to FinBox (Uploading Bank Statements)</h2> <p>The data can be submitted / uploaded to FinBox backend in two ways:</p> <ol><li><p>Frontend (using FinBox UI i.e Javascript SDK)</p></li> <li><p>Backend (using FinBox REST APIs)</p></li></ol> <h2 id="to-begin-uploading-we-first-need-to-initiate-a-session-in-both-the-methods-a-session-needs-to-be-initialized-using-session-api"><a href="#to-begin-uploading-we-first-need-to-initiate-a-session-in-both-the-methods-a-session-needs-to-be-initialized-using-session-api" class="header-anchor">#</a> To begin uploading, we first need to initiate a session. In both the methods, a session needs to be initialized using Session API.</h2> <h2 id="session-api"><a href="#session-api" class="header-anchor">#</a> Session API</h2> <p>To start with the integration, call the following API to create a
+session:</p> <p><strong>Endpoint</strong></p> <p>POST https://apis.bankconnect.finbox.in/bank-connect/v1/session/</p> <p><strong>Request Parameters</strong></p> <hr> <p><strong>Name</strong> <strong>Type</strong> <strong>Description</strong> <strong>Required</strong></p> <p>link_id          string     link_id value                           Yes</p> <p>api_key          string     API key provided by FinBox              Yes</p> <p>redirect_url     string     URL to redirect to incase of success or Yes for
+failure                                 Redirect
+Workflow</p> <p>from_date        string     Start date range to fetch statements.   Yes
+Should be of format DD/MM/YYYY</p> <p>to_date          string     End date range to fetch statements.     Yes
+Should be of format DD/MM/YYYY</p> <p>logo_url         string     An optional parameter to show logo      No
+branding in bank connect SDK. Should be
+a URL.</p> <p>bank_name        string     pass the bank identifier to skip the    No
+bank selection screen and directly open
+a that bank's screen instead</p> <p>mode             string     optional parameter to set the mode(i.e. No
+pdf, aa, and online)</p> <p>mobile_number    string     Optional parameter to prefill phone     No
+number in Account Aggregator mode</p> <p>session_expiry   integer    Optional parameter to set expiry timing No
+for each session created</p> <p>journey_mode     string     optional parameter to set the<br>
+journey(i.e. multi_pdf or<br>
+multi_banking)</p> <hr> <p>from_date and to_date specify the period for which the statements will
+be fetched. For example, if you need the last 6 months of data from
+statements, from_date will be today's date - 6 months and to_date will
+be today's date - 1 day. If not provided the default date range is 6
+months from the current date. It should be in DD/MM/YYYY format.</p> <p><strong>Note</strong>: If the to_date lies in the first week of the month, the
+respective month is not considered in the journey.</p> <ul><li><p>redirect_url in request is a compulsory field in <a href="https://docs.finbox.in/bank-connect/javascript-client.html#redirect-workflow" target="_blank" rel="noopener noreferrer">Redirect
+Workflow<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+but is not required with the <a href="https://docs.finbox.in/bank-connect/javascript-client.html#inline-frame-workflow" target="_blank" rel="noopener noreferrer">Inline Frame
+workflow<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p>Please make sure from_date is always less than to_date</p></li> <li><p>Make sure to_date is never today's date, the maximum possible value
+for it is today's date - 1 day</p></li></ul> <p><strong>Success Response</strong></p> <p>On successful API call, it gives a 200 HTTP code with a response in
+following format:</p> <p>+-----------------------------------------------------------------------+
+| {                                                                    |
+|                                                                       |
+| &quot;session_id&quot;: &quot;8d5ea22b-216a-4fe2-90da-65d1c67c8964&quot;,             |
+|                                                                       |
+| &quot;redirect_url&quot;:                                                     |
+| &quot;https://bankconn                                                    |
+| ectclient.finbox.in/session_id=8d5ea22b-216a-4fe2-90da-65d1c67c8964&quot; |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p>Use redirect_url to open up the BankConnect SDK. This URL can be used
+embedded inside an &lt;iframe&gt; or can be opened in a new tab or current
+window.</p> <p>To proceed with additional enriched APIs, it is imperative to store the
+session_id for subsequent calls.</p> <p><strong>Error Response</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                    |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;INVALID_DATE_FORMAT&quot;,                                    |
+|                                                                       |
+| &quot;message&quot;: &quot;Invalid format for from_date and to_date, &quot;Supported  |
+| format: 'DD/MM/YYYY'&quot;                                              |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api" class="header-anchor">#</a> The following table lists API error codes applicable to this API.</h2> <hr> <p><strong>Error code</strong> <strong>Error message</strong> <strong>HTTP Response
+Status</strong></p> <p>INVALID_DATE_FORMAT   Invalid 'from_date' or       400
+'to_date' format. Use<br>
+'DD/MM/YYYY'.</p> <p>INVALID_DATE_RANGE    from_date' can't be greater  400
+or equal to 'to_date'.</p> <p>MISSING_DATE_FIELD    from_date' and 'to_date'    400
+are required.</p> <p>INVALID_BANK_NAME     Invalid bank identifier.       400</p> <p>MISSING_BANK_NAME     bank_name' is required with   400
+'mode'.</p> <p>MODE_NOT_AVAILABLE    Specified mode not available   400
+for this bank.</p> <p>MODE_NOT_ENABLED      Specified mode not enabled.    403
+Contact FinBox Admin.</p> <p>INVALID_DATE_FORMAT   Invalid 'max_from_date' or   400
+'max_to_date' format. Use<br>
+'DD/MM/YYYY'.</p> <p>INVALID_DATE_RANGE    max_from_date' can't be      400
+greater or equal to<br>
+'max_to_date'.</p> <hr> <h2 id="frontend-integration-javascript-sdk"><a href="#frontend-integration-javascript-sdk" class="header-anchor">#</a> Frontend integration (JavaScript SDK)</h2> <p>The JavaScript Client SDK helps users submit their bank statements via
+upload, net banking credentials or in your Web applications. The SDK
+will be opened via a web URL.</p> <p>The first step in integration involves calling the Session API Then the
+workflow can be implemented in one of the following ways:</p> <h2 id="redirection-workflow"><a href="#redirection-workflow" class="header-anchor">#</a> Redirection Workflow</h2> <img src="/basic_terms.jpg" alt="Basic Terms"> <p>The flow for this involves following steps:</p> <ul><li><p>Create a session using Session API</p></li> <li><p>Get the URL received from above API and open it in a new tab</p></li> <li><p>On success / exit, Client SDK will redirect to the specified
+redirect URL with parameters as follows:</p></li></ul> <blockquote><p>Exit: {url}?success=false</p> <p>Success: {url}?success=true&amp;session_id=&lt;some-session-id&gt;</p></blockquote> <p>NOTE: Since there is no callback received on this flow, it is
+recommended to configure Webhook</p> <h2 id="backend-integration-javascript-sdk"><a href="#backend-integration-javascript-sdk" class="header-anchor">#</a> Backend integration (JavaScript SDK)</h2> <p><strong>Uploading via REST APIs</strong></p> <ol><li><p>Create a session using the Session API.</p></li> <li><p>Obtain the session_id from the API and pass it in the upload API
+request.</p></li></ol> <p><strong>Upload API:</strong></p> <p><em>Request Parameters:</em></p> <p><strong>Endpoint</strong></p> <p>POST
+https://apis.bankconnect.finbox.in/bank-connect/v1/statement/upload_session/</p> <hr> <p><strong>Name</strong> <strong>Type</strong> <strong>Description</strong> <strong>Required</strong></p> <hr> <p>file           file       the statement pdf file                      Yes</p> <p>bank_name      string     a valid bank identifier                     Yes</p> <p>session_id     string     a session_id against which you want to      Yes
+upload the statement</p> <p>upload_type    string     The format of file that is being uploaded   Yes
+(PDF, BASE64)</p> <h2 id="pdf-password-string-password-for-the-pdf-in-case-it-is-password-noprotected"><a href="#pdf-password-string-password-for-the-pdf-in-case-it-is-password-noprotected" class="header-anchor">#</a> pdf_password   string     password for the pdf in case it is password No
+protected</h2> <p><strong>Query Parameters:</strong> Optional parameters appended to the URL like
+<em>upload_session/?identity=true</em></p> <p><em>entity_progress (optional, string):</em> Filters progress for a specific
+session.</p> <p><em>progress (optional, string):</em> Provides progress of uploaded statements.</p> <p><em>identity (optional, string):</em> Provides identity details for uploaded
+statements.</p> <p><strong>Successful upload response (HTTP 200):</strong></p> <p>+-----------------------------------------------------------------------+
+| {\                                                                    |
+| &quot;bank_name&quot;:&quot;karur&quot;,\                                             |
+| &quot;statement_id&quot;:&quot;59767460-08d7-4551-badb-46e2d9861a9&quot;,             |
+|                                                                       |
+| &quot;account_id&quot;:&quot;3628c6a0-16f7-424d-80b1-6244a2deba9d&quot;,              |
+| &quot;masked_account_number&quot;:&quot;XXXXXXXXXXXX5980&quot;,\                      |
+| &quot;status&quot;:1,\                                                        |
+| &quot;session_id&quot;: &quot;8d5ea22b-216a-4fe2-90da-65d1c67c8964&quot;              |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| 'entity_id':'',                                                   |
+|                                                                       |
+| 'statement_id':'',                                                |
+|                                                                       |
+| 'error': {                                                          |
+|                                                                       |
+| 'code': 'SESSION_NOT_FOUND',                                      |
+|                                                                       |
+| 'message': 'The provided Session ID is invalid'                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api-2"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api-2" class="header-anchor">#</a> The following table lists API error codes applicable to this API.</h2> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP
+status
+code</strong></p> <hr> <p>TRIAL_PERIOD_EXPIRED           Your trial period has         402
+expired. Please request<br>
+FinBox to upgrade your plan</p> <p>INVALID_FILE_OBJECT            This field must be present as 400
+a form field. Send request<br>
+with content type<br>
+x-www-form-urlencoded or<br>
+form-data</p> <p>INVALID_FILE_OBJECT            File object is invalid        400</p> <p>INVALID_FILE_URL               This file url is invalid      400</p> <p>MISSING_FILE_OBJECT            This file object is required  400</p> <p>INVALID_BASE_64                Invalid Base 64 string        400</p> <p>INVALID_ACCOUNT_CATEGORY       account_category' should be  400
+'SAVINGS', 'CURRENT' or<br>
+'OVERDRAFT'</p> <p>PASSWORD_INCORRECT             The provided password is      400
+incorrect</p> <p>STATEMENT_UNSUPPORTED_FORMAT   The statement format is not   400
+supported</p> <p>BANK_NAME_UNDETECTED           Unable to detect bank. Please 400
+provide BANK NAME.</p> <p>PDF_IS_IMAGE                   Scanned images are not        400
+supported</p> <p>BANK_NAME_MISMATCH             Not {selected_bank_name} bank 400
+statement</p> <p>OUT_OF_DATE_RANGE              No transactions in expected   400
+date range</p> <h2 id="statement-duplicate-a-duplicate-statement-has-400been-detected"><a href="#statement-duplicate-a-duplicate-statement-has-400been-detected" class="header-anchor">#</a> STATEMENT_DUPLICATE            A duplicate statement has     400
+been detected</h2> <h2 id="bankconnect-get-data-from-finbox"><a href="#bankconnect-get-data-from-finbox" class="header-anchor">#</a> BankConnect: Get Data from Finbox</h2> <p>Upon finishing the statement upload or completing the BankConnect
+journey, please activate the processing of the uploaded statements by
+triggering the designated processing API.</p> <p><strong>Please note that once processing is underway, additional statements
+cannot be uploaded as the session will have concluded and expired.</strong></p> <h2 id="initiate-processing-api"><a href="#initiate-processing-api" class="header-anchor">#</a> Initiate Processing API</h2> <p><strong>Endpoint</strong></p> <p>POST
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data//initiate_p
+rocessing/</p> <p><strong>Success Response:</strong></p> <p>HTTP Status code: 202 Accepted</p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;session_id&quot;: &quot;uuid_for_session_id&quot;,                              |
+|                                                                       |
+| &quot;message&quot;: &quot;success&quot;                                              |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;SESSION_NOT_FOUND&quot;,                                      |
+|                                                                       |
+| &quot;message&quot;: &quot;The provided session ID is invalid&quot;                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api-3"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api-3" class="header-anchor">#</a> The following table lists API error codes applicable to this API.</h2> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP status
+code</strong></p> <p>SESSION_NOT_FOUND              The provided session ID is invalid 404</p> <p>DUPLICATE_PROCESSING_REQUEST   Request for processing have        409
+already been initiated</p> <p>SESSION_DELETED                The provided session ID has been   410
+deleted</p> <p>ACCESS_DENIED                  Authentication credentials were    403
+not provided</p> <hr> <h2 id="bankconnect-check-processing-status"><a href="#bankconnect-check-processing-status" class="header-anchor">#</a> BankConnect: Check Processing Status</h2> <h3 id="_1-webhooks"><a href="#_1-webhooks" class="header-anchor">#</a> 1. Webhooks</h3> <p>Utilize Webhooks for real-time notification on completion or failure of
+the transaction extraction process.</p> <p>Ensure your webhook endpoint is consistently available; if not, consider
+the polling approach or fetching all payloads for a given session_id</p> <p><strong>Important Note:</strong> The webhook will only be triggered once the
+processing has been completed.</p> <p><strong>Configuration:</strong> Share a valid endpoint that receives a POST request,
+accepts a request body with content-type application/json and returns a
+200 status code on successful reception.</p> <p><strong>Update the endpoint using the API:</strong></p> <p><strong>Endpoint</strong></p> <p>POST</p> <p>https://apis.bankconnect.finbox.in/bank-connect/v1/session_data/update_webhook/</p> <p><strong>Request:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                    |
+|                                                                       |
+| &quot;webhook_url&quot;: &quot;https://postman-echo.com/post&quot;,                   |
+|                                                                       |
+| &quot;webhook_mode&quot;: 3 // Enable for all modes                           |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>Note :</strong> Ensure to specify webhook_mode to invoke webhooks for all
+modes.</p> <p><strong>Authentication</strong></p> <p>The request header &quot;x-secret-key&quot; with the Secret Key as its value
+will be included in the request. The client will provide this Secret
+Key, and it is optional.</p> <p><strong>Receiving Success Payload:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                    |
+|                                                                       |
+| &quot;session_id&quot;:&quot;abcd&quot;,                                              |
+|                                                                       |
+| &quot;event_name&quot;: &quot;ENRICHMENT_NOTIFICATION&quot;                           |
+|                                                                       |
+| &quot;accounts&quot;:[                                                       |
+|                                                                       |
+| {                                                                     |
+|                                                                       |
+| &quot;bank_name&quot;: &quot;sbi&quot;,                                               |
+|                                                                       |
+| &quot;account_id&quot; :&quot;account_uuid4&quot;,                                    |
+|                                                                       |
+| &quot;account_status&quot; :&quot;completed&quot;,                                    |
+|                                                                       |
+| &quot;error_code&quot; : null,                                                |
+|                                                                       |
+| &quot;error_message&quot;: null                                               |
+|                                                                       |
+| ]                                                                    |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| ]                                                                    |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p></p> <p><strong>Receiving Fail Payload:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                    |
+|                                                                       |
+| &quot;session_id&quot;:&quot;abcd&quot;,                                              |
+|                                                                       |
+| &quot;event_name&quot;: &quot;ENRICHMENT_NOTIFICATION&quot;                           |
+|                                                                       |
+| &quot;accounts&quot;:[                                                       |
+|                                                                       |
+| {                                                                     |
+|                                                                       |
+| &quot;bank_name&quot;: &quot;sbi&quot;,                                               |
+|                                                                       |
+| &quot;account_id&quot; :&quot;account_uuid4&quot;,                                    |
+|                                                                       |
+| &quot;account_status&quot; :&quot;failed&quot;,                                       |
+|                                                                       |
+| &quot;error_code&quot; : &quot;MISSING_TRANSACTIONS&quot;,                            |
+|                                                                       |
+| &quot;error_message&quot;: &quot;One or more transactions are missing in the      |
+| specified date range&quot;                                                |
+|                                                                       |
+| ]                                                                    |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| ]                                                                    |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p></p> <p><strong>Account Status:</strong></p> <p>The account_status field indicates the status of the overall account
+extraction and processing. It can be either &quot;completed&quot; or &quot;failed.&quot;
+In case of successful completion, the message will be null.</p> <p>For failed cases, the following error codes and messages are applicable:</p> <hr> <p><strong>Code</strong> <strong>Message</strong></p> <p>MISSING_TRANSACTIONS       One or more transactions are missing in the
+specified date range</p> <p>INCOMPLETE_MONTHS          Insufficient data to generate report. There are no
+transactions for Nov 2023, Dec 2023</p> <p>NULL_ACCOUNT_NUMBER        Account number is unavailable or unidentified</p> <p>BALANCE_MISMATCH           Calculated transaction balance does not match</p> <p>INCOMPLETE_MONTHS_UPLOAD   Statement(s) uploaded contain incomplete months.
+Missing data present for Nov 2023, Dec 2023</p> <p>INCOMPLETE_DATES_UPLOAD    Statement(s) uploaded contain incomplete dates.
+Missing dates present for {\&quot;Jan 2024\&quot;: [1,
+2, 3, 4]}</p> <hr> <p>**<br>
+**</p> <h3 id="_2-polling"><a href="#_2-polling" class="header-anchor">#</a> 2. Polling:</h3> <p>Use Polling as a backup if the webhook endpoint is down or a webhook
+call fails.</p> <p>Continuously poll the Progress API every 2 seconds until
+<strong>session_progress</strong> indicate &quot;completed&quot; for the session. Polling
+requires the session_id.</p> <p>Once session_progress is &quot;completed,&quot; proceed to step B and fetch data
+using REST API.</p> <p><strong>Note:</strong> To review the status at the statement level, refer to all the
+statuses within the progress block corresponding to the respective
+statement_id.</p> <p><strong>Endpoint</strong></p> <p>GET
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data//progress/</p> <p><strong>Success Response:</strong></p> <p>On successful API call, it gives a 200 HTTP code with a response in
+following format:</p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;session_id&quot;: &quot;bfb98ac5-7224-401b-a643-175235856187&quot;,             |
+|                                                                       |
+| &quot;session_progress&quot;:&quot;completed/processing&quot;                         |
+|                                                                       |
+| &quot;progress&quot;: [                                                      |
+|                                                                       |
+| {                                                                     |
+|                                                                       |
+| &quot;identity_status&quot;: &quot;completed&quot;,                                   |
+|                                                                       |
+| &quot;transaction_status&quot;: &quot;completed&quot;,                                |
+|                                                                       |
+| &quot;processing_status&quot;: &quot;completed&quot;,                                 |
+|                                                                       |
+| &quot;fraud_status&quot;: &quot;completed&quot;,                                      |
+|                                                                       |
+| &quot;statement_id&quot;: &quot;4164bc05-7b3f-4a5c-8e31-ca3c2648ec6b&quot;,           |
+|                                                                       |
+| &quot;message&quot;: null,                                                    |
+|                                                                       |
+| &quot;source&quot;: &quot;pdf&quot;                                                   |
+|                                                                       |
+| },                                                                    |
+|                                                                       |
+| {                                                                     |
+|                                                                       |
+| &quot;identity_status&quot;: &quot;completed&quot;,                                   |
+|                                                                       |
+| &quot;transaction_status&quot;: &quot;completed&quot;,                                |
+|                                                                       |
+| &quot;processing_status&quot;: &quot;completed&quot;,                                 |
+|                                                                       |
+| &quot;fraud_status&quot;: &quot;completed&quot;,                                      |
+|                                                                       |
+| &quot;statement_id&quot;: &quot;bd90d1c9-7b1a-4300-9987-3c6c20bbe71d&quot;,           |
+|                                                                       |
+| &quot;message&quot;: null,                                                    |
+|                                                                       |
+| &quot;source&quot;: &quot;pdf&quot;                                                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| ]                                                                    |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;SESSION_NOT_FOUND&quot;,                                      |
+|                                                                       |
+| &quot;message&quot;: &quot;The provided session ID is invalid&quot;                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api-4"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api-4" class="header-anchor">#</a> The following table lists API error codes applicable to this API.</h2> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP status
+code</strong></p> <p>SESSION_NOT_FOUND          The provided session ID is invalid 404</p> <p>PROCESSING_NOT_REQUESTED   Cannot proceed as the processing   400
+has not been requested yet</p> <p>SESSION_DELETED            The provided session ID has been   410
+deleted</p> <p>ACCESS_DENIED              Authentication credentials were    403
+not provided</p> <hr> <p>**<br>
+**</p> <h2 id="bankconnect-fetching-data"><a href="#bankconnect-fetching-data" class="header-anchor">#</a> BankConnect: Fetching Data</h2> <p>BankConnect REST APIs can be used to fetch extracted and enriched data
+for a session.</p> <p>Postman collection and environment for BankConnect REST APIs can be
+accessed here:</p> <p><a href="https://drive.google.com/drive/folders/1Ld0vdlblUvbL_S_B6OBhOPTILDc9AAXU?usp=drive_link" target="_blank" rel="noopener noreferrer">[Postman Collection BankConnect Session
+Flow]{.underline}<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>Please replace x-api-key and server-hash in the Postman environment with
+the API Key and Server Hash provided by FinBox Team.</p> <h2 id="get-session-status"><a href="#get-session-status" class="header-anchor">#</a> Get Session Status</h2> <p><strong>Endpoint</strong></p> <p>GET
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data//session_status/</p> <p><strong>Success Response</strong></p> <p>On successful API call, it gives a 200 HTTP code with a response in
+following format:</p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;session_id&quot;: &quot;abcd&quot;,                                             |
+|                                                                       |
+| &quot;accounts&quot;: [                                                      |
+|                                                                       |
+| {                                                                     |
+|                                                                       |
+| &quot;bank_name&quot;: &quot;sbi&quot;,                                               |
+|                                                                       |
+| &quot;account_number&quot;: &quot;&quot;,                                             |
+|                                                                       |
+| &quot;account_id&quot;: &quot;account_uuid4&quot;,                                    |
+|                                                                       |
+| &quot;account_status&quot;: &quot;completed&quot;,                                    |
+|                                                                       |
+| &quot;error_code&quot;: null,                                                 |
+|                                                                       |
+| &quot;error_message&quot;: null,                                              |
+|                                                                       |
+| &quot;created_at&quot;: &quot;&quot;,\                                                    |
+| &quot;last_updated_at&quot;: &quot;&quot;,                                                |
+|                                                                       |
+| &quot;statements&quot;: [                                                    |
+|                                                                       |
+| {                                                                     |
+|                                                                       |
+| &quot;statement_id&quot;: &quot;&quot;,                                               |
+|                                                                       |
+| &quot;statement_status&quot;: &quot;&quot;,                                           |
+|                                                                       |
+| &quot;error_code&quot;: &quot;&quot;,                                                 |
+|                                                                       |
+| &quot;error_message&quot;: &quot;&quot;,                                              |
+|                                                                       |
+| &quot;source&quot;: &quot;&quot;,                                                     |
+|                                                                       |
+| &quot;created_at&quot;: &quot;&quot;                                                  |
+|                                                                       |
+| },                                                                    |
+|                                                                       |
+| {                                                                     |
+|                                                                       |
+| &quot;statement_id&quot;: &quot;&quot;,                                               |
+|                                                                       |
+| &quot;statement_status&quot;: &quot;&quot;,                                           |
+|                                                                       |
+| &quot;error_code&quot;: &quot;&quot;,                                                 |
+|                                                                       |
+| &quot;error_message&quot;: &quot;&quot;,                                              |
+|                                                                       |
+| &quot;source&quot;: &quot;&quot;,                                                     |
+|                                                                       |
+| &quot;created_at&quot;: &quot;&quot;                                                  |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| ]                                                                    |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| ]                                                                    |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>Account Status:</strong></p> <p>The account_status field indicates the status of the overall account
+extraction and processing. It can be either &quot;completed&quot; or &quot;failed.&quot;
+In case of successful completion, the message will be null.</p> <p>For failed cases, the following error codes and messages are applicable:</p> <hr> <p><strong>Code</strong> <strong>Message</strong></p> <p>MISSING_TRANSACTIONS       One or more transactions are missing in the
+specified date range</p> <p>INCOMPLETE_MONTHS          Insufficient data to generate report. There are
+no transactions for Nov 2023, Dec 2023</p> <p>NULL_ACCOUNT_NUMBER        Account number is unavailable or unidentified</p> <p>BALANCE_MISMATCH           Calculated transaction balance does not match</p> <p>INCOMPLETE_MONTHS_UPLOAD   Statement(s) uploaded contain incomplete months.
+Missing data present for Nov 2023, Dec 2023</p> <p>INCOMPLETE_DATES_UPLOAD    Statement(s) uploaded contain incomplete dates.
+Missing dates present for {}</p> <hr> <p><strong>Statement Status:</strong></p> <hr> <p><strong>Code</strong> <strong>Message</strong></p> <p>PASSWORD_INCORRECT             The provided password is incorrect</p> <p>BANK_NAME_MISMATCH             The bank name in the statement doesn't
+match the selected bank</p> <p>STATEMENT_UNSUPPORTED_FORMAT   The statement format is not supported</p> <p>STATEMENT_DUPLICATE            A duplicate statement has been detected</p> <p>NULL_ACCOUNT_NUMBER            Account number is unavailable or
+unidentified</p> <p>STATEMENT_TOO_MANY_PAGES       The statement exceeds the allowed page
+limit</p> <p>NO_TRANSACTIONS_FROM_AA        Not able to fetch transactions from Account
+Aggregator</p> <hr> <p>The statement_status field indicates the status of the overall statement
+extraction and processing. It can be either &quot;completed&quot; or &quot;failed.&quot;
+In case of successful completion, the message will be null.</p> <p>For failed cases, the following error codes and messages are applicable:</p> <hr> <p>PDF_IS_IMAGE                Scanned images are not supported</p> <p>EXTRACTION_FAILED           Failed to extract information from the
+statement</p> <p>OUT_OF_DATE_RANGE           The statement uploaded is beyond the
+specified date range</p> <p>STATEMENT_NO_TRANSACTIONS   No transactions were identified in the
+uploaded statement</p> <p>BANK_NAME_UNDETECTED        Bank name could not be identified</p> <hr> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;SESSION_NOT_FOUND&quot;,                                      |
+|                                                                       |
+| &quot;message&quot;: &quot;The provided session ID is invalid&quot;                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api-5"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api-5" class="header-anchor">#</a> The following table lists API error codes applicable to this API.</h2> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP status
+code</strong></p> <p>SESSION_NOT_FOUND          The provided session ID is invalid 404</p> <p>PROCESSING_NOT_REQUESTED   Cannot proceed as the processing   400
+has not been requested yet</p> <p>SESSION_DELETED            The provided session ID has been   410
+deleted</p> <p>ACCESS_DENIED              Authentication credentials were    403
+not provided</p> <p>PROCESSING_NOT_COMPLETED   The processing for this session is 400
+currently in progress</p> <hr> <h2 id="detailed-excel-report-api"><a href="#detailed-excel-report-api" class="header-anchor">#</a> Detailed Excel Report API</h2> <p><strong>Endpoint</strong></p> <p>GET
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data//xlsx_report/</p> <p><strong>Success Response:</strong></p> <p>On successful API call, it gives a 200 HTTP code with a response in
+following format:</p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;session_id&quot;: &quot;67adce35-960f-40cb-84ab-b6805998f614&quot;,             |
+|                                                                       |
+| &quot;reports&quot;: [                                                       |
+|                                                                       |
+| {                                                                     |
+|                                                                       |
+| &quot;link&quot;: &quot;s3 link&quot;,                                                |
+|                                                                       |
+| &quot;account_id&quot;: &quot;07df9b6b-535f-4928-b6b8-8f39fcf79ec9&quot;              |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| ]                                                                    |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;SESSION_NOT_FOUND&quot;,                                      |
+|                                                                       |
+| &quot;message&quot;: &quot;The provided Session ID is invalid&quot;                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api-6"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api-6" class="header-anchor">#</a> The following table lists API error codes applicable to this API:</h2> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP status
+code</strong></p> <p>SESSION_NOT_FOUND          The provided Session ID is        404
+invalid</p> <p>PROCESSING_NOT_REQUESTED   Cannot proceed as the processing  400
+has not been requested yet</p> <p>SESSION_DELETED            The provided Session ID has been  410
+deleted</p> <p>PROCESSING_NOT_COMPLETED   The processing for this session   400
+is currently in progress</p> <p>ACCESS_DENIED              Authentication credentials were   403
+not provided</p> <hr> <h2 id="identity-api"><a href="#identity-api" class="header-anchor">#</a> Identity API</h2> <p><strong>Endpoint</strong></p> <p>GET
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data//identity/</p> <p><strong>Success Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;session_id&quot;: &quot;b03af350-d17a-4b3d-802a-b581356b818c&quot;,             |
+|                                                                       |
+| &quot;accounts&quot;: [                                                      |
+|                                                                       |
+| {                                                                     |
+|                                                                       |
+| &quot;account_category&quot;: &quot;individual&quot;,                                 |
+|                                                                       |
+| &quot;account_id&quot;: &quot;246ab76a-9081-4882-9a8c-11d76fbd2b9d&quot;,             |
+|                                                                       |
+| &quot;account_number&quot;: &quot;XXXXXXXXXXXX56103&quot;,                            |
+|                                                                       |
+| &quot;account_opening_date&quot;: null,                                       |
+|                                                                       |
+| &quot;bank&quot;: &quot;sbi&quot;,                                                    |
+|                                                                       |
+| &quot;credit_limit&quot;: 0,                                                  |
+|                                                                       |
+| &quot;ifsc&quot;: &quot;SBIN0013507&quot;,                                            |
+|                                                                       |
+| &quot;micr&quot;: &quot;110002341&quot;,                                              |
+|                                                                       |
+| &quot;missing_data&quot;: [                                                  |
+|                                                                       |
+| {                                                                     |
+|                                                                       |
+| &quot;from_date&quot;: &quot;2023-10-12&quot;,                                        |
+|                                                                       |
+| &quot;to_date&quot;: &quot;2023-11-27&quot;                                           |
+|                                                                       |
+| } ],                                                                 |
+|                                                                       |
+| &quot;od_limit&quot;: 0,                                                      |
+|                                                                       |
+| &quot;statements&quot;: [                                                    |
+|                                                                       |
+| &quot;9d75da22-bfe0-43b5-9018-535bc6b203f6&quot;                              |
+|                                                                       |
+| ],                                                                   |
+|                                                                       |
+| &quot;months&quot;: [                                                        |
+|                                                                       |
+| &quot;2023-07&quot;,                                                          |
+|                                                                       |
+| &quot;2023-08&quot;,                                                          |
+|                                                                       |
+| &quot;2023-09&quot;,                                                          |
+|                                                                       |
+| &quot;2023-10&quot;                                                           |
+|                                                                       |
+| ],                                                                   |
+|                                                                       |
+| &quot;country_code&quot;: &quot;IN&quot;,                                             |
+|                                                                       |
+| &quot;currency_code&quot;: &quot;INR&quot;,                                           |
+|                                                                       |
+| &quot;last_updated&quot;: &quot;2024-01-05T15:45:14.657268Z&quot;                     |
+|                                                                       |
+| } ],                                                                 |
+|                                                                       |
+| &quot;identity&quot;: [                                                      |
+|                                                                       |
+| {                                                                     |
+|                                                                       |
+| &quot;account_number&quot;: &quot;XXXXXXXXXXXX56103&quot;,\                           |
+| &quot;address&quot;: &quot;S/O BABU RAM MOHALLA TEH BALLABGARH DT                 |
+|                                                                       |
+| FARIDABAD-121004 Faridabad&quot;,                                         |
+|                                                                       |
+| &quot;account_category&quot;: &quot;individual&quot;,                                 |
+|                                                                       |
+| &quot;account_id&quot;: &quot;246ab76a-9081-4882-9a8c-11d76fbd2b9d&quot;,             |
+|                                                                       |
+| &quot;raw_account_category&quot;: &quot;SBCHQ&quot;,                                  |
+|                                                                       |
+| &quot;name&quot;: &quot;MR. MEHAR CHAND&quot;,                                        |
+|                                                                       |
+| &quot;micr&quot;: &quot;110002341&quot;,                                              |
+|                                                                       |
+| &quot;credit_limit&quot;: 0,                                                  |
+|                                                                       |
+| &quot;bank_name&quot;: &quot;sbi&quot;,                                               |
+|                                                                       |
+| &quot;ifsc&quot;: &quot;SBIN0013507&quot;,                                            |
+|                                                                       |
+| &quot;metadata_analysis&quot;: {                                              |
+|                                                                       |
+| &quot;name_matches&quot;: []                                                |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| } ]                                                                  |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;SESSION_NOT_FOUND&quot;,                                      |
+|                                                                       |
+| &quot;message&quot;: &quot;The provided Session ID is invalid&quot;                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api-7"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api-7" class="header-anchor">#</a> The following table lists API error codes applicable to this API</h2> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP status
+code</strong></p> <p>SESSION_NOT_FOUND          The provided Session ID is        404
+invalid</p> <p>PROCESSING_NOT_REQUESTED   Cannot proceed as the processing  400
+has not been requested yet</p> <p>SESSION_DELETED            The provided Session ID has been  410
+deleted</p> <p>PROCESSING_NOT_COMPLETED   The processing for this session   400
+is currently in progress</p> <p>ACCESS_DENIED              Authentication credentials were   403
+not provided</p> <hr> <h2 id="transactions-api"><a href="#transactions-api" class="header-anchor">#</a> Transactions API</h2> <p><strong>Endpoint</strong></p> <p>GET
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data//transactions/</p> <p><strong>Success Response</strong></p> <p>+-----------------------------------------------------------------------+
+| Please navigate to the link below to find the response for the above  |
+| API.                                                                  |
+|                                                                       |
+| [Transactions                                                         |
+| A                                                                     |
+| PI.txt](https://infinbox-my.sharepoint.com/:t:/g/personal/nayan_parut |
+| hi_finbox_in/EYEy9wmnbZFJte7l8cc4SqwBPzOajWVOHHHWKkWWdYpv_A?e=CYIBZq) |
++-----------------------------------------------------------------------+</p> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;SESSION_NOT_FOUND&quot;,                                      |
+|                                                                       |
+| &quot;message&quot;: &quot;The provided Session ID is invalid&quot;                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api-8"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api-8" class="header-anchor">#</a> The following table lists API error codes applicable to this API</h2> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP status
+code</strong></p> <p>SESSION_NOT_FOUND          The provided Session ID is        404
+invalid</p> <p>PROCESSING_NOT_REQUESTED   Cannot proceed as the processing  400
+has not been requested yet</p> <p>SESSION_DELETED            The provided Session ID has been  410
+deleted</p> <p>PROCESSING_NOT_COMPLETED   The processing for this session   400
+is currently in progress</p> <p>ACCESS_DENIED              Authentication credentials were   403
+not provided</p> <hr> <h2 id="predictors-api"><a href="#predictors-api" class="header-anchor">#</a> Predictors API</h2> <p><strong>Endpoint</strong></p> <p>GET
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data//
+predictors/</p> <p><strong>Success Response</strong></p> <p>+-----------------------------------------------------------------------+
+| Please navigate to the link below to find the response for the above  |
+| API.                                                                  |
+|                                                                       |
+| [Predictors                                                           |
+| A                                                                     |
+| PI.txt](https://infinbox-my.sharepoint.com/:t:/g/personal/nayan_parut |
+| hi_finbox_in/EdyyKL6jGzJPvlfp3hj53DUBgQoCt4eFtelXSkDiUZl-RQ?e=i5ABUY) |
++-----------------------------------------------------------------------+</p> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;SESSION_NOT_FOUND&quot;,                                      |
+|                                                                       |
+| &quot;message&quot;: &quot;The provided Session ID is invalid&quot;                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <p>The following table lists API error codes applicable to this API</p> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP status
+code</strong></p> <p>SESSION_NOT_FOUND          The provided Session ID is        404
+invalid</p> <p>PROCESSING_NOT_REQUESTED   Cannot proceed as the processing  400
+has not been requested yet</p> <p>SESSION_DELETED            The provided Session ID has been  410
+deleted</p> <p>PROCESSING_NOT_COMPLETED   The processing for this session   400
+is currently in progress</p> <p>ACCESS_DENIED              Authentication credentials were   403
+not provided</p> <hr> <h2 id="eod-balances-api"><a href="#eod-balances-api" class="header-anchor">#</a> EOD Balances API</h2> <p><strong>Endpoint</strong></p> <p>GET
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data//
+eod_balances/</p> <p><strong>Success Response</strong></p> <p>+-----------------------------------------------------------------------+
+| Please navigate to the link below to find the response for the above  |
+| API.                                                                  |
+|                                                                       |
+| [EOD                                                                  |
+| balanc                                                                |
+| es.txt](https://infinbox-my.sharepoint.com/:t:/g/personal/nayan_parut |
+| hi_finbox_in/EePrh3F1bSdMrAuLDhQkvXMBinPQhQwoJZ9B8aMmbuj0wg?e=oKIBYQ) |
++-----------------------------------------------------------------------+</p> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;SESSION_NOT_FOUND&quot;,                                      |
+|                                                                       |
+| &quot;message&quot;: &quot;The provided Session ID is invalid&quot;                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api-9"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api-9" class="header-anchor">#</a> The following table lists API error codes applicable to this API</h2> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP status
+code</strong></p> <p>SESSION_NOT_FOUND          The provided Session ID is        404
+invalid</p> <p>PROCESSING_NOT_REQUESTED   Cannot proceed as the processing  400
+has not been requested yet</p> <p>SESSION_DELETED            The provided Session ID has been  410
+deleted</p> <p>PROCESSING_NOT_COMPLETED   The processing for this session   400
+is currently in progress</p> <p>ACCESS_DENIED              Authentication credentials were   403
+not provided</p> <hr> <h2 id="monthly-analysis-api"><a href="#monthly-analysis-api" class="header-anchor">#</a> Monthly Analysis API</h2> <p><strong>Endpoint</strong></p> <p>GET
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data//monthly_analysis_updated/</p> <p><strong>Success Response</strong></p> <p>+-----------------------------------------------------------------------+
+| Please navigate to the link below to find the response for the above  |
+| API.                                                                  |
+|                                                                       |
+| [Monthly                                                              |
+| Analys                                                                |
+| is.txt](https://infinbox-my.sharepoint.com/:t:/g/personal/nayan_parut |
+| hi_finbox_in/EWN0SiUqAHVBuJpNulCWGz0BETafdZj09kUH95bjEkhaXQ?e=l1tOFn) |
++-----------------------------------------------------------------------+</p> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;SESSION_NOT_FOUND&quot;,                                      |
+|                                                                       |
+| &quot;message&quot;: &quot;The provided Session ID is invalid&quot;                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api-10"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api-10" class="header-anchor">#</a> The following table lists API error codes applicable to this API</h2> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP status
+code</strong></p> <p>SESSION_NOT_FOUND          The provided Session ID is        404
+invalid</p> <p>PROCESSING_NOT_REQUESTED   Cannot proceed as the processing  400
+has not been requested yet</p> <p>SESSION_DELETED            The provided Session ID has been  410
+deleted</p> <p>PROCESSING_NOT_COMPLETED   The processing for this session   400
+is currently in progress</p> <p>ACCESS_DENIED              Authentication credentials were   403
+not provided</p> <hr> <h2 id="recurring-transactions-api"><a href="#recurring-transactions-api" class="header-anchor">#</a> Recurring Transactions API</h2> <p><strong>Endpoint</strong></p> <p>GET
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data//
+recurring_transactions/</p> <p><strong>Success Response</strong></p> <p>+-----------------------------------------------------------------------+
+| Please navigate to the link below to find the response for the above  |
+| API.                                                                  |
+|                                                                       |
+| [Recurring                                                            |
+| Transactio                                                            |
+| ns.txt](https://infinbox-my.sharepoint.com/:t:/g/personal/nayan_parut |
+| hi_finbox_in/ERYvoFaMeDpHhqUKVwhiAXwBH-yX0JWexmIxq7GxVB2rLQ?e=f35wYV) |
++-----------------------------------------------------------------------+</p> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;SESSION_NOT_FOUND&quot;,                                      |
+|                                                                       |
+| &quot;message&quot;: &quot;The provided Session ID is invalid&quot;                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api-11"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api-11" class="header-anchor">#</a> The following table lists API error codes applicable to this API</h2> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP status
+code</strong></p> <p>SESSION_NOT_FOUND          The provided Session ID is        404
+invalid</p> <p>PROCESSING_NOT_REQUESTED   Cannot proceed as the processing  400
+has not been requested yet</p> <p>SESSION_DELETED            The provided Session ID has been  410
+deleted</p> <p>PROCESSING_NOT_COMPLETED   The processing for this session   400
+is currently in progress</p> <p>ACCESS_DENIED              Authentication credentials were   403
+not provided</p> <hr> <h2 id="eod-balances-api-2"><a href="#eod-balances-api-2" class="header-anchor">#</a> EOD Balances API</h2> <p><strong>Endpoint</strong></p> <p>GET
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data//
+eod_balances/</p> <p><strong>Success Response</strong></p> <p>+-----------------------------------------------------------------------+
+| Please navigate to the link below to find the response for the above  |
+| API.                                                                  |
+|                                                                       |
+| [EOD                                                                  |
+| balanc                                                                |
+| es.txt](https://infinbox-my.sharepoint.com/:t:/g/personal/nayan_parut |
+| hi_finbox_in/EePrh3F1bSdMrAuLDhQkvXMBinPQhQwoJZ9B8aMmbuj0wg?e=oKIBYQ) |
++-----------------------------------------------------------------------+</p> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;SESSION_NOT_FOUND&quot;,                                      |
+|                                                                       |
+| &quot;message&quot;: &quot;The provided Session ID is invalid&quot;                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api-12"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api-12" class="header-anchor">#</a> The following table lists API error codes applicable to this API:</h2> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP status
+code</strong></p> <p>SESSION_NOT_FOUND          The provided Session ID is        404
+invalid</p> <p>PROCESSING_NOT_REQUESTED   Cannot proceed as the processing  400
+has not been requested yet</p> <p>SESSION_DELETED            The provided Session ID has been  410
+deleted</p> <p>PROCESSING_NOT_COMPLETED   The processing for this session   400
+is currently in progress</p> <p>ACCESS_DENIED              Authentication credentials were   403
+not provided</p> <hr> <h2 id="catalogue-api"><a href="#catalogue-api" class="header-anchor">#</a> Catalogue API</h2> <p><strong>Endpoint</strong></p> <p>GET https://apis.bankconnect.finbox.in/bank-connect/v1/ banks/catalogue</p> <p><strong>Success Response</strong></p> <p>+-----------------------------------------------------------------------+
+| Please navigate to the link below to find the response for the above  |
+| API.                                                                  |
+|                                                                       |
+| [Bank                                                                 |
+| Catalog                                                               |
+| ue.txt](https://infinbox-my.sharepoint.com/:t:/g/personal/nayan_parut |
+| hi_finbox_in/ESOCfRVa7vZItraEUlDJmUoBlgKxlfz-Ev9uSSmg23ALVw?e=LlKY7x) |
++-----------------------------------------------------------------------+</p> <h2 id="get-pdfs-api"><a href="#get-pdfs-api" class="header-anchor">#</a> Get PDFs API</h2> <p><strong>Endpoint</strong></p> <p>GET
+https://apis.bankconnect.finbox.in/bank-connect/v1/session_data//get_pdfs/</p> <p><strong>Success Response</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;statements&quot;: [                                                    |
+|                                                                       |
+| {                                                                     |
+|                                                                       |
+| &quot;statement_id&quot;: &quot;9d75da22-bfe0-43b5-9018-535bc6b203f6&quot;,           |
+|                                                                       |
+| &quot;bank_name&quot;: &quot;sbi&quot;,                                               |
+|                                                                       |
+| &quot;pdf_password&quot;: &quot;&quot;,                                               |
+|                                                                       |
+| &quot;pdf_url&quot;: &quot;s3_link&quot;,                                             |
+|                                                                       |
+| &quot;account_id&quot;: &quot;246ab76a-9081-4882-9a8c-11d76fbd2b9d&quot;,             |
+|                                                                       |
+| &quot;source&quot;: &quot;PDF&quot;,                                                  |
+|                                                                       |
+| &quot;message&quot;: &quot;Success&quot;                                              |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| ]                                                                    |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of Possible Message</strong></p> <h2 id="the-following-table-lists-possible-message-applicable-to-this-api"><a href="#the-following-table-lists-possible-message-applicable-to-this-api" class="header-anchor">#</a> The following table lists possible message applicable to this API</h2> <hr> <p><strong>Message</strong></p> <p>Success</p> <p>Password Incorrect</p> <p>Is Image</p> <p>Author Fraud</p> <p>Date Fraud</p> <p>Not a Statement</p> <p>Keyword Not Present</p> <p>New Template</p> <h2 id="no-transactions-from-account-aggregator"><a href="#no-transactions-from-account-aggregator" class="header-anchor">#</a> No Transactions from Account Aggregator</h2> <p><strong>Error Response:</strong></p> <p>+-----------------------------------------------------------------------+
+| {                                                                     |
+|                                                                       |
+| &quot;error&quot;: {                                                          |
+|                                                                       |
+| &quot;code&quot;: &quot;SESSION_NOT_FOUND&quot;,                                      |
+|                                                                       |
+| &quot;message&quot;: &quot;The provided Session ID is invalid&quot;                   |
+|                                                                       |
+| }                                                                     |
+|                                                                       |
+| }                                                                     |
++-----------------------------------------------------------------------+</p> <p><strong>List of API Error Codes</strong></p> <h2 id="the-following-table-lists-api-error-codes-applicable-to-this-api-13"><a href="#the-following-table-lists-api-error-codes-applicable-to-this-api-13" class="header-anchor">#</a> The following table lists API error codes applicable to this API</h2> <hr> <p><strong>Code</strong> <strong>Message</strong> <strong>HTTP status
+code</strong></p> <p>SESSION_NOT_FOUND          The provided Session ID is        404
+invalid</p> <p>PROCESSING_NOT_REQUESTED   Cannot proceed as the processing  400
+has not been requested yet</p> <p>SESSION_DELETED            The provided Session ID has been  410
+deleted</p> <p>PROCESSING_NOT_COMPLETED   The processing for this session   400
+is currently in progress</p> <p>ACCESS_DENIED              Authentication credentials were   403
+not provided</p> <hr> <h2 id="possible-scenarios"><a href="#possible-scenarios" class="header-anchor">#</a> Possible Scenarios</h2> <p><strong>Scenario 1: Single account Flow</strong></p> <p>Once a session is initiated for a user, they upload a statement for a
+specified time period through any of the provided modes, completing the
+journey. In this scenario, there is no necessity for multiple statements
+from the user. The journey concludes at this point, and the session_id
+is now ready for retrieving enriched data.</p> <p><strong>Scenario 2: Multibanking Flow</strong></p> <p>Upon initiating a session for a user, they upload statements for a
+specified time period or multiple statements for a given account over a
+period, using any of the provided modes, thus completing the journey. In
+scenarios where additional statements are needed from the user, either
+for a different bank or using the same mode, the existing session must
+be invoked again by utilizing the previously received session_id. After
+all uploads are finalized, the session_id can then be employed to
+retrieve enriched data.</p> <p><strong>Scenario 3: User Revisits</strong></p> <p>A user concluded a journey using a specific session_id about a month
+ago. Upon returning after 3 months, a new session should be initiated
+for this subsequent interaction.</p> <p><strong>Scenario 4: User Drops Off</strong></p> <p>A session is started, and users partially upload statements for a
+specified time period, exiting the journey without completion. If the
+user returns to upload statements for the remaining duration, the same
+session_id can be utilized if the session is still within its defined
+TTL (Time To Live) of x days. However, if the session has expired, the
+user needs to upload from the beginning. It's crucial to note that
+there is no cross-linking between sessions, even if they are associated
+with the same linkID.</p> <p>After successfully concluding a journey for a specific session, and
+considering the TTL has elapsed, there is a need for additional
+statements from the user. This requirement arises to display a booster
+offer by obtaining statements from the user for other banks.</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">4/23/2024, 2:36:48 PM</span></div></footer> <!----> <div class="footer" data-v-692ea4ed><p data-v-692ea4ed><span class="item" data-v-692ea4ed>Copyright © 2024</span> <span class="item" data-v-692ea4ed>Moshpit Technologies Pvt. Ltd.</span></p></div></main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.57e04089.js" defer></script><script src="/assets/js/4.7f609412.js" defer></script><script src="/assets/js/2.a409744d.js" defer></script><script src="/assets/js/1.9be25c31.js" defer></script><script src="/assets/js/89.4827cda5.js" defer></script>
+  </body>
+</html>
