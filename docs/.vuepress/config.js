@@ -199,6 +199,139 @@ module.exports = {
           collapsable: false
         }
       ],
+      '/session-flow/': [
+        {
+          title: 'Overview',
+          path: '/session-flow/',
+          collapsable: false
+        },
+        {
+          title: 'Basics',
+          path: '/session-flow/basics.html',
+          collapsable: false
+        },
+        {
+          title: 'Integration Pre-requisite',
+          path: '/session-flow/integration-steps.html',
+          collapsable: true
+        },
+        {
+          title: 'Integration Steps',
+          path: '/session-flow/integration-components.html',
+          children: [
+            {
+              title: 'Submit Data to FinBox (Uploading Bank Statements)',
+              path: '/session-flow/submit-data.html'
+            },
+            {
+              title: 'Check Upload Status',
+              path: '/session-flow/upload-status.html'
+            },
+            {
+              title: 'Get Data',
+              path: '/session-flow/get-data.html'
+            },
+            {
+              title: 'Check Processing Status',
+              path: '/session-flow/processing-status.html'
+            },
+            {
+              title: 'Fetch Enriched Data',
+              path: '/session-flow/fetch-data.html'
+            },
+            // {
+            //   title: 'REST API',
+            //   path: '/session-flow/upload-rest-api.html'
+            // }
+          ],
+          collapsable: true
+        },
+        // {
+        //   title: 'Uploading Bank Statements',
+        //   collapsable: true,
+        //   children: [
+        //     {
+        //       title: 'Overview',
+        //       path: '/session-flow/upload-overview.html'
+        //     },
+        //     {
+        //       title: 'See in action',
+        //       path: '/session-flow/see-in-action.html'
+        //     },
+        //     {
+        //       title: 'Android',
+        //       path: '/session-flow/android.html'
+        //     },
+        //     {
+        //       title: 'Cordova',
+        //       path: '/session-flow/cordova.html'
+        //     },
+        //     {
+        //       title: 'Flutter',
+        //       path: '/session-flow/flutter.html'
+        //     },
+        //     {
+        //       title: 'JavaScript',
+        //       path: '/session-flow/javascript.html'
+        //     },
+        //     {
+        //       title: 'REST API',
+        //       path: '/session-flow/upload-rest-api.html'
+        //     }
+        //     // {
+        //     //   title: 'Python',
+        //     //   path: '/session-flow/upload-python.html'
+        //     // }
+        //   ]
+        // },
+        // {
+        //   title: 'Fetching Enriched Data',
+        //   collapsable: true,
+        //   children: [
+        //     {
+        //       title: 'Overview',
+        //       path: '/session-flow/fetch-overview.html'
+        //     },
+        //     {
+        //       title: 'REST API',
+        //       path: '/session-flow/rest-api.html'
+        //     },
+        //     // {
+        //     //   title: 'Python',
+        //     //   path: '/session-flow/python.html'
+        //     // },
+        //     {
+        //       title: 'Webhook',
+        //       path: '/session-flow/webhook.html'
+        //     }
+        //   ]
+        // },
+        // {
+        //   title: 'Management',
+        //   path: '/session-flow/management.html',
+        //   collapsable: false
+        // },
+        // {
+        //   title: 'Fraud',
+        //   path: '/session-flow/fraud.html',
+        //   collapsable: false
+        // },
+        // {
+        //   title: 'Appendix',
+        //   path: '/session-flow/appendix.html',
+        //   collapsable: false
+        // },
+        {
+          title: 'Acceptance Criteria',
+          path: '/session-flow/acceptance-criteria.html',
+          collapsable: true
+        },
+        // {
+        //   title: 'Test Output',
+        //   path: '/session-flow/output.html',
+        //   collapsable: false
+        // }
+      ],
       '/middleware/': [
         {
           title: 'Overview',
