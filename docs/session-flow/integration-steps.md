@@ -1,9 +1,6 @@
 # Integration Pre-requisites
 
 
-<img src="/implementation-flow.png" alt="Integration Steps" />
-
-
 ## Step 1: Choose Upload Mode
 
 There are primarily three data submission modes for integration,
