@@ -73,6 +73,7 @@ The flow for this involves following steps:
 - On success / exit, SDK will redirect to the specified redirect URL with parameters as follows:
   - Exit: `{url}?success=false`
   - Success: `{url}?success=true&entity_id=<some-entity-id>`
+  - Success: `{url}?success=true&session_id=<some-session-id>` (For Session Flow)
 
 :::warning NOTE
 Since there is no callback received on this flow, it is recommended to configure [Webhook](/bank-connect/webhook.html)
@@ -131,8 +132,9 @@ This is received when user completes the upload process.
   type: "finbox-bankconnect",
   status: "success",
   payload: {
-      "entityId": "1d1f-sfdrf-17hf-asda", //Unique ID that will used to fetch statement data
-      "linkId": "<USER_ID_PASSED>" //Link ID is the identifier that was passed while initializing the SDK
+    "linkId": "<USER_ID_PASSED>" //Link ID is the identifier that was passed while initializing the SDK
+    "entityId": "1d1f-sfdrf-17hf-asda", //Unique ID that will used to fetch statement data
+    "sessionId": "8a7a-jidaj-22aa-asla", //Unique ID that will used to fetch statement data for session flow
   }
 }
 ```
@@ -143,8 +145,9 @@ This is received when user completes the upload process.
 
 ```js
   {
-      "entityId": "1d1f-sfdrf-17hf-asda", //Unique ID that will used to fetch statement data
-      "linkId": "<USER_ID_PASSED>" //Link ID is the identifier that was passed while initializing the SDK
+    "linkId": "<USER_ID_PASSED>" //Link ID is the identifier that was passed while initializing the SDK
+    "entityId": "1d1f-sfdrf-17hf-asda", //Unique ID that will used to fetch statement data
+    "sessionId": "8a7a-jidaj-22aa-asla", //Unique ID that will used to fetch statement data for session flow
   }
 ```
 
