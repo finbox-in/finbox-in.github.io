@@ -275,10 +275,11 @@ result.launch(new Intent(this, BankActivity.class));
 
 Once the user navigates through the banks and uploads the bank statement, the sdk automatically closes `BankActivity` and returns `FinboxOnSuccessPayload`.
 
-`FinboxOnSuccessPayload` contains `linkId` and `entityId`. A successful upload contains a unique `entityId`.
+`FinboxOnSuccessPayload` contains `linkId` and `entityId` (or `sessionId`). A successful upload contains a unique `entityId` (or `sessionId`).
 
 - linkId - Unique id passed when building the Bank Connect object
 - entityId - Unique id of a successful statement upload
+- sessionId - Session id of a successful statement upload
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -299,8 +300,13 @@ if (result?.resultCode == Activity.RESULT_OK) {
         payload.entityId.isNullOrBlank() -> {
             // Failed to Upload Document
         }
+        payload.sessionId.isNullOrBlank() -> {
+            // Failed to Upload Document
+        }
         else -> {
             // Upload Success
+            // Read the session id for session flow or
+            // Read the entity id
         }
     }
 } else {
@@ -322,10 +328,14 @@ if (result != null && result.getResultCode() == Activity.RESULT_OK) {
                 extras.getParcelable(FinboxBankConstants.BUNDLE_EXTRA_SUCCESS_PAYLOAD);
         if (payload == null) {
             // Failed to Receive Payload
-        } else if (payload.getEntityId() == null || payload.getEntityId().length() == 0) {
+        } else if (payload.getEntityId() == null || payload.getEntityId().length == 0) {
+            // Failed to Upload Document
+        } else if (payload.getSessionId() == null || payload.getSessionId().length == 0) {
             // Failed to Upload Document
         } else {
             // Upload Success
+            // Read the session id for session flow or
+            // Read the entity id
         }
     } else {
         // Failed to Receive data
