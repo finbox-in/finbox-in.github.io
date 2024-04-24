@@ -146,10 +146,11 @@ Once all these conditions are met, the BankConnect object will build.
 
 Once the user navigates through the banks and uploads the bank statement, the sdk automatically closes `FinBoxBcPlugin` and returns the result inside `_getJourneyResult`.
 
-`call.arguments` contains `linkId` and `entityId`. A successful upload contains a unique `entityId`.
+`call.arguments` contains `linkId` and `entityId` (or `sessionId`). A successful upload contains a unique `entityId` (or `sessionId`).
 
 - linkId - Unique id passed when building the Bank Connect object
-- entityId - Unique id of a successful statement upload
+- entityId - Unique id of a successful statement upload during Entity flow
+- sessionId - Session id of a successful statement upload during Session flow
 
 ```dart
 static Future<void> _getJourneyResult(MethodCall call) async {
@@ -162,5 +163,11 @@ static Future<void> _getJourneyResult(MethodCall call) async {
 Following json will be received
 
 ```json
-{"entityId":"entity_id","linkId":"link_id","error_type":"error_code","message":"msg"}
+{
+    "linkId": "link_id",
+    "entityId": "entity_id", // Entity id will be available only for entity flow
+    "sessionId": "session_id", // Session Id will be available only for session flow
+    "error_type": "error_code",
+    "message": "msg"
+}
 ```
