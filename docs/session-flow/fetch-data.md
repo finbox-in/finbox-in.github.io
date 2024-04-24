@@ -28,29 +28,29 @@ On successful API call, it gives a 200 HTTP code with a response in following fo
   "accounts": [
     {
       "bank_name": "sbi",
-      "account_number": "",
+      "account_number": null,
       "account_id": "account_uuid4",
       "account_status": "completed",
       "error_code": null,
       "error_message": null,
-      "created_at": “”,
-      "last_updated_at": “”,
+      "created_at": null,
+      "last_updated_at": null,
       "statements": [
         {
-          "statement_id": "",
-          "statement_status": "",
-          "error_code": "",
-          "error_message": "",
-          "source": "",
-          "created_at": ""
+          "statement_id": null,
+          "statement_status": null,
+          "error_code": null,
+          "error_message": null,
+          "source": null,
+          "created_at": null,
         },
         {
-          "statement_id": "",
-          "statement_status": "",
-          "error_code": "",
-          "error_message": "",
-          "source": "",
-          "created_at": ""
+          "statement_id": null,
+          "statement_status": null,
+          "error_code": null,
+          "error_message": null,
+          "source": null,
+          "created_at": null
         }
       ]
     }
@@ -144,7 +144,7 @@ On successful API call, it gives a 200 HTTP code with a response in following fo
                 "bank":"central",
                 "name":"ABCD ENTERPRISES",
                 "address":"ABCD Nagar",
-                "credit_limit":"0",
+                "credit_limit": 0,
                 "ifsc":null,
                 "micr":null,
                 "missing_data":[
@@ -153,7 +153,7 @@ On successful API call, it gives a 200 HTTP code with a response in following fo
                       "to_date":"2024-04-21"
                    }
                 ],
-                "od_limit":"0",
+                "od_limit": 0,
                 "salary_confidence":null,
                 "statements":[
                    "036917f1-06dc-44c1-8f40-509c3a6093aa"
