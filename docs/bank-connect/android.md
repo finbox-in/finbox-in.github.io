@@ -278,8 +278,8 @@ Once the user navigates through the banks and uploads the bank statement, the sd
 `FinBoxPayload` contains `linkId` and `entityId` (or `sessionId`). A successful upload contains a unique `entityId` (or `sessionId`).
 
 - linkId - Unique id passed when building the Bank Connect object
-- entityId - Unique id of a successful statement upload
-- sessionId - Session id of a successful statement upload
+- entityId - Unique id of a successful statement upload during Entity flow
+- sessionId - Session id of a successful statement upload during Session flow
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -295,11 +295,9 @@ if (result?.resultCode == Activity.RESULT_OK) {
         payload == null -> {
             // Failed to Receive Payload
         }
-        payload.entityId.isNullOrBlank() -> {
-            // Failed to Upload Document
-        }
-        payload.sessionId.isNullOrBlank() -> {
-            // Failed to Upload Document
+        payload.entityId.isNullOrBlank() && payload.sessionId.isNullOrBlank() -> {
+            // Failed to Upload Document during Entity flow or
+            // Failed to Upload Document for Session Flow
         }
         else -> {
             // Upload Success
@@ -325,10 +323,9 @@ if (result != null && result.getResultCode() == Activity.RESULT_OK) {
         @Nullable final FinBoxPayload payload = extras.getParcelable(FINBOX_JOURNEY_RESULT);
         if (payload == null) {
             // Failed to Receive Payload
-        } else if (payload.getEntityId() == null || payload.getEntityId().length == 0) {
-            // Failed to Upload Document
-        } else if (payload.getSessionId() == null || payload.getSessionId().length == 0) {
-            // Failed to Upload Document
+        } else if ((result.getEntityId() == null || result.getEntityId().length == 0) && (result.getSessionId() == null || result.getSessionId().length == 0)) {
+            // Failed to Upload Document during Entity flow or
+            // Failed to Upload Document for Session Flow
         } else {
             // Upload Success
             // Read the session id for session flow or
