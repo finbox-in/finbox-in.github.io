@@ -4,6 +4,7 @@ FinBox DeviceConnect REST API enables **server to server data** fetching of cust
 
 ::: warning NOTE
 Following will be shared by FinBox team at the time of integration:
+
 - `SERVER_API_KEY`
 - `SERVER_HASH`
 - `DC_PREDICTORS_VERSION`
@@ -25,6 +26,7 @@ Authentication for the APIs are based on **SERVER_API_KEY** provided by the FinB
 ## Request
 
 ### Request Header and Body
+
 For all the Insights API request structure is the same, all requests must have `x-api-key` field in **header** having the value as the `SERVER_API_KEY` shared by FinBox team. The following **keys** must be passed in every request body as keys to a JSON document:
 
 **Request Body**
@@ -33,41 +35,32 @@ For all the Insights API request structure is the same, all requests must have `
 | customer_id | String | `CUSTOMER_ID` for which feature vector is required |
 | version | Integer | Version of the feature set shared by FinBox team as `DC_PREDICTORS_VERSION` |
 | salt | String | A salt which is computed basis logic mentioned in the [Salt Generation](/device-connect/salt-generation.html) section |
-| metadata (`optional`) | Json | A dictionary which can be used to pass additional information for example loan_type, loan_amount or any tags |
-
-**Sample Metadata value**
-| Key | Type | Description |
-| --- | --- | --- |
-| loan_type | String | Can be a string denoting the type of loan e.g. business_loan, msme_loan, personal_loan |
-| loan_amount | Integer | Can be an integer value denoting the amount of loan in INR e.g. 3000, 25000, 50000 |
 
 :::danger IMPORTANT
 Please note that this `CUSTOMER_ID` is the same used as the unique identifier used in Android SDK while syncing the data.
 :::
 
-
 ### Sample Request
 
 **Headers**
+
 ```yaml
 Content-Type: application/json
 x-api-key: XXXX-XXXX-XXXX
 ```
 
 **Request Body**
+
 ```json
 {
     "customer_id": "1234ABCD4567",
     "version": 1,
-    "salt": "5vVMNofMy5kQXx647sBdYBoMolMb1GGBSYLkzwaa9v8=",
-    "metadata": {
-        "loan_type": "business_loan",
-        "loan_amount": 30000
-    }
+    "salt": "5vVMNofMy5kQXx647sBdYBoMolMb1GGBSYLkzwaa9v8="
 }
 ```
 
 ## Response
+
 API will give a JSON Response with the following keys:
 
 ### Response Keys
@@ -91,6 +84,7 @@ Some of the keys in response may be missing based on the availability of data an
 :::
 
 ### `status` values
+
 Depending on the availability of data, there can be different cases with different `status` values as follows:
 
 | Case | `status` value | HTTP Status Code | Description / Action |
@@ -159,7 +153,6 @@ Sample Response Body:
     "data": null
 }
 ```
-
 
 ### Case 4 - Invalid Customer ID
 
@@ -233,7 +226,6 @@ Sample Response Body:
     "message": "Rate limit exceeded"
 }
 ```
-
 
 <!-- ## Webhook Integration
 
