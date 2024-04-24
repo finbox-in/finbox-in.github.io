@@ -273,9 +273,9 @@ result.launch(new Intent(this, BankActivity.class));
 
 ## Parse Results
 
-Once the user navigates through the banks and uploads the bank statement, the sdk automatically closes `BankActivity` and returns `FinboxOnSuccessPayload`.
+Once the user navigates through the banks and uploads the bank statement, the sdk automatically closes `BankActivity` and returns `FinBoxPayload`.
 
-`FinboxOnSuccessPayload` contains `linkId` and `entityId` (or `sessionId`). A successful upload contains a unique `entityId` (or `sessionId`).
+`FinBoxPayload` contains `linkId` and `entityId` (or `sessionId`). A successful upload contains a unique `entityId` (or `sessionId`).
 
 - linkId - Unique id passed when building the Bank Connect object
 - entityId - Unique id of a successful statement upload
@@ -290,9 +290,7 @@ if (result?.resultCode == Activity.RESULT_OK) {
     // Read extras
     val extras = result.data?.extras
     // Read success payload
-    val payload = extras?.getParcelable<FinboxOnSuccessPayload>(
-        FinboxBankConstants.BUNDLE_EXTRA_SUCCESS_PAYLOAD
-    )
+    val payload = extras?.getParcelable<FinBoxPayload>(FINBOX_JOURNEY_RESULT)
     when {
         payload == null -> {
             // Failed to Receive Payload
@@ -324,8 +322,7 @@ if (result != null && result.getResultCode() == Activity.RESULT_OK) {
     @Nullable final Bundle extras = result.getData() != null ? result.getData().getExtras() : null;
     if (extras != null) {
         // Read success payload
-        @Nullable final FinboxOnSuccessPayload payload =
-                extras.getParcelable(FinboxBankConstants.BUNDLE_EXTRA_SUCCESS_PAYLOAD);
+        @Nullable final FinBoxPayload payload = extras.getParcelable(FINBOX_JOURNEY_RESULT);
         if (payload == null) {
             // Failed to Receive Payload
         } else if (payload.getEntityId() == null || payload.getEntityId().length == 0) {
