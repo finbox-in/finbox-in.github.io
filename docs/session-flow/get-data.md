@@ -19,6 +19,10 @@ POST  **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_dat
 
 :::
 
+**Authentication**
+
+Request headers `x-api-key` with API Key as value and `server-hash` with Server Hash as value must be present in request.
+
 **Success Response:**
 
 HTTP Status code: 202 Accepted

@@ -23,8 +23,8 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session/**
 | link_id | string  | link_id value | Yes | - |
 | api_key | string | API key provided by FinBox | Yes | - |
 | redirect_url | string | URL to redirect to incase of success or failure | Yes for **Redirect Workflow** | - |
-| from_date | string | Start date range to fetch statements. Should be of format `DD/MM/YYYY`| No | Last 6 month start date |
-| to_date | string | End date range to fetch statements. Should be of format `DD/MM/YYYY` | No | Yesterday |
+| from_date | string | Start date range to fetch statements. Should be of format `DD/MM/YYYY`| Yes | Last 6 month start date |
+| to_date | string | End date range to fetch statements. Should be of format `DD/MM/YYYY` | Yes | Yesterday |
 | logo_url | string | An optional parameter to show logo branding in bankconnect SDK. Should be a URL.| No | - |
 | bank_name | string | pass the [bank identifier](/bank-connect/appendix.html#bank-identifiers) to skip the bank selection screen and directly open a that bank's screen instead | No | - |
 | mode | string | optional parameter to set the mode(i.e. pdf, aa, and online) | No | - |
