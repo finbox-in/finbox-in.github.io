@@ -28,32 +28,22 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data
 ```json
 {
     "webhook_url": "https://postman-echo.com/post",
-    "webhook_mode": ["ENRICHMENT_NOTIFICATION"]
+    "webhook_mode": 1
 }
 ```
 
 **Authentication**
 
-The request header `x-secret-key` with the Secret Key as its value will be included in the request. The client will provide this Secret Key, and it is optional.
+Request headers `x-api-key` with API Key as value and `server-hash` with Server Hash as value must be present in request.
 
 **Receiving Success Payload:**
 
 ```json
 {
-  "session_id":"abcd",
-  "event_name": "ENRICHMENT_NOTIFICATION",
-  "accounts":[
-    {
-      "bank_name": "sbi",
-      "account_id" :"account_uuid4",
-      "account_status" :"completed",
-      "error_code" : null,
-      "error_message": null
-    }
-  ]
+  "message": "success"
 }
 ```
-**Receiving Failure Payload:**
+<!-- **Receiving Failure Payload:**
 
 ```json
 {
@@ -70,7 +60,7 @@ The request header `x-secret-key` with the Secret Key as its value will be inclu
   ]
 }
 
-```
+``` -->
 **Account Status:**
 
 The account_status field indicates the status of the overall account extraction and processing. It can be either "completed" or "failed." In case of successful completion, the message will be null. 
@@ -101,6 +91,10 @@ Once session_progress is "completed" proceed to step B and fetch data using REST
 GET **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data/`<session_id>`/progress/**
 
 :::
+
+**Authentication**
+
+Request headers `x-api-key` with API Key as value and `server-hash` with Server Hash as value must be present in request.
 
 **Success Response:**
 

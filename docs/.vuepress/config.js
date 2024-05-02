@@ -221,7 +221,17 @@ module.exports = {
           children: [
             {
               title: 'Submit Data to FinBox (Uploading Bank Statements)',
-              path: '/session-flow/submit-data.html'
+              path: '/session-flow/submit-data.html',
+              children: [
+                {
+                  title: 'Frontend Integration',
+                  path: '/session-flow/submit-data-frontend.html',
+                },
+                {
+                  title: 'Backend Integration',
+                  path: '/session-flow/submit-data-backend.html',
+                }
+              ]
             },
             {
               title: 'Check Upload Status',

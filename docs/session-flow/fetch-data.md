@@ -18,6 +18,10 @@ GET **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data/
 
 :::
 
+**Authentication**
+
+Request headers `x-api-key` with API Key as value and `server-hash` with Server Hash as value must be present in request.
+
 **Success Response**
 
 On successful API call, it gives a 200 HTTP code with a response in following format:
@@ -125,6 +129,10 @@ For failed cases, the following error codes and messages are applicable:
 GET **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data/`<session_id>`/insights/**
 
 :::
+
+**Authentication**
+
+Request headers `x-api-key` with API Key as value and `server-hash` with Server Hash as value must be present in request.
 
 **Success Response:**
 

@@ -7,7 +7,7 @@ version: v1 # version of API
 
 ### 1. Webhooks
 
-Utilize Webhooks for real-time notification on completion of upload in the session. Webhooks need to be configured once and then both the webhooks for Completion and [Enrichment](session-flow/integration-components.html#bankconnect-check-processing-status) would be triggered on the configured URL.
+Utilize Webhooks for real-time notification on completion of upload in the session. Webhooks need to be configured once and then both the webhooks for Completion and [Enrichment](processing-status.html) would be triggered on the configured URL.
 
 Ensure your webhook endpoint is consistently available; if not, consider the polling approach or fetching all payloads for a given `session_id`
 
@@ -28,45 +28,19 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data
 ```json
 {
     "webhook_url": "https://postman-echo.com/post",
-    "webhook_mode": ["ENRICHMENT_NOTIFICATION"]
+    "webhook_mode": 1
 }
 ```
 
 **Authentication**
 
-The request header `x-secret-key` with the Secret Key as its value will be included in the request. The client will provide this Secret Key, and it is optional.
+Request headers `x-api-key` with API Key as value and `server-hash` with Server Hash as value must be present in request.
 
 **Receiving Success Payload:**
 
 ```json
 {
-    "session_id": "6d105744-f304-4637-8220-1e217ec84fcf",
-    "session_date_range": {
-        "from_date": "",
-        "to_date": ""
-    },
-    "event_name": "SESSION_REQUIREMENT_COMPLETION_NOTIFICATION",
-    "message": "",
-    "accounts": [
-        {
-            "account_id": "8702145a-aaa3-4ee0-acb7-9a328b54905a",
-            "account_number": "XXXXXXXXXX",
-            "bank_name": "icici",
-            "account_status": "COMPLETED",
-            "created_at": "2024-04-16 07:47:42",
-            "last_updated_at": "2024-04-16 07:48:21",
-            "statements": [
-                {
-                    "statement_id": "567700a6-570d-4f75-ae60-d79357dabdb4",
-                    "statement_status": "completed",
-                    "error_code": "",
-                    "error_message": "",
-                    "source": "pdf",
-                    "created_at": "2024-04-16T07:47:40.806223Z"
-                }
-            ]
-        }
-    ]
+  "message": "success"
 }
 ```
 
@@ -80,9 +54,13 @@ For cases when the COMPLETION webhook is not triggered, the Upload Status API ca
 
 ::: tip Endpoint
 
-GET **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data/`<session_id>`/upload_status/**
+GET **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data/`<session_id>`/session_upload_status/**
 
 :::
+
+**Authentication**
+
+Request headers `x-api-key` with API Key as value and `server-hash` with Server Hash as value must be present in request.
 
 **Success Response:**
 
