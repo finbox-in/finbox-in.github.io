@@ -48,43 +48,53 @@ statements.
 
 ```json
 {
-    "bank_name": "icici",
-    "statement_id": "567700a6-570d-4f75-ae60-d79357dabdb4",
+    "bank_name": "hdfc",
+    "statement_id": "601f775d-0bee-4817-8469-2f87c02a32e7",
+    "page_count": 17,
     "identity": {
-        "account_number": "XXXXXXXXXXX",
-        "name": "XYZ PRODUCTS PRIVATE",
-        "address": "567/435,Gol Chauraha,MEERUT,250002,UTTAR PRADESH,INDIA",
-        "ifsc": "ICIC0000368",
-        "micr": null,
-        "account_category": "corporate",
-        "credit_limit": null,
-        "od_limit": null,
-        "account_id": "8702145a-aaa3-7gju-7v78-9a327y54905a",
-        "bank_name": "icici"
+        "account_number": "50100534236740",
+        "name": "abcabca",
+        "address": " test, test PRADESH",
+        "ifsc": "HDFC00002890560",
+        "micr": "1102909090037",
+        "account_category": "individual",
+        "credit_limit": 0,
+        "od_limit": 0,
+        "account_id": "f4f41ec9-af9a-4c4d-8bb6-eaa0hjh7b49c5",
+        "bank_name": "hdfc"
     },
     "date_range": {
-        "from_date": "2023-04-01",
-        "to_date": "2024-03-23"
+        "from_date": "2023-12-01",
+        "to_date": "2024-03-05"
     },
     "opening_date": null,
     "opening_bal": null,
     "closing_bal": null,
     "is_fraud": false,
     "fraud_type": null,
-    "page_count": 48,
     "metadata_analysis": {
         "name_matches": []
     },
     "country_code": "IN",
     "currency_code": "INR",
     "extracted_date_range": {
-        "from_date": "2023-04-01",
-        "to_date": "2024-03-23"
+        "from_date": "2023-12-01",
+        "to_date": "2024-03-05"
     },
-    "account_id": "8702145a-aaa3-4ee0-acb7-9a328b54905a",
-    "masked_account_number": "XXXXXXXXXXX",
+    "account_id": "f4f41ec9-af9a-4c4hjhjbb6-eaa07f7b49c5",
+    "masked_account_number": "XXXXXXXXXXXXX",
+    "months": [
+        "2023-12",
+        "2024-01",
+        "2024-02",
+        "2024-03"
+    ],
+    "missing_months": [
+        "2023-11",
+        "2024-04"
+    ],
     "status": 1,
-    "session_id": "c215f3fd-fcd8-4452-a4d7-2b7ju262aef9"
+    "session_id": "0d10ab33-1c36-471a-9hjh-2885c0c103ae"
 }
 ```
 
