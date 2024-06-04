@@ -36,19 +36,37 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session_data
 
 Request headers `x-api-key` with API Key as value and `server-hash` with Server Hash as value must be present in request.
 
-**Receiving Success Payload:**
+**Receiving Update Webhook API Success Payload:**
 
 ```json
 {
   "message": "success"
 }
 ```
-<!-- **Receiving Failure Payload:**
+**Receiving Webhook Success Payload:**
+
+```json
+{
+  "session_id":"uuid4",
+  "event_name": "ENRICHMENT_NOTIFICATION",
+  "accounts":[
+    {
+      "bank_name": "sbi",
+      "account_id" :"account_uuid4",
+      "account_status" :"completed",
+      "error_code" : null,
+      "error_message": null
+    }
+  ]
+}
+
+```
+**Receiving Webhook Failure Payload:**
 
 ```json
 {
   "session_id":"abcd",
-  "event_name": "ENRICHMENT_NOTIFICATION"
+  "event_name": "ENRICHMENT_NOTIFICATION",
   "accounts":[
     {
       "bank_name": "sbi",
@@ -60,7 +78,8 @@ Request headers `x-api-key` with API Key as value and `server-hash` with Server 
   ]
 }
 
-``` -->
+```
+
 **Account Status:**
 
 The account_status field indicates the status of the overall account extraction and processing. It can be either "completed" or "failed." In case of successful completion, the message will be null. 
