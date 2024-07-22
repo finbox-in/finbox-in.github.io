@@ -2,7 +2,6 @@
 
 Device Connect Flutter SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
 
-
 ## Requirements
 
 Device Connect Flutter SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
@@ -72,11 +71,11 @@ dependencies {
 </template>
 </CodeSwitcher>
 
-
 ## Add Plugin
 
 Specify the following in `local.properties` file:
-  ```
+  
+  ```properties
   ACCESS_KEY=<ACCESS_KEY>
   SECRET_KEY=<SECRET_KEY>
   DC_SDK_VERSION=<RM_SDK_VERSION>
@@ -86,12 +85,14 @@ Specify the following in `local.properties` file:
   ```
 
 Add plugin dependency in `pubspec.yaml` file:
+
   ```yml
   finbox_dc_plugin: any
   ```
 
 ::: warning NOTE
 Following will be shared by FinBox team at the time of integration:
+
 - `ACCESS_KEY`
 - `SECRET_KEY`
 - `DC_SDK_VERSION`
@@ -100,7 +101,6 @@ Following will be shared by FinBox team at the time of integration:
 - `LOGGER_SDK_VERSION`
 - `CLIENT_API_KEY`
 :::
-
 
 ## Create User
 
@@ -124,7 +124,6 @@ FinBoxDcPlugin.createUser("CLIENT_API_KEY", "CUSTOMER_ID").fold(
 
 You can read about the errors in the [Error Codes](/device-connect/error-codes.html) section.
 
-
 ## Start Periodic Sync
 
 This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals.
@@ -132,7 +131,6 @@ This is to be called only on a successful response to `createUser` method's call
 ```dart
 FinBoxDcPlugin.startPeriodicSync();
 ```
-
 
 ## Match Details on Device
 
@@ -144,7 +142,6 @@ Call `setDeviceMatch` method before starting the syncs.
 FinBoxDcPlugin.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
 ```
 
-
 ## Forward Notifications to SDK
 
 In certain cases, FinBox server requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
@@ -155,7 +152,6 @@ Add the following lines inside `FirebaseMessaging.onMessage.listen` method.
 FinBoxDcPlugin.forwardFinBoxNotificationToSDK(event.data);
 ```
 
-
 ## Multi-Process Support
 
 DeviceConnect uses a content provider to auto initialize the SDK. The limitation with the OS is that content providers are only initialized once in a **multi-process application** and from the main process. For this reason, any calls to the SDK from other processes will lead to unstable behavior.
@@ -165,6 +161,7 @@ In case, you want to use the Flutter SDK from a process other than the main proc
 ### Remove the Content Provider
 
 Remove the content provider that auto initializes the SDK from the Android Manifest file.
+
 ```xml
 <provider
     android:name="in.finbox.mobileriskmanager.init.AutoInitProvider"
@@ -173,6 +170,7 @@ Remove the content provider that auto initializes the SDK from the Android Manif
     android:exported="false"
     tools:node="remove" />
 ```
+
 ### Initialize the SDK
 
 Initialize the FinBox Flutter SDK in the `onCreate` method of FlutterApplication class.
@@ -180,7 +178,6 @@ Initialize the FinBox Flutter SDK in the `onCreate` method of FlutterApplication
 ```dart
 FinBoxDcPlugin.initLibrary(this)
 ```
-
 
 ## Cancel Periodic Sync
 
@@ -190,7 +187,6 @@ If you have already set up the sync for the user, cancel the syncs using `stopPe
 FinBoxDcPlugin.stopPeriodicSync();
 ```
 
-
 ## Handle Sync Frequency
 
 By default sync frequency is set to **8 hours**, you can modify it by passing preferred time **in seconds** as an argument to `setSyncFrequency` method once the user is created.
@@ -199,7 +195,6 @@ By default sync frequency is set to **8 hours**, you can modify it by passing pr
 FinBoxDcPlugin.setSyncFrequency(12 * 60 * 60);
 ```
 
-
 ## Reset User Data
 
 In case the user data needs to be removed on the device so that you can re-sync the entire data, use the method `resetData`.
@@ -207,7 +202,6 @@ In case the user data needs to be removed on the device so that you can re-sync 
 ```dart
 FinBoxDcPlugin.resetData();
 ```
-
 
 ## Forget User
 
