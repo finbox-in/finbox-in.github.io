@@ -84,6 +84,8 @@ COMMON_FLAVOR=<COMMON_FLAVOR>
 LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
 ```
 
+In the project level `build.gradle` file, add the repository urls to all `allprojects` block.
+
 <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
 <template v-slot:kotlin>
 
