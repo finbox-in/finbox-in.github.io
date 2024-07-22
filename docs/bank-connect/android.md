@@ -323,7 +323,7 @@ if (result != null && result.getResultCode() == Activity.RESULT_OK) {
         @Nullable final FinBoxPayload payload = extras.getParcelable(FINBOX_JOURNEY_RESULT);
         if (payload == null) {
             // Failed to Receive Payload
-        } else if ((result.getEntityId() == null || result.getEntityId().length == 0) && (result.getSessionId() == null || result.getSessionId().length == 0)) {
+        } else if ((payload.getEntityId() == null || payload.getEntityId().length() == 0) && (payload.getSessionId() == null || payload.getSessionId().length() == 0)) {
             // Failed to Upload Document during Entity flow or
             // Failed to Upload Document for Session Flow
         } else {
