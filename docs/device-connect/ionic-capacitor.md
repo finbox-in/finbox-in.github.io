@@ -2,42 +2,80 @@
 
 Device Connect Ionic Capacitor SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
 
-## Installation
+## Requirements
 
-Using yarn:
+Device Connect React Native SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
 
-```sh
-yarn add ionic-risk-sdk
-```
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
 
-or using npm:
-
-```sh
-npm install --save ionic-risk-sdk
-```
-
-Register our SDK using `registerPlugin(IonicRiskSdkPlugin.class);` in your `MainActivity` class.
-
-## Authentication
-
-Open Android Studio and in the project level `build.gradle` file, add the repository URLs to all `allprojects` block.
-
-```groovy
-maven {
-    url "s3://risk-manager-android-sdk/artifacts"
-    credentials(AwsCredentials) {
-        accessKey = "<ACCESS_KEY>"
-        secretKey = "<SECRET_KEY>"
+```kotlin
+android {
+    ...
+    defaultConfig {
+        ...
+        // Minimum 5.0+ devices
+        minSdk 21
+        ...
     }
-    content {
-        includeGroup("in.finbox")
+    ...
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled = true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 }
 ```
 
-Add the following keys in `local.properties` file:
+</template>
+<template v-slot:groovy>
 
+```groovy
+android {
+    ...
+    defaultConfig {
+        ...
+        // Minimum 5.0+ devices
+        minSdkVersion 21
+        ...
+    }
+    ...
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+}
 ```
+
+</template>
+</CodeSwitcher>
+
+## Add Plugin
+
+Specify the following keys in `local.properties` file:
+
+```properties
 ACCESS_KEY=<ACCESS_KEY>
 SECRET_KEY=<SECRET_KEY>
 DC_SDK_VERSION=<DC_SDK_VERSION>
@@ -45,6 +83,64 @@ COMMON_SDK_VERSION=<COMMON_SDK_VERSION>
 COMMON_FLAVOR=<COMMON_FLAVOR>
 LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
 ```
+
+In the project level `build.gradle` file, add the repository urls to all `allprojects` block.
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+maven {
+    setUrl("s3://risk-manager-android-sdk/artifacts")
+    credentials(AwsCredentials::class) {
+        accessKey = <ACCESS_KEY>
+        secretKey = <SECRET_KEY>
+    }
+    content {
+        includeGroup("in.finbox")
+    }
+}
+```
+
+</template>
+<template v-slot:groovy>
+
+```groovy
+maven {
+    url "s3://risk-manager-android-sdk/artifacts"
+    credentials(AwsCredentials) {
+        accessKey = <ACCESS_KEY>
+        secretKey = <SECRET_KEY>
+    }
+    content {
+        includeGroup("in.finbox")
+    }
+}
+```
+
+</template>
+</CodeSwitcher>
+
+Add plugin dependency
+
+<CodeSwitcher :languages="{npm:'NPM',yarn:'Yarn'}">
+<template v-slot:yarn>
+
+```sh
+yarn add ionic-risk-sdk
+```
+
+</template>
+<template v-slot:npm>
+
+```sh
+npm install --save ionic-risk-sdk
+```
+
+</template>
+</CodeSwitcher>
+
+Register our SDK using `registerPlugin(IonicRiskSdkPlugin.class);` in your `MainActivity` class.
 
 ::: warning NOTE
 Following will be shared by FinBox team at the time of integration:
