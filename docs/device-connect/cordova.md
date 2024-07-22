@@ -77,7 +77,7 @@ dependencies {
 
 Specify the following in `local.properties` file:
 
-```
+```properties
 ACCESS_KEY=<ACCESS_KEY>
 SECRET_KEY=<SECRET_KEY>
 DC_SDK_VERSION=<DC_SDK_VERSION>
