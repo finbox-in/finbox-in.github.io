@@ -71,40 +71,11 @@ dependencies {
 </template>
 </CodeSwitcher>
 
-## Adding Dependency
+## Add Plugin
 
-Using yarn:
+Specify the following keys in `local.properties` file:
 
-```sh
-yarn add react-native-risk-sdk
-```
-
-or using npm:
-
-```sh
-npm install --save react-native-risk-sdk
-```
-
-Our SDK will auto link automatically with your application
-
-Open Android Studio and in the project level `build.gradle` file, add the repository URLs to all `allprojects` block.
-
-```groovy
-maven {
-    url "s3://risk-manager-android-sdk/artifacts"
-    credentials(AwsCredentials) {
-        accessKey = "<ACCESS_KEY>"
-        secretKey = "<SECRET_KEY>"
-    }
-    content {
-        includeGroup("in.finbox")
-    }
-}
-```
-
-Add the following keys in `local.properties` file:
-
-```
+```properties
 ACCESS_KEY=<ACCESS_KEY>
 SECRET_KEY=<SECRET_KEY>
 DC_SDK_VERSION=<DC_SDK_VERSION>
@@ -112,6 +83,60 @@ COMMON_SDK_VERSION=<COMMON_SDK_VERSION>
 COMMON_FLAVOR=<COMMON_FLAVOR>
 LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
 ```
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+maven {
+    setUrl("s3://risk-manager-android-sdk/artifacts")
+    credentials(AwsCredentials::class) {
+        accessKey = <ACCESS_KEY>
+        secretKey = <SECRET_KEY>
+    }
+    content {
+        includeGroup("in.finbox")
+    }
+}
+```
+
+</template>
+<template v-slot:groovy>
+
+```groovy
+maven {
+    url "s3://risk-manager-android-sdk/artifacts"
+    credentials(AwsCredentials) {
+        accessKey = <ACCESS_KEY>
+        secretKey = <SECRET_KEY>
+    }
+    content {
+        includeGroup("in.finbox")
+    }
+}
+```
+
+</template>
+</CodeSwitcher>
+
+Add plugin dependency
+
+<CodeSwitcher :languages="{npm:'NPM',yarn:'Yarn'}">
+<template v-slot:yarn>
+
+```sh
+yarn add react-native-risk-sdk
+```
+
+</template>
+<template v-slot:npm>
+
+```sh
+npm install --save react-native-risk-sdk
+```
+
+</template>
+</CodeSwitcher>
 
 ::: warning NOTE
 Following will be shared by FinBox team at the time of integration:
