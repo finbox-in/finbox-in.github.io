@@ -2,7 +2,76 @@
 
 Device Connect React Native SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
 
-## Installation
+## Requirements
+
+Device Connect React Native SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+android {
+    ...
+    defaultConfig {
+        ...
+        // Minimum 5.0+ devices
+        minSdk 21
+        ...
+    }
+    ...
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled = true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+}
+```
+
+</template>
+<template v-slot:groovy>
+
+```groovy
+android {
+    ...
+    defaultConfig {
+        ...
+        // Minimum 5.0+ devices
+        minSdkVersion 21
+        ...
+    }
+    ...
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+}
+```
+
+</template>
+</CodeSwitcher>
+
+## Adding Dependency
 
 Using yarn:
 
@@ -17,8 +86,6 @@ npm install --save react-native-risk-sdk
 ```
 
 Our SDK will auto link automatically with your application
-
-## Authentication
 
 Open Android Studio and in the project level `build.gradle` file, add the repository URLs to all `allprojects` block.
 
