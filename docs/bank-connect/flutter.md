@@ -1,6 +1,6 @@
 # BankConnect: Flutter
 
-BankConnect Cordova SDK helps user submits their bank statements via upload or net banking credentials in your Android application.
+BankConnect Flutter SDK helps user submits their bank statements via upload or net banking credentials in your Android application.
 
 ## Requirements
 
@@ -75,7 +75,7 @@ dependencies {
 
 Specify the following in `local.properties` file:
 
-```
+```properties
 ACCESS_KEY=<ACCESS_KEY>
 SECRET_KEY=<SECRET_KEY>
 BC_SDK_VERSION=<BC_SDK_VERSION>
@@ -110,7 +110,19 @@ We have hosted a sample project on GitHub, you can check it out here:
 ## Show SDK Screen
 
 ```dart
-FinBoxBcPlugin.initSdk("CLIENT_API_KEY","FROM_DATE","TO_DATE","BANK_NAME","MODE", "MOBILE_NUMBER", "JOURNEY_MODE", "AA_JOURNEY_MODE", "AA_RECURRING_TENURE_MONTH_COUNT", "AA_RECURRING_FREQUENCY_UNIT", "AA_RECURRING_FREQUENCY_VALUE");
+FinBoxBcPlugin.initSdk(
+    "CLIENT_API_KEY",
+    "FROM_DATE",
+    "TO_DATE",
+    "BANK_NAME",
+    "MODE",
+    "MOBILE_NUMBER",
+    "JOURNEY_MODE",
+    "AA_JOURNEY_MODE",
+    "AA_RECURRING_TENURE_MONTH_COUNT",
+    "AA_RECURRING_FREQUENCY_UNIT",
+    "AA_RECURRING_FREQUENCY_VALUE"
+);
 ```
 
 | Builder Property | Description | Required |
