@@ -156,7 +156,7 @@ We have hosted a sample project on GitHub, you can check it out here:
 
 ## Build Bank Connect
 
-Build the `FinBoxBankConnect` object by passing `apiKey`, `linkId`, `fromDate`, `toDate`, `bank` and `mode`.
+Build the `FinBoxBankConnect` object by passing `apiKey`, `linkId`, `fromDate`, `toDate`, `bank`, `mode` and others.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -232,7 +232,7 @@ Once all these conditions are met, the BankConnect object will build.
 
 ## Show SDK Screen
 
-Start BankActivity and listten for the result
+Start BankActivity and listen for the result
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>

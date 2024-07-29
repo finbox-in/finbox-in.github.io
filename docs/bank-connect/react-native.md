@@ -1,10 +1,10 @@
-# BankConnect: Flutter
+# BankConnect: React Native
 
-BankConnect Flutter SDK helps user submits their bank statements via upload or net banking credentials in your Android application.
+Bank Connect React Native SDK helps user submits their bank statements via upload or net banking credentials in your Android application.
 
 ## Requirements
 
-Bank Connect Flutter SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
+Bank Connect React Native SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
 <template v-slot:kotlin>
@@ -15,7 +15,7 @@ android {
     defaultConfig {
         ...
         // Minimum 5.0+ devices
-        minSdkVersion(21)
+        minSdk 21
         ...
     }
     ...
@@ -81,11 +81,61 @@ SECRET_KEY=<SECRET_KEY>
 BC_SDK_VERSION=<BC_SDK_VERSION>
 ```
 
-Add plugin dependency in `pubspec.yaml` file:
+In the project level `build.gradle` file, add the repository urls to all `allprojects` block.
 
-```yml
-finbox_bc_plugin: any
+<CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
+<template v-slot:kotlin>
+
+```kotlin
+maven {
+    setUrl("s3://risk-manager-android-sdk/artifacts")
+    credentials(AwsCredentials::class) {
+        accessKey = <ACCESS_KEY>
+        secretKey = <SECRET_KEY>
+    }
+    content {
+        includeGroup("in.finbox.bankconnect")
+    }
+}
 ```
+
+</template>
+<template v-slot:groovy>
+
+```groovy
+maven {
+    url "s3://risk-manager-android-sdk/artifacts"
+    credentials(AwsCredentials) {
+        accessKey = <ACCESS_KEY>
+        secretKey = <SECRET_KEY>
+    }
+    content {
+        includeGroup("in.finbox.bankconnect")
+    }
+}
+```
+
+</template>
+</CodeSwitcher>
+
+Add plugin dependency
+
+<CodeSwitcher :languages="{npm:'NPM',yarn:'Yarn'}">
+<template v-slot:yarn>
+
+```sh
+yarn add react-native-risk-sdk
+```
+
+</template>
+<template v-slot:npm>
+
+```sh
+npm install --save react-native-risk-sdk
+```
+
+</template>
+</CodeSwitcher>
 
 ::: warning NOTE
 Following will be shared by FinBox team at the time of integration:
@@ -93,6 +143,7 @@ Following will be shared by FinBox team at the time of integration:
 - `ACCESS_KEY`
 - `SECRET_KEY`
 - `BC_SDK_VERSION`
+- `CLIENT_API_KEY`
 :::
 
 ## Integration Workflow
@@ -104,14 +155,18 @@ The diagram below illustrates the integration workflow in a nutshell:
 
 We have hosted a sample project on GitHub, you can check it out here:
 <div class="button_holder">
-<a class="download_button" target="_blank" href="https://github.com/finbox-in/bank-connect-sample-flutter">Open GitHub Repository</a>
+<a class="download_button" target="_blank" href="https://github.com/finbox-in/bank-connect-sample-react-native">Open GitHub Repository</a>
 </div>
 
-## Show SDK Screen
+## Build Bank Connect
 
-```dart
-FinBoxBcPlugin.initSdk(
+Build the `BankSdk` object by passing `apiKey`, `linkId`, `fromDate`, `toDate`, `bank`, `mode` and others.
+
+```javascript
+// Build BankConnect
+BankSdk.buildBankConnect(
     "CLIENT_API_KEY",
+    "LINK_ID",
     "FROM_DATE",
     "TO_DATE",
     "BANK_NAME",
@@ -154,32 +209,24 @@ Once the above statement is added, a series of checks are done to make sure the 
 Once all these conditions are met, the BankConnect object will build.
 :::
 
+## Show SDK Screen
+
+Start Bank Screen and listen for the result
+
+```javascript
+// Show BankConnect UI
+BankSdk.showBankConnect((error: any) => {
+    // error callback
+  }, (entityId: any, sessionId: any) => {
+    // Success callback
+  });
+```
+
 ## Parse Results
 
-Once the user navigates through the banks and uploads the bank statement, the sdk automatically closes `FinBoxBcPlugin` and returns the result inside `_getJourneyResult`.
+Once the user navigates through the banks and uploads the bank statement, the sdk automatically closes `BankSdk` and returns the results.
 
-`call.arguments` contains `linkId` and `entityId` (or `sessionId`). A successful upload contains a unique `entityId` (or `sessionId`).
+Success callback contains `entityId` (or `sessionId`). A successful upload contains a unique `entityId` (or `sessionId`).
 
-- linkId - Unique id passed when building the Bank Connect object
 - entityId - Unique id of a successful statement upload during Entity flow
 - sessionId - Session id of a successful statement upload during Session flow
-
-```dart
-static Future<void> _getJourneyResult(MethodCall call) async {
-    if (call.method == 'getJourneyResult') {
-        var json = call.arguments
-    }
-}
-```
-
-Following json will be received
-
-```json
-{
-    "linkId": "link_id",
-    "entityId": "entity_id", // Entity id will be available only for entity flow
-    "sessionId": "session_id", // Session Id will be available only for session flow
-    "error_type": "error_code",
-    "message": "msg"
-}
-```
