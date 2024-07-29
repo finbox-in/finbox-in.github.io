@@ -140,12 +140,16 @@ module.exports = {
               path: '/bank-connect/android.html'
             },
             {
-              title: 'Cordova',
-              path: '/bank-connect/cordova.html'
+              title: 'React Native',
+              path: '/bank-connect/react-native.html'
             },
             {
               title: 'Flutter',
               path: '/bank-connect/flutter.html'
+            },
+            {
+              title: 'Cordova',
+              path: '/bank-connect/cordova.html'
             },
             {
               title: 'JavaScript',
