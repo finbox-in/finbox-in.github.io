@@ -340,6 +340,11 @@ module.exports = {
           path: '/session-flow/acceptance-criteria.html',
           collapsable: true
         },
+        {
+          title: 'Account Aggregator Onboarding',
+          path: '/session-flow/aa-onboarding.html',
+          collapsable: true
+        },
         // {
         //   title: 'Test Output',
         //   path: '/session-flow/output.html',
