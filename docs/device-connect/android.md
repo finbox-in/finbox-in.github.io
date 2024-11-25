@@ -9,10 +9,6 @@ The DeviceConnect Android SDK enables the collection of anonymized, non-PII data
 
 DeviceConnect Android SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
 
-
-
-
-
 <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
 <template v-slot:kotlin>
 
@@ -458,7 +454,7 @@ FinBox.resetData();
 
 ## Forget User
 
-If a user requests to be forgotten, use the `forgetUser` method. This will delete all user details from our system, ensuring compliance with privacy requirements.
+If a user requests to be forgotten, use the `forgetUser` method. This will delete all user details from our system, ensuring this meets digital guidelines for right to be forgotten.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -480,7 +476,7 @@ FinBox.forgetUser();
 
 ::: tip RECOMMENDATION
 -  When a user logs out, call both `stopPeriodicSync` and `resetData`  to:
-    * Clear existing user data.
     * Stop any ongoing periodic sync processes.
+    * Clear existing user data.
    This approach ensures a clean state before the next user session.
 :::

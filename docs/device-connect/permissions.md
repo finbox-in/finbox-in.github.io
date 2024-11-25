@@ -11,7 +11,7 @@ Additionally, include a link to the Privacy Policy at the bottom of the screen f
 
 Here’s an example structure for a Consent Screen
 
-<img src="/Permissions screen.jpg" alt="Permission Screen" style="width:500;height:600" />
+<img src="/Permissions_screen.jpg" alt="Permission Screen" style="width:500;height:600" />
 
 ### Runtime Permissions Added by the SDK
 Below are the list of Runtime permissions the sdk automatically adds to the application Manifest, if Manifest Merger is enabled:
@@ -35,7 +35,7 @@ To remove the unused permissions, add node marker value as `remove` to that perm
 Add the required permissions manually to your app’s manifest file. Use the list of permissions provided above as a reference. If Manifest Merger is enabled, you can skip this section
 
 ::: warning BEST PRACTICES
-- Clearly communicate why each permission is needed
+- Clearly communicate why each permission is needed to the end user.
 - Only request permissions that are essential for the app’s functionality.
 - Ensure that your Permission Screen aligns with Google Play policies for transparency and user consent
 :::

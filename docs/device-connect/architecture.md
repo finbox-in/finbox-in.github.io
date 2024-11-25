@@ -8,7 +8,7 @@
 * **Real-Time Insights**: Leverage FinBox’s advanced feature engine to access actionable scores and predictions.
 * **Privacy-First Design**: Built to comply with stringent privacy standards, ensuring no Personally Identifiable Information (PII) is stored or shared.
 
-<img src="/Device connect architecture.jpg" alt="DeviceConnect Architecture" style="width:100%;height:100%" />
+<img src="/Device_connect_architecture.jpg" alt="DeviceConnect Architecture" style="width:100%;height:100%" />
 
 **How DeviceConnect Works** :
 

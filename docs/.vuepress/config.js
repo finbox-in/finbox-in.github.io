@@ -60,8 +60,7 @@ module.exports = {
             {
               title: 'Handling Permissions',
               path: '/device-connect/permissions.html'
-            },
-            
+            }, 
             {
               title: 'Android SDK setup',
               path: '/device-connect/android.html'
