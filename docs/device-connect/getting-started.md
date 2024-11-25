@@ -9,7 +9,11 @@ To get started with DeviceConnect, the integration process involves two key step
 **Mobile App Integration** : This step focuses on incorporating the SDK into your Android or iOS application, enabling users to share data securely. Supported platforms include:
 
 * Android
-* iOS (via React Native, Cordova, Flutter)
+* iOS
+* React Native
+* Cordova
+* Flutter
+* Ionic Capacitor
 
 Detailed guides for each platform are available in the respective sections.
 
