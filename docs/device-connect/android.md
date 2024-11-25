@@ -1,5 +1,5 @@
-# DeviceConnect: Android
-Device Connect Android SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
+# DeviceConnect: Android SDK setup
+The DeviceConnect Android SDK enables the collection of anonymized, non-PII data from user devices, ensuring compliance with privacy policies by obtaining explicit user consent before initiating data sync processes.
 
 <div class="embed-container">
 <iframe src="https://www.youtube.com/embed/SfzGylmUVpY" title="Device Connect Data Sync" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -7,7 +7,11 @@ Device Connect Android SDK is used to collect anonymised non-PII data from the d
 
 ## Requirements
 
-Device Connect Android SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
+DeviceConnect Android SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
+
+
+
+
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
 <template v-slot:kotlin>
@@ -161,13 +165,18 @@ Following will be shared by FinBox team at the time of integration:
 
 ## Create User
 
-Call `createUser` method to create the user. It takes Client Api Key and Customer Id as the arguments.
+To create a user, call the `createUser` method with the following arguments:
+
+- Client API Key
+- Customer ID
 
 ::: danger IMPORTANT
-Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never be `null` or a blank string `""`.
+- `CUSTOMER_ID` Must be **alphanumeric** (no special characters).
+- Should not exceed **64** characters.
+- Must not be `null` or an empty string `""`.
 :::
 
-The response to this method (success or failure) can be captured using the callback `FinBoxAuthCallback`.
+The response (success or failure) is handled using the `FinBoxAuthCallback` callback.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -210,7 +219,8 @@ You can read about the errors in the [Error Codes](/device-connect/error-codes.h
 
 ## Start Periodic Sync
 
-This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals.
+The startPeriodicSync method should be invoked only after receiving a successful response from the `createUser` method callback. This method initiates background syncing for all data sources based on the permissions granted by the user. Data is synced at regular intervals in the background, ensuring continuous and seamless data collection.
+
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -231,6 +241,15 @@ finbox.startPeriodicSync();
 
 </template>
 </CodeSwitcher>
+
+::: tip RECOMMENDATION
+To handle cross-login scenarios:
+
+When a user logs back into the app with fresh credentials:
+- Call the `createUser` method to register the new user.
+- Follow it by `startPeriodicSync` to resume data syncing for the new user.
+Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
+:::
 
 ## Match Details on Device
 
@@ -291,7 +310,10 @@ For Device Match to work at full potential, the SDK expects `android.permission.
 
 ## Forward Notifications to SDK
 
-In certain cases, FinBox server requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
+Certain phone manufacturers, implement aggressive battery optimization features that kill apps running in the background after a certain period of inactivity. This can prevent the DeviceConnect SDK's continuous syncing from functioning properly, as it relies on background data collection. In such cases, FinBox’s server may need to request data from the SDK when continuous sync has stopped.
+
+To enable this functionality, we use Firebase Cloud Messaging (FCM) notifications process. Forwarding these notifications allows the app to "wake up" if it has been killed by the device’s background processes, ensuring continuous data collection. When the app receives an FCM notification, it "wakes up" and continues collecting the necessary data for integration.
+
 
 Add the following lines inside the overridden `onMessageReceived` method available in the service that extends `FirebaseMessagingService`.
 
@@ -324,13 +346,16 @@ if(MessagingService.forwardToFinBoxSDK(remoteMessage.getData())) {
 
 ## Multi-Process Support
 
-DeviceConnect uses a content provider to auto initialize the SDK. The limitation with the OS is that content providers are only initialized once in a **multi-process application** and from the main process. For this reason, any calls to the SDK from other processes will lead to unstable behavior.
+DeviceConnect uses a **content provider** to automatically initialize the SDK. However, Android has a limitation: in multi-process applications, **content providers are only initialized in the main process**. This means that any SDK calls from other processes may result in **unstable behavior**
 
-In case, you want to use the SDK from a process other than the main process, follow the two steps mentioned below to initialize the SDK.
+If you need to use the SDK in a process **other than the main process**, you must:
+1. Remove the auto-initializing content provider.
+2. Manually initialize the SDK in the required processes
+
 
 ### Remove the Content Provider
 
-Remove the content provider that auto initializes the SDK from the Android Manifest file.
+Remove the content provider from your `AndroidManifest.xml` file using the following snippet:
 ```xml
 <provider
     android:name="in.finbox.mobileriskmanager.init.AutoInitProvider"
@@ -341,7 +366,11 @@ Remove the content provider that auto initializes the SDK from the Android Manif
 ```
 ### Initialize the SDK
 
-Initialize the FinBox SDK in the `onCreate` method of Application class.
+After removing the auto-initializing content provider, you must manually initialize the FinBox SDK in your app. This ensures the SDK is properly set up whenever the app starts
+
+Open your app’s custom Application class. Override the `onCreate` method in the Application class and add the Finbox SDK initialization code.
+
+Use the following example as a guide:
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -383,7 +412,8 @@ finbox.stopPeriodicSync();
 
 ## Handle Sync Frequency
 
-By default sync frequency is set to **8 hours**, you can modify it by passing preferred time **in seconds** as an argument to `setSyncFrequency` method once the user is created.
+By default, the sync frequency is set to **8 hours**. You can customize this frequency by calling the `setSyncFrequency` method and passing your preferred interval **in seconds** as an argument. Ensure this method is invoked after the user is created
+
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -405,7 +435,8 @@ finbox.setSyncFrequency();
 
 ## Reset User Data
 
-In case the user data needs to be removed on the device so that you can re-sync the entire data, use the method `resetData`.
+If you need to clear a user's data stored on the device and initiate a fresh data sync, use the `resetData` method. This ensures that all previous data is removed, and syncing starts from scratch.
+
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -427,7 +458,7 @@ FinBox.resetData();
 
 ## Forget User
 
-In case the user choose to be forgotten, use the method `forgetUser`. This will delete the user details in our system.
+If a user requests to be forgotten, use the `forgetUser` method. This will delete all user details from our system, ensuring compliance with privacy requirements.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -445,3 +476,11 @@ FinBox.forgetUser();
 
 </template>
 </CodeSwitcher>
+
+
+::: tip RECOMMENDATION
+-  When a user logs out, call both `stopPeriodicSync` and `resetData`  to:
+    * Clear existing user data.
+    * Stop any ongoing periodic sync processes.
+   This approach ensures a clean state before the next user session.
+:::

@@ -40,41 +40,46 @@ module.exports = {
               path: '/device-connect/getting-started.html'
             },
             {
-              title: 'Integration',
+              title: 'Architecture',
+              path: '/device-connect/architecture.html'
+            },
+            {
+              title: 'DeviceConnect Integration',
               path: '/device-connect/integration-flow.html'
             },
           ]
         },
         {
-          title: 'Sharing Data',
+          title: 'Data Collection and Syncing',
           collapsable: false,
           children: [
             {
-              title: 'Integration',
+              title: 'FrontEnd Integration',
               path: '/device-connect/mobile-integration.html'
             },
             {
-              title: 'Permissions',
+              title: 'Handling Permissions',
               path: '/device-connect/permissions.html'
             },
+            
             {
-              title: 'Android',
+              title: 'Android SDK setup',
               path: '/device-connect/android.html'
             },
             {
-              title: 'React Native',
+              title: 'React Native SDK setup',
               path: '/device-connect/react-native.html'
             },
             {
-              title: 'Flutter',
+              title: 'Flutter SDK setup',
               path: '/device-connect/flutter.html'
             },
             {
-              title: 'Cordova',
+              title: 'Cordova SDK setup',
               path: '/device-connect/cordova.html'
             },
             {
-              title: 'Ionic Capacitor',
+              title: 'Ionic Capacitor SDK setup',
               path: '/device-connect/ionic-capacitor.html'
             },
             {
@@ -84,11 +89,11 @@ module.exports = {
           ]
         },
         {
-          title: 'Fetching Predictors',
+          title: 'Fetching Insights and Predictors',
           collapsable: false,
           children: [
             {
-              title: 'Integration',
+              title: 'Backend Integration',
               path: '/device-connect/insights-integration-flow.html'
             },
             {
