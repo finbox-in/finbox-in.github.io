@@ -50,7 +50,7 @@ module.exports = {
           ]
         },
         {
-          title: 'Data Collection and Syncing',
+          title: 'Data Collection',
           collapsable: false,
           children: [
             {
