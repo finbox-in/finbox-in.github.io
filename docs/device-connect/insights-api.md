@@ -1,6 +1,7 @@
 # DeviceConnect: Insights API
 
-FinBox DeviceConnect REST API enables **server to server data** fetching of customers' Android device data. The customer's data can be fetched using the `CUSTOMER_ID`. API accepts JSON-encoded request bodies, returns JSON-encoded responses.
+The FinBox DeviceConnect REST API enables **server-to-server** retrieval of anonymized device data for customers across supported platforms. Data can be fetched using the unique `CUSTOMER_ID` associated with each customer. The API accepts JSON-encoded request bodies and returns JSON-encoded responses, ensuring secure and efficient integration.
+
 
 ::: warning NOTE
 Following will be shared by FinBox team at the time of integration:
@@ -12,9 +13,9 @@ Following will be shared by FinBox team at the time of integration:
 
 ## Authentication
 
-FinBox provides a valid and signed certificate for all API methods and endpoints. To access the API methods requester must ensure that their connection library supports HTTPS.
+FinBox ensures secure communication by providing a valid, signed certificate for all API methods and endpoints. To access these APIs, the requesting client must use a connection library that supports HTTPS.
 
-Authentication for the APIs are based on **SERVER_API_KEY** provided by the FinBox. Server to server communication can commence when **IP of requester are whitelisted** on the FinBox servers. This can be easily done upon request.
+API authentication is managed using the **SERVER_API_KEY** provided by FinBox. Server-to-server communication is permitted only after the requester's **IP addresses are whitelisted** on FinBox servers. Whitelisting can be set up easily upon request
 
 ## Endpoints
 
@@ -37,7 +38,7 @@ For all the Insights API request structure is the same, all requests must have `
 | salt | String | A salt which is computed basis logic mentioned in the [Salt Generation](/device-connect/salt-generation.html) section |
 
 :::danger IMPORTANT
-Please note that this `CUSTOMER_ID` is the same used as the unique identifier used in Android SDK while syncing the data.
+The `CUSTOMER_ID` used here must match the identifier passed during SDK initialization. This ensures the predictors are calculated for the correct customer.
 :::
 
 ### Sample Request

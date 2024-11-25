@@ -1,28 +1,40 @@
-# DeviceConnect: Integration Flow
+# DeviceConnect: Mobile App Integration Flow
 
-Integration flow in the mobile app should be as follows
+The frontend integration process consists of three key steps.
 
 <img src="/device_connect_android_integration.jpg" alt="Device Connect Android Integration Workflow" style="width:80%;height:80%" />
 
 ### Step 1: Requesting Runtime Permissions
-It is required to show what all permissions you will be needing from users in your app, and then ask them for the permissions. Please refer [Handle Permissions](/device-connect/android.html#handle-permissions) section to get the list of permissions the SDK needs. Also in case you want to exclude certain permissions, you can use node marker value `remove` as mentioned in the same article.
+
+Implement a Consent Screen to show the permissions being requested and explain their benefits to the user.
+
+Refer to the [Handle Permissions](/device-connect/permissions.html#runtime-permissions-added-by-the-sdk) section for the complete list of permissions required by the SDK. To exclude unnecessary permissions, use the node marker value `remove` mentioned in the same section.
+
 
 ### Step 2: Creating the User
-After requesting, the `createUser` method can be called specifying a `CUSTOMER_ID` (Refer to [Create User](/device-connect/android.html#create-user-method) section for sample code and response), which represents a unique identifier for the user.
+
+After obtaining runtime permissions, you can call the `createUser` method with a specified `CUSTOMER_ID`  which serves as a unique identifier for the user.  
+
+The `createUser` method not only creates a user in the FinBox system but also serves as a validation check for your API credentials. This ensures that the credentials provided during integration are authorized and correct, allowing subsequent steps, such as data syncing, to proceed securely.
+
+For sample code and response details, Refer to section [Create User](/device-connect/android.html#create-user)
 
 ::: tip TIP
-- It is recommended that `CUSTOMER_ID` is a masked value not a unique personal identifier like a phone number or email id so that the user remains anonymous to FinBox.
-- SDK will automatically consider syncing based on whether permission was granted by the user or not and what was configured, hence the `createUser` method must be called even though the user denies certain permissions.
+- Avoid using unique personal identifiers like phone numbers or email addresses to ensure user anonymity, when creating the `CUSTOMER_ID`
+- Call the `createUser` method even if some permissions are denied by the user. The SDK will automatically sync data based on the granted permissions.
 :::
 
-`createUser` in general acts as a check for API credentials. For the first time when the user doesn't exists, it will create a user on the FinBox side. The next step will work only if this function returns a success response.
+
 
 ### Step 3: Start Syncing Data
-If the `createUser` response is successful, you can call `startPeriodicSync` function (Refer [Start Periodic Sync](/device-connect/android.html#start-periodic-sync-method) section) which will sync data in period intervals in background.
+
+Only after the `createUser`  method returns a successful response, call the `startPeriodicSync` function (Refer [Start Periodic Sync](/device-connect/android.html#start-periodic-sync) section) 
+
+This function will sync data at periodic intervals in the background.
 
 ::: danger IMPORTANT
-- The recommended approach is to call `createUser` (and then `startPeriodicSync` on success) method every time user accesses the app, so that the background sync process remains in check.
-- In certain cases, the FinBox server often communicates with SDK directly, to make sure this works it is required to **forward Notifications to SDK**. Refer [Forward Notifications to SDK
-](/device-connect/android.html#forward-notifications-to-sdk) section for it.
+- The recommended approach is to call the `createUser` method (and subsequently `startPeriodicSync` on success) each time the user accesses the app. This ensures the background sync process remains active, handles any permission changes seamlessly, and maintains a consistent connection with the FinBox servers
+- To ensure seamless communication between the FinBox server and the SDK, it is essential to **forward notifications to the SDK**. This enables the app to handle background process interruptions effectively. Refer [Forward Notifications to SDK
+](/device-connect/android.html#forward-notifications-to-sdk) section for it
 - In the case of a multi-process application, it is required to initialize the SDK manually before calling the `createUser` method. Refer [Multi-Process Support](/device-connect/android.html#multi-process-support) section for such cases.
 :::
