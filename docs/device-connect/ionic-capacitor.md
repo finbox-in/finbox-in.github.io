@@ -185,8 +185,13 @@ The startPeriodicSync method should be invoked only after receiving a successful
 IonicRiskSdk.startPeriodicSync(); //Start the sync periodically after every 12 hour
 ```
 
-::: tip Handle Sync Frequency
-`startPeriodicSync` takes one argument which indicates the frequency of sync **in hours**.
+::: tip RECOMMENDATION
+To handle cross-login scenarios:
+
+When a user logs back into the app with fresh credentials:
+- Call the `createUser` method to register the new user.
+- Follow it by `startPeriodicSync` to resume data syncing for the new user.
+Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
 :::
 
 ## Cancel Periodic
