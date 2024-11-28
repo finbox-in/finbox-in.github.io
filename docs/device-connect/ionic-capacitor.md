@@ -209,7 +209,7 @@ To enable this functionality, we use Firebase Cloud Messaging (FCM) notification
 
 ## Cancel Periodic
 
-If you have already set up the sync for the user data, you can cancel it any time by the following code:
+Make sure to cancel data synchronization tasks when the user logs out of the app by using the `stopPeriodicSync` method. This ensures that no background sync operations continue unnecessarily, maintaining data security.
 
 ```javascript
 IonicRiskSdk.stopPeriodicSync();
