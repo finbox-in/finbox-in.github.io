@@ -200,6 +200,13 @@ Device matching enables additional pattern recognition to match email, phone num
 
 Create the builder by passing email address, phone number and name of the customer.
 
+
+## Forward Notifications to SDK
+
+Certain phone manufacturers, implement aggressive battery optimization features that kill apps running in the background after a certain period of inactivity. This can prevent the DeviceConnect SDK's continuous syncing from functioning properly, as it relies on background data collection. In such cases, FinBox’s server may need to request data from the SDK when continuous sync has stopped.
+
+To enable this functionality, we use Firebase Cloud Messaging (FCM) notifications process. Forwarding these notifications allows the app to "wake up" if it has been killed by the device’s background processes, ensuring continuous data collection. When the app receives an FCM notification, it "wakes up" and continues collecting the necessary data for integration.
+
 ## Cancel Periodic
 
 If you have already set up the sync for the user data, you can cancel it any time by the following code:
