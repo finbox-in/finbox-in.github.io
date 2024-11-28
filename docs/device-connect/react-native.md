@@ -1,6 +1,6 @@
 # DeviceConnect: React Native
 
-Device Connect React Native SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
+The DeviceConnect Android SDK enables the collection of anonymized, non-PII data from user devices, ensuring compliance with privacy policies by obtaining explicit user consent before initiating data sync processes.
 
 ## Requirements
 
@@ -154,10 +154,14 @@ Following will be shared by FinBox team at the time of integration:
 
 ## Create User
 
-Call `createUser` method to create the user. It takes Client Api Key and Customer Id as the arguments.
+To create a user, call the createUser method with the following arguments:
 
+* Client API Key
+* Customer ID
 ::: danger IMPORTANT
-Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never be `null` or a blank string `""`.
+* `CUSTOMER_ID` Must be **alphanumeric** (no special characters).
+* Should not exceed **64** characters.
+* Must not be `null` or an empty `string` ""
 :::
 
 The response to this method (success or failure) can be captured using the callback.
@@ -186,7 +190,7 @@ You can read about the errors in the [Error Codes](/device-connect/error-codes.h
 
 ## Start Periodic Sync
 
-This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals:
+The startPeriodicSync method should be invoked only after receiving a successful response from the `createUser` method callback. This method initiates background syncing for all data sources based on the permissions granted by the user. Data is synced at regular intervals in the background, ensuring continuous and seamless data collection.
 
 ```javascript
 FinBoxRiskSdk.startPeriodicSync(12) //Start the sync periodically after every 12 hour
@@ -208,9 +212,11 @@ FinBoxRiskSdk.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
 
 ## Forward Notifications to SDK
 
-In certain cases, FinBox server requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
+Certain phone manufacturers, implement aggressive battery optimization features that kill apps running in the background after a certain period of inactivity. This can prevent the DeviceConnect SDK's continuous syncing from functioning properly, as it relies on background data collection. In such cases, FinBox’s server may need to request data from the SDK when continuous sync has stopped.
 
-Add the following lines inside `firebase.messaging().onMessage` method.
+To enable this functionality, we use Firebase Cloud Messaging (FCM) notifications process. Forwarding these notifications allows the app to "wake up" if it has been killed by the device’s background processes, ensuring continuous data collection. When the app receives an FCM notification, it "wakes up" and continues collecting the necessary data for integration.
+
+Add the following lines inside the overridden `onMessageReceived` method available in the service that extends `FirebaseMessagingService`.
 
 ```javascript
 FinBoxRiskSdk.forwardFinBoxNotificationToSDK(remoteMessage.data);
@@ -218,11 +224,32 @@ FinBoxRiskSdk.forwardFinBoxNotificationToSDK(remoteMessage.data);
 
 ## Cancel Periodic
 
-If you have already set up the sync for the user data, you can cancel it any time by the following code:
+Make sure to cancel data synchronization tasks when the user logs out of the app by using the `stopPeriodicSync` method. This ensures that no background sync operations continue unnecessarily, maintaining data security.
 
 ```javascript
 FinBoxRiskSdk.stopPeriodicSync();
 ```
+## Handle Sync Frequency
+
+By default, the sync frequency is set to **8 hours**. You can customize this frequency by calling the `setSyncFrequency` method and passing your preferred interval **in seconds** as an argument. Ensure this method is invoked after the user is created
+
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
+<template v-slot:kotlin>
+
+```kotlin
+finbox.setSyncFrequency(12 * 60 * 60)
+```
+
+</template>
+<template v-slot:java>
+
+```java
+finbox.setSyncFrequency();
+```
+
+</template>
+</CodeSwitcher>
 
 ## Reset User Data
 
