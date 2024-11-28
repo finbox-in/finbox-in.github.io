@@ -263,7 +263,7 @@ finbox.setSyncFrequency();
 
 ## Reset User Data
 
-In case the user data needs to be removed on the device so that you can re-sync the entire data, use the method `resetData`.
+If you need to clear a user's data stored on the device and initiate a fresh data sync, use the `resetData` method. This ensures that all previous data is removed, and syncing starts from scratch.
 
 ```javascript
 FinBoxRiskSdk.resetData();
