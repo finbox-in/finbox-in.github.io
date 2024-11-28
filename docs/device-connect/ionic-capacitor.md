@@ -1,10 +1,10 @@
 # DeviceConnect: Ionic Capacitor
 
-Device Connect Ionic Capacitor SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
+The DeviceConnect Ionic Capacitor SDK  enables the collection of anonymized, non-PII data from user devices, ensuring compliance with privacy policies by obtaining explicit user consent before initiating data sync processes.
 
 ## Requirements
 
-Device Connect React Native SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
+Device Connect SDK works on Android 5.0+ (API level 21+), requires Java 8+, and uses AndroidX libraries. To ensure compatibility with Android 7.0 and below, enable desugaring in the project build settings.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
 <template v-slot:kotlin>
