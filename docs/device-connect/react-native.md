@@ -1,6 +1,6 @@
 # DeviceConnect: React Native
 
-The DeviceConnect Android SDK enables the collection of anonymized, non-PII data from user devices, ensuring compliance with privacy policies by obtaining explicit user consent before initiating data sync processes.
+The DeviceConnect SDK enables the collection of anonymized, non-PII data from user devices, ensuring compliance with privacy policies by obtaining explicit user consent before initiating data sync processes.
 
 ## Requirements
 
