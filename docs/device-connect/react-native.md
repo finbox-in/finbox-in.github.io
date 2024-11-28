@@ -201,6 +201,15 @@ FinBoxRiskSdk.startPeriodicSync(12) //Start the sync periodically after every 12
 `startPeriodicSync` takes one argument which indicates the frequency of sync **in hours**.
 :::
 
+::: tip RECOMMENDATION
+To handle cross-login scenarios:
+
+When a user logs back into the app with fresh credentials:
+- Call the `createUser` method to register the new user.
+- Follow it by `startPeriodicSync` to resume data syncing for the new user.
+Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
+:::
+
 ## Match Details on Device
 
 Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
