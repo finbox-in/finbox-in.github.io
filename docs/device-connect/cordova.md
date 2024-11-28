@@ -167,17 +167,6 @@ Add the following lines inside `cordova.plugins.firebase.messaging.onMessage` an
 cordova.plugins.FinBoxRiskManager.forwardFinBoxNotificationToSDK(data);
 ```
 
-## Match Details on Device
-
-Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
-
-Call `setDeviceMatch` method before starting the syncs.
-
-```javascript
-cordova.plugins.FinBoxRiskManager.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
-```
-
-
 ## Multi-Process Support
 
 DeviceConnect uses a content provider to auto initialize the SDK. The limitation with the OS is that content providers are only initialized once in a **multi-process application** and from the main process. For this reason, any calls to the SDK from other processes will lead to unstable behavior.
