@@ -1,6 +1,6 @@
 # DeviceConnect: Cordova
 
-Device Connect Cordova SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
+The DeviceConnect Cordova SDK enables the collection of anonymized, non-PII data from user devices, ensuring compliance with privacy policies by obtaining explicit user consent before initiating data sync processes.
 
 
 ## Requirements
@@ -106,10 +106,15 @@ Following will be shared by FinBox team at the time of integration:
 
 ## Create User
 
-Call `createUser` method to create the user. It takes Client Api Key and Customer Id as the arguments.
+To create a user, call the `createUser` method with the following arguments:
+
+- Client API Key
+- Customer ID
 
 ::: danger IMPORTANT
-Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never be `null` or a blank string `""`.
+- `CUSTOMER_ID` Must be **alphanumeric** (no special characters).
+- Should not exceed **64** characters.
+- Must not be `null` or an empty string `""`.
 :::
 
 ```javascript
@@ -128,33 +133,38 @@ You can read about the errors in the [Error Codes](/device-connect/error-codes.h
 
 ## Start Periodic Sync
 
-This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals:
+The startPeriodicSync method should be invoked only after receiving a successful response from the `createUser` method callback. This method initiates background syncing for all data sources based on the permissions granted by the user. Data is synced at regular intervals in the background, ensuring continuous and seamless data collection.
 
 ```javascript
 cordova.plugins.FinBoxRiskManager.startPeriodicSync()
 ```
 
+::: tip RECOMMENDATION
+To handle cross-login scenarios:
+
+When a user logs back into the app with fresh credentials:
+- Call the `createUser` method to register the new user.
+- Follow it by `startPeriodicSync` to resume data syncing for the new user.
+Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
+:::
+
+## Match Details on Device
+
+Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
+
+Create the builder by passing email address, phone number and name of the customer. Once the in-device values are set, call `setDeviceMatch` before starting the syncs.
 
 ## Forward Notifications to SDK
 
-In certain cases, FinBox server requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
+Certain phone manufacturers, implement aggressive battery optimization features that kill apps running in the background after a certain period of inactivity. This can prevent the DeviceConnect SDK's continuous syncing from functioning properly, as it relies on background data collection. In such cases, FinBox’s server may need to request data from the SDK when continuous sync has stopped.
+
+To enable this functionality, we use Firebase Cloud Messaging (FCM) notifications process. Forwarding these notifications allows the app to "wake up" if it has been killed by the device’s background processes, ensuring continuous data collection. When the app receives an FCM notification, it "wakes up" and continues collecting the necessary data for integration.
 
 Add the following lines inside `cordova.plugins.firebase.messaging.onMessage` and `cordova.plugins.firebase.messaging.onBackgroundMessage` method.
 
 ```javascript
 cordova.plugins.FinBoxRiskManager.forwardFinBoxNotificationToSDK(data);
 ```
-
-## Match Details on Device
-
-Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
-
-Call `setDeviceMatch` method before starting the syncs.
-
-```javascript
-cordova.plugins.FinBoxRiskManager.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
-```
-
 
 ## Multi-Process Support
 
@@ -189,7 +199,7 @@ cordova.plugins.FinBoxRiskManager.initLibrary(this)
 
 ## Cancel Periodic Syncing
 
-If you have already set up the sync for the user data, you can cancel it any time by the following code:
+Make sure to cancel data synchronization tasks when the user logs out of the app by using the `stopPeriodicSync` method. This ensures that no background sync operations continue unnecessarily, maintaining data security.
 
 ```javascript
 cordova.plugins.FinBoxRiskManager.stopPeriodicSync();
@@ -198,7 +208,7 @@ cordova.plugins.FinBoxRiskManager.stopPeriodicSync();
 
 ## Handle Sync Frequency
 
-By default sync frequency is set to **8 hours**, you can modify it by passing preferred time **in seconds** as an argument to `setSyncFrequency` method once the user is created.
+By default, the sync frequency is set to **8 hours**. You can customize this frequency by calling the `setSyncFrequency` method and passing your preferred interval **in seconds** as an argument. Ensure this method is invoked after the user is created
 
 ```javascript
 cordova.plugins.FinBoxRiskManager.setSyncFrequency(12 * 60 * 60);
@@ -207,17 +217,23 @@ cordova.plugins.FinBoxRiskManager.setSyncFrequency(12 * 60 * 60);
 
 ## Reset User Data
 
-In case the user data needs to be removed on the device so that you can re-sync the entire data, use the method `resetData`.
+If you need to clear a user's data stored on the device and initiate a fresh data sync, use the `resetData` method. This ensures that all previous data is removed, and syncing starts from scratch.
 
 ```javascript
 cordova.plugins.FinBoxRiskManager.resetData();
 ```
 
-
 ## Forget User
 
-In case the user choose to be forgotten, use the method `forgetUser`. This will delete the user details in our system.
+If a user requests to be forgotten, use the `forgetUser` method. This will delete all user details from our system, ensuring this meets digital guidelines for right to be forgotten.
 
 ```javascript
 cordova.plugins.FinBoxRiskManager.forgetUser();
 ```
+
+::: tip RECOMMENDATION
+-  When a user logs out, call both `stopPeriodicSync` and `resetData`  to:
+    * Stop any ongoing periodic sync processes.
+    * Clear existing user data.
+   This approach ensures a clean state before the next user session.
+:::
