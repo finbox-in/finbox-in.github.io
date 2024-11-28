@@ -3,7 +3,6 @@
 The DeviceConnect Cordova SDK enables the collection of anonymized, non-PII data from user devices, ensuring compliance with privacy policies by obtaining explicit user consent before initiating data sync processes.
 
 
-
 ## Requirements
 
 Device Connect Cordova SDK works on Android 5.0+ (API level 21+), on Java 8+ and AndroidX. In addition to the changes, enable desugaring so that our SDK can run smoothly on Android 7.0 and versions below.
