@@ -131,11 +131,20 @@ You can read about the errors in the [Error Codes](/device-connect/error-codes.h
 
 ## Start Periodic Sync
 
-This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals.
+The startPeriodicSync method should be invoked only after receiving a successful response from the `createUser` method callback. This method initiates background syncing for all data sources based on the permissions granted by the user. Data is synced at regular intervals in the background, ensuring continuous and seamless data collection.
 
 ```dart
 FinBoxDcPlugin.startPeriodicSync();
 ```
+
+::: tip RECOMMENDATION
+To handle cross-login scenarios:
+
+When a user logs back into the app with fresh credentials:
+- Call the `createUser` method to register the new user.
+- Follow it by `startPeriodicSync` to resume data syncing for the new user.
+Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
+:::
 
 ## Match Details on Device
 
