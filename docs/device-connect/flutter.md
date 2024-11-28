@@ -158,7 +158,9 @@ FinBoxDcPlugin.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
 
 ## Forward Notifications to SDK
 
-In certain cases, FinBox server requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
+Certain phone manufacturers, implement aggressive battery optimization features that kill apps running in the background after a certain period of inactivity. This can prevent the DeviceConnect SDK's continuous syncing from functioning properly, as it relies on background data collection. In such cases, FinBox’s server may need to request data from the SDK when continuous sync has stopped.
+
+To enable this functionality, we use Firebase Cloud Messaging (FCM) notifications process. Forwarding these notifications allows the app to "wake up" if it has been killed by the device’s background processes, ensuring continuous data collection. When the app receives an FCM notification, it "wakes up" and continues collecting the necessary data for integration.
 
 Add the following lines inside `FirebaseMessaging.onMessage.listen` method.
 
