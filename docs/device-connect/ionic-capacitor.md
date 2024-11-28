@@ -194,6 +194,12 @@ When a user logs back into the app with fresh credentials:
 Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
 :::
 
+## Match Details on Device
+
+Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
+
+Create the builder by passing email address, phone number and name of the customer.
+
 ## Cancel Periodic
 
 If you have already set up the sync for the user data, you can cancel it any time by the following code:
