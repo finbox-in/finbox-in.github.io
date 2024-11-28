@@ -276,6 +276,7 @@ In case the user choose to be forgotten, use the method `forgetUser`. This will 
 ```javascript
 FinBoxRiskSdk.forgetUser();
 ```
+
 ::: tip RECOMMENDATION
 -  When a user logs out, call both `stopPeriodicSync` and `resetData`  to:
     * Stop any ongoing periodic sync processes.
