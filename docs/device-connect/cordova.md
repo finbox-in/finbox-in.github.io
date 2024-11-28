@@ -1,6 +1,7 @@
 # DeviceConnect: Cordova
 
-Device Connect Cordova SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
+The DeviceConnect Cordova SDK enables the collection of anonymized, non-PII data from user devices, ensuring compliance with privacy policies by obtaining explicit user consent before initiating data sync processes.
+
 
 
 ## Requirements
