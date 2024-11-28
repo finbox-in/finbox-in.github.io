@@ -153,7 +153,7 @@ Even though the SDK automatically adapts to a new user, this approach minimizes 
 
 Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
 
-Create the builder by passing email address, phone number and name of the customer.
+Create the builder by passing email address, phone number and name of the customer. Once the in-device values are set, call `setDeviceMatch` before starting the syncs.
 
 ## Forward Notifications to SDK
 
