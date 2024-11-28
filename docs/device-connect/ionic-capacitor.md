@@ -1,6 +1,6 @@
 # DeviceConnect: Ionic Capacitor
 
-The DeviceConnect Ionic Capacitor SDK  enables the collection of anonymized, non-PII data from user devices, ensuring compliance with privacy policies by obtaining explicit user consent before initiating data sync processes.
+The DeviceConnect Ionic Capacitor SDK enables the collection of anonymized, non-PII data from user devices, ensuring compliance with privacy policies by obtaining explicit user consent before initiating data sync processes.
 
 ## Requirements
 
