@@ -228,8 +228,15 @@ IonicRiskSdk.resetData();
 
 ## Forget User
 
-In case the user choose to be forgotten, use the method `forgetUser`. This will delete the user details in our system.
+If a user requests to be forgotten, use the `forgetUser` method. This will delete all user details from our system, ensuring this meets digital guidelines for right to be forgotten.
 
 ```javascript
 IonicRiskSdk.forgetUser();
 ```
+
+::: tip RECOMMENDATION
+-  When a user logs out, call both `stopPeriodicSync` and `resetData`  to:
+    * Stop any ongoing periodic sync processes.
+    * Clear existing user data.
+   This approach ensures a clean state before the next user session.
+:::
