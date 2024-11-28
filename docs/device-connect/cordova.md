@@ -231,3 +231,10 @@ If a user requests to be forgotten, use the `forgetUser` method. This will delet
 ```javascript
 cordova.plugins.FinBoxRiskManager.forgetUser();
 ```
+
+::: tip RECOMMENDATION
+-  When a user logs out, call both `stopPeriodicSync` and `resetData`  to:
+    * Stop any ongoing periodic sync processes.
+    * Clear existing user data.
+   This approach ensures a clean state before the next user session.
+:::
