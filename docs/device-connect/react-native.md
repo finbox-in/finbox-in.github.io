@@ -197,10 +197,6 @@ The startPeriodicSync method should be invoked only after receiving a successful
 FinBoxRiskSdk.startPeriodicSync(12) //Start the sync periodically after every 12 hour
 ```
 
-::: tip Handle Sync Frequency
-`startPeriodicSync` takes one argument which indicates the frequency of sync **in hours**.
-:::
-
 ::: tip RECOMMENDATION
 To handle cross-login scenarios:
 
