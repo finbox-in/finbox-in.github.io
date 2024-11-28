@@ -198,14 +198,25 @@ Even though the SDK automatically adapts to a new user, this approach minimizes 
 
 Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
 
-Create the builder by passing email address, phone number and name of the customer.
+To set up device matching in your Ionic Capacitor project, use the following method with the customer's email address, phone number, and name:
 
+```javascript
+IonicRiskSdk.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
+```
 
 ## Forward Notifications to SDK
 
 Certain phone manufacturers, implement aggressive battery optimization features that kill apps running in the background after a certain period of inactivity. This can prevent the DeviceConnect SDK's continuous syncing from functioning properly, as it relies on background data collection. In such cases, FinBox’s server may need to request data from the SDK when continuous sync has stopped.
 
 To enable this functionality, we use Firebase Cloud Messaging (FCM) notifications process. Forwarding these notifications allows the app to "wake up" if it has been killed by the device’s background processes, ensuring continuous data collection. When the app receives an FCM notification, it "wakes up" and continues collecting the necessary data for integration.
+
+Configure Firebase Cloud Messaging (FCM) in your Ionic Capacitor project and implement a notification handler to forward received notifications to the DeviceConnect SDK.
+
+Here’s an example of how to forward FCM notifications:
+
+```javascript
+IonicRiskSdk.forwardFinBoxNotificationToSDK(event.data);
+```
 
 ## Cancel Periodic
 
