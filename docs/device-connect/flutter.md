@@ -221,7 +221,7 @@ FinBoxDcPlugin.resetData();
 
 ## Forget User
 
-In case the user choose to be forgotten, use the method `forgetUser`. This will delete the user details in our system.
+If a user requests to be forgotten, use the `forgetUser` method. This will delete all user details from our system, ensuring this meets digital guidelines for right to be forgotten.
 
 ```dart
 FinBoxDcPlugin.forgetUser();
