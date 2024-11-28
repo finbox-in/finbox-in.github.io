@@ -241,25 +241,7 @@ FinBoxRiskSdk.stopPeriodicSync();
 ```
 ## Handle Sync Frequency
 
-By default, the sync frequency is set to **8 hours**. You can customize this frequency by calling the `setSyncFrequency` method and passing your preferred interval **in seconds** as an argument. Ensure this method is invoked after the user is created
-
-
-<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
-<template v-slot:kotlin>
-
-```kotlin
-finbox.setSyncFrequency(12 * 60 * 60)
-```
-
-</template>
-<template v-slot:java>
-
-```java
-finbox.setSyncFrequency();
-```
-
-</template>
-</CodeSwitcher>
+By default, the sync frequency is set to **8 hours**. You can customize this frequency by calling the `setSyncFrequency` method and passing your preferred interval **in seconds** as an argument. Ensure this method is invoked after the user is created.
 
 ## Reset User Data
 
