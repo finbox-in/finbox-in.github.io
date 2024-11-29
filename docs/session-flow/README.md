@@ -24,12 +24,12 @@ BankConnect requires API Keys to initialize the SDK and/or access the REST APIs.
 You can get your keys on [FinBox Dashboard](https://dashboard.bankconnect.finbox.in/). Please login to the BankConnect Dashboard using the credentials shared with you by the FinBox team. Once you're in, head to the Settings \> Configurations tab, where you'll find the Integration Keys (Bank Connect). These keys are essential for making API calls in your workflow.
 
 
-<!-- ## Postman Collection
+## Postman Collection
 Postman **collection** and **environment** for BankConnect REST APIs can be downloaded using the buttons below:
 
 <div class="button_holder">
-<a class="download_button" download href="/finbox_bankconnect.postman_collection.json">Download Collection</a>
-<a class="download_button" download href="/finbox_bankconnect.postman_environment.json">Download Environment</a>
+<a class="download_button" download href="/finbox_bankconnect_session.postman_collection.json">Download Collection</a>
+<a class="download_button" download href="/finbox_bankconnect_session.postman_environment.json">Download Environment</a>
 </div>
 
-Please replace `x-api-key` and `server-hash` in the Postman environment with the **API Key** and **Server Hash** provided by FinBox Team. -->
+Please replace `x-api-key` and `server-hash` in the Postman environment with the **API Key** and **Server Hash** provided by FinBox Team.

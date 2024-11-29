@@ -49,7 +49,7 @@ Request headers `x-api-key` with API Key as value and `server-hash` with Server 
 ```json
 {
   "session_id":"uuid4",
-  "event_name": "SESSION_COMPLETION_NOTIFICATION/SESSION_EXPIRY_NOTIFICATION",
+  "event_name": "SESSION_REQUIREMENT_COMPLETION_NOTIFICATION/SESSION_EXPIRY_NOTIFICATION",
   "accounts":[
     {
       "bank_name": "sbi",

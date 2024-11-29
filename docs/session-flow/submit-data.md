@@ -26,20 +26,23 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session/**
 
 | Name         | Type   | Description                                                                                                                                               | Required                      | Default                 |
 | ------------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ----------------------- |
-| link_id      | string | link_id value                                                                                                                                             | Yes                           | -                       |
+| link_id      | string | Your customer identifier                                                                                                                                             | Yes                           | -                       |
 | api_key      | string | API key provided by FinBox                                                                                                                                | Yes                           | -                       |
 | redirect_url | string | URL to redirect to incase of success or failure                                                                                                           | Yes for **Redirect Workflow** | -                       |
 | from_date    | string | Start date range to fetch statements. Should be of format `DD/MM/YYYY`                                                                                    | No                            | Last 6 month start date |
-| to_date      | string | End date range to fetch statements. Should be of format `DD/MM/YYYY`                                                                                      | No                            | Yesterday               |
+| to_date      | string | End date range to fetch statements. Should be of format `DD/MM/YYYY`                                                                                      | No                            | Today               |
 | logo_url     | string | An optional parameter to show logo branding in bankconnect SDK. Should be a URL.                                                                          | No                            | -                       |
-| bank_name    | string | Pass the [bank identifier](/session-flow/appendix.html#bank-identifiers) to skip the bank selection screen and directly open a that bank's screen instead | No                            | -                       |
+| bank_name    | string | Pass the bank identifier to skip the bank selection screen and directly open a that bank's screen instead | No                            | -                       |
 | mode         | string | Optional parameter to set the mode(i.e. pdf, aa, and online)                                                                                              | No                            | -                       |
 | mobile_number  | string  | Optional parameter to prefill phone number in Account Aggregator mode                                     | No                        |
-| session_expiry | integer | Optional parameter to set expiry timing for each session created                                          | No                        |
+| session_expiry | integer | Optional parameter to set expiry timing (in minutes) for each session created                                          | No                        |
 | journey_mode   | string  | Optional parameter to set the journey(i.e. multi_pdf or multi_banking)                                    | No                        |
+| accept_anything   | boolean  | This option allows the system to accept any data provided without applying strict validation rules.                                    | No                        | false  |
+| is_mobile_field_editable   | boolean  | Makes the mobile number field editable when pre-filled in the Account Aggregator journey.                                    | No                        | false  |
 
 
-`from_date` and `to_date` specify the period for which the statements will be fetched. For example, if you need the last 6 months of statements, `from_date` will be today's date - 6 months and `to_date` will be today's date - 1 day. If not provided the default date range is 6 months from the current date. It should be in `DD/MM/YYYY` format.
+
+`from_date` and `to_date` specify the period for which the statements will be fetched. For example, if you need the last 6 months of statements, `from_date` will be today's date - 6 months and `to_date` will be today's date. If not provided the default date range is 6 months from the current date. It should be in `DD/MM/YYYY` format.
 
 <b>Note</b>: If the `to-date` lies in the first week of the month, the respective month is not considered in the journey.
 
@@ -47,7 +50,6 @@ POST **{{$page.frontmatter.base_url}}/{{$page.frontmatter.version}}/session/**
 
 - `redirect_url` in request is a compulsory field in [Redirect Workflow](/bank-connect/javascript.html#redirect-workflow) but is not required with the [Inline Frame workflow](/bank-connect/javascript.html#inline-frame-workflow)
 - Please make sure `from_date` is always less than `to_date`
-- Make sure `to_date` is never today's date, the maximum possible value for it is today's date - 1 day
   :::
 
 

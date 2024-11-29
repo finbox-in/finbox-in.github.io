@@ -22,7 +22,7 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'DeviceConnect', link: '/device-connect/' },
-      { text: 'BankConnect', link: '/bank-connect/' },
+      { text: 'BankConnect', link: '/session-flow/' },
       { text: 'About', link: 'https://finbox.in' },
     ],
     sidebar: {
@@ -342,6 +342,11 @@ module.exports = {
         {
           title: 'Acceptance Criteria',
           path: '/session-flow/acceptance-criteria.html',
+          collapsable: true
+        },
+        {
+          title: 'Management',
+          path: '/session-flow/management.html',
           collapsable: true
         },
         {
