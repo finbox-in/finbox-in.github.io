@@ -48,6 +48,44 @@ Request headers `x-api-key` with API Key as value and `server-hash` with Server 
 
 ```json
 {
+  "session_id": "409ed817-b824-4818-a7f7-dc532ce0d8fc",
+  "event_name": "SESSION_REQUIREMENT_COMPLETION_NOTIFICATION/SESSION_EXPIRY_NOTIFICATION",
+  "message": "Session expired/Upload Completed",
+  "accounts": [
+    {
+      "account_id": "814d062e-1c36-409f-9f9c-acb32e7984b0",
+      "account_number": "5413699704",
+      "bank_name": "kotak",
+      "created_at": "2024-04-26 12:25:57",
+      "last_updated_at": "2024-04-26 12:26:27",
+      "statements": [
+        {
+          "statement_id": "fe49d6a6-1c0e-4e6d-911a-c38b6a4f0d04",
+          "statement_status": "completed",
+          "error_code": null,
+          "error_message": null,
+          "source": "pdf",
+          "created_at": "2024-04-26 12:25:56.172124+00:00"
+        }
+      ],
+      "account_status": "PARTIAL",
+      "months": [
+        "2023-10",
+        "2023-11",
+        "2023-12",
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04"
+      ]
+    }
+  ],
+  "session_date_range": {
+    "from_date": "25/10/2023",
+    "to_date": "25/04/2024"
+  }
+}
+{
   "session_id":"uuid4",
   "event_name": "SESSION_REQUIREMENT_COMPLETION_NOTIFICATION/SESSION_EXPIRY_NOTIFICATION",
   "accounts":[
