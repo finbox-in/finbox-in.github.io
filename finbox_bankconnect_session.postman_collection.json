@@ -1,0 +1,458 @@
+{
+	"info": {
+		"_postman_id": "f71f6221-1e61-46d9-9052-432eb97387f0",
+		"name": "FinBox - BankConnect Session Flow",
+		"description": "Set of REST APIs for FinBox BankConnect Session Flow Integration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28765083"
+	},
+	"item": [
+		{
+			"name": "Session",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"session_id\", jsonData.session_id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"api_key\":\"{{x-api-key}}\",\t\n    \"link_id\": \"test_user_1\",\n    \"from_date\":\"01/09/2023\",\n    \"to_date\":\"05/03/2024\",\n    \"redirect_url\":\"https://www.google.com/\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/bank-connect/v1/session/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bank-connect",
+						"v1",
+						"session",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Statement",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{x-api-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"description": "Statement PDF",
+							"type": "file",
+							"src": "/Users/nayan.paruthi/Downloads/Session Flow Testing Statements/hdfc dec-marc.pdf"
+						},
+						{
+							"key": "file_url",
+							"description": "Statement PDF URL",
+							"type": "text",
+							"src": "s3_presigned_url"
+						},
+						{
+							"key": "bank_name",
+							"value": "hdfc",
+							"description": "Bank Name Identifier",
+							"type": "text"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}",
+							"description": "Session ID for the User",
+							"type": "text"
+						},
+						{
+							"key": "upload_type",
+							"value": "PDF",
+							"description": "Statement file type",
+							"type": "text"
+						},
+						{
+							"key": "pdf_password",
+							"value": "",
+							"description": "PDF Password if any (optional)",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/bank-connect/v1/statement/upload_session/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bank-connect",
+						"v1",
+						"statement",
+						"upload_session",
+						""
+					]
+				},
+				"description": "Upload a bank statement (with bank name), and get basic identity information in response"
+			},
+			"response": []
+		},
+		{
+			"name": "Session Upload Status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{x-api-key}}",
+						"type": "text"
+					},
+					{
+						"key": "server-hash",
+						"value": "{{server-hash}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/bank-connect/v1/session_data/{{session_id}}/session_upload_status/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bank-connect",
+						"v1",
+						"session_data",
+						"{{session_id}}",
+						"session_upload_status",
+						""
+					]
+				},
+				"description": "Fetch identity information for a given `entity_id`"
+			},
+			"response": []
+		},
+		{
+			"name": "Initiate Processing",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{x-api-key}}"
+					},
+					{
+						"key": "server-hash",
+						"value": "{{server-hash}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/bank-connect/v1/session_data/{{session_id}}/initiate_processing/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bank-connect",
+						"v1",
+						"session_data",
+						"{{session_id}}",
+						"initiate_processing",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "progress",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{x-api-key}}",
+						"type": "text"
+					},
+					{
+						"key": "server-hash",
+						"value": "{{server-hash}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/bank-connect/v1/session_data/{{session_id}}/progress/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bank-connect",
+						"v1",
+						"session_data",
+						"{{session_id}}",
+						"progress",
+						""
+					]
+				},
+				"description": "Fetch identity information for a given `entity_id`"
+			},
+			"response": []
+		},
+		{
+			"name": "Session Status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{x-api-key}}"
+					},
+					{
+						"key": "server-hash",
+						"value": "{{server-hash}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/bank-connect/v1/session_data/{{session_id}}/session_status/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bank-connect",
+						"v1",
+						"session_data",
+						"{{session_id}}",
+						"session_status",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insights API",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{x-api-key}}"
+					},
+					{
+						"key": "server-hash",
+						"value": "{{server-hash}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/bank-connect/v1/session_data/{{session_id}}/insights/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bank-connect",
+						"v1",
+						"session_data",
+						"{{session_id}}",
+						"insights",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get PDFs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "{{x-api-key}}"
+					},
+					{
+						"key": "server-hash",
+						"value": "{{server-hash}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/bank-connect/v1/session_data/{{session_id}}/get_pdfs/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bank-connect",
+						"v1",
+						"session_data",
+						"{{session_id}}",
+						"get_pdfs",
+						""
+					]
+				},
+				"description": "Fetch pdf urls, bank and password for all statements in a given `entity_id`"
+			},
+			"response": []
+		},
+		{
+			"name": "Bank Catalogue",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{x-api-key}}"
+					},
+					{
+						"key": "server-hash",
+						"value": "{{server-hash}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/bank-connect/v1/banks/catalogue",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bank-connect",
+						"v1",
+						"banks",
+						"catalogue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Session",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{x-api-key}}"
+					},
+					{
+						"key": "server-hash",
+						"value": "{{server-hash}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/bank-connect/v1/session_data/{{session_id}}/delete/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bank-connect",
+						"v1",
+						"session_data",
+						"{{session_id}}",
+						"delete",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Webhook",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"type": "text",
+						"value": "{{x-api-key}}"
+					},
+					{
+						"key": "server-hash",
+						"value": "{{server-hash}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"webhook_url\": \"https://postman-echo.com/post\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/bank-connect/v1/session_data/update_webhook/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"bank-connect",
+						"v1",
+						"session_data",
+						"update_webhook",
+						""
+					]
+				},
+				"description": "API to update webhook URL"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
