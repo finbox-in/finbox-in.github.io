@@ -85,19 +85,6 @@ Request headers `x-api-key` with API Key as value and `server-hash` with Server 
     "to_date": "25/04/2024"
   }
 }
-{
-  "session_id":"uuid4",
-  "event_name": "SESSION_REQUIREMENT_COMPLETION_NOTIFICATION/SESSION_EXPIRY_NOTIFICATION",
-  "accounts":[
-    {
-      "bank_name": "sbi",
-      "account_id" :"account_uuid4",
-      "account_status" :"completed",
-      "error_code" : null,
-      "error_message": null
-    }
-  ]
-}
 
 ```
 
