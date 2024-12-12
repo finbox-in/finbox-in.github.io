@@ -29,6 +29,7 @@ Detailed guides for each platform are available in the respective sections.
 | React Native        | Cross-platform integration     | [React Native Guide](/device-connect/react-native.html)|
 | Cordova             | Hybrid app integration         | [Cordova Guide](/device-connect/cordova.html)   |
 | Flutter             | Cross-platform integration     | [Flutter Guide](/device-connect/flutter.html)   |
+| Ionic Capacitor     | Cross-platform integration     | [Ionic Capacitor Guide](/device-connect/ionic-capacitor.html)   |
 
 
 
