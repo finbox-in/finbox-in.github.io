@@ -10,6 +10,5 @@ The synced data is securely processed and transformed into **actionable insights
 
 <img src="/device_connect_integration.jpg" alt="Device Connect Integration Workflow" />
 
-Checkout the [integration flow](/device-connect/integration-flow.html) for better understanding
 
 Explore the [Data Collection and Syncing](/device-connect/mobile-integration.html), followed by [Fetching Insights and Predictors](/device-connect/insights-integration-flow.html) sections for better understanding
