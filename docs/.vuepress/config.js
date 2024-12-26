@@ -60,7 +60,7 @@ module.exports = {
             {
               title: 'Handling Permissions',
               path: '/device-connect/permissions.html'
-            }, 
+            },
           ]
         },
         {
@@ -121,7 +121,7 @@ module.exports = {
         },
         {
           title: 'FAQ',
-          collapsable: true,
+          collapsable: false,
           children: [
             {
               title: 'FAQ',
