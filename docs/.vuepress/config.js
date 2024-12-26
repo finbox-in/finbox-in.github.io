@@ -65,7 +65,7 @@ module.exports = {
         },
         {
           title: 'SDKs',
-          collapsable: true,
+          collapsable: false,
           children: [
             {
               title: 'Android SDK setup',
