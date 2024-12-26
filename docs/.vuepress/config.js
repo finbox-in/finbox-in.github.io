@@ -54,7 +54,7 @@ module.exports = {
           collapsable: false,
           children: [
             {
-              title: 'FrontEnd Integration',
+              title: 'Frontend Integration',
               path: '/device-connect/mobile-integration.html'
             },
             {
