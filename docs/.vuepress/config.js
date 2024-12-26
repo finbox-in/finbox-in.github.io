@@ -61,6 +61,12 @@ module.exports = {
               title: 'Handling Permissions',
               path: '/device-connect/permissions.html'
             }, 
+          ]
+        },
+        {
+          title: 'SDKs',
+          collapsable: true,
+          children: [
             {
               title: 'Android SDK setup',
               path: '/device-connect/android.html'
