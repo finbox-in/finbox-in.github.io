@@ -82,6 +82,14 @@ module.exports = {
               path: '/device-connect/ionic-capacitor.html'
             },
             {
+              title: 'Web SDK setup',
+              path: '/device-connect/web.html'
+            },
+            {
+              title: 'IOS SDK setup',
+              path: '/device-connect/ios.html'
+            },
+            {
               title: 'Error Codes',
               path: '/device-connect/error-codes.html'
             }
