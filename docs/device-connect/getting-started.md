@@ -30,6 +30,8 @@ Detailed guides for each platform are available in the respective sections.
 | Cordova             | Hybrid app integration         | [Cordova Guide](/device-connect/cordova.html)   |
 | Flutter             | Cross-platform integration     | [Flutter Guide](/device-connect/flutter.html)   |
 | Ionic Capacitor     | Cross-platform integration     | [Ionic Capacitor Guide](/device-connect/ionic-capacitor.html)   |
+| IOS    | Native IOS app integration     | [IOS Guide](/device-connect/ios.html)   |
+| Web     | Web integration     | [Web Guide](/device-connect/web.html)   |
 
 
 
