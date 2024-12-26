@@ -36,5 +36,3 @@ Detailed guides for each platform are available in the respective sections.
 **Backend Integration** : Once the mobile integration is complete, the next step is to fetch predictors that aid in making informed decisions. This is achieved via the Insights API, which provides access to key predictive data points.
 
 - [Insights API](/device-connect/insights-api.html)
-
-Checkout the [integration flow](/device-connect/integration-flow.html) for better understanding
