@@ -247,6 +247,104 @@ When a user logs back into the app with fresh credentials:
 Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
 :::
 
+## Handle Sync Frequency
+
+By default, the sync frequency is set to **8 hours**. You can customize this frequency by calling the `setSyncFrequency` method and passing your preferred interval **in seconds** as an argument. Ensure this method is invoked after the user is created
+
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
+<template v-slot:kotlin>
+
+```kotlin
+finbox.setSyncFrequency(12 * 60 * 60)
+```
+
+</template>
+<template v-slot:java>
+
+```java
+finbox.setSyncFrequency();
+```
+
+</template>
+</CodeSwitcher>
+
+
+## Cancel Periodic Sync
+
+Make sure to cancel data synchronization tasks when the user logs out of the app by using the `stopPeriodicSync` method. This ensures that no background sync operations continue unnecessarily, maintaining data security.
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
+<template v-slot:kotlin>
+
+```kotlin
+finbox.stopPeriodicSync()
+```
+
+</template>
+<template v-slot:java>
+
+```java
+finbox.stopPeriodicSync();
+```
+
+</template>
+</CodeSwitcher>
+
+## Reset User Data
+
+If you need to clear a user's data stored on the device and initiate a fresh data sync, use the `resetData` method. This ensures that all previous data is removed, and syncing starts from scratch.
+
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
+<template v-slot:kotlin>
+
+```kotlin
+FinBox.resetData()
+```
+
+</template>
+<template v-slot:java>
+
+```java
+FinBox.resetData();
+```
+
+</template>
+</CodeSwitcher>
+
+
+## Forget User
+
+If a user requests to be forgotten, use the `forgetUser` method. This will delete all user details from our system, ensuring this meets digital guidelines for right to be forgotten.
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
+<template v-slot:kotlin>
+
+```kotlin
+FinBox.forgetUser()
+```
+
+</template>
+<template v-slot:java>
+
+```java
+FinBox.forgetUser();
+```
+
+</template>
+</CodeSwitcher>
+
+
+::: tip RECOMMENDATION
+-  When a user logs out, call both `stopPeriodicSync` and `resetData`  to:
+    * Stop any ongoing periodic sync processes.
+    * Clear existing user data.
+   This approach ensures a clean state before the next user session.
+:::
+
+# Important Features:
+
 ## Match Details on Device
 
 Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
@@ -340,6 +438,8 @@ if(MessagingService.forwardToFinBoxSDK(remoteMessage.getData())) {
 </template>
 </CodeSwitcher>
 
+# Optional Features:
+
 ## Multi-Process Support
 
 DeviceConnect uses a **content provider** to automatically initialize the SDK. However, Android has a limitation: in multi-process applications, **content providers are only initialized in the main process**. This means that any SDK calls from other processes may result in **unstable behavior**
@@ -384,99 +484,3 @@ FinBox.initLibrary(this);
 
 </template>
 </CodeSwitcher>
-
-## Cancel Periodic Sync
-
-Make sure to cancel data synchronization tasks when the user logs out of the app by using the `stopPeriodicSync` method. This ensures that no background sync operations continue unnecessarily, maintaining data security.
-
-<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
-<template v-slot:kotlin>
-
-```kotlin
-finbox.stopPeriodicSync()
-```
-
-</template>
-<template v-slot:java>
-
-```java
-finbox.stopPeriodicSync();
-```
-
-</template>
-</CodeSwitcher>
-
-## Handle Sync Frequency
-
-By default, the sync frequency is set to **8 hours**. You can customize this frequency by calling the `setSyncFrequency` method and passing your preferred interval **in seconds** as an argument. Ensure this method is invoked after the user is created
-
-
-<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
-<template v-slot:kotlin>
-
-```kotlin
-finbox.setSyncFrequency(12 * 60 * 60)
-```
-
-</template>
-<template v-slot:java>
-
-```java
-finbox.setSyncFrequency();
-```
-
-</template>
-</CodeSwitcher>
-
-
-## Reset User Data
-
-If you need to clear a user's data stored on the device and initiate a fresh data sync, use the `resetData` method. This ensures that all previous data is removed, and syncing starts from scratch.
-
-
-<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
-<template v-slot:kotlin>
-
-```kotlin
-FinBox.resetData()
-```
-
-</template>
-<template v-slot:java>
-
-```java
-FinBox.resetData();
-```
-
-</template>
-</CodeSwitcher>
-
-
-## Forget User
-
-If a user requests to be forgotten, use the `forgetUser` method. This will delete all user details from our system, ensuring this meets digital guidelines for right to be forgotten.
-
-<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
-<template v-slot:kotlin>
-
-```kotlin
-FinBox.forgetUser()
-```
-
-</template>
-<template v-slot:java>
-
-```java
-FinBox.forgetUser();
-```
-
-</template>
-</CodeSwitcher>
-
-
-::: tip RECOMMENDATION
--  When a user logs out, call both `stopPeriodicSync` and `resetData`  to:
-    * Stop any ongoing periodic sync processes.
-    * Clear existing user data.
-   This approach ensures a clean state before the next user session.
-:::
