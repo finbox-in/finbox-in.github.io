@@ -55,7 +55,7 @@ module.exports = {
           children: [
             {
               title: 'Frontend Integration',
-              path: '/device-connect/mobile-integration.html'
+              path: '/device-connect/frontend-integration.html'
             },
             {
               title: 'Handling Permissions',
@@ -66,7 +66,7 @@ module.exports = {
               collapsable: false,
               children: [
                 {
-                  title: 'Java/Kotlin',
+                  title: 'Android',
                   path: '/device-connect/android.html'
                 },
                 {

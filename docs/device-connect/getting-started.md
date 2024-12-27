@@ -2,7 +2,7 @@
 
 FinBox DeviceConnect is an SDK that seamlessly integrates into lenders' frontend apps/websites, facilitating secure data sharing and providing valuable predictive insights to support informed decision-making.
 
-To get started with DeviceConnect, the integration process involves two key steps:
+To Get Started with DeviceConnect, the integration process involves two key steps:
 
 <img src="/device_connect_frontend_server_integrations.svg" alt="DeviceConnect Frontend Server Integration" style="width:100%;height:100%" />
 
