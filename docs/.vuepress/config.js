@@ -61,6 +61,32 @@ module.exports = {
               title: 'Handling Permissions',
               path: '/device-connect/permissions.html'
             },
+          ]
+        },
+        {
+          title: 'SDKs',
+          collapsable: false,
+          children: [
+            {
+              title: 'Android SDK setup',
+              path: '/device-connect/android.html'
+            },
+            {
+              title: 'React Native SDK setup',
+              path: '/device-connect/react-native.html'
+            },
+            {
+              title: 'Flutter SDK setup',
+              path: '/device-connect/flutter.html'
+            },
+            {
+              title: 'Cordova SDK setup',
+              path: '/device-connect/cordova.html'
+            },
+            {
+              title: 'Ionic Capacitor SDK setup',
+              path: '/device-connect/ionic-capacitor.html'
+            },
             {
               title: 'SDKs',
               collapsable: false,
