@@ -66,7 +66,7 @@ module.exports = {
               collapsable: false,
               children: [
                 {
-                  title: 'Android',
+                  title: 'Java/Kotlin',
                   path: '/device-connect/android.html'
                 },
                 {
@@ -74,11 +74,11 @@ module.exports = {
                   path: '/device-connect/react-native.html'
                 },
                 {
-                  title: 'Flutter SDK',
+                  title: 'Flutter',
                   path: '/device-connect/flutter.html'
                 },
                 {
-                  title: 'Cordova SDK',
+                  title: 'Cordova',
                   path: '/device-connect/cordova.html'
                 },
                 {
@@ -86,11 +86,11 @@ module.exports = {
                   path: '/device-connect/ionic-capacitor.html'
                 },
                 {
-                  title: 'Web SDK',
+                  title: 'Web',
                   path: '/device-connect/web.html'
                 },
                 {
-                  title: 'IOS SDK',
+                  title: 'IOS',
                   path: '/device-connect/ios.html'
                 },
                 {
