@@ -1,4 +1,5 @@
-# DeviceConnect: Android SDK setup
+# DeviceConnect: Android
+
 The DeviceConnect Android SDK enables the collection of anonymized, non-PII data from user devices, ensuring compliance with privacy policies by obtaining explicit user consent before initiating data sync processes.
 
 <div class="embed-container">
@@ -75,6 +76,7 @@ dependencies {
 </CodeSwitcher>
 
 ## Adding Dependency
+
 In the project level `build.gradle` file or `settings.gradle`, add the repository URLs to all `allprojects` block or `repositories` block inside `dependencyResolutionManagement`.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',groovy:'Groovy'}">
@@ -149,6 +151,7 @@ implementation ('in.finbox:logger:<LOGGER_SDK_VERSION>:parent-release@aar') {
 
 ::: warning NOTE
 Following will be shared by FinBox team at the time of integration:
+
 - `ACCESS_KEY`
 - `SECRET_KEY`
 - `DC_SDK_VERSION`
@@ -158,7 +161,6 @@ Following will be shared by FinBox team at the time of integration:
 - `CLIENT_API_KEY`
 :::
 
-
 ## Create User
 
 To create a user, call the `createUser` method with the following arguments:
@@ -167,6 +169,7 @@ To create a user, call the `createUser` method with the following arguments:
 - Customer ID
 
 ::: danger IMPORTANT
+
 - `CUSTOMER_ID` Must be **alphanumeric** (no special characters).
 - Should not exceed **64** characters.
 - Must not be `null` or an empty string `""`.
@@ -217,7 +220,6 @@ You can read about the errors in the [Error Codes](/device-connect/error-codes.h
 
 The startPeriodicSync method should be invoked only after receiving a successful response from the `createUser` method callback. This method initiates background syncing for all data sources based on the permissions granted by the user. Data is synced at regular intervals in the background, ensuring continuous and seamless data collection.
 
-
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
 
@@ -242,12 +244,13 @@ finbox.startPeriodicSync();
 To handle cross-login scenarios:
 
 When a user logs back into the app with fresh credentials:
+
 - Call the `createUser` method to register the new user.
 - Follow it by `startPeriodicSync` to resume data syncing for the new user.
 Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
 :::
 
-## Match Details on Device
+## Match Details on Device (Important)
 
 Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
 
@@ -279,7 +282,6 @@ final DeviceMatch deviceMatch = builder.build();
 </template>
 </CodeSwitcher>
 
-
 Once the in-device values are set, call `setDeviceMatch` before starting the syncs.
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
@@ -304,12 +306,11 @@ finbox.setDeviceMatch(deviceMatch);
 For Device Match to work at full potential, the SDK expects `android.permission.READ_CONTACTS`, `android.permission.GET_ACCOUNTS`, `android.permission.READ_SMS` to be accepted by the user.
 :::
 
-## Forward Notifications to SDK
+## Forward Notifications to SDK (Important)
 
 Certain phone manufacturers, implement aggressive battery optimization features that kill apps running in the background after a certain period of inactivity. This can prevent the DeviceConnect SDK's continuous syncing from functioning properly, as it relies on background data collection. In such cases, FinBox’s server may need to request data from the SDK when continuous sync has stopped.
 
 To enable this functionality, we use Firebase Cloud Messaging (FCM) notifications process. Forwarding these notifications allows the app to "wake up" if it has been killed by the device’s background processes, ensuring continuous data collection. When the app receives an FCM notification, it "wakes up" and continues collecting the necessary data for integration.
-
 
 Add the following lines inside the overridden `onMessageReceived` method available in the service that extends `FirebaseMessagingService`.
 
@@ -340,18 +341,19 @@ if(MessagingService.forwardToFinBoxSDK(remoteMessage.getData())) {
 </template>
 </CodeSwitcher>
 
-## Multi-Process Support
+## Multi-Process Support (Optional)
 
 DeviceConnect uses a **content provider** to automatically initialize the SDK. However, Android has a limitation: in multi-process applications, **content providers are only initialized in the main process**. This means that any SDK calls from other processes may result in **unstable behavior**
 
 If you need to use the SDK in a process **other than the main process**, you must:
+
 1. Remove the auto-initializing content provider.
 2. Manually initialize the SDK in the required processes
-
 
 ### Remove the Content Provider
 
 Remove the content provider from your `AndroidManifest.xml` file using the following snippet:
+
 ```xml
 <provider
     android:name="in.finbox.mobileriskmanager.init.AutoInitProvider"
@@ -360,6 +362,7 @@ Remove the content provider from your `AndroidManifest.xml` file using the follo
     android:exported="false"
     tools:node="remove" />
 ```
+
 ### Initialize the SDK
 
 After removing the auto-initializing content provider, you must manually initialize the FinBox SDK in your app. This ensures the SDK is properly set up whenever the app starts
@@ -380,6 +383,27 @@ FinBox.initLibrary(this)
 
 ```java
 FinBox.initLibrary(this);
+```
+
+</template>
+</CodeSwitcher>
+
+## Handle Sync Frequency (Optional)
+
+By default, the sync frequency is set to **8 hours**. You can customize this frequency by calling the `setSyncFrequency` method and passing your preferred interval **in seconds** as an argument. Ensure this method is invoked after the user is created
+
+<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
+<template v-slot:kotlin>
+
+```kotlin
+finbox.setSyncFrequency(12 * 60 * 60)
+```
+
+</template>
+<template v-slot:java>
+
+```java
+finbox.setSyncFrequency();
 ```
 
 </template>
@@ -406,33 +430,9 @@ finbox.stopPeriodicSync();
 </template>
 </CodeSwitcher>
 
-## Handle Sync Frequency
-
-By default, the sync frequency is set to **8 hours**. You can customize this frequency by calling the `setSyncFrequency` method and passing your preferred interval **in seconds** as an argument. Ensure this method is invoked after the user is created
-
-
-<CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
-<template v-slot:kotlin>
-
-```kotlin
-finbox.setSyncFrequency(12 * 60 * 60)
-```
-
-</template>
-<template v-slot:java>
-
-```java
-finbox.setSyncFrequency();
-```
-
-</template>
-</CodeSwitcher>
-
-
 ## Reset User Data
 
 If you need to clear a user's data stored on the device and initiate a fresh data sync, use the `resetData` method. This ensures that all previous data is removed, and syncing starts from scratch.
-
 
 <CodeSwitcher :languages="{kotlin:'Kotlin',java:'Java'}">
 <template v-slot:kotlin>
@@ -450,7 +450,6 @@ FinBox.resetData();
 
 </template>
 </CodeSwitcher>
-
 
 ## Forget User
 
@@ -473,10 +472,10 @@ FinBox.forgetUser();
 </template>
 </CodeSwitcher>
 
-
 ::: tip RECOMMENDATION
--  When a user logs out, call both `stopPeriodicSync` and `resetData`  to:
-    * Stop any ongoing periodic sync processes.
-    * Clear existing user data.
+
+- When a user logs out, call both `stopPeriodicSync` and `resetData`  to:
+  - Stop any ongoing periodic sync processes.
+  - Clear existing user data.
    This approach ensures a clean state before the next user session.
 :::

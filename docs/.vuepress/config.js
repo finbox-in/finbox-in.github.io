@@ -54,36 +54,50 @@ module.exports = {
           collapsable: false,
           children: [
             {
-              title: 'FrontEnd Integration',
-              path: '/device-connect/mobile-integration.html'
+              title: 'Frontend Integration',
+              path: '/device-connect/frontend-integration.html'
             },
             {
               title: 'Handling Permissions',
               path: '/device-connect/permissions.html'
-            }, 
-            {
-              title: 'Android SDK setup',
-              path: '/device-connect/android.html'
             },
             {
-              title: 'React Native SDK setup',
-              path: '/device-connect/react-native.html'
-            },
-            {
-              title: 'Flutter SDK setup',
-              path: '/device-connect/flutter.html'
-            },
-            {
-              title: 'Cordova SDK setup',
-              path: '/device-connect/cordova.html'
-            },
-            {
-              title: 'Ionic Capacitor SDK setup',
-              path: '/device-connect/ionic-capacitor.html'
-            },
-            {
-              title: 'Error Codes',
-              path: '/device-connect/error-codes.html'
+              title: 'SDKs',
+              collapsable: false,
+              children: [
+                {
+                  title: 'Android',
+                  path: '/device-connect/android.html'
+                },
+                {
+                  title: 'React Native',
+                  path: '/device-connect/react-native.html'
+                },
+                {
+                  title: 'Flutter',
+                  path: '/device-connect/flutter.html'
+                },
+                {
+                  title: 'Cordova',
+                  path: '/device-connect/cordova.html'
+                },
+                {
+                  title: 'Ionic Capacitor',
+                  path: '/device-connect/ionic-capacitor.html'
+                },
+                {
+                  title: 'Web',
+                  path: '/device-connect/web.html'
+                },
+                {
+                  title: 'IOS',
+                  path: '/device-connect/ios.html'
+                },
+                {
+                  title: 'Error Codes',
+                  path: '/device-connect/error-codes.html'
+                }
+              ]
             }
           ]
         },
@@ -106,8 +120,8 @@ module.exports = {
           ]
         },
         {
-          title: 'FAQ',
-          collapsable: true,
+          title: 'Help Center',
+          collapsable: false,
           children: [
             {
               title: 'FAQ',
