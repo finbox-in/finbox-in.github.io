@@ -39,7 +39,9 @@ To create a user, call the `createUser` method with the following arguments:
 - Customer ID
 
 ::: danger IMPORTANT
-Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never be `null` or a blank string `""`.
+- `CUSTOMER_ID` Must be **alphanumeric** (no special characters).
+- Should not exceed **64** characters.
+- Must not be `null` or an empty string `""`.
 :::
 
 The response to this method (success or failure) can be captured using the callback.
