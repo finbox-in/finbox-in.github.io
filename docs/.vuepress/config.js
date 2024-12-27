@@ -66,31 +66,31 @@ module.exports = {
               collapsable: false,
               children: [
                 {
-                  title: 'Android SDK setup',
+                  title: 'Android',
                   path: '/device-connect/android.html'
                 },
                 {
-                  title: 'React Native SDK setup',
+                  title: 'React Native',
                   path: '/device-connect/react-native.html'
                 },
                 {
-                  title: 'Flutter SDK setup',
+                  title: 'Flutter SDK',
                   path: '/device-connect/flutter.html'
                 },
                 {
-                  title: 'Cordova SDK setup',
+                  title: 'Cordova SDK',
                   path: '/device-connect/cordova.html'
                 },
                 {
-                  title: 'Ionic Capacitor SDK setup',
+                  title: 'Ionic Capacitor',
                   path: '/device-connect/ionic-capacitor.html'
                 },
                 {
-                  title: 'Web SDK setup',
+                  title: 'Web SDK',
                   path: '/device-connect/web.html'
                 },
                 {
-                  title: 'IOS SDK setup',
+                  title: 'IOS SDK',
                   path: '/device-connect/ios.html'
                 },
                 {
