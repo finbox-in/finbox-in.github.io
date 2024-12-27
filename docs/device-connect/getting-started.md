@@ -3,7 +3,7 @@ FinBox DeviceConnect is a powerful SDK-based solution designed to seamlessly int
 
 To get started with DeviceConnect, the integration process involves two key steps:
 
-<img src="/device_connect_mobile_server_integrations.jpg" alt="DeviceConnect Mobile Server Integration" style="width:80%;height:80%" />
+<img src="/device_connect_frontend_server_integrations.svg" alt="DeviceConnect Frontend Server Integration" style="width:100%;height:100%" />
 
 
 **Mobile App Integration** : This step focuses on incorporating the SDK into your Android or iOS application, enabling users to share data securely. Supported platforms include:
