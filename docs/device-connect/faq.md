@@ -2,7 +2,7 @@
 
 <br>
 <br>
-<details>
+<details open>
 <summary><b>What is the size of DeviceConnect SDK?</b></summary>
 
 The size of the SDK is ~300 kB which is integrated in the lending application.
@@ -10,7 +10,7 @@ The size of the SDK is ~300 kB which is integrated in the lending application.
 </details>
 <br>
 <br>
-<details>
+<details open>
 <summary><b>What OS does the DeviceConnect SDK support? (Android/IOS/Web)?</b></summary>
 
 The SDK is currently available only in Android.
@@ -18,7 +18,7 @@ The SDK is currently available only in Android.
 </details>
 <br>
 <br>
-<details>
+<details open>
 <summary><b>What platforms does the DeviceConnect SDK support?</b></summary>
 
 The SDK currently supports Java, Kotlin, React Native, Flutter, Cordova, Ionic Angular, and Ionic Capacitor.
@@ -26,16 +26,17 @@ The SDK currently supports Java, Kotlin, React Native, Flutter, Cordova, Ionic A
 </details>
 <br>
 <br>
-<details>
+<details open>
 <summary><b>How many processes are involved in the integration of DeviceConnect SDK? How much time is required for each process?</b></summary>
 
 There are 2 processes involved.
 <br>
 
-| Process                       | Time Required                                             |
-|-------------------------------|-----------------------------------------------------------|
-| SDK integration               | 1 day  (Provided all required permissions are available)  |
-| Server-to-server integration  | 1 day                                                     |
+| Process                   | Time Required |
+|---------------------------|---------------|
+| Consent Screen            | 2 day         |
+| SDK integration           | 1 day         |
+| Insights API integration  | 1 day         |
 
 </details>
 <br>
