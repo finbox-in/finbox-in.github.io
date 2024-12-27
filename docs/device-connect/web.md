@@ -78,6 +78,15 @@ finbox.startPeriodicSync()
 
 </CodeSwitcher>
 
+::: tip RECOMMENDATION
+To handle cross-login scenarios:
+
+When a user logs back into the app with fresh credentials:
+- Call the `createUser` method to register the new user.
+- Follow it by `startPeriodicSync` to resume data syncing for the new user.
+Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
+:::
+
 ## Cancel Periodic Sync
 
 If you have already set up the sync for the user, cancel the syncs using `stopPeriodicSync` method.
