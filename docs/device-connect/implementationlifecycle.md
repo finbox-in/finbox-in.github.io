@@ -1,1 +1,0 @@
-# DeviceConnect: Implementation Lifecycle
