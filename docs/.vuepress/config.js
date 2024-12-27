@@ -60,8 +60,6 @@ module.exports = {
             {
               title: 'Handling Permissions',
               path: '/device-connect/permissions.html'
-<<<<<<< HEAD
-=======
             },
           ]
         },
@@ -88,7 +86,6 @@ module.exports = {
             {
               title: 'Ionic Capacitor SDK setup',
               path: '/device-connect/ionic-capacitor.html'
->>>>>>> 2c9e2d1f3c6ca28673b85e29d1c5ddf1646137a9
             },
             {
               title: 'SDKs',
