@@ -247,7 +247,7 @@ When a user logs back into the app with fresh credentials:
 Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
 :::
 
-### Match Details on Device (Important)
+## Match Details on Device (Important)
 
 Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
 
@@ -304,7 +304,7 @@ finbox.setDeviceMatch(deviceMatch);
 For Device Match to work at full potential, the SDK expects `android.permission.READ_CONTACTS`, `android.permission.GET_ACCOUNTS`, `android.permission.READ_SMS` to be accepted by the user.
 :::
 
-### Forward Notifications to SDK (Important)
+## Forward Notifications to SDK (Important)
 
 Certain phone manufacturers, implement aggressive battery optimization features that kill apps running in the background after a certain period of inactivity. This can prevent the DeviceConnect SDK's continuous syncing from functioning properly, as it relies on background data collection. In such cases, FinBox’s server may need to request data from the SDK when continuous sync has stopped.
 
@@ -340,7 +340,7 @@ if(MessagingService.forwardToFinBoxSDK(remoteMessage.getData())) {
 </template>
 </CodeSwitcher>
 
-### Multi-Process Support (Optional)
+## Multi-Process Support (Optional)
 
 DeviceConnect uses a **content provider** to automatically initialize the SDK. However, Android has a limitation: in multi-process applications, **content providers are only initialized in the main process**. This means that any SDK calls from other processes may result in **unstable behavior**
 
