@@ -90,7 +90,7 @@ Even though the SDK automatically adapts to a new user, this approach minimizes 
 
 ## Cancel Periodic Sync
 
-If you have already set up the sync for the user, cancel the syncs using `stopPeriodicSync` method.
+Make sure to cancel data synchronization tasks when the user logs out of the app by using the `stopPeriodicSync` method. This ensures that no background sync operations continue unnecessarily, maintaining data security.
 
 <CodeSwitcher :languages="{swift:'Swift'}">
 <template v-slot:swift>
