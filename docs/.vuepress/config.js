@@ -74,11 +74,11 @@ module.exports = {
                   path: '/device-connect/react-native.html'
                 },
                 {
-                  title: 'Flutter SDK',
+                  title: 'Flutter',
                   path: '/device-connect/flutter.html'
                 },
                 {
-                  title: 'Cordova SDK',
+                  title: 'Cordova',
                   path: '/device-connect/cordova.html'
                 },
                 {
