@@ -1,6 +1,6 @@
 # DeviceConnect: Web
 
-Device Connect Web SDK is used to collect anonymised non-PII data from the devices of the users after taking explicit user consent.
+The DeviceConnect Web SDK enables the collection of anonymized, non-PII data from user devices, ensuring compliance with privacy policies by obtaining explicit user consent before initiating data sync processes.
 
 ## Requirements
 
@@ -30,10 +30,15 @@ Following will be shared by FinBox team at the time of integration:
 
 ## Create User
 
-Call `createUser` method to create the user. It takes Client Api Key and Customer Id as the arguments.
+To create a user, call the `createUser` method with the following arguments:
+
+- Client API Key
+- Customer ID
 
 ::: danger IMPORTANT
-Please make sure `CUSTOMER_ID` is **not more than 64** characters and is **alphanumeric** (with no special characters). Also it should never be `null` or a blank string `""`.
+- `CUSTOMER_ID` Must be **alphanumeric** (no special characters).
+- Should not exceed **64** characters.
+- Must not be `null` or an empty string `""`.
 :::
 
 The response to this method (success or failure) can be captured using the callbacks.
@@ -59,7 +64,7 @@ You can read about the errors in the [Error Codes](/device-connect/error-codes.h
 
 ## Start Periodic Sync
 
-This is to be called only on a successful response to `createUser` method's callback. On calling this the syncs will start for all the data sources configured as per permissions. The method below syncs data in the background at regular intervals.
+The startPeriodicSync method should be invoked only after receiving a successful response from the `createUser` method callback. This method initiates background syncing for all data sources based on the permissions granted by the user. Data is synced at regular intervals in the background, ensuring continuous and seamless data collection.
 
 <CodeSwitcher :languages="{javascript:'Javascript'}">
 <template v-slot:javascript>
@@ -73,9 +78,18 @@ finbox.startPeriodicSync()
 
 </CodeSwitcher>
 
+::: tip RECOMMENDATION
+To handle cross-login scenarios:
+
+When a user logs back into the app with fresh credentials:
+- Call the `createUser` method to register the new user.
+- Follow it by `startPeriodicSync` to resume data syncing for the new user.
+Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
+:::
+
 ## Cancel Periodic Sync
 
-If you have already set up the sync for the user, cancel the syncs using `stopPeriodicSync` method.
+Make sure to cancel data synchronization tasks when the user logs out of the app by using the `stopPeriodicSync` method. This ensures that no background sync operations continue unnecessarily, maintaining data security.
 
 <CodeSwitcher :languages="{javascript:'Javascript'}">
 <template v-slot:javascript>
@@ -105,7 +119,7 @@ finbox.setSyncFrequency(12 * 60 * 60)
 
 ## Reset User Data
 
-In case the user data needs to be removed on the device so that you can re-sync the entire data, use the method `resetData`.
+If you need to clear a user's data stored on the device and initiate a fresh data sync, use the `resetData` method. This ensures that all previous data is removed, and syncing starts from scratch.
 
 <CodeSwitcher :languages="{javascript:'Javascript'}">
 <template v-slot:javascript>
@@ -120,7 +134,7 @@ FinBox.resetData()
 
 ## Forget User
 
-In case the user choose to be forgotten, use the method `forgetUser`. This will delete the user details in our system.
+If a user requests to be forgotten, use the `forgetUser` method. This will delete all user details from our system, ensuring this meets digital guidelines for right to be forgotten.
 
 <CodeSwitcher :languages="{javascript:'Javascript'}">
 <template v-slot:javascript>
@@ -131,3 +145,4 @@ FinBox.forgetUser()
 
 </template>
 </CodeSwitcher>
+
