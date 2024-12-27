@@ -206,7 +206,7 @@ When a user logs back into the app with fresh credentials:
 Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
 :::
 
-## Match Details on Device
+## Match Details on Device (Important)
 
 Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
 
@@ -216,7 +216,7 @@ Call `setDeviceMatch` method before starting the syncs.
 FinBoxRiskSdk.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
 ```
 
-## Forward Notifications to SDK
+## Forward Notifications to SDK (Important)
 
 Certain phone manufacturers, implement aggressive battery optimization features that kill apps running in the background after a certain period of inactivity. This can prevent the DeviceConnect SDK's continuous syncing from functioning properly, as it relies on background data collection. In such cases, FinBox’s server may need to request data from the SDK when continuous sync has stopped.
 
@@ -235,7 +235,7 @@ Make sure to cancel data synchronization tasks when the user logs out of the app
 ```javascript
 FinBoxRiskSdk.stopPeriodicSync();
 ```
-## Handle Sync Frequency
+## Handle Sync Frequency (Optional)
 
 By default, the sync frequency is set to **8 hours**. You can customize this frequency by calling the `setSyncFrequency` method and passing your preferred interval **in seconds** as an argument. Ensure this method is invoked after the user is created.
 
