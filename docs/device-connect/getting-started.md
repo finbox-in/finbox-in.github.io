@@ -17,12 +17,6 @@ To get started with DeviceConnect, the integration process involves two key step
 
 Detailed guides for each platform are available in the respective sections.
 
-
-
-
-
-
-
 | Platform/Framework |Purpose                       | Documentation        |
 |---------------------|-------------------------------|-----------------------|
 | Android             | Native Android app integration | [Android Guide](/device-connect/android.html)   |
