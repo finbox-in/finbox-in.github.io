@@ -147,6 +147,7 @@ When a user logs back into the app with fresh credentials:
 - Follow it by `startPeriodicSync` to resume data syncing for the new user.
 Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
 :::
+## Forward Notifications to SDK (Important)
 
 ## Match Details on Device
 
@@ -154,7 +155,7 @@ Device matching enables additional pattern recognition to match email, phone num
 
 Create the builder by passing email address, phone number and name of the customer. Once the in-device values are set, call `setDeviceMatch` before starting the syncs.
 
-## Forward Notifications to SDK
+## Match Details on Device (Important)
 
 Certain phone manufacturers, implement aggressive battery optimization features that kill apps running in the background after a certain period of inactivity. This can prevent the DeviceConnect SDK's continuous syncing from functioning properly, as it relies on background data collection. In such cases, FinBox’s server may need to request data from the SDK when continuous sync has stopped.
 
@@ -166,7 +167,8 @@ Add the following lines inside `cordova.plugins.firebase.messaging.onMessage` an
 cordova.plugins.FinBoxRiskManager.forwardFinBoxNotificationToSDK(data);
 ```
 
-## Multi-Process Support
+
+## Multi-Process Support (Optional)
 
 DeviceConnect uses a content provider to auto initialize the SDK. The limitation with the OS is that content providers are only initialized once in a **multi-process application** and from the main process. For this reason, any calls to the SDK from other processes will lead to unstable behavior.
 
