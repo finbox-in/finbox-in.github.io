@@ -206,7 +206,7 @@ cordova.plugins.FinBoxRiskManager.stopPeriodicSync();
 ```
 
 
-## Handle Sync Frequency
+## Handle Sync Frequency (Optional)
 
 By default, the sync frequency is set to **8 hours**. You can customize this frequency by calling the `setSyncFrequency` method and passing your preferred interval **in seconds** as an argument. Ensure this method is invoked after the user is created
 
