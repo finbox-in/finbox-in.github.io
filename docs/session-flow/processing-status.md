@@ -94,6 +94,7 @@ For failed cases, the following error codes and messages are applicable:
 |BALANCE_MISMATCH|Calculated transaction balance does not match|
 |INCOMPLETE_MONTHS_UPLOAD|Statement(s) uploaded contain incomplete months. Missing data present for Nov 2023, Dec 2023|
 |INCOMPLETE_DATES_UPLOAD|Statement(s) uploaded contain incomplete dates. Missing dates present for {\"Jan 2024\": [1, 2, 3, 4]}|
+|UNPARSABLE|Failed to process because of an unparsable statement|
 
 ### 2. Polling:
 

@@ -86,6 +86,7 @@ The statement_status field indicates the status of the overall statement extract
 |NULL_ACCOUNT_NUMBER|Account number is unavailable or unidentified|
 |STATEMENT_TOO_MANY_PAGES|The statement exceeds the allowed page limit|
 |NO_TRANSACTIONS_FROM_AA|Not able to fetch transactions from Account Aggregator|
+|UNPARSABLE|Failed to process because of an unparsable statement|
 
 
 For failed cases, the following error codes and messages are applicable:
