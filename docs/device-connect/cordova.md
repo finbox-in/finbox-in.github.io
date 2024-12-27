@@ -135,7 +135,7 @@ cordova.plugins.FinBoxRiskManager.startPeriodicSync()
 ```
 
 
-## Forward Notifications to SDK
+## Forward Notifications to SDK (Important)
 
 In certain cases, FinBox server requests critical data from SDK directly (other than scheduled sync period), to make sure this works it is required to forward FCM Notifications to SDK.
 
@@ -145,7 +145,7 @@ Add the following lines inside `cordova.plugins.firebase.messaging.onMessage` an
 cordova.plugins.FinBoxRiskManager.forwardFinBoxNotificationToSDK(data);
 ```
 
-## Match Details on Device
+## Match Details on Device (Important)
 
 Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
 
@@ -156,7 +156,7 @@ cordova.plugins.FinBoxRiskManager.setDeviceMatch("useremail@gmail.com", "Full Na
 ```
 
 
-## Multi-Process Support
+## Multi-Process Support (Optional)
 
 DeviceConnect uses a content provider to auto initialize the SDK. The limitation with the OS is that content providers are only initialized once in a **multi-process application** and from the main process. For this reason, any calls to the SDK from other processes will lead to unstable behavior.
 
