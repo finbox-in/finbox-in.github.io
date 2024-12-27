@@ -89,7 +89,7 @@ Even though the SDK automatically adapts to a new user, this approach minimizes 
 
 ## Cancel Periodic Sync
 
-If you have already set up the sync for the user, cancel the syncs using `stopPeriodicSync` method.
+Make sure to cancel data synchronization tasks when the user logs out of the app by using the `stopPeriodicSync` method. This ensures that no background sync operations continue unnecessarily, maintaining data security.
 
 <CodeSwitcher :languages="{javascript:'Javascript'}">
 <template v-slot:javascript>
@@ -119,7 +119,7 @@ finbox.setSyncFrequency(12 * 60 * 60)
 
 ## Reset User Data
 
-In case the user data needs to be removed on the device so that you can re-sync the entire data, use the method `resetData`.
+If you need to clear a user's data stored on the device and initiate a fresh data sync, use the `resetData` method. This ensures that all previous data is removed, and syncing starts from scratch.
 
 <CodeSwitcher :languages="{javascript:'Javascript'}">
 <template v-slot:javascript>
@@ -134,7 +134,7 @@ FinBox.resetData()
 
 ## Forget User
 
-In case the user choose to be forgotten, use the method `forgetUser`. This will delete the user details in our system.
+If a user requests to be forgotten, use the `forgetUser` method. This will delete all user details from our system, ensuring this meets digital guidelines for right to be forgotten.
 
 <CodeSwitcher :languages="{javascript:'Javascript'}">
 <template v-slot:javascript>
