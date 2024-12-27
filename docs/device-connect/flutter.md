@@ -146,7 +146,7 @@ When a user logs back into the app with fresh credentials:
 Even though the SDK automatically adapts to a new user, this approach minimizes potential delays in syncing during the first session
 :::
 
-## Match Details on Device
+## Match Details on Device (Important)
 
 Device matching enables additional pattern recognition to match email, phone numbers and name. The matching happens on the device and the user phone numbers, email addresses won't leave the device.
 
@@ -156,7 +156,7 @@ Call `setDeviceMatch` method before starting the syncs.
 FinBoxDcPlugin.setDeviceMatch("useremail@gmail.com", "Full Name", "9999999999");
 ```
 
-## Forward Notifications to SDK
+## Forward Notifications to SDK (Important)
 
 Certain phone manufacturers, implement aggressive battery optimization features that kill apps running in the background after a certain period of inactivity. This can prevent the DeviceConnect SDK's continuous syncing from functioning properly, as it relies on background data collection. In such cases, FinBox’s server may need to request data from the SDK when continuous sync has stopped.
 
@@ -168,7 +168,7 @@ Add the following lines inside `FirebaseMessaging.onMessage.listen` method.
 FinBoxDcPlugin.forwardFinBoxNotificationToSDK(event.data);
 ```
 
-## Multi-Process Support
+## Multi-Process Support (Optional)
 
 DeviceConnect uses a content provider to auto initialize the SDK. The limitation with the OS is that content providers are only initialized once in a **multi-process application** and from the main process. For this reason, any calls to the SDK from other processes will lead to unstable behavior.
 
@@ -203,7 +203,7 @@ Make sure to cancel data synchronization tasks when the user logs out of the app
 FinBoxDcPlugin.stopPeriodicSync();
 ```
 
-## Handle Sync Frequency
+## Handle Sync Frequency (Optional)
 
 By default sync frequency is set to **8 hours**, you can modify it by passing preferred time **in seconds** as an argument to `setSyncFrequency` method once the user is created.
 
