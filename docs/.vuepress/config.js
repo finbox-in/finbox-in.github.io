@@ -98,7 +98,7 @@ module.exports = {
                   path: '/device-connect/error-codes.html'
                 }
               ]
-            },
+            }
           ]
         },
         {
@@ -120,8 +120,8 @@ module.exports = {
           ]
         },
         {
-          title: 'FAQ',
-          collapsable: true,
+          title: 'Help Center',
+          collapsable: false,
           children: [
             {
               title: 'FAQ',
