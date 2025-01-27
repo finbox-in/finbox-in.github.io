@@ -81,6 +81,7 @@ Specify the following in `local.properties` file:
 ACCESS_KEY=<ACCESS_KEY>
 SECRET_KEY=<SECRET_KEY>
 DC_SDK_VERSION=<DC_SDK_VERSION>
+DC_FLAVOR=<DC_FLAVOR>
 COMMON_SDK_VERSION=<COMMON_SDK_VERSION>
 COMMON_FLAVOR=<COMMON_FLAVOR>
 LOGGER_SDK_VERSION=<LOGGER_SDK_VERSION>
@@ -97,6 +98,7 @@ Following will be shared by FinBox team at the time of integration:
 - `ACCESS_KEY`
 - `SECRET_KEY`
 - `DC_SDK_VERSION`
+- `DC_FLAVOR`
 - `COMMON_SDK_VERSION`
 - `COMMON_FLAVOR`
 - `LOGGER_SDK_VERSION`
@@ -197,7 +199,7 @@ cordova.plugins.FinBoxRiskManager.initLibrary(this)
 ```
 
 
-## Cancel Periodic Syncing
+## Cancel Periodic Sync
 
 Make sure to cancel data synchronization tasks when the user logs out of the app by using the `stopPeriodicSync` method. This ensures that no background sync operations continue unnecessarily, maintaining data security.
 

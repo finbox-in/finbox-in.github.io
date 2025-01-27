@@ -75,7 +75,7 @@ dependencies {
 </template>
 </CodeSwitcher>
 
-## Adding Dependency
+## Add Dependency
 
 In the project level `build.gradle` file or `settings.gradle`, add the repository URLs to all `allprojects` block or `repositories` block inside `dependencyResolutionManagement`.
 
